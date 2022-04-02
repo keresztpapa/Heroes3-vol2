@@ -22,7 +22,7 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         Tiles tile = new Tiles(8,8,ap);
-        tile.generateMap();
+        //tile.generateMap();
 
     }
 }

@@ -24,16 +24,13 @@ public class Tiles {
             for (int i=0;i<this.x_count;i++){
                 for (int j=0;j<this.y_count;j++){
                     this.map[i][j] = new Tile(100*i,j*100,ap);
+                    this.map[i][j].giveImageFeed("def", i*100, j*100);
                 }
             }
     }
 
     public void generateMap(){
-        for (int i=0;i<this.x_count;i++){
-            for (int j=0;j<this.y_count;j++){
-                this.map[i][j].giveImageFeed("def", i*100, j*100);
-            }
-        }
+
     }
 
     //getters & setters
