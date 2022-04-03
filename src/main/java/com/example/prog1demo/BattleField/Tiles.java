@@ -36,6 +36,7 @@ public class Tiles {
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
         Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
+
         System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
     }
 

@@ -31,6 +31,10 @@ public class Soldier extends UnitBase {
 
         public Soldier(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py, AnchorPane AP){
             super(attack,deffense,magic,wisd,mor,lucky,px,py);
+            stand.setX(px);
+            stand.setY(py);
+            stand.setFitWidth(100);
+            stand.setFitHeight(100);
             AP.getChildren().add(stand);
         }
 
