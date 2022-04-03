@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Objects;
+
 public class Tile {
     int     start_x,
             start_y,
@@ -13,6 +15,7 @@ public class Tile {
             col;
     AnchorPane ap;
     ImageView img;
+    String pic=null;
 
     public Tile(int x, int y, AnchorPane anchor){
         this.row = x;
@@ -38,15 +41,26 @@ public class Tile {
             img.setOnMouseEntered((event) -> {
                 this.end_x = (int) img.getX();
                 this.end_y = (int) img.getY();
-                img.setImage(new Image("file:pngs/tile_hover.png"));
+                if(!Objects.equals(this.pic, "water")){
+                    this.img.setImage(new Image("file:pngs/tile_hover.png"));
+                    this.pic="hover";
+                }
                 //routing();
             });
 
-            img.setOnMouseExited((event) -> img.setImage(new Image("file:pngs/tile_def.png")));
+            img.setOnMouseExited((event) -> {
+                if(!Objects.equals(this.pic, "water")){
+                    img.setImage(new Image("file:pngs/tile_def.png"));
+                    this.pic="def";
+                }
+            });
 
             img.setOnMouseClicked((event) -> {
                 this.start_x = (int) img.getX();
                 this.start_y = (int) img.getY();
+                System.out.println("String: "+this.pic+"\n");
+                //System.out.println("String: "+this.getImg()+"\n");
+                System.out.println("X: "+this.start_x+"\nY:"+this.start_y);
             });
 
         this.ap.getChildren().add(img);
@@ -65,6 +79,9 @@ public class Tile {
     public int getStart_y(){ return  this.start_y; }
     public int getEnd_x(){ return this.end_x; }
     public int getEnd_y(){ return this.end_y; }
+    public String getPic() { return this.pic; }
+    public void setPic(String z){ this.pic = z; }
+
 }
 
 

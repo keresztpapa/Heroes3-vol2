@@ -1,10 +1,6 @@
 package com.example.prog1demo.BattleField;
 
-import javafx.event.EventHandler;
-import javafx.event.EventType;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 public class Tiles {
@@ -13,10 +9,8 @@ public class Tiles {
     Tile[][] map;
     AnchorPane ap;
 
-    ImageView img_hover;
-    ImageView img;
-
     public Tiles(int x, int y, AnchorPane anchor){
+        String str=null;
         this.x_count = x;
         this.y_count = y;
         this.ap=anchor;
@@ -24,7 +18,14 @@ public class Tiles {
             for (int i=0;i<this.x_count;i++){
                 for (int j=0;j<this.y_count;j++){
                     this.map[i][j] = new Tile(100*i,j*100,ap);
-                    this.map[i][j].giveImageFeed("def", i*100, j*100);
+                        if((int) (Math.random() * (100 + 1)) % 10 == 0){
+                            str = "water";
+                            map[i][j].setPic("water");
+                        }else{
+                            str = "def";
+                            map[i][j].setPic("def");
+                        }
+                    this.map[i][j].giveImageFeed(str, i*100, j*100);
                 }
             }
     }
