@@ -3,9 +3,9 @@ package com.example.prog1demo.units.unit;
 import com.example.prog1demo.units.UnitBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
-public class Soldier{
-        //extends UnitBase {
+public class Soldier extends UnitBase {
 
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView dead = new ImageView(new Image("file:pngs/player_units/pike/pike_dead.png"));
@@ -27,10 +27,11 @@ public class Soldier{
                 new ImageView(new Image("file:pngs/player_units/pike/pike_a5.png")),
         };
 
-/*
-        public Soldier(int attack, int deffense, int magic, int wisd, int mor, int lucky){
-            //super(attack,deffense,magic,wisd,mor,lucky);
+
+
+        public Soldier(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py, AnchorPane AP){
+            super(attack,deffense,magic,wisd,mor,lucky,px,py);
+            AP.getChildren().add(stand);
         }
-*/
 
 }

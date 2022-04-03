@@ -20,11 +20,15 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        Tiles tile = new Tiles(8,8,ap);
-        //tile.generateMap();
-
+        gameEngine();
     }
+
+    public void gameEngine(){
+        Tiles tile = new Tiles(8,8,ap);
+        tile.generate();
+    }
+
+
 }
 
 

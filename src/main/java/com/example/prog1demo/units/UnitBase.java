@@ -10,15 +10,15 @@ public class UnitBase {
     int pos_x;
     int pos_y;
 
-    public UnitBase(int attack, int deffense, int magic, int wisd, int mor, int lucky, int pos_x, int pos_y){
+    public UnitBase(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py){
         this.att = attack;
         this.deff = deffense;
         this.magic_power = magic;
         this.wisdom = wisd;
         this.moral = mor;
         this.luck = lucky;
-        this.pos_x = pos_x;
-        this.pos_y = pos_y;
+        this.pos_x = px;
+        this.pos_y = py;
     }
 
     //getters + setters

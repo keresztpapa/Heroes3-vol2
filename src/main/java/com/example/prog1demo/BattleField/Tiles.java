@@ -1,5 +1,6 @@
 package com.example.prog1demo.BattleField;
 
+import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -30,8 +31,12 @@ public class Tiles {
             }
     }
 
-    public void generateMap(){
-
+    //int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py
+    public void generate(){
+        int sor = (int) (Math.random() * (2)+1);
+        int oszlop = (int) (Math.random()*(7)+1);
+        Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
+        System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
     }
 
     //getters & setters
@@ -40,52 +45,3 @@ public class Tiles {
     public int getX_count(){ return this.x_count; }
     public int getY_count(){ return this.y_count; }
 }
-
-/*
-                img = new ImageView(new Image("file:pngs/tile_def.png"));
-                img.setFitWidth(100);
-                img.setFitHeight(100);
-                img.setX(i*100);
-                img.setY(j*100);
-
-                img.setOnMouseEntered((event) -> {
-                    System.out.println("enter\nx:"+ img.getX()+"\ny: "+ img.getY());
-                    //ImageView img_hover;
-                    img_hover = new ImageView(new Image("file:pngs/tile_hover.png"));
-                    img_hover.setFitWidth(100);
-                    img_hover.setFitHeight(100);
-                    img_hover.setX(img.getX());
-                    img_hover.setY(img.getY());
-                    ap.getChildren().add(img_hover);
-                });
-
-                img.setOnMouseExited((event) -> {
-                    ap.getChildren().remove(img_hover);
-                });
-
-                ap.getChildren().add(img);
-
- */
-
-
-/*
-                    System.out.println("enter\nx:"+ finalImg.getX()+"\ny: "+ finalImg.getY());
-                    ImageView img_def;
-                    img_def = new ImageView(new Image("file:pngs/tile_def.png"));
-                    img_def.setFitWidth(100);
-                    img_def.setFitHeight(100);
-                    img_def.setX(finalImg.getX());
-                    img_def.setY(finalImg.getY());
-*/
-
-                /*
-                ImageView img_hover = new ImageView(new Image("file:pngs/tile_hover.png"));
-                img_hover.setFitWidth(100);
-                img_hover.setFitHeight(100);
-                img_hover.setX(img.getX());
-                img_hover.setY(img.getY());
-
-                img.setOnMouseEntered((event) -> ap.getChildren().add(img_hover));
-
-                img.setOnMouseExited((event)  -> ap.getChildren().remove(img_hover));
-               */
