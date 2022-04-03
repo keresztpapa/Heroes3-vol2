@@ -4,7 +4,8 @@ import com.example.prog1demo.units.UnitBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class Soldier extends UnitBase {
+public class Soldier{
+        //extends UnitBase {
 
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView dead = new ImageView(new Image("file:pngs/player_units/pike/pike_dead.png"));
@@ -26,10 +27,10 @@ public class Soldier extends UnitBase {
                 new ImageView(new Image("file:pngs/player_units/pike/pike_a5.png")),
         };
 
-
+/*
         public Soldier(int attack, int deffense, int magic, int wisd, int mor, int lucky){
-            super(attack,deffense,magic,wisd,mor,lucky);
+            //super(attack,deffense,magic,wisd,mor,lucky);
         }
-
+*/
 
 }
