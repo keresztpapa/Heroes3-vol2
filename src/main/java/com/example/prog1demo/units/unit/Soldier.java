@@ -27,8 +27,6 @@ public class Soldier extends UnitBase {
                 new ImageView(new Image("file:pngs/player_units/pike/pike_a5.png")),
         };
 
-
-
         public Soldier(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py, AnchorPane AP){
             super(attack,deffense,magic,wisd,mor,lucky,px,py);
             stand.setX(px);
@@ -37,5 +35,21 @@ public class Soldier extends UnitBase {
             stand.setFitHeight(100);
             AP.getChildren().add(stand);
         }
-
 }
+
+
+/*
+        public void move(int endPosX, AnchorPane AP){
+            while(this.getPos_x() <= endPosX){
+                this.setPos_x(this.getPos_x()+1);
+                stand.setX(this.getPos_x());
+                AP.getChildren().add(stand);
+            }
+            while(this.getPos_x() >= endPosX){
+                this.setPos_x(this.getPos_x()-1);
+                stand.setX(this.getPos_x());
+                AP.getChildren().add(stand);
+            }
+        }
+
+ */

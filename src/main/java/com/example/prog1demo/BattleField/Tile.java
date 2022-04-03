@@ -1,5 +1,8 @@
 package com.example.prog1demo.BattleField;
 
+import com.example.prog1demo.Action;
+import com.example.prog1demo.units.UnitBase;
+import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -16,13 +19,25 @@ public class Tile {
     AnchorPane ap;
     ImageView img;
     String pic=null;
+    boolean crossable;
+    UnitBase unib;
 
-    public Tile(int x, int y, AnchorPane anchor){
+    public Tile(int x, int y, AnchorPane anchor, boolean crs){
         this.row = x;
         this.col = y;
         this.ap=anchor;
+        this.crossable = crs;
+        //this.unib = null;
     }
-
+/*
+    public Tile(int x, int y, AnchorPane anchor, boolean crs, UnitBase u){
+        this.row = x;
+        this.col = y;
+        this.ap=anchor;
+        this.crossable = crs;
+        this.unib = u;
+    }
+*/
     public void setImg(String str){
         switch (str) {
             case "def" -> img = new ImageView(new Image("file:pngs/tile_def.png"));
@@ -38,7 +53,7 @@ public class Tile {
         img.setX(x);
         img.setY(y);
 
-            img.setOnMouseEntered((event) -> {
+        img.setOnMouseEntered((event) -> {
                 this.end_x = (int) img.getX();
                 this.end_y = (int) img.getY();
                 if(!Objects.equals(this.pic, "water")){
@@ -59,8 +74,9 @@ public class Tile {
                 this.start_x = (int) img.getX();
                 this.start_y = (int) img.getY();
                 System.out.println("String: "+this.pic+"\n");
-                //System.out.println("String: "+this.getImg()+"\n");
                 System.out.println("X: "+this.start_x+"\nY:"+this.start_y);
+                //unib.move();
+
             });
 
         this.ap.getChildren().add(img);
@@ -81,5 +97,7 @@ public class Tile {
     public int getEnd_y(){ return this.end_y; }
     public String getPic() { return this.pic; }
     public void setPic(String z){ this.pic = z; }
+    public void setCrs(boolean z){ this.crossable = z; }
+    public boolean getCrs(){ return this.crossable; }
 
 }

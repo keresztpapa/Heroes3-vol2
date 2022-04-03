@@ -1,6 +1,9 @@
 package com.example.prog1demo.units;
 
-public class UnitBase {
+import com.example.prog1demo.Action;
+import javafx.scene.image.ImageView;
+
+public class UnitBase implements Action {
     int att=1;
     int deff=1;
     int magic_power=1;
@@ -20,6 +23,8 @@ public class UnitBase {
         this.pos_x = px;
         this.pos_y = py;
     }
+
+    //public void move(){}
 
     //getters + setters
     public int getAtt() { return att; }

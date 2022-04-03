@@ -1,5 +1,6 @@
 package com.example.prog1demo.BattleField;
 
+import com.example.prog1demo.units.UnitBase;
 import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -16,28 +17,35 @@ public class Tiles {
         this.y_count = y;
         this.ap=anchor;
         this.map = new Tile[x][y];
-            for (int i=0;i<this.x_count;i++){
-                for (int j=0;j<this.y_count;j++){
-                    this.map[i][j] = new Tile(100*i,j*100,ap);
-                        if((int) (Math.random() * (100 + 1)) % 10 == 0){
-                            str = "water";
-                            map[i][j].setPic("water");
-                        }else{
-                            str = "def";
-                            map[i][j].setPic("def");
-                        }
-                    this.map[i][j].giveImageFeed(str, i*100, j*100);
+            for (int i=0;i<this.x_count;i++) {
+                for (int j = 0; j < this.y_count; j++) {
+                    this.map[i][j] = new Tile(100 * i, j * 100, ap, true);
+                    if ((int) (Math.random() * (100 + 1)) % 10 == 0) {
+                        str = "water";
+                        map[i][j].setPic("water");
+                        this.map[i][j].setCrs(false);
+                    } else {
+                        str = "def";
+                        map[i][j].setPic("def");
+                    }
+                    this.map[i][j].giveImageFeed(str, i * 100, j * 100);
                 }
             }
     }
 
     //int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py
     public void generate(){
+
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
-        Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
 
+//        UnitBase pike = new Soldier(10,10,10,10,10,10,1100,100, ap);
+//        this.map[1][1] = new Tile(100,100,ap, true, pike);
+
+        Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
         System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
+
+
     }
 
     //getters & setters
