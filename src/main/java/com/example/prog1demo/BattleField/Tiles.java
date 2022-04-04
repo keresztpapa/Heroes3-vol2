@@ -9,7 +9,7 @@ public class Tiles {
     int y_count;
     Tile[][] map;
     AnchorPane ap;
-
+    int i, j;
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -18,8 +18,8 @@ public class Tiles {
         this.ap=anchor;
         this.map = new Tile[x][y];
 
-             for (int i=0;i<this.x_count;i++) {
-                for (int j = 0; j < this.y_count; j++) {
+             for (i=0;i<this.x_count;i++) {
+                for (j = 0; j < this.y_count; j++) {
                     this.map[i][j] = new Tile(100 * i, j * 100, ap, true);
                     if ((int) (Math.random() * (100 + 1)) % 10 == 0) {
                         str = "water";
@@ -29,7 +29,7 @@ public class Tiles {
                         str = "def";
                         map[i][j].setPic("def");
                     }
-                    this.map[i][j].giveImageFeed(str, i * 100, j * 100);
+                    this.map[i][j].giveImageFeed(str);
                 }
             }
     }
@@ -39,14 +39,32 @@ public class Tiles {
 
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
+
         Soldier pike = new Soldier(sor*100,oszlop*100, ap);
-        System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
+
+        
+
+        /*
+        for (i=0; i < this.x_count; i++) {
+            for (j = 0; j < this.y_count; j++) {
+                map[i][j].getImageView().setOnMouseClicked((event) ->{
+                    System.out.println(map[i][j].getImgX());
+                });
+            }
+        }*/
+
+
+        /*
+        pike.getImg().setOnMouseClicked((event) -> {
+            System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
+        });
+
 
         for(int h=0;h<100;h++) {
             pike.setPos_x(pike.getPos_x() + 1);
             System.out.println(pike.getPos_x());
             pike.setImageMovX(pike.getImgX());
-        }
+        }*/
     }
 
     //getters & setters

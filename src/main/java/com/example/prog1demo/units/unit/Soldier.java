@@ -5,6 +5,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Objects;
+
 public class Soldier{
 
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
@@ -38,7 +40,7 @@ public class Soldier{
 
         public Soldier(int px, int py, AnchorPane AP){
             this.pos_x = px;
-            this.pos_y = px;
+            this.pos_y = py;
             stand.setX(px);
             stand.setY(py);
             stand.setFitWidth(100);
@@ -47,6 +49,8 @@ public class Soldier{
             this.imgX = px;
             this.imgY = py;
         }
+
+
 
         public int getImgX(){ return (int) stand.getX(); }
         public int getImgY(){ return (int) stand.getY(); }
@@ -57,5 +61,4 @@ public class Soldier{
         public int getPos_y(){ return this.pos_y; }
         public void setPos_x(int z) { this.pos_x = z; }
         public void setPos_y(int z){ this.pos_y = z; }
-
 }

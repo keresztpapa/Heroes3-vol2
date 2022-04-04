@@ -7,12 +7,10 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Objects;
 
 public class Tile {
-    int     start_x,
-            start_y,
-            end_x,
-            end_y,
-            row,
-            col;
+    int     movTo_x,
+            movTo_y,
+            pos_x,
+            pos_y;
     AnchorPane ap;
     ImageView img;
     String pic=null;
@@ -20,8 +18,8 @@ public class Tile {
 
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
-        this.row = x;
-        this.col = y;
+        this.pos_x = x;
+        this.pos_y = y;
         this.ap=anchor;
         this.crossable = crs;
     }
@@ -34,16 +32,16 @@ public class Tile {
         }
     }
 
-    public void giveImageFeed(String str, int x, int y){
+    public void giveImageFeed(String str){
         this.setImg(str);
         img.setFitWidth(100);
         img.setFitHeight(100);
-        img.setX(x);
-        img.setY(y);
+        img.setX(this.pos_x);
+        img.setY(this.pos_y);
 
         img.setOnMouseEntered((event) -> {
-                this.end_x = (int) img.getX();
-                this.end_y = (int) img.getY();
+                this.movTo_x = (int) img.getX();
+                this.movTo_y = (int) img.getY();
                 if(!Objects.equals(this.pic, "water")){
                     this.img.setImage(new Image("file:pngs/tile_hover.png"));
                     this.pic="hover";
@@ -57,31 +55,28 @@ public class Tile {
                 }
             });
 
+
             img.setOnMouseClicked((event) -> {
-                this.start_x = (int) img.getX();
-                this.start_y = (int) img.getY();
+                this.movTo_x = (int) img.getX();
+                this.movTo_y = (int) img.getY();
                 System.out.println("String: "+this.pic+"\n");
-                System.out.println("X: "+this.start_x+"\nY:"+this.start_y);
+                System.out.println("X: "+this.movTo_x +"\nY:"+this.movTo_y);
             });
-        this.ap.getChildren().add(img);
+
+            this.ap.getChildren().add(img);
     }
 
     //getters & setters
-    public void setRow(int z){ this.row = z; }
-    public void setCol(int z){ this.col = z; }
-    public void setStart_x(int z){ this.start_x = z; }
-    public void setStart_y(int z){ this.start_y = z; }
-    public void setEnd_x(int z){ this.end_x = z; }
-    public void setEnd_y(int z){ this.end_y = z; }
-    public int getRow(){ return this.row; }
-    public int getCol(){ return this.col; }
-    public int getStart_x(){ return this.start_x; }
-    public int getStart_y(){ return  this.start_y; }
-    public int getEnd_x(){ return this.end_x; }
-    public int getEnd_y(){ return this.end_y; }
+    public void setMovTo_x(int z){ this.movTo_x = z; }
+    public void setMovTo_y(int z){ this.movTo_y = z; }
+    public int getImgX(){ return (int) this.img.getX(); }
+    public int getImgY(){ return (int) this.img.getY(); }
+    public int getMovTo_x(){ return this.movTo_x; }
+    public int getMovTo_y(){ return  this.movTo_y; }
     public String getPic() { return this.pic; }
     public void setPic(String z){ this.pic = z; }
     public void setCrs(boolean z){ this.crossable = z; }
     public boolean getCrs(){ return this.crossable; }
-
+    public Tile getTile(){ return this; }
+    public ImageView getImageView(){ return this.img; }
 }

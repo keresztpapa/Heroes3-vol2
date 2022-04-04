@@ -38,7 +38,7 @@ public class Griff {
 
     public Griff(int px, int py, AnchorPane AP){
         this.pos_x = px;
-        this.pos_y = px;
+        this.pos_y = py;
         stand.setX(px);
         stand.setY(py);
         stand.setFitWidth(100);
