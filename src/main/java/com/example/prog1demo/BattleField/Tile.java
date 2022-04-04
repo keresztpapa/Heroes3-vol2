@@ -1,8 +1,5 @@
 package com.example.prog1demo.BattleField;
 
-import com.example.prog1demo.Action;
-import com.example.prog1demo.units.UnitBase;
-import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;

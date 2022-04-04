@@ -1,11 +1,7 @@
 package com.example.prog1demo.BattleField;
 
-import java.util.concurrent.TimeUnit;
-import com.example.prog1demo.units.UnitBase;
 import com.example.prog1demo.units.unit.Soldier;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import static java.lang.Thread.sleep;
 
 public class Tiles {
@@ -43,7 +39,7 @@ public class Tiles {
 
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
-        Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
+        Soldier pike = new Soldier(sor*100,oszlop*100, ap);
         System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
 
         for(int h=0;h<100;h++) {

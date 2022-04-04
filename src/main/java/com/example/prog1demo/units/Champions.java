@@ -3,7 +3,7 @@ package com.example.prog1demo.units;
 import com.example.prog1demo.Action;
 import javafx.scene.image.ImageView;
 
-public class UnitBase implements Action {
+public class Champions implements Action {
     int att=1;
     int deff=1;
     int magic_power=1;
@@ -14,7 +14,7 @@ public class UnitBase implements Action {
     int pos_y;
     ImageView img;
 
-    public UnitBase(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py){
+    public Champions(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py){
         this.att = attack;
         this.deff = deffense;
         this.magic_power = magic;
@@ -24,8 +24,6 @@ public class UnitBase implements Action {
         this.pos_x = px;
         this.pos_y = py;
     }
-
-    //public void move(){}
 
     //getters + setters
     public int getAtt() { return att; }
