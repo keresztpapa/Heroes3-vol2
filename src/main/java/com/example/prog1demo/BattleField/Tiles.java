@@ -6,6 +6,8 @@ import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import static java.lang.Thread.sleep;
+
 public class Tiles {
     int x_count;
     int y_count;
@@ -44,22 +46,11 @@ public class Tiles {
         Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
         System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
 
-
-            for(int h=0;h<100;h++) {
-
-                try {
-                    TimeUnit.MICROSECONDS.sleep(10);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                pike.setPos_x(pike.getPos_x() + 1);
-                System.out.println(pike.getPos_x());
-                pike.setImageMovX(pike.getImgX());
-            }
-
-
-
+        for(int h=0;h<100;h++) {
+            pike.setPos_x(pike.getPos_x() + 1);
+            System.out.println(pike.getPos_x());
+            pike.setImageMovX(pike.getImgX());
+        }
     }
 
     //getters & setters
