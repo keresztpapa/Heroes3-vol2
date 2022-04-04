@@ -1,5 +1,6 @@
 package com.example.prog1demo.BattleField;
 
+import java.util.concurrent.TimeUnit;
 import com.example.prog1demo.units.UnitBase;
 import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.ImageView;
@@ -11,13 +12,15 @@ public class Tiles {
     Tile[][] map;
     AnchorPane ap;
 
+
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
         this.x_count = x;
         this.y_count = y;
         this.ap=anchor;
         this.map = new Tile[x][y];
-            for (int i=0;i<this.x_count;i++) {
+
+             for (int i=0;i<this.x_count;i++) {
                 for (int j = 0; j < this.y_count; j++) {
                     this.map[i][j] = new Tile(100 * i, j * 100, ap, true);
                     if ((int) (Math.random() * (100 + 1)) % 10 == 0) {
@@ -38,12 +41,23 @@ public class Tiles {
 
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
-
-//        UnitBase pike = new Soldier(10,10,10,10,10,10,1100,100, ap);
-//        this.map[1][1] = new Tile(100,100,ap, true, pike);
-
         Soldier pike = new Soldier(10,10,10,10,10,10,sor*100,oszlop*100, ap);
         System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
+
+
+            for(int h=0;h<100;h++) {
+
+                try {
+                    TimeUnit.MICROSECONDS.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                pike.setPos_x(pike.getPos_x() + 1);
+                System.out.println(pike.getPos_x());
+                pike.setImageMovX(pike.getImgX());
+            }
+
 
 
     }

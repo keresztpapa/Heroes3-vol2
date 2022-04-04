@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 public interface Action {
 
-    /*
+/*
     default void move(UnitBase uni, int endPosX){
         while(uni.getPos_x() <= endPosX){
             uni.setPos_x(uni.getPos_x()+1);
@@ -16,5 +16,6 @@ public interface Action {
         while(uni.getPos_x() >= endPosX){
             uni.setPos_x(uni.getPos_x()-1);
         }
-    }*/
+    }
+*/
 }

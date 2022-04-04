@@ -9,6 +9,7 @@ public class Soldier extends UnitBase {
 
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView dead = new ImageView(new Image("file:pngs/player_units/pike/pike_dead.png"));
+        int imgX, imgY;
 
         ImageView[] movement_sprite = {
                 new ImageView(new Image("file:pngs/player_units/pike/pike_m1.png")),
@@ -34,8 +35,18 @@ public class Soldier extends UnitBase {
             stand.setFitWidth(100);
             stand.setFitHeight(100);
             AP.getChildren().add(stand);
+            this.imgX = px;
+            this.imgY = py;
         }
+
+        public int getImgX(){ return (int) stand.getX(); }
+        public int getImgY(){ return (int) stand.getY(); }
+        @Override
+        public ImageView getImg(){ return this.stand; }
+        public void setImageMovX(int asd){ stand.setX(asd); }
+        public void setImageMovY(int asd){ stand.setY(asd); }
 }
+
 
 
 /*

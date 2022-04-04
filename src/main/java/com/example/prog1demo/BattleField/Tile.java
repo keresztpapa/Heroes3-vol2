@@ -20,24 +20,15 @@ public class Tile {
     ImageView img;
     String pic=null;
     boolean crossable;
-    UnitBase unib;
+
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
         this.row = x;
         this.col = y;
         this.ap=anchor;
         this.crossable = crs;
-        //this.unib = null;
     }
-/*
-    public Tile(int x, int y, AnchorPane anchor, boolean crs, UnitBase u){
-        this.row = x;
-        this.col = y;
-        this.ap=anchor;
-        this.crossable = crs;
-        this.unib = u;
-    }
-*/
+
     public void setImg(String str){
         switch (str) {
             case "def" -> img = new ImageView(new Image("file:pngs/tile_def.png"));
@@ -60,7 +51,6 @@ public class Tile {
                     this.img.setImage(new Image("file:pngs/tile_hover.png"));
                     this.pic="hover";
                 }
-                //routing();
             });
 
             img.setOnMouseExited((event) -> {
@@ -75,10 +65,7 @@ public class Tile {
                 this.start_y = (int) img.getY();
                 System.out.println("String: "+this.pic+"\n");
                 System.out.println("X: "+this.start_x+"\nY:"+this.start_y);
-                //unib.move();
-
             });
-
         this.ap.getChildren().add(img);
     }
 

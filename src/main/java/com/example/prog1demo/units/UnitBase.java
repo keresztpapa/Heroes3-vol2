@@ -12,6 +12,7 @@ public class UnitBase implements Action {
     int luck=1;
     int pos_x;
     int pos_y;
+    ImageView img;
 
     public UnitBase(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py){
         this.att = attack;
@@ -43,4 +44,5 @@ public class UnitBase implements Action {
     public void setPos_y(int y) { this.pos_y = y; }
     public int getPos_x(){ return this.pos_x; }
     public int getPos_y(){ return this.pos_y; }
+    public ImageView getImg(){ return this.img; }
 }
