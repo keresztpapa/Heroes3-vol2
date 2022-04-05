@@ -41,49 +41,66 @@ public class Tiles {
         int oszlop = (int) (Math.random()*(7)+1);
 
         Soldier pike = new Soldier(sor*100,oszlop*100, ap);
+        pike.setImg("stand");
 
         for (i=0; i < this.x_count; i++) {
             for (j = 0; j < this.y_count; j++) {
 
                 Tile tl = map[i][j];
-                map[i][j].getImageView().setOnMouseClicked((event) ->{
-                    System.out.println("helo");
+                tl.getImageView().setOnMouseClicked((event) ->{
+
+                    int spriteCounter = 0;
                     System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
 
                     while(pike.getPos_x() <= tl.getMovTo_x()){
+                        pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_x(pike.getPos_x()+1);
                         pike.setImageMovX(pike.getPos_x());
+                        /*
+                        if(spriteCounter <= pike.getWalk().length){
+                            spriteCounter++;
+                        }else{
+                            spriteCounter = 0;
+                        }
+                        */
                     }
+
+
                     while(pike.getPos_x() >= tl.getMovTo_x()){
+                        pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_x(pike.getPos_x()-1);
                         pike.setImageMovX(pike.getPos_x());
+                        /*
+                        if(spriteCounter <= pike.getWalk().length){
+                            spriteCounter++;
+                        }else{ spriteCounter = 0; }
+                        */
                     }
                     while(pike.getPos_y() <= tl.getMovTo_y() ){
+                        pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_y(pike.getPos_y()+1);
                         pike.setImageMovY(pike.getPos_y());
+                        /*
+                        if(spriteCounter <= pike.getWalk().length){
+                            spriteCounter++;
+                        }else{ spriteCounter = 0; }
+                        */
                     }
                     while(pike.getPos_y() >= tl.getMovTo_y() ){
+                        pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_y(pike.getPos_y()-1);
                         pike.setImageMovY(pike.getPos_y());
+                    /*
+                        if(spriteCounter <= pike.getWalk().length){
+                            spriteCounter++;
+                        }else{ spriteCounter = 0; }
+                    */
                     }
 
                 });
 
             }
         }
-
-
-        /*
-        pike.getImg().setOnMouseClicked((event) -> {
-            System.out.println("PosX: "+pike.getPos_x()+"\nPosY: "+pike.getPos_y());
-        });
-
-
-        for(int h=0;h<100;h++) {
-            pike.setPos_x(pike.getPos_x() + 1);
-            System.out.println(pike.getPos_x());
-            pike.setImageMovX(pike.getImgX());
-        }*/
     }
 
     //getters & setters

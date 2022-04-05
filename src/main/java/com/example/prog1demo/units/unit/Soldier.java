@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class Soldier{
 
+        ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView dead = new ImageView(new Image("file:pngs/player_units/pike/pike_dead.png"));
         int imgX, imgY;
@@ -20,6 +21,7 @@ public class Soldier{
             initiative = 8,
             pos_x,
             pos_y;
+        AnchorPane anchorPane;
 
         ImageView[] movement_sprite = {
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m1.png")),
@@ -41,24 +43,48 @@ public class Soldier{
         public Soldier(int px, int py, AnchorPane AP){
             this.pos_x = px;
             this.pos_y = py;
-            stand.setX(px);
-            stand.setY(py);
-            stand.setFitWidth(100);
-            stand.setFitHeight(100);
-            AP.getChildren().add(stand);
+            actual.setX(px);
+            actual.setY(py);
+            actual.setFitWidth(100);
+            actual.setFitHeight(100);
+            this.anchorPane = AP;
+            //AP.getChildren().add(actual);
             this.imgX = px;
             this.imgY = py;
         }
 
 
 
-        public int getImgX(){ return (int) stand.getX(); }
-        public int getImgY(){ return (int) stand.getY(); }
-        public ImageView getImg(){ return this.stand; }
-        public void setImageMovX(int asd){ stand.setX(asd); }
-        public void setImageMovY(int asd){ stand.setY(asd); }
+        public int getImgX(){ return (int) this.actual.getX(); }
+        public int getImgY(){ return (int) this.actual.getY(); }
+        public ImageView getActual(){ return this.actual; }
+        public void setImageMovX(int asd){ actual.setX(asd); }
+        public void setImageMovY(int asd){ actual.setY(asd); }
         public int getPos_x() { return this.pos_x; }
         public int getPos_y(){ return this.pos_y; }
         public void setPos_x(int z) { this.pos_x = z; }
         public void setPos_y(int z){ this.pos_y = z; }
+        public ImageView[] getWalk(){ return this.movement_sprite; }
+        public ImageView getWalk(int z){ return this.movement_sprite[z]; }
+        public ImageView getAttack(int z) { return this.attack_sprite[z]; }
+        public ImageView[] getAttack(){ return this.movement_sprite; }
+
+        public void setImg(ImageView z){
+            anchorPane.getChildren().remove(actual);
+            this.actual = z;
+            anchorPane.getChildren().add(actual);
+        }
+
+        public void setImg(String z) {
+            if ("dead".equals(z)) {
+                anchorPane.getChildren().remove(actual);
+                this.actual = dead;
+                anchorPane.getChildren().add(actual);
+            } else {
+                anchorPane.getChildren().remove(actual);
+                this.actual = stand;
+                anchorPane.getChildren().add(actual);
+            }
+        }
+
 }

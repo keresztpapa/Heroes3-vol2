@@ -14,6 +14,7 @@ public class Archer {
     int pos_y;
     int imgX, imgY;
 
+    ImageView actual;
     ImageView stand = new ImageView(new Image("file:pngs/player_units/griff/griff_stand.png"));
     ImageView dead = new ImageView(new Image("file:pngs/player_units/griff/griff_dead.png"));
     ImageView[] movement_sprite = {
