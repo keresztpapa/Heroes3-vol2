@@ -1,5 +1,6 @@
 package com.example.prog1demo.BattleField;
 
+import com.example.prog1demo.units.unit.Soldier;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +16,6 @@ public class Tile {
     ImageView img;
     String pic=null;
     boolean crossable;
-
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
         this.pos_x = x;
@@ -57,10 +57,13 @@ public class Tile {
 
 
             img.setOnMouseClicked((event) -> {
+            /*
                 this.movTo_x = (int) img.getX();
                 this.movTo_y = (int) img.getY();
                 System.out.println("String: "+this.pic+"\n");
                 System.out.println("X: "+this.movTo_x +"\nY:"+this.movTo_y);
+            */
+
             });
 
             this.ap.getChildren().add(img);

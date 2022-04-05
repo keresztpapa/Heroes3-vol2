@@ -42,16 +42,35 @@ public class Tiles {
 
         Soldier pike = new Soldier(sor*100,oszlop*100, ap);
 
-        
-
-        /*
         for (i=0; i < this.x_count; i++) {
             for (j = 0; j < this.y_count; j++) {
+
+                Tile tl = map[i][j];
                 map[i][j].getImageView().setOnMouseClicked((event) ->{
-                    System.out.println(map[i][j].getImgX());
+                    System.out.println("helo");
+                    System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
+
+                    while(pike.getPos_x() <= tl.getMovTo_x()){
+                        pike.setPos_x(pike.getPos_x()+1);
+                        pike.setImageMovX(pike.getPos_x());
+                    }
+                    while(pike.getPos_x() >= tl.getMovTo_x()){
+                        pike.setPos_x(pike.getPos_x()-1);
+                        pike.setImageMovX(pike.getPos_x());
+                    }
+                    while(pike.getPos_y() <= tl.getMovTo_y() ){
+                        pike.setPos_y(pike.getPos_y()+1);
+                        pike.setImageMovY(pike.getPos_y());
+                    }
+                    while(pike.getPos_y() >= tl.getMovTo_y() ){
+                        pike.setPos_y(pike.getPos_y()-1);
+                        pike.setImageMovY(pike.getPos_y());
+                    }
+
                 });
+
             }
-        }*/
+        }
 
 
         /*
