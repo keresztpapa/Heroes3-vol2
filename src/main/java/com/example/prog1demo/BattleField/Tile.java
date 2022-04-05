@@ -14,7 +14,7 @@ public class Tile {
             pos_y;
     AnchorPane ap;
     ImageView img;
-    String pic=null;
+    String pic;
     boolean crossable;
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
@@ -26,20 +26,21 @@ public class Tile {
 
     public void setImg(String str){
         switch (str) {
-            case "def" -> img = new ImageView(new Image("file:pngs/tile_def.png"));
-            case "hover" -> img = new ImageView(new Image("file:pngs/tile_hover.png"));
-            case "water" -> img = new ImageView(new Image("file:pngs/water.png"));
+            case "def" -> this.img = new ImageView(new Image("file:pngs/tile_def.png"));
+            case "hover" -> this.img = new ImageView(new Image("file:pngs/tile_hover.png"));
+            case "water" -> this.img = new ImageView(new Image("file:pngs/water.png"));
+            case "mov" -> this.img = new ImageView(new Image("file:pngs/mov.png"));
         }
     }
 
     public void giveImageFeed(String str){
-        this.setImg(str);
+        setImg(str);
         img.setFitWidth(100);
         img.setFitHeight(100);
         img.setX(this.pos_x);
         img.setY(this.pos_y);
 
-        img.setOnMouseEntered((event) -> {
+            img.setOnMouseEntered((event) -> {
                 this.movTo_x = (int) img.getX();
                 this.movTo_y = (int) img.getY();
                 if(!Objects.equals(this.pic, "water")){
@@ -49,7 +50,7 @@ public class Tile {
             });
 
             img.setOnMouseExited((event) -> {
-                if(!Objects.equals(this.pic, "water")){
+                if(!Objects.equals(this.pic, "water") && !Objects.equals(this.pic, "mov")){
                     img.setImage(new Image("file:pngs/tile_def.png"));
                     this.pic="def";
                 }
