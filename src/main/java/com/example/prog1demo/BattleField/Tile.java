@@ -50,7 +50,7 @@ public class Tile {
             });
 
             img.setOnMouseExited((event) -> {
-                if(!Objects.equals(this.pic, "water") && !Objects.equals(this.pic, "mov")){
+                if(!Objects.equals(this.pic, "water")){
                     img.setImage(new Image("file:pngs/tile_def.png"));
                     this.pic="def";
                 }

@@ -7,7 +7,7 @@ import javafx.scene.layout.AnchorPane;
 
 import java.util.Objects;
 
-public class Soldier{
+public class Soldier {
 
         ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
