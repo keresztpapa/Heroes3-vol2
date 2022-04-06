@@ -31,6 +31,7 @@ public class Difficulties {
 
         easy.setOnMouseClicked((event)->{
             Champions chimps = new Champions(100);
+            System.out.println(chimps.getGold());
         });
 
         Button medium = new Button("Medium");
@@ -41,6 +42,7 @@ public class Difficulties {
 
         medium.setOnMouseClicked((event)->{
             Champions chimps = new Champions(200);
+            System.out.println(chimps.getGold());
         });
 
         Button hard = new Button("Hard");
@@ -51,6 +53,7 @@ public class Difficulties {
 
         hard.setOnMouseClicked((event)->{
             Champions chimps = new Champions(300);
+            System.out.println(chimps.getGold());
         });
 
         Button prepare_for_battle = new Button("Prepare");

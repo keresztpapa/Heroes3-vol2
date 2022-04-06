@@ -67,6 +67,8 @@ public class Archer {
     public ImageView getWalk(int z){ return this.movement_sprite[z]; }
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
+    public int getCount(){ return count; }
+    public void setCount(int z){ count = z; }
 
     public void setImg(ImageView z){
         anchorPane.getChildren().remove(actual);

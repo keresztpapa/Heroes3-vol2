@@ -54,4 +54,10 @@ public class Champions implements Action {
     public ImageView getImg(){ return this.img; }
     public void setGold(int z){ gold = z; }
     public int getGold(){ return gold; }
+    public void setSoldierCount(int z){ soldierCount = z; }
+    public int getSoldierCount(){ return soldierCount; }
+    public void setArcherCount(int z){ archerCount = z; }
+    public int getArcherCount(){ return archerCount; }
+    public void setGriffCount(int z){ griffCount = z; }
+    public int getGriffCount(){ return griffCount; }
 }
