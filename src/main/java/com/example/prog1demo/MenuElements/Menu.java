@@ -1,5 +1,6 @@
-package com.example.prog1demo;
+package com.example.prog1demo.MenuElements;
 
+import com.example.prog1demo.Application;
 import com.example.prog1demo.BattleField.Tiles;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -33,8 +34,6 @@ public class Menu {
         next_scene.setLayoutY(200);
 
         next_scene.setOnAction(e -> {
-
-            //
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
             Scene scene = null;
             try {
@@ -45,13 +44,6 @@ public class Menu {
             stg.setTitle("Heroes!");
             stg.setScene(scene);
             stg.show();
-            //
-            //((Node)(e.getSource())).getScene().getWindow().hide();
-            Tiles tile = new Tiles(8,8,root);
-            tile.generate();
-
-
-
         });
 
         Button diff = new Button("Difficulty");
@@ -61,7 +53,12 @@ public class Menu {
         diff.setLayoutY(400);
 
         diff.setOnAction(e -> {
-
+            Difficulties dff = new Difficulties();
+            try {
+                dff.init(stg);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         });
 
 

@@ -8,12 +8,13 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Objects;
 
 public class Soldier {
-
+        AnchorPane anchorPane;
         ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView dead = new ImageView(new Image("file:pngs/player_units/pike/pike_dead.png"));
         int imgX, imgY;
 
+        static int count=0;
         int cost = 2,
             damage = 1,
             hp = 3,
@@ -21,7 +22,7 @@ public class Soldier {
             initiative = 8,
             pos_x,
             pos_y;
-        AnchorPane anchorPane;
+
 
         ImageView[] movement_sprite = {
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m1.png")),

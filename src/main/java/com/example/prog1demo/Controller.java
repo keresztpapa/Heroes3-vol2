@@ -24,6 +24,7 @@ public class Controller implements Initializable {
     public void gameEngine(){
         Tiles tile = new Tiles(8,8,ap);
         tile.generate();
+        System.out.println("GameEngine");
     }
 
 

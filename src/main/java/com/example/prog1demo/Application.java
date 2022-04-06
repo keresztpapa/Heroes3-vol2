@@ -1,9 +1,7 @@
 package com.example.prog1demo;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import com.example.prog1demo.MenuElements.Menu;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -17,16 +15,6 @@ public class Application extends javafx.application.Application {
 
         Menu menu = new Menu(stage, root);
     }
-    /*
-    @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(),1000,800);
-        stage.setTitle("Heroes!");
-        stage.setScene(scene);
-        stage.show();
-    }
-*/
 
     public static void main(String[] args) {
         launch();

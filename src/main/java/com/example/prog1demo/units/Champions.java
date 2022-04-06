@@ -13,6 +13,12 @@ public class Champions implements Action {
     int pos_x;
     int pos_y;
     ImageView img;
+    static int gold;
+
+    static int soldierCount=0;
+    static int griffCount=0;
+    static int archerCount=0;
+
 
     public Champions(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py){
         this.att = attack;
@@ -24,6 +30,9 @@ public class Champions implements Action {
         this.pos_x = px;
         this.pos_y = py;
     }
+
+    public Champions(int x){ gold = x; }
+    public Champions(){}
 
     //getters + setters
     public int getAtt() { return att; }
@@ -43,4 +52,6 @@ public class Champions implements Action {
     public int getPos_x(){ return this.pos_x; }
     public int getPos_y(){ return this.pos_y; }
     public ImageView getImg(){ return this.img; }
+    public void setGold(int z){ gold = z; }
+    public int getGold(){ return gold; }
 }
