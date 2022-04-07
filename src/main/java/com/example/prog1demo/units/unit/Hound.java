@@ -4,11 +4,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Imp {
+public class Hound {
     AnchorPane anchorPane;
-    ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
-    ImageView stand = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
-    ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp/imp_death.png"));
+    ImageView actual = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
+    ImageView dead = new ImageView(new Image("file:pngs/computer_units/hound/hound_death.png"));
     int imgX, imgY;
 
     static int count=0;
@@ -22,27 +22,26 @@ public class Imp {
 
 
     ImageView[] movement_sprite = {
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m1.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m2.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m3.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m4.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m5.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m6.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m7.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m8.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m9.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m1.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m2.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m3.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m4.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m5.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m6.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m7.png")),
     };
 
     ImageView[] attack_sprite = {
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a1.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a2.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a3.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a4.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a5.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a6.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a1.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a2.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a3.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a4.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a5.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a6.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a7.png")),
     };
 
-    public Imp(int px, int py, AnchorPane AP){
+    public Hound(int px, int py, AnchorPane AP){
         this.pos_x = px;
         this.pos_y = py;
         actual.setX(px);

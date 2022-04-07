@@ -4,11 +4,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Imp {
+public class ImpArcher {
     AnchorPane anchorPane;
-    ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
-    ImageView stand = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
-    ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp/imp_death.png"));
+    ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_stand.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_stand.png"));
+    ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_death.png"));
     int imgX, imgY;
 
     static int count=0;
@@ -22,27 +22,27 @@ public class Imp {
 
 
     ImageView[] movement_sprite = {
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m1.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m2.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m3.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m4.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m5.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m6.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m7.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m8.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m9.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m1.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m2.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m3.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m4.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m5.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m6.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m7.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m8.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m9.png")),
     };
 
     ImageView[] attack_sprite = {
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a1.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a2.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a3.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a4.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a5.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a6.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a1.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a2.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a3.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a4.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a5.png")),
+            new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a6.png")),
     };
 
-    public Imp(int px, int py, AnchorPane AP){
+    public ImpArcher(int px, int py, AnchorPane AP){
         this.pos_x = px;
         this.pos_y = py;
         actual.setX(px);
