@@ -55,7 +55,7 @@ public class Soldier {
         }
 
 
-
+        public int getMovement(){ return this.movement; }
         public int getImgX(){ return (int) this.actual.getX(); }
         public int getImgY(){ return (int) this.actual.getY(); }
         public ImageView getActual(){ return this.actual; }

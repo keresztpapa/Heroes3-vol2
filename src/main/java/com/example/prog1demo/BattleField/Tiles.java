@@ -14,6 +14,7 @@ public class Tiles {
     Tile[][] map;
     AnchorPane ap;
     int i, j;
+    static int handbreak=0;
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -66,9 +67,9 @@ public class Tiles {
         hound.setImg("stand");
 
 
-
         for (i = 0; i < this.x_count; i++) {
             for (j = 0; j < this.y_count; j++) {
+
 
 
                 Tile tl = map[i][j];
@@ -83,29 +84,45 @@ public class Tiles {
                         pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_x(pike.getPos_x()+1);
                         pike.setImageMovX(pike.getPos_x());
+                        if(pike.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) pike.setPos_x(pike.getPos_x()+100);
+                        if(handbreak == 399) break;
+                        handbreak++;
                         spriteCounter++;
                     }
+                    handbreak = 0;
                     while(pike.getPos_x() >= tl.getMovTo_x() && tl.getCrs()){
                         if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
                         pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_x(pike.getPos_x()-1);
                         pike.setImageMovX(pike.getPos_x());
+                        if(pike.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) pike.setPos_x(pike.getPos_x()-100);
+                        if(handbreak == 399) break;
+                        handbreak++;
                         spriteCounter++;
                     }
+                    handbreak = 0;
                     while(pike.getPos_y() <= tl.getMovTo_y() && tl.getCrs()){
                         if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
                         pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_y(pike.getPos_y()+1);
                         pike.setImageMovY(pike.getPos_y());
+                        if(pike.getPos_y() == tl.getMovTo_y() && !tl.getCrs()) pike.setPos_y(pike.getPos_y()+100);
+                        if(handbreak == 399) break;
+                        handbreak++;
                         spriteCounter++;
                     }
+                    handbreak = 0;
                     while(pike.getPos_y() >= tl.getMovTo_y() && tl.getCrs()){
                         if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
                         pike.setImg(pike.getWalk(spriteCounter));
                         pike.setPos_y(pike.getPos_y()-1);
                         pike.setImageMovY(pike.getPos_y());
+                        if(pike.getPos_y() == tl.pos_y && !tl.getCrs()) pike.setPos_y(pike.getPos_y()-100);
+                        if(handbreak == 399) break;
+                        handbreak++;
                         spriteCounter++;
                     }
+                    handbreak = 0;
                     pike.setImg("stand");
                     pike.setImageMovX(pike.getPos_x());
                     pike.setImageMovY(pike.getPos_y());
