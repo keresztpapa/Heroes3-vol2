@@ -1,5 +1,6 @@
 package com.example.prog1demo.MenuElements;
 
+import com.example.prog1demo.Controller;
 import com.example.prog1demo.units.Champions;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -13,7 +14,6 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -158,6 +158,18 @@ public class Preparation {
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
+        ImageView toBattle = new ImageView(new Image("file:pngs/toBattleIcon.png"));
+        toBattle.setFitHeight(75);
+        toBattle.setFitWidth(75);
+        toBattle.setX(800);
+        toBattle.setY(600);
+
+        toBattle.setOnMouseClicked((event)->{
+            Controller ctr = new Controller();
+            ctr.gameEngine();
+        });
+
+
         root.getChildren().add(img);
         root.getChildren().add(soldier);
         root.getChildren().add(griff);
@@ -171,6 +183,7 @@ public class Preparation {
         root.getChildren().add(solText);
         root.getChildren().add(griffText);
         root.getChildren().add(arcText);
+        root.getChildren().add(toBattle);
 
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: Shop");

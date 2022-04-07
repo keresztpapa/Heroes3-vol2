@@ -1,6 +1,6 @@
 package com.example.prog1demo.BattleField;
 
-import com.example.prog1demo.units.unit.Soldier;
+import com.example.prog1demo.units.unit.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
@@ -38,24 +38,34 @@ public class Tiles {
             }
     }
 
-    //int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py
     public void generate(){
-
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
 
         Soldier pike = new Soldier(sor*100,oszlop*100, ap);
-
-        /*
-        for(int x=0; x <= 3; x++){
-            for(int y = 0; y <= 3; y++){
-                if(!Objects.equals(this.map[x][y].getPic(), "water")){
-                    this.map[x][y].giveImageFeed("mov");
-                }
-            }
-        }
-        */
         pike.setImg("stand");
+
+
+        Archer archer = new Archer(sor*100, oszlop*100, ap);
+        archer.setImg("stand");
+
+
+        Griff griffin = new Griff(sor*100, oszlop*100, ap);
+        griffin.setImg("stand");
+
+
+        Imp imp = new Imp(sor*100, oszlop*100, ap);
+        imp.setImg("stand");
+
+
+        ImpArcher impArcher = new ImpArcher(sor*100, oszlop*100, ap);
+        impArcher.setImg("stand");
+
+
+        Hound hound = new Hound(sor*100, oszlop*100, ap);
+        hound.setImg("stand");
+
+
 
         for (i = 0; i < this.x_count; i++) {
             for (j = 0; j < this.y_count; j++) {

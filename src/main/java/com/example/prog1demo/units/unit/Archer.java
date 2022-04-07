@@ -16,27 +16,32 @@ public class Archer {
     static int count=0;
 
     AnchorPane anchorPane;
-    ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
-    ImageView stand = new ImageView(new Image("file:pngs/player_units/griff/griff_stand.png"));
-    ImageView dead = new ImageView(new Image("file:pngs/player_units/griff/griff_dead.png"));
+    ImageView actual = new ImageView(new Image("file:pngs/player_units/archer/archer_stand.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/player_units/archer/archer_stand.png"));
+    ImageView dead = new ImageView(new Image("file:pngs/player_units/archer/archer_dead.png"));
     ImageView[] movement_sprite = {
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a1.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a2.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a3.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a4.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a5.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a6.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a7.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a1.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a2.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a3.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a4.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a5.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a6.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/movement/archer_a7.png")),
     };
     ImageView[] attack_sprite = {
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m1.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m2.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m3.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m4.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m5.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m6.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m7.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m8.png"))
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m1.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m2.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m3.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m4.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m5.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m6.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m7.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m8.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m9.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m10.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m11.png")),
+            new ImageView(new Image("file:pngs/player_units/archer/attack/archer_m12.png")),
+
     };
 
     public Archer(int px, int py, AnchorPane AP){
