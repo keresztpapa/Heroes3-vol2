@@ -1,5 +1,6 @@
 package com.example.prog1demo.MenuElements;
 
+import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.Controller;
 import com.example.prog1demo.units.Champions;
 import javafx.geometry.Insets;
@@ -165,8 +166,10 @@ public class Preparation {
         toBattle.setY(600);
 
         toBattle.setOnMouseClicked((event)->{
-            Controller ctr = new Controller();
-            ctr.gameEngine();
+            root.getChildren().clear();
+            Tiles tile = new Tiles(8,8,root);
+            tile.generate();
+            System.out.println("GameEngine");
         });
 
 

@@ -4,10 +4,6 @@ import com.example.prog1demo.BattleField.Tiles;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,20 +22,4 @@ public class Controller implements Initializable {
         tile.generate();
         System.out.println("GameEngine");
     }
-
-
 }
-
-
-
-/*
-*
-        ImageView img = new ImageView(new Image("file:pngs/tile_def.png"));
-
-        img.setOnMouseClicked((MouseEvent e)->{
-            img.setImage(new Image("file:pngs/water.png"));
-        });
-
-        ap.getChildren().add(img);
-*
-* */
