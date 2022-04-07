@@ -4,7 +4,6 @@ import com.example.prog1demo.units.Champions;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -21,6 +20,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class Preparation {
+    static TextField solText;
+    static TextField griffText;
+    static TextField arcText;
     public void init(Stage stg) throws IOException {
         AnchorPane root = new AnchorPane();
         root.setPrefSize(1000, 800);
@@ -37,26 +39,14 @@ public class Preparation {
         soldier.setX(200);
         soldier.setY(200);
 
-        /*
-        Label solMinLabel = new Label();
-        solMinLabel.setBackground(new Background(new BackgroundFill(Color.rgb(243, 243, 243, 0.9), new CornerRadii(5.0), new Insets(-5.0))));
-        solMinLabel.setTextFill(Color.BLACK);
-        solMinLabel.setMinHeight(50);
-        solMinLabel.setMaxHeight(50);
-        solMinLabel.setMinWidth(50);
-        solMinLabel.setMaxWidth(50);
-        solMinLabel.setLayoutX(170);
-        solMinLabel.setLayoutY(350);
-        */
-        
-        TextField solMinText = new TextField("asd");
-        solMinText.setBackground(new Background(new BackgroundFill(Color.rgb(243, 243, 243, 0.9), new CornerRadii(5.0), new Insets(-5.0))));
-        solMinText.setMinHeight(50);
-        solMinText.setMaxHeight(50);
-        solMinText.setMinWidth(50);
-        solMinText.setMaxWidth(50);
-        solMinText.setLayoutX(170);
-        solMinText.setLayoutY(350);
+        solText = new TextField(":: "+champ.getSoldierCount());
+        solText.setBackground(new Background(new BackgroundFill(Color.rgb(243, 243, 243, 0.9), new CornerRadii(5.0), new Insets(-5.0))));
+        solText.setMinHeight(50);
+        solText.setMaxHeight(50);
+        solText.setMinWidth(50);
+        solText.setMaxWidth(50);
+        solText.setLayoutX(170);
+        solText.setLayoutY(350);
 
         Button solMin = new Button(" - ");
         solMin.setPrefHeight(50);
@@ -68,6 +58,7 @@ public class Preparation {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() + 50);
             chimp.setSoldierCount(chimp.getSoldierCount() - 1);
+            solText.setText(":: "+champ.getSoldierCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
@@ -81,9 +72,9 @@ public class Preparation {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() - 50);
             chimp.setSoldierCount(chimp.getSoldierCount() + 1);
+            solText.setText(":: "+champ.getSoldierCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
-
 
         ImageView griff = new ImageView(new Image("file:pngs/player_units/griff/griff_stand.png"));
         griff.setX(400);
@@ -95,10 +86,20 @@ public class Preparation {
         griffMin.setLayoutX(350);
         griffMin.setLayoutY(350);
 
+        griffText = new TextField(":: "+champ.getGriffCount());
+        griffText.setBackground(new Background(new BackgroundFill(Color.rgb(243, 243, 243, 0.9), new CornerRadii(5.0), new Insets(-5.0))));
+        griffText.setMinHeight(50);
+        griffText.setMaxHeight(50);
+        griffText.setMinWidth(50);
+        griffText.setMaxWidth(50);
+        griffText.setLayoutX(425);
+        griffText.setLayoutY(350);
+
         griffMin.setOnMouseClicked((event) -> {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() + 50);
             chimp.setGriffCount(chimp.getGriffCount() - 1);
+            griffText.setText(":: "+champ.getGriffCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
@@ -112,6 +113,7 @@ public class Preparation {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() - 50);
             chimp.setGriffCount(chimp.getGriffCount() + 1);
+            griffText.setText(":: "+champ.getGriffCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
@@ -125,10 +127,20 @@ public class Preparation {
         archerMin.setLayoutX(600);
         archerMin.setLayoutY(350);
 
+        arcText = new TextField(":: "+champ.getGriffCount());
+        arcText.setBackground(new Background(new BackgroundFill(Color.rgb(243, 243, 243, 0.9), new CornerRadii(5.0), new Insets(-5.0))));
+        arcText.setMinHeight(50);
+        arcText.setMaxHeight(50);
+        arcText.setMinWidth(50);
+        arcText.setMaxWidth(50);
+        arcText.setLayoutX(700);
+        arcText.setLayoutY(350);
+
         archerMin.setOnMouseClicked((event) -> {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() + 50);
-            chimp.setGriffCount(chimp.getGriffCount() - 1);
+            chimp.setArcherCount(chimp.getArcherCount() - 1);
+            arcText.setText(":: "+champ.getArcherCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
@@ -141,7 +153,8 @@ public class Preparation {
         archerMax.setOnMouseClicked((event) -> {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() - 50);
-            chimp.setGriffCount(chimp.getGriffCount() + 1);
+            chimp.setArcherCount(chimp.getGriffCount() + 1);
+            griffText.setText(":: "+champ.getGriffCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
@@ -155,8 +168,9 @@ public class Preparation {
         root.getChildren().add(griffMax);
         root.getChildren().add(archerMin);
         root.getChildren().add(archerMax);
-     //   root.getChildren().add(solMinLabel);
-        root.getChildren().add(solMinText);
+        root.getChildren().add(solText);
+        root.getChildren().add(griffText);
+        root.getChildren().add(arcText);
 
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: Shop");
