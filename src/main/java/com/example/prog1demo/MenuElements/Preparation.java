@@ -127,7 +127,7 @@ public class Preparation {
         archerMin.setLayoutX(600);
         archerMin.setLayoutY(350);
 
-        arcText = new TextField(":: "+champ.getGriffCount());
+        arcText = new TextField(":: "+champ.getArcherCount());
         arcText.setBackground(new Background(new BackgroundFill(Color.rgb(243, 243, 243, 0.9), new CornerRadii(5.0), new Insets(-5.0))));
         arcText.setMinHeight(50);
         arcText.setMaxHeight(50);
@@ -154,7 +154,7 @@ public class Preparation {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() - 50);
             chimp.setArcherCount(chimp.getArcherCount() + 1);
-            griffText.setText(":: "+champ.getArcherCount());
+            arcText.setText(":: "+champ.getArcherCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 

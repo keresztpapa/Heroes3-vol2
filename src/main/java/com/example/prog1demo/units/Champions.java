@@ -1,9 +1,10 @@
 package com.example.prog1demo.units;
 
+import com.example.prog1demo.units.unit.Generic;
 import com.example.prog1demo.Action;
 import javafx.scene.image.ImageView;
 
-public class Champions implements Action {
+public class Champions extends Generic implements Action{
     static int att=1;
     static int deff=1;
     static int magic_power=1;

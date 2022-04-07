@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Hound {
+public class Hound extends Generic{
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
     ImageView stand = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));

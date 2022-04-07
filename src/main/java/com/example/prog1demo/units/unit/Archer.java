@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Archer {
+public class Archer extends Generic{
     int cost;
     int dmg;
     int hp;

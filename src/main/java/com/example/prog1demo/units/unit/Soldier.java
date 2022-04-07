@@ -1,13 +1,10 @@
 package com.example.prog1demo.units.unit;
 
-import com.example.prog1demo.units.Champions;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.Objects;
-
-public class Soldier {
+public class Soldier extends Generic{
         AnchorPane anchorPane;
         ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));

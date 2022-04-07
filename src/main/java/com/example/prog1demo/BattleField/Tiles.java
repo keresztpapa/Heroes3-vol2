@@ -66,7 +66,6 @@ public class Tiles {
         Hound hound = new Hound(sor*100, oszlop*100, ap);
         hound.setImg("stand");
 
-
         for (i = 0; i < this.x_count; i++) {
             for (j = 0; j < this.y_count; j++) {
 
