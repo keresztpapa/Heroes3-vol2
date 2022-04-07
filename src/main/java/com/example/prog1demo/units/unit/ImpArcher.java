@@ -12,7 +12,7 @@ public class ImpArcher extends Generic{
     int imgX, imgY;
 
     static int count=0;
-    int cost = 2,
+    int     cost = 2,
             damage = 1,
             hp = 3,
             movement = 4,

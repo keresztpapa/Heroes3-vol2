@@ -20,7 +20,6 @@ public class Soldier extends Generic{
             pos_x,
             pos_y;
 
-
         ImageView[] movement_sprite = {
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m1.png")),
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m2.png")),

@@ -63,12 +63,20 @@ public class Difficulties {
         prepare_for_battle.setLayoutY(600);
 
         prepare_for_battle.setOnMouseClicked((event) -> {
+            ChimpBooster chimpBooster = new ChimpBooster();
+            try {
+                chimpBooster.boost(stg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            /*
             Preparation prep = new Preparation();
             try {
                 prep.init(stg);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            */
         });
 
         root.getChildren().addAll(img);
