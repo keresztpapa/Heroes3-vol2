@@ -71,8 +71,6 @@ public class Difficulties {
             }
         });
 
-
-
         root.getChildren().addAll(img);
         root.getChildren().addAll(easy);
         root.getChildren().addAll(medium);

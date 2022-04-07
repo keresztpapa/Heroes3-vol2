@@ -12,7 +12,6 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         AnchorPane root = new AnchorPane();
         root.setPrefSize(1000, 800);
-
         Menu menu = new Menu(stage, root);
     }
 

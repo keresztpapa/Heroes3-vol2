@@ -1,7 +1,6 @@
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.BattleField.Tiles;
-import com.example.prog1demo.Controller;
 import com.example.prog1demo.units.Champions;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -171,7 +170,6 @@ public class Preparation {
             tile.generate();
             System.out.println("GameEngine");
         });
-
 
         root.getChildren().add(img);
         root.getChildren().add(soldier);
