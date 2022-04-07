@@ -153,8 +153,8 @@ public class Preparation {
         archerMax.setOnMouseClicked((event) -> {
             Champions chimp = new Champions();
             chimp.setGold(chimp.getGold() - 50);
-            chimp.setArcherCount(chimp.getGriffCount() + 1);
-            griffText.setText(":: "+champ.getGriffCount());
+            chimp.setArcherCount(chimp.getArcherCount() + 1);
+            griffText.setText(":: "+champ.getArcherCount());
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
