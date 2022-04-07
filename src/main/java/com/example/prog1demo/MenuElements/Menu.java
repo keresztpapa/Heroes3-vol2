@@ -1,17 +1,13 @@
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.Application;
-import com.example.prog1demo.BattleField.Tiles;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -60,9 +56,6 @@ public class Menu {
                 ex.printStackTrace();
             }
         });
-
-
-        //next_scene.setOnAction(actionEvent -> { onClick(next_scene); });
 
         root.getChildren().addAll(img);
         root.getChildren().addAll(next_scene);
