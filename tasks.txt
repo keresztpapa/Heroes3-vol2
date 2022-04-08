@@ -1,0 +1,9 @@
+TODO::
+- [ ] wait az animalason
+- [ ] többi karaketer behozása
+- [ ] körökre osztás
+- [ ] támadás + sebzés
+- [ ] támadás animáció
+- [ ] halál animáció
+- [ ] hős speckó képességek
+- [ ] hős karakterekre gyakorolt hatása
