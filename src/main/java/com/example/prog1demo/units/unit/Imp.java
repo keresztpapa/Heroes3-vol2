@@ -50,7 +50,6 @@ public class Imp extends Generic{
         actual.setFitWidth(100);
         actual.setFitHeight(100);
         this.anchorPane = AP;
-        //AP.getChildren().add(actual);
         this.imgX = px;
         this.imgY = py;
     }
@@ -83,10 +82,14 @@ public class Imp extends Generic{
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;
+            actual.setX(this.pos_x);
+            actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         } else {
             anchorPane.getChildren().remove(actual);
             this.actual = stand;
+            actual.setX(this.pos_x);
+            actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         }
     }

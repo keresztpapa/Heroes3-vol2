@@ -69,14 +69,6 @@ public class Difficulties {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            /*
-            Preparation prep = new Preparation();
-            try {
-                prep.init(stg);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
         });
 
         root.getChildren().addAll(img);

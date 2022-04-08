@@ -42,12 +42,13 @@ public class Griff extends Generic{
     public Griff(int px, int py, AnchorPane AP){
         this.pos_x = px;
         this.pos_y = py;
+
         actual.setX(px);
         actual.setY(py);
         actual.setFitWidth(100);
         actual.setFitHeight(100);
+
         this.anchorPane = AP;
-        //AP.getChildren().add(actual);
         this.imgX = px;
         this.imgY = py;
     }
@@ -80,10 +81,14 @@ public class Griff extends Generic{
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;
+            actual.setX(this.pos_x-20);
+            actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         } else {
             anchorPane.getChildren().remove(actual);
             this.actual = stand;
+            actual.setX(this.pos_x-20);
+            actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         }
     }

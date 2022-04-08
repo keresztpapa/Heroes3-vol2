@@ -83,10 +83,14 @@ public class ImpArcher extends Generic{
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;
+            actual.setX(this.pos_x);
+            actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         } else {
             anchorPane.getChildren().remove(actual);
             this.actual = stand;
+            actual.setX(this.pos_x);
+            actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         }
     }

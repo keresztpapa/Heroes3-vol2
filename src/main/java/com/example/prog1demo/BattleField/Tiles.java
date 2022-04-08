@@ -1,5 +1,6 @@
 package com.example.prog1demo.BattleField;
 
+import com.example.prog1demo.Action;
 import com.example.prog1demo.units.unit.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -8,7 +9,7 @@ import java.util.Objects;
 
 import static java.lang.Thread.sleep;
 
-public class Tiles {
+public class Tiles implements Action {
     int x_count;
     int y_count;
     Tile[][] map;
@@ -42,30 +43,39 @@ public class Tiles {
     public void generate(){
         int sor = (int) (Math.random() * (2)+1);
         int oszlop = (int) (Math.random()*(7)+1);
+        int randX = (int) (Math.random() * 2);
+        int randY = (int) (Math.random() * 7);
 
-        Soldier pike = new Soldier(sor*100,oszlop*100, ap);
+        Soldier pike = new Soldier(0,0, ap);
         pike.setImg("stand");
 
-
-        Archer archer = new Archer(sor*100, oszlop*100, ap);
+        Imp imp = new Imp(300, 300, ap);
+        imp.setImg("stand");
+        /*
+        //int rand = (int)(Math.random() * range) + min;
+        Archer archer = new Archer(map[randX][1].getImgX(), map[1][randY].getImgY(), ap);
         archer.setImg("stand");
 
-
-        Griff griffin = new Griff(sor*100, oszlop*100, ap);
+        randX = (int) (Math.random() * 2);
+        randY = (int) (Math.random() * 7);
+        Griff griffin = new Griff(randX*100, randY*100, ap);
         griffin.setImg("stand");
 
 
-        Imp imp = new Imp(sor*100, oszlop*100, ap);
-        imp.setImg("stand");
 
 
-        ImpArcher impArcher = new ImpArcher(sor*100, oszlop*100, ap);
+
+        randX = (int) (Math.random() * 7)+5;
+        randY = (int) (Math.random() * 7);
+        ImpArcher impArcher = new ImpArcher(randX*100, randY*100, ap);
         impArcher.setImg("stand");
 
 
-        Hound hound = new Hound(sor*100, oszlop*100, ap);
+        randX = (int) (Math.random() * 7)+5;
+        randY = (int) (Math.random() * 7);
+        Hound hound = new Hound(randX*100, randY*100, ap);
         hound.setImg("stand");
-
+         */
         for (i = 0; i < this.x_count; i++) {
             for (j = 0; j < this.y_count; j++) {
 
@@ -73,7 +83,6 @@ public class Tiles {
 
                 Tile tl = map[i][j];
                 tl.getImageView().setOnMouseClicked((event) ->{
-
                     int spriteCounter = 0;
                     System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
                     System.out.println("Crossable "+tl.getCrs());
@@ -127,6 +136,9 @@ public class Tiles {
                     pike.setImageMovY(pike.getPos_y());
 
                 });
+
+            imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
+
             }
         }
     }

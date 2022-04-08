@@ -32,6 +32,8 @@ public class ChimpBooster {
 
         Champions chimp = new Champions();
 
+        TextField skillShowOff = new TextField();
+        TextField skillText = new TextField();
         TextField attText = new TextField();
         TextField deffText = new TextField();
         TextField magicText = new TextField();
@@ -47,6 +49,8 @@ public class ChimpBooster {
         TextField moral = new TextField();
         TextField luck = new TextField();
 
+        skillShowOff.setText("Skill points:: ");
+        skillText.setText(""+chimp.getSkillPoint());
         attText.setText(""+chimp.getAtt());
         deffText.setText(""+chimp.getDeff());
         magicText.setText(""+chimp.getMagic_power());
@@ -59,6 +63,7 @@ public class ChimpBooster {
         attackMinus.setOnMouseClicked((event)->{
             chimp.setAtt(chimp.getAtt()-1);
             chimp.setSkillPoint(chimp.getSkillPoint()+1);
+            skillText.setText(""+chimp.getSkillPoint());
             attText.setText(""+chimp.getAtt());
         });
 
@@ -67,6 +72,7 @@ public class ChimpBooster {
         attackMax.setOnMouseClicked((event)->{
             chimp.setAtt(chimp.getAtt()+1);
             chimp.setSkillPoint(chimp.getSkillPoint()-1);
+            skillText.setText(""+chimp.getSkillPoint());
             attText.setText(""+chimp.getAtt());
         });
 
@@ -75,6 +81,7 @@ public class ChimpBooster {
         deffMinus.setOnMouseClicked((event)->{
             chimp.setDeff(chimp.getDeff()-1);
             chimp.setSkillPoint(chimp.getSkillPoint()+1);
+            skillText.setText(""+chimp.getSkillPoint());
             deffText.setText(""+chimp.getDeff());
         });
 
@@ -83,6 +90,7 @@ public class ChimpBooster {
         deffMax.setOnMouseClicked((event)->{
             chimp.setDeff(chimp.getDeff()+1);
             chimp.setSkillPoint(chimp.getSkillPoint()-1);
+            skillText.setText(""+chimp.getSkillPoint());
             deffText.setText(""+chimp.getDeff());
         });
 
@@ -91,6 +99,7 @@ public class ChimpBooster {
         magicMin.setOnMouseClicked((event)->{
             chimp.setMagic_power(chimp.getMagic_power()-1);
             chimp.setSkillPoint(chimp.getSkillPoint()+1);
+            skillText.setText(""+chimp.getSkillPoint());
             magicText.setText(""+chimp.getMagic_power());
         });
 
@@ -99,6 +108,7 @@ public class ChimpBooster {
         magicMax.setOnMouseClicked((event)->{
             chimp.setMagic_power(chimp.getMagic_power()+1);
             chimp.setSkillPoint(chimp.getSkillPoint()-1);
+            skillText.setText(""+chimp.getSkillPoint());
             magicText.setText(""+chimp.getMagic_power());
         });
 
@@ -107,6 +117,7 @@ public class ChimpBooster {
         wisdomMin.setOnMouseClicked((event)->{
             chimp.setWisdom(chimp.getWisdom()-1);
             chimp.setSkillPoint(chimp.getSkillPoint()+1);
+            skillText.setText(""+chimp.getSkillPoint());
             wisdomText.setText(""+chimp.getWisdom());
         });
 
@@ -115,6 +126,7 @@ public class ChimpBooster {
         wisdomMax.setOnMouseClicked((event)->{
             chimp.setWisdom(chimp.getWisdom()+1);
             chimp.setSkillPoint(chimp.getSkillPoint()-1);
+            skillText.setText(""+chimp.getSkillPoint());
             wisdomText.setText(""+chimp.getWisdom());
         });
 
@@ -123,6 +135,7 @@ public class ChimpBooster {
         moralMin.setOnMouseClicked((event)->{
             chimp.setMoral(chimp.getMoral()-1);
             chimp.setSkillPoint(chimp.getSkillPoint()+1);
+            skillText.setText(""+chimp.getSkillPoint());
             moralText.setText(""+chimp.getMoral());
         });
 
@@ -131,6 +144,7 @@ public class ChimpBooster {
         moralMax.setOnMouseClicked((event)->{
             chimp.setMoral(chimp.getMoral()+1);
             chimp.setSkillPoint(chimp.getSkillPoint()-1);
+            skillText.setText(""+chimp.getSkillPoint());
             moralText.setText(""+chimp.getMoral());
         });
 
@@ -139,6 +153,7 @@ public class ChimpBooster {
         luckMin.setOnMouseClicked((event)->{
             chimp.setLuck(chimp.getLuck()-1);
             chimp.setSkillPoint(chimp.getSkillPoint()+1);
+            skillText.setText(""+chimp.getSkillPoint());
             luckText.setText(""+chimp.getLuck());
         });
 
@@ -147,8 +162,26 @@ public class ChimpBooster {
         luckyMax.setOnMouseClicked((event)->{
             chimp.setLuck(chimp.getLuck()+1);
             chimp.setSkillPoint(chimp.getSkillPoint()-1);
+            skillText.setText(""+chimp.getSkillPoint());
             luckText.setText(""+chimp.getLuck());
         });
+
+        Button toShop = new Button(" SHOP ");
+        toShop.setPrefHeight(60);
+        toShop.setPrefWidth(75);
+        toShop.setLayoutX(700);
+        toShop.setLayoutY(700);
+
+        toShop.setOnMouseClicked((event)->{
+            Preparation prep = new Preparation();
+            try {
+                prep.init(stg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+
 
         serializeButton(attackMinus, 300, 150);
         serializeButton(attackMax, 500, 150);
@@ -163,12 +196,14 @@ public class ChimpBooster {
         serializeButton(luckMin, 300, 650);
         serializeButton(luckyMax, 500, 650);
 
-        setTextBox(attText,400,150);
-        setTextBox(deffText,400,250);
-        setTextBox(magicText,400,350);
-        setTextBox(wisdomText,400,450);
-        setTextBox(moralText,400,550);
-        setTextBox(luckText,400,650);
+        setTextBox(attText,375,150);
+        setTextBox(deffText,375,250);
+        setTextBox(magicText,375,350);
+        setTextBox(wisdomText,375,450);
+        setTextBox(moralText,375,550);
+        setTextBox(luckText,375,650);
+        setTextBox(skillText,375,50);
+        setTextBox(skillShowOff,150,50);
 
         attack.setText("Attack:: ");
         setTextBox(attack, 150 ,150);
@@ -191,7 +226,7 @@ public class ChimpBooster {
         root.getChildren().addAll(img, attackMinus, attackMax, deffMinus, deffMax,magicMin
         , magicMax, wisdomMin, wisdomMax, moralMin, moralMax, luckMin, luckyMax, attText,
                 deffText, magicText, wisdomText, moralText, luckText, attack, defense,
-                magic, wisdom, moral, luck);
+                magic, wisdom, moral, luck, skillText, skillShowOff, toShop);
 
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: Skill point defection");
@@ -204,7 +239,7 @@ public class ChimpBooster {
         str.setMinHeight(50);
         str.setMaxHeight(50);
         str.setMinWidth(50);
-        str.setMaxWidth(75);
+        str.setMaxWidth(95);
         str.setLayoutX(x);
         str.setLayoutY(y);
     }
