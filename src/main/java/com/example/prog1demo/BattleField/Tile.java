@@ -7,14 +7,15 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Objects;
 
 public class Tile {
-    int     movTo_x,
-            movTo_y,
-            pos_x,
-            pos_y;
+    int     movTo_x;
+    int movTo_y;
+    int pos_x;
+    public int pos_y;
     AnchorPane ap;
     ImageView img;
     String pic;
     boolean crossable;
+    static int handbreak=0;
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
         this.pos_x = x;
@@ -58,6 +59,10 @@ public class Tile {
     }
 
     //getters & setters
+    public int getHandbreak(){ return handbreak; }
+    public void setHandbreak(int z){ handbreak = z; }
+    public int getPos_x(){ return this.pos_x; }
+    public int getPos_y(){ return this.pos_y; }
     public void setMovTo_x(int z){ this.movTo_x = z; }
     public void setMovTo_y(int z){ this.movTo_y = z; }
     public int getImgX(){ return (int) this.img.getX(); }
