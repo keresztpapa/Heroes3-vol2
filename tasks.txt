@@ -7,3 +7,5 @@ TODO::
 - [ ] halál animáció
 - [ ] hős speckó képességek
 - [ ] hős karakterekre gyakorolt hatása
+- [ ] skillpontok limitálása, hogy ha elfogy ne működjön
+- [ ] shop aráynosítása

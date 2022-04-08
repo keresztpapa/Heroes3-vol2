@@ -6,6 +6,8 @@ public interface Action {
     default void attack(Generic g1, Generic g2){
         g2.setHp(g2.getHp()-g1.getDamage());
         System.out.println("Alany HP: "+g2.getHp());
+        if(g2.getHp()<=0) g2.setImg("dead");
+        System.out.println("dead");
     }
 
 }
