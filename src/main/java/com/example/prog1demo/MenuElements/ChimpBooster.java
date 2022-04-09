@@ -192,13 +192,13 @@ public class ChimpBooster {
             }
         });
 
-        Button toShop = new Button(" To the skills ");
-        toShop.setPrefHeight(60);
-        toShop.setPrefWidth(120);
-        toShop.setLayoutX(700);
-        toShop.setLayoutY(700);
+        Button toSkills = new Button(" To the skills ");
+        toSkills.setPrefHeight(60);
+        toSkills.setPrefWidth(120);
+        toSkills.setLayoutX(700);
+        toSkills.setLayoutY(700);
 
-        toShop.setOnMouseClicked((event)->{
+        toSkills.setOnMouseClicked((event)->{
             ChampionsPower chimpsPower = new ChampionsPower();
             try {
                 chimpsPower.skills(stg);
@@ -252,7 +252,7 @@ public class ChimpBooster {
         root.getChildren().addAll(img, attackMinus, attackMax, deffMinus, deffMax,magicMin
         , magicMax, wisdomMin, wisdomMax, moralMin, moralMax, luckMin, luckyMax, attText,
                 deffText, magicText, wisdomText, moralText, luckText, attack, defense,
-                magic, wisdom, moral, luck, skillText, skillShowOff, toShop);
+                magic, wisdom, moral, luck, skillText, skillShowOff, toSkills);
 
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: Skill point defection");

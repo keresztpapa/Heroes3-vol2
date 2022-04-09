@@ -166,10 +166,19 @@ public class Preparation {
 
         toBattle.setOnMouseClicked((event)->{
             root.getChildren().clear();
+            if(champ.getArcherCount() == 0 && champ.getGriffCount() == 0 && champ.getSoldierCount() == 0){
+                try {
+                    init(stg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
             Tiles tile = new Tiles(8,8,root);
             tile.generate();
             System.out.println("GameEngine");
         });
+
 
         root.getChildren().add(img);
         root.getChildren().add(soldier);

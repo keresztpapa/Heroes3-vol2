@@ -30,8 +30,14 @@ public class Difficulties {
         easy.setLayoutY(100);
 
         easy.setOnMouseClicked((event)->{
-            Champions chimps = new Champions(100);
+            Champions chimps = new Champions(1300);
             System.out.println(chimps.getGold());
+            ChimpBooster chimpBooster = new ChimpBooster();
+            try {
+                chimpBooster.boost(stg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         Button medium = new Button("Medium");
@@ -41,8 +47,14 @@ public class Difficulties {
         medium.setLayoutY(250);
 
         medium.setOnMouseClicked((event)->{
-            Champions chimps = new Champions(200);
+            Champions chimps = new Champions(1000);
             System.out.println(chimps.getGold());
+            ChimpBooster chimpBooster = new ChimpBooster();
+            try {
+                chimpBooster.boost(stg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         Button hard = new Button("Hard");
@@ -52,8 +64,14 @@ public class Difficulties {
         hard.setLayoutY(400);
 
         hard.setOnMouseClicked((event)->{
-            Champions chimps = new Champions(300);
+            Champions chimps = new Champions(700);
             System.out.println(chimps.getGold());
+            ChimpBooster chimpBooster = new ChimpBooster();
+            try {
+                chimpBooster.boost(stg);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         Button prepare_for_battle = new Button("Prepare");

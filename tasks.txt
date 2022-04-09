@@ -22,16 +22,20 @@ lajdonságra 1-1 tulajdonságpont van elosztva. (2 pont)
 tulajdonságon legfeljebb 10 tulajdonságpont lehet, ez jól le van kezelve. Nem lehet több
 tulajdonságot vásárolni, ha elfogyott az összes aranyunk. (2 pont)
 
-[  ] Minden tulajdonságpont 10%-kal drágább, mint az el®z®. Az ár kiszámításánál mindig
+[ * ] Minden tulajdonságpont 10%-kal drágább, mint az el®z®. Az ár kiszámításánál mindig
 felfele kerekítünk. (1 pont)
 
- Legalább 3 különböz® varázslat közül választhatunk a játék elején, amelyeket megvásárol-
+Sum : 7
+
+
+[ * ] Legalább 3 különböz® varázslat közül választhatunk a játék elején, amelyeket megvásárol-
 hatunk. A varázslatok ára, mannaköltsége is listázva van. Tetsz®leges számú varázslatot
 vásárolhatunk, mindegyiket legfeljebb 1 alkalommal. A varázslatok ára levonódik az ara-
 nyunkból. Ha a varázslat ára magasabb, mint a rendelkezésre álló aranyunk mennyisége,
 akkor nem tudjuk megvásárolni. (2 pont)
 
- Össze tudjuk válogatni a sereget. Legalább 3 különböz® egységb®l választhatunk. Egy
+
+[ * ] Össze tudjuk válogatni a sereget. Legalább 3 különböz® egységb®l választhatunk. Egy
 adott egységb®l tetsz®leges mennyiség¶t tudunk venni, és több fajta egységet is lehet
 vásárolni. Az egységek ára levonódik a rendelkezésre álló aranyból. Több egységet nem
 tudunk vásárolni, mint amennyi aranyunk van. Legalább egy darab egységet kötelez® a
