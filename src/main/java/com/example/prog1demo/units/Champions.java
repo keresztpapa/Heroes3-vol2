@@ -13,7 +13,7 @@ public class Champions extends Generic implements Action{
     static int luck=1;
     static int pos_x;
     static int pos_y;
-    static int skillPoint=10;
+    static double skillPoint=10.0;
     static int gold;
 
     static int soldierCount=0;
@@ -62,6 +62,6 @@ public class Champions extends Generic implements Action{
     public int getArcherCount(){ return archerCount; }
     public void setGriffCount(int z){ griffCount = z; }
     public int getGriffCount(){ return griffCount; }
-    public int getSkillPoint(){ return skillPoint; }
-    public void setSkillPoint(int z){ skillPoint = z; }
+    public double getSkillPoint(){ return skillPoint; }
+    public void setSkillPoint(double z){ skillPoint = z; }
 }

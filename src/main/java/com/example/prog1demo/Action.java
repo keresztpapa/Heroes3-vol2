@@ -2,6 +2,7 @@ package com.example.prog1demo;
 
 import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.units.unit.Generic;
+import javafx.scene.layout.AnchorPane;
 
 public interface Action {
     default void attack(Generic g1, Generic g2){
@@ -74,5 +75,27 @@ public interface Action {
             }
         }
 
+    }
+
+    default void place(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane ap){
+        for(int i=0;i<rowCount;i++){
+            for (int j=0;j<colCount;j++){
+                Tile tl = map[i][j];
+                tl.getImageView().setOnMouseEntered((event)->{
+                    generic.setImageMovX(tl.getPos_x());
+                    generic.setImageMovY(tl.getPos_y());
+                });
+                tl.getImageView().setOnMouseExited((event)->{
+                    ap.getChildren().remove(generic);
+                });
+                tl.getImageView().setOnMouseClicked((event)->{
+                    generic.setImageMovY(tl.getMovTo_y());
+                    generic.setImageMovX(tl.getMovTo_x());
+                    generic.setPos_x(tl.getMovTo_x());
+                    generic.setPos_y(tl.getMovTo_y());
+
+                });
+            }
+        }
     }
 }

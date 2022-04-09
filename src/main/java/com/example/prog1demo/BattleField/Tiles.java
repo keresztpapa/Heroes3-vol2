@@ -47,10 +47,14 @@ public class Tiles implements Action {
         Soldier pike = new Soldier(0,0, ap);
         pike.setImg("stand");
 
+        //place(map, pike, this.x_count, this.y_count, ap);
+        move(map, pike, this.x_count, this.y_count);
+
+
         Imp imp = new Imp(300, 300, ap);
         imp.setImg("stand");
 
-        move(map, pike, this.x_count, this.y_count);
+
 
         imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
 
