@@ -1,7 +1,9 @@
 package com.example.prog1demo.MenuElements;
 
+import com.example.prog1demo.Application;
 import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.units.Champions;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -174,10 +176,18 @@ public class Preparation {
                 }
             }
 
-            Tiles tile = new Tiles(8,8,root);
-            tile.generate();
-            System.out.println("GameEngine");
+            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
+            Scene scene = null;
+            try {
+                scene = new Scene(fxmlLoader.load(),1500,1000);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            stg.setTitle("Heroes!");
+            stg.setScene(scene);
+            stg.show();
         });
+
 
 
         root.getChildren().add(img);

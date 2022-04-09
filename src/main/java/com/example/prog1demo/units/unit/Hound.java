@@ -14,7 +14,7 @@ public class Hound extends Generic{
     static int count=0;
     int     cost = 2,
             movement = 4,
-            initiative = 8,
+            initiative = 1,
             pos_x,
             pos_y;
     double damage = 1;
@@ -70,6 +70,7 @@ public class Hound extends Generic{
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
+    public String getName(){ return "Hound"; }
 
     public void setImg(ImageView z){
         anchorPane.getChildren().remove(actual);

@@ -12,7 +12,7 @@ public class Generic {
     double hp = 3;
     double deff = 1;
     int movement = 4;
-    int initiative = 8;
+    int initiative = 7;
     int pos_x;
     int pos_y;
     ImageView actual;
@@ -51,7 +51,7 @@ public class Generic {
     public ImageView getWalk(int z){ return this.movement_sprite[z]; }
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
-
+    public String getName(){ return ""; }
 
     public void setImg(ImageView z){
         anchorPane.getChildren().remove(actual);

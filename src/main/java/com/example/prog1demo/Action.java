@@ -102,9 +102,24 @@ public interface Action {
 
     default void unitUpdate(Champions chimp, Generic g1, Generic g2, Generic g3){
         int i;
-        for(i=0;i<chimp.getAtt();i++) g1.setDamage(g1.getDamage()*1.1);
-        for(i=0;i<chimp.getDeff();i++) g1.setDeff(g1.getDamage()*1.05);
-        for(i=0;i<chimp.getWisdom();i++) g1.setDamage(g1.getDamage()*1.1);
+        for(i=0;i<chimp.getAtt();i++) {
+            g1.setDamage(g1.getDamage() * 1.1);
+            g2.setDamage(g2.getDamage() * 1.1);
+            g3.setDamage(g3.getDamage() * 1.1);
+
+        }
+        for(i=0;i<chimp.getDeff();i++) {
+            g1.setDeff(g1.getDamage() * 1.05);
+            g2.setDeff(g2.getDamage() * 1.05);
+            g3.setDeff(g3.getDamage() * 1.05);
+        }
+        for(i=0;i<chimp.getWisdom();i++) chimp.setMana(chimp.getMana()+10);
+
+        for(i=0;i<chimp.getMoral();i++) {
+            g1.setInitiative(g1.getInitiative() + 1);
+            g2.setInitiative(g2.getInitiative() + 1);
+            g3.setInitiative(g3.getInitiative() + 1);
+        }
 
     }
 }

@@ -9,7 +9,7 @@ public class Griff extends Generic{
     double dmg;
     double hp;
     int movement;
-    int initiative;
+    int initiative=5;
     int pos_x;
     int pos_y;
     int imgX, imgY;
@@ -70,6 +70,7 @@ public class Griff extends Generic{
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
+    public String getName(){ return "Griff"; }
 
     public void setImg(ImageView z){
         anchorPane.getChildren().remove(actual);

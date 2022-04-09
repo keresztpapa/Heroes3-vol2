@@ -14,7 +14,7 @@ public class Imp extends Generic{
     static int count=0;
     int     cost = 2,
             movement = 4,
-            initiative = 8,
+            initiative = 2,
             pos_x,
             pos_y;
 
@@ -71,6 +71,7 @@ public class Imp extends Generic{
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
+    public String getName(){ return "Imp"; }
 
     public void setImg(ImageView z){
         anchorPane.getChildren().remove(actual);

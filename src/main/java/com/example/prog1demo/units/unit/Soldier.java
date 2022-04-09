@@ -66,6 +66,7 @@ public class Soldier extends Generic{
         public ImageView[] getAttack(){ return this.movement_sprite; }
         public int getCount(){ return count; }
         public void setCount(int z){ count = z; }
+        public String getName(){ return "Pike"; }
 
         public void setImg(ImageView z){
             anchorPane.getChildren().remove(actual);

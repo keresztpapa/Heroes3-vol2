@@ -69,6 +69,9 @@ public class Champions extends Generic implements Action{
     public double getSkillPoint(){ return skillPoint; }
     public void setSkillPoint(double z){ skillPoint = z; }
 
+    public int getMana(){ return mana; }
+    public void setMana(int asd){ mana = asd; }
+
     public void setFire(boolean asd){ fire = asd; }
     public void setThunder(boolean asd){ thunder = asd; }
     public void setRes(boolean asd){ res = asd; }

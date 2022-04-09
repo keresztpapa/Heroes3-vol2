@@ -1,6 +1,7 @@
 package com.example.prog1demo.BattleField;
 
 import com.example.prog1demo.Action;
+import com.example.prog1demo.units.Champions;
 import com.example.prog1demo.units.unit.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -47,20 +48,33 @@ public class Tiles implements Action {
         Soldier pike = new Soldier(0,0, ap);
         pike.setImg("stand");
 
-        //place(map, pike, this.x_count, this.y_count, ap);
-        move(map, pike, this.x_count, this.y_count);
+        Archer arc = new Archer(200, 200, ap);
+        arc.setImg("stand");
 
+        Griff griff = new Griff(100, 400, ap);
+        griff.setImg("stand");
 
         Imp imp = new Imp(300, 300, ap);
         imp.setImg("stand");
 
+        ImpArcher impArc = new ImpArcher(700, 0, ap);
+        impArc.setImg("stand");
 
+        Hound hound = new Hound(700, 100, ap);
+        hound.setImg("stand");
 
-        imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
+        ArrayList<Generic> round = new ArrayList<Generic>();
+        round.add(pike);
+        round.add(arc);
+        round.add(griff);
+        round.add(imp);
+        round.add(impArc);
+        round.add(hound);
 
-
-        }
-
+        move(map, round.get(0), this.x_count, this.y_count);
+    }
+    //imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
+//place(map, pike, this.x_count, this.y_count, ap);
 
     //getters & setters
     public void setX_count(int z){ this.x_count = z; }
@@ -70,85 +84,33 @@ public class Tiles implements Action {
 }
 
         /*
-        //int rand = (int)(Math.random() * range) + min;
-        Archer archer = new Archer(map[randX][1].getImgX(), map[1][randY].getImgY(), ap);
-        archer.setImg("stand");
 
-        randX = (int) (Math.random() * 2);
-        randY = (int) (Math.random() * 7);
-        Griff griffin = new Griff(randX*100, randY*100, ap);
-        griffin.setImg("stand");
+        Generic[] init_array = {pike, arc, griff, imp, impArc, hound};
 
-        randX = (int) (Math.random() * 7)+5;
-        randY = (int) (Math.random() * 7);
-        ImpArcher impArcher = new ImpArcher(randX*100, randY*100, ap);
-        impArcher.setImg("stand");
-
-
-        randX = (int) (Math.random() * 7)+5;
-        randY = (int) (Math.random() * 7);
-        Hound hound = new Hound(randX*100, randY*100, ap);
-        hound.setImg("stand");
-         */
-/*
-
-        for (i = 0; i < this.x_count; i++) {
-        for (j = 0; j < this.y_count; j++) {
-        Tile tl = map[i][j];
-        tl.getImageView().setOnMouseClicked((event) ->{
-        int spriteCounter = 0;
-        System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
-        System.out.println("Crossable "+tl.getCrs());
-
-        while(pike.getPos_x() <= tl.getMovTo_x() && tl.getCrs()){
-        if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
-        pike.setImg(pike.getWalk(spriteCounter));
-        pike.setPos_x(pike.getPos_x()+1);
-        pike.setImageMovX(pike.getPos_x());
-        if(pike.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) pike.setPos_x(pike.getPos_x()+100);
-        if(handbreak == 399) break;
-        handbreak++;
-        spriteCounter++;
+        for(int i=0;i< init_array.length;i++) {
+            System.out.println(init_array[i].getName()+"  "+init_array[i].getInitiative());
         }
-        handbreak = 0;
-        while(pike.getPos_x() >= tl.getMovTo_x() && tl.getCrs()){
-        if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
-        pike.setImg(pike.getWalk(spriteCounter));
-        pike.setPos_x(pike.getPos_x()-1);
-        pike.setImageMovX(pike.getPos_x());
-        if(pike.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) pike.setPos_x(pike.getPos_x()-100);
-        if(handbreak == 399) break;
-        handbreak++;
-        spriteCounter++;
-        }
-        handbreak = 0;
-        while(pike.getPos_y() <= tl.getMovTo_y() && tl.getCrs()){
-        if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
-        pike.setImg(pike.getWalk(spriteCounter));
-        pike.setPos_y(pike.getPos_y()+1);
-        pike.setImageMovY(pike.getPos_y());
-        if(pike.getPos_y() == tl.getMovTo_y() && !tl.getCrs()) pike.setPos_y(pike.getPos_y()+100);
-        if(handbreak == 399) break;
-        handbreak++;
-        spriteCounter++;
-        }
-        handbreak = 0;
-        while(pike.getPos_y() >= tl.getMovTo_y() && tl.getCrs()){
-        if(spriteCounter > pike.getWalk().length-1) spriteCounter = 0;
-        pike.setImg(pike.getWalk(spriteCounter));
-        pike.setPos_y(pike.getPos_y()-1);
-        pike.setImageMovY(pike.getPos_y());
-        if(pike.getPos_y() == tl.pos_y && !tl.getCrs()) pike.setPos_y(pike.getPos_y()-100);
-        if(handbreak == 399) break;
-        handbreak++;
-        spriteCounter++;
-        }
-        handbreak = 0;
-        pike.setImg("stand");
-        pike.setImageMovX(pike.getPos_x());
-        pike.setImageMovY(pike.getPos_y());
 
-        });
-      }
-    }
+        Champions chimp = new Champions();
+
+        unitUpdate(chimp, pike, arc, griff);
+
+        System.out.println("\n\n\n\n");
+
+        for(int i=0;i< init_array.length;i++){
+            for(int j=1;j< init_array.length;j++){
+                Generic gen = null;
+                if(init_array[j].getInitiative() > init_array[i].getInitiative()){
+                    gen = init_array[j];
+                    init_array[j] = gen;
+                    init_array[i] = init_array[j];
+                }
+            }
+        }
+
+        System.out.println("sorted");
+        for(int i=0;i< init_array.length;i++) {
+            System.out.println(init_array[i].getName()+"  "+init_array[i].getInitiative());
+        }
+
         */
