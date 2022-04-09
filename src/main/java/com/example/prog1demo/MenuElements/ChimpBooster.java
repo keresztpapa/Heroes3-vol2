@@ -53,7 +53,7 @@ public class ChimpBooster {
         skillText.setText(""+chimp.getSkillPoint());
         attText.setText(""+chimp.getAtt());
         deffText.setText(""+chimp.getDeff());
-        magicText.setText(""+chimp.getMagic_power());
+        magicText.setText(""+chimp.getMagic());
         wisdomText.setText(""+chimp.getWisdom());
         moralText.setText(""+chimp.getMoral());
         luckText.setText(""+chimp.getLuck());
@@ -107,11 +107,11 @@ public class ChimpBooster {
         Button magicMin = new Button(" - ");
 
         magicMin.setOnMouseClicked((event)->{
-            if(chimp.getMagic_power() > 0) {
-                chimp.setMagic_power(chimp.getMagic_power() - 1);
+            if(chimp.getMagic() > 0) {
+                chimp.setMagic(chimp.getMagic() - 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()+ cost);
                 skillText.setText("" + chimp.getSkillPoint());
-                magicText.setText("" + chimp.getMagic_power());
+                magicText.setText("" + chimp.getMagic());
             }
         });
 
@@ -119,10 +119,10 @@ public class ChimpBooster {
 
         magicMax.setOnMouseClicked((event)->{
             if(chimp.getSkillPoint() > 0) {
-                chimp.setMagic_power(chimp.getMagic_power() + 1);
+                chimp.setMagic(chimp.getMagic() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
-                magicText.setText("" + chimp.getMagic_power());
+                magicText.setText("" + chimp.getMagic());
             }
         });
 
@@ -200,6 +200,8 @@ public class ChimpBooster {
 
         toSkills.setOnMouseClicked((event)->{
             ChampionsPower chimpsPower = new ChampionsPower();
+
+
             try {
                 chimpsPower.skills(stg);
             } catch (IOException e) {

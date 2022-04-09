@@ -5,17 +5,17 @@ import com.example.prog1demo.Action;
 import javafx.scene.image.ImageView;
 
 public class Champions extends Generic implements Action{
-    static int att=1;
-    static int deff=1;
-    static int magic_power=1;
-    static int wisdom=1;
-    static int moral=1;
-    static int luck=1;
+    static double att=1;
+    static double deff=1;
+    static double magic =1;
+    static double wisdom=1;
+    static double moral=1;
+    static double luck=1;
     static int pos_x;
     static int pos_y;
     static double skillPoint=10.0;
     static int gold;
-
+    static int mana=0;
     static boolean fire=false;
     static boolean thunder=false;
     static boolean res=false;
@@ -26,10 +26,10 @@ public class Champions extends Generic implements Action{
 
     ImageView img;
 
-    public Champions(int attack, int deffense, int magic, int wisd, int mor, int lucky, int px, int py){
+    public Champions(int attack, int deffense, int mgc, int wisd, int mor, int lucky, int px, int py){
         att = attack;
         deff = deffense;
-        magic_power = magic;
+        magic = mgc;
         wisdom = wisd;
         moral = mor;
         luck = lucky;
@@ -41,18 +41,18 @@ public class Champions extends Generic implements Action{
     public Champions(){}
 
     //getters + setters
-    public int getAtt() { return att; }
-    public void setAtt(int att) { Champions.att = att; }
-    public int getDeff() { return deff; }
-    public void setDeff(int deff) { Champions.deff = deff; }
-    public int getMagic_power() { return magic_power; }
-    public void setMagic_power(int magic_power) { Champions.magic_power = magic_power; }
-    public int getWisdom() { return wisdom; }
-    public void setWisdom(int wisdom) { Champions.wisdom = wisdom; }
-    public int getMoral() { return moral; }
-    public void setMoral(int moral) { Champions.moral = moral; }
-    public int getLuck() { return luck; }
-    public void setLuck(int luck) { Champions.luck = luck; }
+    public double getAtt() { return att; }
+    public void setAtt(double att) { Champions.att = att; }
+    public double getDeff() { return deff; }
+    public void setDeff(double deff) { Champions.deff = deff; }
+    public double getMagic() { return magic; }
+    public void setMagic(double magic_power) { Champions.magic = magic_power; }
+    public double getWisdom() { return wisdom; }
+    public void setWisdom(double wisdom) { Champions.wisdom = wisdom; }
+    public double getMoral() { return moral; }
+    public void setMoral(double moral) { Champions.moral = moral; }
+    public double getLuck() { return luck; }
+    public void setLuck(double luck) { Champions.luck = luck; }
     public void setPos_x(int x) { pos_x = x; }
     public void setPos_y(int y) { pos_y = y; }
     public int getPos_x(){ return pos_x; }

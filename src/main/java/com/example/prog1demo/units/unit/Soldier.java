@@ -13,14 +13,13 @@ public class Soldier extends Generic{
 
         static int count=0;
         int cost = 2,
-            damage = 1,
-            hp = 3,
             movement = 4,
-            initiative = 8,
-            pos_x,
-            pos_y;
+                initiative = 8,
+                pos_x,
+                pos_y;
+    double damage = 1, hp = 3;
 
-        ImageView[] movement_sprite = {
+    ImageView[] movement_sprite = {
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m1.png")),
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m2.png")),
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m3.png")),

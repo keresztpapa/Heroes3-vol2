@@ -8,8 +8,9 @@ import javafx.scene.layout.AnchorPane;
 public class Generic {
     AnchorPane anchorPane;
     int cost = 2;
-    int damage = 1;
-    int hp = 3;
+    double damage = 1;
+    double hp = 3;
+    double deff = 1;
     int movement = 4;
     int initiative = 8;
     int pos_x;
@@ -25,10 +26,14 @@ public class Generic {
 
     public int getCost() { return cost; }
     public void setCost(int cost) { this.cost = cost; }
-    public int getDamage() { return damage; }
-    public void setDamage(int damage) { this.damage = damage; }
-    public int getHp() { return hp; }
-    public void setHp(int hp) { this.hp = hp; }
+    public double getDamage() { return damage; }
+    public void setDamage(double damage) { this.damage = damage; }
+
+    public double getDeff() { return deff; }
+    public void setDeff(double dff) { this.deff = damage; }
+
+    public double getHp() { return hp; }
+    public void setHp(double  hp) { this.hp = hp; }
     public int getMovement() { return movement; }
     public void setMovement(int movement) { this.movement = movement; }
     public int getInitiative() { return initiative; }

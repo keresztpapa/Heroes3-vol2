@@ -6,8 +6,8 @@ import javafx.scene.layout.AnchorPane;
 
 public class Griff extends Generic{
     int cost;
-    int dmg;
-    int hp;
+    double dmg;
+    double hp;
     int movement;
     int initiative;
     int pos_x;

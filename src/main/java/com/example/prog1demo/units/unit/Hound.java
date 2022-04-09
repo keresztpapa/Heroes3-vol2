@@ -12,14 +12,13 @@ public class Hound extends Generic{
     int imgX, imgY;
 
     static int count=0;
-    int cost = 2,
-            damage = 1,
-            hp = 3,
+    int     cost = 2,
             movement = 4,
             initiative = 8,
             pos_x,
             pos_y;
-
+    double damage = 1;
+    double hp = 3;
 
     ImageView[] movement_sprite = {
             new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m1.png")),

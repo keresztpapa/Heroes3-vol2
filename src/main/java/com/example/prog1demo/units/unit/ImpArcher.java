@@ -13,13 +13,13 @@ public class ImpArcher extends Generic{
 
     static int count=0;
     int     cost = 2,
-            damage = 1,
-            hp = 3,
             movement = 4,
             initiative = 8,
             pos_x,
             pos_y;
 
+    double damage = 1;
+    double hp = 3;
 
     ImageView[] movement_sprite = {
             new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m1.png")),
