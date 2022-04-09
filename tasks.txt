@@ -4,7 +4,7 @@ TODO::
 - [ ] körökre osztás
 - [ ] támadás + sebzés
 - [ ] támadás animáció
-- [ ] halál animáció
+- [ + ] halál animáció
 - [ ] hős speckó képességek
 - [ ] hős karakterekre gyakorolt hatása
 - [ ] skillpontok limitálása, hogy ha elfogy ne működjön

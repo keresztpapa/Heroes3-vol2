@@ -16,7 +16,8 @@ public class Tiles implements Action {
     Tile[][] map;
     AnchorPane ap;
     int i, j;
-
+    int unitX;
+    int unitY;
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -42,10 +43,6 @@ public class Tiles implements Action {
     }
 
     public void generate(){
-        int sor = (int) (Math.random() * (2)+1);
-        int oszlop = (int) (Math.random()*(7)+1);
-        int randX = (int) (Math.random() * 2);
-        int randY = (int) (Math.random() * 7);
 
         Soldier pike = new Soldier(0,0, ap);
         pike.setImg("stand");
@@ -53,12 +50,9 @@ public class Tiles implements Action {
         Imp imp = new Imp(300, 300, ap);
         imp.setImg("stand");
 
-
-        ///////
         move(map, pike, this.x_count, this.y_count);
-        ///////////
 
-imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
+        imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
 
 
         }

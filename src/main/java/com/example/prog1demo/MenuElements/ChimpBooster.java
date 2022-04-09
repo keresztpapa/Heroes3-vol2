@@ -61,109 +61,133 @@ public class ChimpBooster {
         Button attackMinus = new Button(" - ");
 
         attackMinus.setOnMouseClicked((event)->{
-            chimp.setAtt(chimp.getAtt()-1);
-            chimp.setSkillPoint(chimp.getSkillPoint()+1);
-            skillText.setText(""+chimp.getSkillPoint());
-            attText.setText(""+chimp.getAtt());
+            if(chimp.getAtt() > 0) {
+                chimp.setAtt(chimp.getAtt() - 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() + 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                attText.setText("" + chimp.getAtt());
+            }
         });
 
         Button attackMax = new Button(" + ");
 
         attackMax.setOnMouseClicked((event)->{
-            chimp.setAtt(chimp.getAtt()+1);
-            chimp.setSkillPoint(chimp.getSkillPoint()-1);
-            skillText.setText(""+chimp.getSkillPoint());
-            attText.setText(""+chimp.getAtt());
+            if(chimp.getSkillPoint() > 0) {
+                chimp.setAtt(chimp.getAtt() + 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() - 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                attText.setText("" + chimp.getAtt());
+            }
         });
 
         Button deffMinus = new Button(" - ");
 
         deffMinus.setOnMouseClicked((event)->{
-            chimp.setDeff(chimp.getDeff()-1);
-            chimp.setSkillPoint(chimp.getSkillPoint()+1);
-            skillText.setText(""+chimp.getSkillPoint());
-            deffText.setText(""+chimp.getDeff());
+            if(chimp.getDeff() > 0) {
+                chimp.setDeff(chimp.getDeff() - 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() + 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                deffText.setText("" + chimp.getDeff());
+            }
         });
 
         Button deffMax = new Button(" + ");
 
         deffMax.setOnMouseClicked((event)->{
-            chimp.setDeff(chimp.getDeff()+1);
-            chimp.setSkillPoint(chimp.getSkillPoint()-1);
-            skillText.setText(""+chimp.getSkillPoint());
-            deffText.setText(""+chimp.getDeff());
+            if(chimp.getSkillPoint() > 0) {
+                chimp.setDeff(chimp.getDeff() + 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() - 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                deffText.setText("" + chimp.getDeff());
+            }
         });
 
         Button magicMin = new Button(" - ");
 
         magicMin.setOnMouseClicked((event)->{
-            chimp.setMagic_power(chimp.getMagic_power()-1);
-            chimp.setSkillPoint(chimp.getSkillPoint()+1);
-            skillText.setText(""+chimp.getSkillPoint());
-            magicText.setText(""+chimp.getMagic_power());
+            if(chimp.getMagic_power() > 0) {
+                chimp.setMagic_power(chimp.getMagic_power() - 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() + 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                magicText.setText("" + chimp.getMagic_power());
+            }
         });
 
         Button magicMax = new Button(" + ");
 
         magicMax.setOnMouseClicked((event)->{
-            chimp.setMagic_power(chimp.getMagic_power()+1);
-            chimp.setSkillPoint(chimp.getSkillPoint()-1);
-            skillText.setText(""+chimp.getSkillPoint());
-            magicText.setText(""+chimp.getMagic_power());
+            if(chimp.getSkillPoint() > 0) {
+                chimp.setMagic_power(chimp.getMagic_power() + 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() - 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                magicText.setText("" + chimp.getMagic_power());
+            }
         });
 
         Button wisdomMin = new Button(" - ");
 
         wisdomMin.setOnMouseClicked((event)->{
-            chimp.setWisdom(chimp.getWisdom()-1);
-            chimp.setSkillPoint(chimp.getSkillPoint()+1);
-            skillText.setText(""+chimp.getSkillPoint());
-            wisdomText.setText(""+chimp.getWisdom());
+            if(chimp.getWisdom() > 0) {
+                chimp.setWisdom(chimp.getWisdom() - 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() + 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                wisdomText.setText("" + chimp.getWisdom());
+            }
         });
 
         Button wisdomMax = new Button(" + ");
 
         wisdomMax.setOnMouseClicked((event)->{
-            chimp.setWisdom(chimp.getWisdom()+1);
-            chimp.setSkillPoint(chimp.getSkillPoint()-1);
-            skillText.setText(""+chimp.getSkillPoint());
-            wisdomText.setText(""+chimp.getWisdom());
+            if(chimp.getSkillPoint() > 0) {
+                chimp.setWisdom(chimp.getWisdom() + 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() - 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                wisdomText.setText("" + chimp.getWisdom());
+            }
         });
 
         Button moralMin = new Button(" - ");
 
         moralMin.setOnMouseClicked((event)->{
-            chimp.setMoral(chimp.getMoral()-1);
-            chimp.setSkillPoint(chimp.getSkillPoint()+1);
-            skillText.setText(""+chimp.getSkillPoint());
-            moralText.setText(""+chimp.getMoral());
+            if(chimp.getMoral() > 0) {
+                chimp.setMoral(chimp.getMoral() - 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() + 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                moralText.setText("" + chimp.getMoral());
+            }
         });
 
         Button moralMax = new Button(" + ");
 
         moralMax.setOnMouseClicked((event)->{
-            chimp.setMoral(chimp.getMoral()+1);
-            chimp.setSkillPoint(chimp.getSkillPoint()-1);
-            skillText.setText(""+chimp.getSkillPoint());
-            moralText.setText(""+chimp.getMoral());
+            if(chimp.getSkillPoint() > 0) {
+                chimp.setMoral(chimp.getMoral() + 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() - 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                moralText.setText("" + chimp.getMoral());
+            }
         });
 
         Button luckMin = new Button(" - ");
 
         luckMin.setOnMouseClicked((event)->{
-            chimp.setLuck(chimp.getLuck()-1);
-            chimp.setSkillPoint(chimp.getSkillPoint()+1);
-            skillText.setText(""+chimp.getSkillPoint());
-            luckText.setText(""+chimp.getLuck());
+            if(chimp.getLuck() > 0){
+                chimp.setLuck(chimp.getLuck() - 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() + 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                luckText.setText("" + chimp.getLuck());
+            }
         });
 
         Button luckyMax = new Button(" + ");
 
         luckyMax.setOnMouseClicked((event)->{
-            chimp.setLuck(chimp.getLuck()+1);
-            chimp.setSkillPoint(chimp.getSkillPoint()-1);
-            skillText.setText(""+chimp.getSkillPoint());
-            luckText.setText(""+chimp.getLuck());
+            if(chimp.getSkillPoint() > 0) {
+                chimp.setLuck(chimp.getLuck() + 1);
+                chimp.setSkillPoint(chimp.getSkillPoint() - 1);
+                skillText.setText("" + chimp.getSkillPoint());
+                luckText.setText("" + chimp.getLuck());
+            }
         });
 
         Button toShop = new Button(" SHOP ");

@@ -13,10 +13,10 @@ public interface Action {
 
     default void move(Tile[][] map, Generic generic, int rowCount, int colCount){
         int i, j;
-
         for (i = 0; i < rowCount; i++) {
             for (j = 0; j < colCount; j++) {
                 Tile tl = map[i][j];
+
                 tl.getImageView().setOnMouseClicked((event) ->{
                     int spriteCounter = 0;
                     System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
@@ -72,7 +72,7 @@ public interface Action {
 
                 });
             }
-
         }
+
     }
 }
