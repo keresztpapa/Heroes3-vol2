@@ -3,12 +3,16 @@ package com.example.prog1demo.BattleField;
 import com.example.prog1demo.Action;
 import com.example.prog1demo.units.Champions;
 import com.example.prog1demo.units.unit.*;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static com.example.prog1demo.BattleField.Tile.victory;
 import static java.lang.Thread.sleep;
 
 public class Tiles implements Action {
@@ -46,8 +50,33 @@ public class Tiles implements Action {
     public void generate(){
 
         Soldier pike = new Soldier(0,0, ap);
-        pike.setImg("stand");
+        pike.setImg("stand", ap);
+        this.map[pike.getPos_x()/100][pike.getPos_y()/100].setGeneric(pike);
+        this.map[pike.getPos_x()/100][pike.getPos_y()/100].setCrs(false);
 
+
+        Imp imp = new Imp(300, 300, ap);
+        this.map[imp.getPos_x()/100][imp.getPos_y()/100].setGeneric(imp);
+        this.map[imp.getPos_x()/100][imp.getPos_y()/100].setCrs(false);
+        imp.setImg("stand", ap);
+
+
+        move(map, pike, this.x_count, this.y_count, ap);
+        imp.getActual().setOnMouseClicked((event) -> attack(pike, imp, ap));
+        //attack(pike, imp, ap);
+
+
+        //if (soruce instanceof Button) {  //check that the source is really a button
+/*
+        ap.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
+            System.out.println("mouse click detected! " + mouseEvent.getPickResult());
+
+        });
+*/
+
+        //move(map, pike, this.x_count, this.y_count);
+
+        /*
         Archer arc = new Archer(200, 200, ap);
         arc.setImg("stand");
 
@@ -71,11 +100,13 @@ public class Tiles implements Action {
         round.add(impArc);
         round.add(hound);
 
-        move(map, round.get(0), this.x_count, this.y_count);
+
         move(map, round.get(3), this.x_count, this.y_count);
 
+        */
+
     }
-    //imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
+//imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
 //place(map, pike, this.x_count, this.y_count, ap);
 
     //getters & setters
@@ -83,6 +114,7 @@ public class Tiles implements Action {
     public void setY_count(int z){ this.y_count = z; }
     public int getX_count(){ return this.x_count; }
     public int getY_count(){ return this.y_count; }
+
 }
 
         /*

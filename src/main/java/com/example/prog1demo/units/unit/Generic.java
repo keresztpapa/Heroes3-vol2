@@ -15,14 +15,20 @@ public class Generic {
     int initiative = 7;
     int pos_x;
     int pos_y;
-    ImageView actual;
-    ImageView stand;
-    ImageView dead;
+    ImageView actual = new ImageView();
+    ImageView stand = new ImageView();
+    ImageView dead = new ImageView();
     double att=1;
     double magic =1;
     double wisdom=1;
     double moral=1;
     double luck=1;
+
+    public Generic(){}
+
+    public Generic(AnchorPane ap){
+        this.anchorPane = ap;
+    }
 
     ImageView[] movement_sprite = {};
 
@@ -68,13 +74,13 @@ public class Generic {
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public String getName(){ return ""; }
 
-    public void setImg(ImageView z){
-        anchorPane.getChildren().remove(actual);
-        this.actual = z;
-        anchorPane.getChildren().add(actual);
+    public void setImg(ImageView z, AnchorPane anchorPane){
+            anchorPane.getChildren().remove(actual);
+            this.actual = z;
+            anchorPane.getChildren().add(actual);
     }
 
-    public void setImg(String z) {
+    public void setImg(String z, AnchorPane anchorPane) {
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;

@@ -1,5 +1,6 @@
 package com.example.prog1demo.BattleField;
 
+import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -7,7 +8,7 @@ import javafx.scene.layout.AnchorPane;
 import java.util.Objects;
 
 public class Tile {
-    int     movTo_x;
+    int movTo_x;
     int movTo_y;
     int pos_x;
     public int pos_y;
@@ -16,12 +17,15 @@ public class Tile {
     String pic;
     boolean crossable;
     static int handbreak=0;
+    Generic gen = new Generic();
+    static boolean victory = false;
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
         this.pos_x = x;
         this.pos_y = y;
         this.ap=anchor;
         this.crossable = crs;
+        Generic gen = new Generic(ap);
     }
 
     public void setImg(String str){
@@ -59,6 +63,8 @@ public class Tile {
     }
 
     //getters & setters
+    public void setGeneric(Generic asd){ this.gen = asd; }
+    public Generic getGen() { return this.gen; }
     public int getHandbreak(){ return handbreak; }
     public void setHandbreak(int z){ handbreak = z; }
     public int getPos_x(){ return this.pos_x; }
@@ -75,4 +81,9 @@ public class Tile {
     public boolean getCrs(){ return this.crossable; }
     public Tile getTile(){ return this; }
     public ImageView getImageView(){ return this.img; }
+    public String toString(){
+        return "tile";
+    }
+    public boolean isVictory(){ return victory; }
+    public void setVictory(boolean asd){ victory = asd; }
 }

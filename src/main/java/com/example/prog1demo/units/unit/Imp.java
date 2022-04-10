@@ -73,13 +73,13 @@ public class Imp extends Generic{
     public void setCount(int z){ count = z; }
     public String getName(){ return "Imp"; }
 
-    public void setImg(ImageView z){
+    public void setImg(ImageView z, AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);
         this.actual = z;
         anchorPane.getChildren().add(actual);
     }
 
-    public void setImg(String z) {
+    public void setImg(String z,AnchorPane anchorPane) {
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;

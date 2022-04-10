@@ -75,14 +75,17 @@ public class Archer extends Generic{
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
     public String getName(){ return "Archer"; }
+    public String toString(){
+        return "archer";
+    }
 
-    public void setImg(ImageView z){
+    public void setImg(ImageView z,AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);
         this.actual = z;
         anchorPane.getChildren().add(actual);
     }
 
-    public void setImg(String z) {
+    public void setImg(String z,AnchorPane anchorPane) {
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;

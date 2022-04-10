@@ -10,6 +10,9 @@ TODO::
 - [ + ] skillpontok limitálása, hogy ha elfogy ne működjön
 - [ ] shop aráynosítása
 
+össz pont: 78   || Opciónális pont: 22
+
+eddig várható: 26 || opcionális: 16
 
 [ * ] A nehézségi szint meg van valósítva: ki tudjuk választani nehézségi szintet (legalább) 3
 opció közül. A döntés alapján különböz® mennyiség¶ aranyat kapunk. (2 pont)
@@ -167,6 +170,8 @@ visszatámadás. Egy körben egy egység legfeljebb egyszer tud visszatámadni, 
 több különböz® körben is vissza tud támadni 1-1 alkalommal. A visszatámadás során
 okozott sebzés mértéke 50%-a a normál sebzésnek. A halott egységek nem támadnak
 vissza. (2 pont)
+
+
 Gépi ellenféllel kapcsolatos szempontok (max: 10 pont)
 
 [ ] Az ellenfél h®se is végez legalább egy fajta cselekvést (támadást vagy varázslást) (2 pont)
