@@ -18,6 +18,7 @@ public class Soldier extends Generic{
                 pos_x,
                 pos_y;
     double damage = 1, hp = 3;
+    static boolean active=false;
 
     ImageView[] movement_sprite = {
                 new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m1.png")),
@@ -67,6 +68,9 @@ public class Soldier extends Generic{
         public int getCount(){ return count; }
         public void setCount(int z){ count = z; }
         public String getName(){ return "Pike"; }
+
+        public void setActive(boolean asd){ active = asd; }
+        public boolean isActive(){ return active; }
 
         public void setImg(ImageView z,AnchorPane anchorPane){
             anchorPane.getChildren().remove(actual);

@@ -14,6 +14,7 @@ public class Archer extends Generic{
     int pos_y;
     int imgX, imgY;
     static int count=0;
+    static boolean active=false;
 
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/player_units/archer/archer_stand.png"));
@@ -78,6 +79,8 @@ public class Archer extends Generic{
     public String toString(){
         return "archer";
     }
+    public void setActive(boolean asd){ active = asd; }
+    public boolean isActive(){ return active; }
 
     public void setImg(ImageView z,AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);

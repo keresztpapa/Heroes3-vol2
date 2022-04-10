@@ -7,6 +7,8 @@ import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.layout.AnchorPane;
 
 public interface Action {
+
+
     default void attack(Generic g1, Generic g2, AnchorPane anchorPane){
         g2.setHp(g2.getHp()-g1.getDamage());
         System.out.println("Alany HP: "+g2.getHp());
@@ -125,3 +127,25 @@ public interface Action {
 
     }
 }
+
+
+/*
+
+
+    default void action(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount, AnchorPane ap){
+        for(int i=0;i<rowCount;i++){
+            for (int j=0;j<colCount;j++){
+                Tile tl = map[i][j];
+
+                tl.getImageView().setOnMouseClicked((event)->{
+                    if(!tl.getCrs() && tl.isOccupied()){
+                        attack(g1, g2,ap);
+                    }else{
+                        move(map,g1,rowCount,colCount,ap);
+                    }
+                });
+
+            }
+        }
+    }
+ */

@@ -19,6 +19,7 @@ public class Hound extends Generic{
             pos_y;
     double damage = 1;
     double hp = 3;
+    static boolean active=false;
 
     ImageView[] movement_sprite = {
             new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m1.png")),
@@ -71,6 +72,8 @@ public class Hound extends Generic{
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
     public String getName(){ return "Hound"; }
+    public void setActive(boolean asd){ active = asd; }
+    public boolean isActive(){ return active; }
 
     public void setImg(ImageView z,AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);

@@ -14,6 +14,7 @@ public class Griff extends Generic{
     int pos_y;
     int imgX, imgY;
     static int count=0;
+    static boolean active=false;
 
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
@@ -71,6 +72,8 @@ public class Griff extends Generic{
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
     public String getName(){ return "Griff"; }
+    public void setActive(boolean asd){ active = asd; }
+    public boolean isActive(){ return active; }
 
     public void setImg(ImageView z,AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);

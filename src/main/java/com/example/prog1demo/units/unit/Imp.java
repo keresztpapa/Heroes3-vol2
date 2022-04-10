@@ -10,6 +10,7 @@ public class Imp extends Generic{
     ImageView stand = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
     ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp/imp_death.png"));
     int imgX, imgY;
+    static boolean active=false;
 
     static int count=0;
     int     cost = 2,
@@ -72,6 +73,8 @@ public class Imp extends Generic{
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
     public String getName(){ return "Imp"; }
+    public void setActive(boolean asd){ active = asd; }
+    public boolean isActive(){ return active; }
 
     public void setImg(ImageView z, AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);

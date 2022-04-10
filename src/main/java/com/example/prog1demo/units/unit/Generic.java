@@ -23,6 +23,7 @@ public class Generic {
     double wisdom=1;
     double moral=1;
     double luck=1;
+    static boolean active=false;
 
     public Generic(){}
 
@@ -73,6 +74,8 @@ public class Generic {
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public String getName(){ return ""; }
+    public void setActive(boolean asd){ active = asd; }
+    public boolean isActive(){ return active; }
 
     public void setImg(ImageView z, AnchorPane anchorPane){
             anchorPane.getChildren().remove(actual);

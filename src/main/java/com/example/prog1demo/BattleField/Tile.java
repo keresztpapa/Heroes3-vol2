@@ -17,6 +17,7 @@ public class Tile {
     String pic;
     boolean crossable;
     static int handbreak=0;
+    boolean occupied=false;
     Generic gen = new Generic();
     static boolean victory = false;
 
@@ -65,6 +66,10 @@ public class Tile {
     //getters & setters
     public void setGeneric(Generic asd){ this.gen = asd; }
     public Generic getGen() { return this.gen; }
+
+    public boolean isOccupied() { return this.occupied; }
+    public void setOccupied(boolean asd){ this.occupied = asd; }
+
     public int getHandbreak(){ return handbreak; }
     public void setHandbreak(int z){ handbreak = z; }
     public int getPos_x(){ return this.pos_x; }
