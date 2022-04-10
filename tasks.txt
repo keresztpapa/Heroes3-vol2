@@ -58,9 +58,11 @@ kezdhet® el. (2 pont)
 lehet ®ket helyezni, a pályán kívülre sem. Az egységeket nem lehet egymás tetejére
 helyezni. (2 pont)
 
-[ ] Az ellenfél h®sének is vannak a tulajdonságain tulajdonságpontok elosztva, illetve vannak
+[ * ] Az ellenfél h®sének is vannak a tulajdonságain tulajdonságpontok elosztva, illetve vannak
 varázslatai. Az ellenfél h®sének tulajdonságait, varázslatait meg lehet tekinteni a csata
 elkezdése el®tt. (2 pont)
+
+Sum: 14
 
 [ ] Az ellenfél is választott magának egy vagy több egységet, és ezeket magával hozta a
 pályára. Miután elhelyeztük az egységeket, a gép is elhelyezi az övéit, tetsz®leges módon.

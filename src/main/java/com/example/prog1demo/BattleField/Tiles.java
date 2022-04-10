@@ -72,6 +72,8 @@ public class Tiles implements Action {
         round.add(hound);
 
         move(map, round.get(0), this.x_count, this.y_count);
+        move(map, round.get(3), this.x_count, this.y_count);
+
     }
     //imp.getActual().setOnMouseClicked((event) -> attack(pike, imp));
 //place(map, pike, this.x_count, this.y_count, ap);
