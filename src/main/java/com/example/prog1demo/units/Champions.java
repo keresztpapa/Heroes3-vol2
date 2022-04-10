@@ -1,8 +1,13 @@
 package com.example.prog1demo.units;
 
+import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.units.unit.Generic;
 import com.example.prog1demo.Action;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Champions extends Generic implements Action{
     static double att=1;
@@ -39,6 +44,35 @@ public class Champions extends Generic implements Action{
 
     public Champions(int x){ gold = x; }
     public Champions(){}
+
+    public void fireBall(Tile[][] map, int centerX, int centerY, ArrayList<Generic> units, AnchorPane anchorPane){
+        int radX = map[centerX][centerY].getPos_x();
+        int radY = map[centerX][centerY].getPos_y();
+        for(int i=0;i<units.size();i++){
+            if(units.get(i).getPos_x() <= radX+150 && units.get(i).getPos_x() >= radX-150 &&
+                    units.get(i).getPos_y() <= radY+150 && units.get(i).getPos_y() >= radY-150){
+                units.get(i).setHp(units.get(i).getHp()-magic*20);
+            }
+            if(units.get(i).getHp()<=0) units.get(i).setImg("dead", anchorPane);
+        }
+        mana-=9;
+    }
+
+    public void lightning(Generic unit){
+        unit.setHp(unit.getHp()-magic*30);
+        mana-=5;
+    }
+
+    public void ressurrect(Generic unit, AnchorPane anchorPane){
+        if(unit.getName().equals("Archer") || unit.getName().equals("Griff") || unit.getName().equals("Pike")){
+           if(unit.getHp()<=0){
+               unit.setHp(unit.getHp()+magic*50);
+               unit.setImg("stand",anchorPane);
+           }
+        }
+    }
+
+
 
     //getters + setters
     public double getAtt() { return att; }
@@ -80,3 +114,14 @@ public class Champions extends Generic implements Action{
     public boolean getThunder(){ return thunder; }
     public boolean getRes(){ return res; }
 }
+
+/*
+        if((centerX < 12 && map[centerX-1][centerY].isOccupied()) &&
+        (centerX < 12 && map[centerX+1][centerY].isOccupied()) &&
+        (centerY < 10 && map[centerX][centerY-1].isOccupied()) &&
+        (centerY < 10 && map[centerX][centerY-1].isOccupied()) &&
+        (centerY < 10 && centerX < 12 && map[centerX-1][centerY-1].isOccupied()) &&
+        (centerY < 10 && centerX < 12 && map[centerX-1][centerY+1].isOccupied()) &&
+        (centerY < 10 && centerX < 12 && map[centerX+1][centerY-1].isOccupied()) &&
+        (centerY < 10 && centerX < 12 && map[centerX+1][centerY+1].isOccupied())){
+        */
