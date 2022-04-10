@@ -62,9 +62,10 @@ public class Tiles implements Action {
         imp.setImg("stand", ap);
 
         //move(map, pike, this.x_count, this.y_count, ap);
-        move(map, imp, this.x_count, this.y_count, ap);
+        //imp.getActual().setOnMouseClicked((event) -> attack(map, pike, imp, ap));
+        move(map, pike, this.x_count, this.y_count, ap);
+        imp.getActual().setOnMouseClicked((event) -> attack(map, pike, imp, ap, this.x_count, this.y_count));
 
-        imp.getActual().setOnMouseClicked((event) -> attack(map, pike, imp, ap));
 
         /*
         ap.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
