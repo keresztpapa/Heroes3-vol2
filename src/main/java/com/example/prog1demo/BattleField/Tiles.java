@@ -61,7 +61,9 @@ public class Tiles implements Action {
         this.map[imp.getPos_x()/100][imp.getPos_y()/100].setOccupied(true);
         imp.setImg("stand", ap);
 
-
+        //move(map, pike, this.x_count, this.y_count, ap);
+        action(map, pike, imp,this.x_count, this.y_count, ap);
+        //imp.getActual().setOnMouseClicked((event) -> attack(pike, imp, ap));
 
         //action(map, pike, imp, this.x_count, this.y_count, ap);
         //System.out.println("mouse click detected! " + mouseEvent.getTarget().getClass().getName()); -----> mouse click detected! javafx.scene.image.ImageView

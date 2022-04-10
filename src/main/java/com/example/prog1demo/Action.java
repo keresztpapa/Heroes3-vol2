@@ -126,6 +126,29 @@ public interface Action {
         }
 
     }
+
+    default void action(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount, AnchorPane ap){
+        for(int i=0;i<rowCount;i++){
+            for (int j=0;j<colCount;j++){
+                Tile tl = map[i][j];
+                tl.getImageView().setOnMouseClicked((event)->{
+                    if(tl.isOccupied()){
+                        attack(g1, g2,ap);
+                        if(g2.getHp()<=0) {
+                            map[g1.getPos_x()/100][g1.getPos_y()/100].setOccupied(false);
+                            map[g1.getPos_x()/100][g1.getPos_y()/100].setCrs(true);
+                        }
+                    }else{
+                        map[g1.getPos_x()/100][g1.getPos_y()/100].setOccupied(false);
+                        map[g1.getPos_x()/100][g1.getPos_y()/100].setCrs(true);
+                        move(map,g1,rowCount,colCount,ap);
+                    }
+                });
+            }
+        }
+    }
+
+
 }
 
 
