@@ -1,6 +1,8 @@
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.units.Champions;
+import com.example.prog1demo.units.VillianChamp;
+import com.example.prog1demo.units.unit.Generic;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -192,6 +194,23 @@ public class ChimpBooster {
             }
         });
 
+        VillianChamp villianChamp = new VillianChamp(5,2,4,3,0,1);
+        TextField villian = new TextField("Villian: ");
+        TextField villianAttack = new TextField("Attack: " + villianChamp.getAtt());
+        TextField villianDeff = new TextField("Deff: " + villianChamp.getDeff());
+        TextField villianMagic = new TextField("Magic: " + villianChamp.getMagic());
+        TextField villianWisdom = new TextField("Wisdom: " + villianChamp.getWisdom());
+        TextField villianMoral = new TextField("Moral: " + villianChamp.getMoral());
+        TextField villianLuck = new TextField("Luck: " + villianChamp.getLuck());
+
+        setTextBox(villian,700,50);
+        setTextBox(villianAttack, 700, 150);
+        setTextBox(villianDeff, 700, 200);
+        setTextBox(villianMagic, 700, 250);
+        setTextBox(villianWisdom, 700, 300);
+        setTextBox(villianMoral, 700, 350);
+        setTextBox(villianLuck, 700, 400);
+
         Button toSkills = new Button(" To the skills ");
         toSkills.setPrefHeight(60);
         toSkills.setPrefWidth(120);
@@ -200,8 +219,6 @@ public class ChimpBooster {
 
         toSkills.setOnMouseClicked((event)->{
             ChampionsPower chimpsPower = new ChampionsPower();
-
-
             try {
                 chimpsPower.skills(stg);
             } catch (IOException e) {
@@ -254,7 +271,9 @@ public class ChimpBooster {
         root.getChildren().addAll(img, attackMinus, attackMax, deffMinus, deffMax,magicMin
         , magicMax, wisdomMin, wisdomMax, moralMin, moralMax, luckMin, luckyMax, attText,
                 deffText, magicText, wisdomText, moralText, luckText, attack, defense,
-                magic, wisdom, moral, luck, skillText, skillShowOff, toSkills);
+                magic, wisdom, moral, luck, skillText, skillShowOff, toSkills,
+                villianAttack, villianDeff, villianMagic, villianWisdom, villianMoral,
+                villianLuck, villian);
 
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: Skill point defection");
@@ -267,7 +286,7 @@ public class ChimpBooster {
         str.setMinHeight(50);
         str.setMaxHeight(50);
         str.setMinWidth(50);
-        str.setMaxWidth(95);
+        str.setMaxWidth(100);
         str.setLayoutX(x);
         str.setLayoutY(y);
     }

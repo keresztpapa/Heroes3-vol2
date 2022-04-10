@@ -18,6 +18,11 @@ public class Generic {
     ImageView actual;
     ImageView stand;
     ImageView dead;
+    double att=1;
+    double magic =1;
+    double wisdom=1;
+    double moral=1;
+    double luck=1;
 
     ImageView[] movement_sprite = {};
 
@@ -29,9 +34,19 @@ public class Generic {
     public double getDamage() { return damage; }
     public void setDamage(double damage) { this.damage = damage; }
 
+    //getters + setters
+    public double getAtt() { return att; }
+    public void setAtt(double att) { this.att = att; }
     public double getDeff() { return deff; }
-    public void setDeff(double dff) { this.deff = damage; }
-
+    public void setDeff(double deff) { this.deff = deff; }
+    public double getMagic() { return magic; }
+    public void setMagic(double magic_power) { this.magic = magic_power; }
+    public double getWisdom() { return wisdom; }
+    public void setWisdom(double wisdom) { this.wisdom = wisdom; }
+    public double getMoral() { return moral; }
+    public void setMoral(double moral) { this.moral = moral; }
+    public double getLuck() { return luck; }
+    public void setLuck(double luck) { this.luck = luck; }
     public double getHp() { return hp; }
     public void setHp(double  hp) { this.hp = hp; }
     public int getMovement() { return movement; }
