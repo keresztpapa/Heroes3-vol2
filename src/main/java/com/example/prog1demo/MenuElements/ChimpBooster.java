@@ -76,7 +76,7 @@ public class ChimpBooster {
         Button attackMax = new Button(" + ");
 
         attackMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint() > 0) {
+            if(chimp.getSkillPoint()-cost > 0) {
                 chimp.setAtt(chimp.getAtt() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint() - cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -98,7 +98,7 @@ public class ChimpBooster {
         Button deffMax = new Button(" + ");
 
         deffMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint() > 0) {
+            if(chimp.getSkillPoint()-cost > 0) {
                 chimp.setDeff(chimp.getDeff() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -120,7 +120,7 @@ public class ChimpBooster {
         Button magicMax = new Button(" + ");
 
         magicMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint() > 0) {
+            if(chimp.getSkillPoint()-cost > 0) {
                 chimp.setMagic(chimp.getMagic() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -131,7 +131,7 @@ public class ChimpBooster {
         Button wisdomMin = new Button(" - ");
 
         wisdomMin.setOnMouseClicked((event)->{
-            if(chimp.getWisdom() > 0) {
+            if(chimp.getWisdom()-cost > 0) {
                 chimp.setWisdom(chimp.getWisdom() - 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()+ cost);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -142,7 +142,7 @@ public class ChimpBooster {
         Button wisdomMax = new Button(" + ");
 
         wisdomMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint() > 0) {
+            if(chimp.getSkillPoint()-cost > 0) {
                 chimp.setWisdom(chimp.getWisdom() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -164,7 +164,7 @@ public class ChimpBooster {
         Button moralMax = new Button(" + ");
 
         moralMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint() > 0) {
+            if(chimp.getSkillPoint()-cost > 0) {
                 chimp.setMoral(chimp.getMoral() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint() - 1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -186,7 +186,7 @@ public class ChimpBooster {
         Button luckyMax = new Button(" + ");
 
         luckyMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint() > 0) {
+            if(chimp.getSkillPoint()-cost > 0) {
                 chimp.setLuck(chimp.getLuck() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint() - 1);
                 skillText.setText("" + chimp.getSkillPoint());

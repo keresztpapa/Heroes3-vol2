@@ -62,8 +62,19 @@ public class Tiles implements Action {
         imp.setImg("stand", ap);
 
         //move(map, pike, this.x_count, this.y_count, ap);
-        action(map, pike, imp,this.x_count, this.y_count, ap);
+        move(map, imp, this.x_count, this.y_count, ap);
+
+        imp.getActual().setOnMouseClicked((event) -> attack(map, pike, imp, ap));
+
+        /*
+        ap.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
+            System.out.println("mouse click detected! ");
+        });
+*/
+        //move(map, pike, this.x_count, this.y_count, ap);
+        //action(map, pike, imp,this.x_count, this.y_count, ap);
         //imp.getActual().setOnMouseClicked((event) -> attack(pike, imp, ap));
+
 
         //action(map, pike, imp, this.x_count, this.y_count, ap);
         //System.out.println("mouse click detected! " + mouseEvent.getTarget().getClass().getName()); -----> mouse click detected! javafx.scene.image.ImageView
@@ -73,7 +84,8 @@ public class Tiles implements Action {
 
 
         //if (soruce instanceof Button) {  //check that the source is really a button
-/*
+
+        /*
         ap.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
             System.out.println("mouse click detected! " + mouseEvent.getPickResult());
 
@@ -122,35 +134,3 @@ public class Tiles implements Action {
     public int getY_count(){ return this.y_count; }
 
 }
-
-        /*
-
-        Generic[] init_array = {pike, arc, griff, imp, impArc, hound};
-
-        for(int i=0;i< init_array.length;i++) {
-            System.out.println(init_array[i].getName()+"  "+init_array[i].getInitiative());
-        }
-
-        Champions chimp = new Champions();
-
-        unitUpdate(chimp, pike, arc, griff);
-
-        System.out.println("\n\n\n\n");
-
-        for(int i=0;i< init_array.length;i++){
-            for(int j=1;j< init_array.length;j++){
-                Generic gen = null;
-                if(init_array[j].getInitiative() > init_array[i].getInitiative()){
-                    gen = init_array[j];
-                    init_array[j] = gen;
-                    init_array[i] = init_array[j];
-                }
-            }
-        }
-
-        System.out.println("sorted");
-        for(int i=0;i< init_array.length;i++) {
-            System.out.println(init_array[i].getName()+"  "+init_array[i].getInitiative());
-        }
-
-        */

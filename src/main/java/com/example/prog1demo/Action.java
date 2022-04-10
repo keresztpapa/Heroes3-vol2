@@ -8,12 +8,46 @@ import javafx.scene.layout.AnchorPane;
 
 public interface Action {
 
+    default boolean isNeighbour(Tile[][] map, Generic g1, Generic g2){
+        int x1 = g1.getPos_x()/100,
+            y1 = g1.getPos_y()/100,
 
-    default void attack(Generic g1, Generic g2, AnchorPane anchorPane){
-        g2.setHp(g2.getHp()-g1.getDamage());
-        System.out.println("Alany HP: "+g2.getHp());
-        if(g2.getHp()<=0) g2.setImg("dead", anchorPane);
-        System.out.println("sebzett");
+            x2 = g2.getPos_x()/100,
+            y2 = g2.getPos_y()/100;
+
+        //if(map[x1][y1] == map[x2][y2]) return true;
+        //if(x1<12 && map[x1+1][y1] == map[x2][y2]) return true;
+        //if(y1<10 && map[x1][y1+1] == map[x2][y2]) return true;
+
+        if(x1<12 && y1<10 && map[x1+1][y1+1] == map[x2][y2]) return true;
+
+        System.out.println("Pike X: "+x1);
+        System.out.println("Pike Y: "+y1);
+        System.out.println("imp X: "+x2);
+        System.out.println("IMP Y: "+y2);
+
+        /*
+
+        if(x1<12 && y1<10 && map[x1+1][y1+1] == map[x2][y2]) return true;
+
+        if(x1-1>0 && map[x1-1][y1] == map[x2][y2]) return true;
+        if(y1-1>0 && map[x1][y1-1] == map[x2][y2]) return true;
+        if(x1-1>0 && y1-1>0 && map[x1-1][y1-1] == map[x2][y2]) return true;
+*/
+        System.out.println("messze vagy");
+        return false;
+    }
+
+    default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane){
+                    if(isNeighbour(map,g1,g2)) {
+                        g2.setHp(g2.getHp() - g1.getDamage());
+                        System.out.println("Alany HP: " + g2.getHp());
+                        if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
+                        System.out.println("sebzett");
+                        if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
+                            attack(map, g2, g1, anchorPane);
+                        }
+                    }
     }
 
     default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane){
@@ -32,7 +66,7 @@ public interface Action {
                         generic.setImg(generic.getWalk(spriteCounter), anchorPane);
                         generic.setPos_x(generic.getPos_x()+1);
                         generic.setImageMovX(generic.getPos_x());
-                        if(generic.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) generic.setPos_x(generic.getPos_x()+100);
+                        if(generic.getPos_x() == tl.getMovTo_x() && !tl.getCrs())  generic.setPos_x(generic.getPos_x()+100);
                         if(map[0][0].getHandbreak() == 399) break;
                         map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
                         spriteCounter++;
@@ -70,6 +104,7 @@ public interface Action {
                         map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
                         spriteCounter++;
                     }
+
                     map[0][0].setHandbreak(0);
                     generic.setImg("stand", anchorPane);
                     generic.setImageMovX(generic.getPos_x());
@@ -128,7 +163,10 @@ public interface Action {
     }
 
     default void action(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount, AnchorPane ap){
-        for(int i=0;i<rowCount;i++){
+
+
+
+        /*for(int i=0;i<rowCount;i++){
             for (int j=0;j<colCount;j++){
                 Tile tl = map[i][j];
                 tl.getImageView().setOnMouseClicked((event)->{
@@ -145,8 +183,11 @@ public interface Action {
                     }
                 });
             }
-        }
+        } */
     }
+
+
+
 
 
 }
