@@ -49,6 +49,8 @@ public class ImpArcher extends Generic{
             new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a6.png")),
     };
 
+    public ImpArcher(){}
+
     public ImpArcher(int px, int py, AnchorPane AP){
         this.pos_x = px;
         this.pos_y = py;
@@ -76,8 +78,8 @@ public class ImpArcher extends Generic{
     public void setMoral(double moral) { moral = moral; }
     public double getLuck() { return luck; }
     public void setLuck(double luck) { luck = luck; }
-    public double getHp() { return hp; }
-    public void setHp(double  hp) { hp = hp; }
+    public int getHp() { return hp; }
+    public void setHp(int  health) { hp = health; }
     public double getCrit(){ return crit; }
     public void setCrit(double asd){ crit = asd; }
 

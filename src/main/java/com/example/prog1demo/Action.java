@@ -45,8 +45,10 @@ public interface Action {
 
     default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
                     if(isNeighbour(map,g1,g2, rowCount, colCount)) {
-                        g2.setHp(g2.getHp() - g1.getDamage());
+                        g2.setHp((int) (g2.getHp() - g1.getAttMax()));
+
                         System.out.println("Alany HP: " + g2.getHp());
+
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
                         if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
@@ -58,7 +60,7 @@ public interface Action {
     //archer
     default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
         if(!isNeighbour(map,g1,g2, rowCount, colCount)) {
-            g2.setHp(g2.getHp() - g1.getDamage());
+            g2.setHp((int) (g2.getHp() - g1.getDamage()));
             System.out.println("Alany HP: " + g2.getHp());
             if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
             System.out.println("sebzett");
@@ -166,27 +168,27 @@ public interface Action {
 
         pike.setAttMin(pike.getAttMin()*pike.getCount());
         pike.setAttMax(pike.getAttMax()*pike.getCount());
-        pike.setHp(pike.getHp()*pike.getCount());
+        pike.setHp((int) (pike.getHp()*pike.getCount()));
 
         archer.setAttMin(archer.getAttMin()*archer.getCount());
         archer.setAttMax(archer.getAttMax()*archer.getCount());
-        archer.setHp(archer.getHp()*archer.getCount());
+        archer.setHp((int) (archer.getHp()*archer.getCount()));
 
         griff.setAttMin(griff.getAttMin()*griff.getCount());
         griff.setAttMax(griff.getAttMax()*griff.getCount());
-        griff.setHp(griff.getHp()*griff.getCount());
+        griff.setHp((int) (griff.getHp()*griff.getCount()));
 
         imp.setAttMin(imp.getAttMin()*imp.getCount());
         imp.setAttMax(imp.getAttMax()*imp.getCount());
-        imp.setHp(imp.getHp()*imp.getCount());
+        imp.setHp((int) (imp.getHp()*imp.getCount()));
 
         hound.setAttMin(hound.getAttMin()*hound.getCount());
         hound.setAttMax(hound.getAttMax()*hound.getCount());
-        hound.setHp(hound.getHp()*hound.getCount());
+        hound.setHp((int) (hound.getHp()*hound.getCount()));
 
         impArcher.setAttMin(impArcher.getAttMin()*impArcher.getCount());
         impArcher.setAttMax(impArcher.getAttMax()*impArcher.getCount());
-        impArcher.setHp(impArcher.getHp()*impArcher.getCount());
+        impArcher.setHp((int) (impArcher.getHp()*impArcher.getCount()));
 
 
         for(i=0;i<chimp.getAtt();i++) {

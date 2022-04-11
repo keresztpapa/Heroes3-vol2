@@ -1,7 +1,5 @@
 package com.example.prog1demo.units.unit;
 
-import com.example.prog1demo.Action;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -9,7 +7,7 @@ public class Generic {
     AnchorPane anchorPane;
     int cost = 2;
     double damage = 1;
-    double hp = 3;
+    int hp = 0;
     double deff = 1;
     int movement = 4;
     int initiative = 7;
@@ -59,8 +57,8 @@ public class Generic {
     public void setMoral(double moral) { this.moral = moral; }
     public double getLuck() { return luck; }
     public void setLuck(double luck) { this.luck = luck; }
-    public double getHp() { return hp; }
-    public void setHp(double  hp) { this.hp = hp; }
+    public int getHp() { return hp; }
+    public void setHp(int  health) { this.hp = health; }
     public double getCrit(){ return this.crit; }
     public void setCrit(double asd){ this.crit = asd; }
     public int getCount(){ return this.count; }

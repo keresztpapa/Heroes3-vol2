@@ -1,8 +1,11 @@
 package com.example.prog1demo.MenuElements;
 
+import com.example.prog1demo.Action;
 import com.example.prog1demo.Application;
 import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.units.Champions;
+import com.example.prog1demo.units.VillianChamp;
+import com.example.prog1demo.units.unit.*;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -21,7 +24,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Preparation {
+public class Preparation implements Action {
     static TextField solText;
     static TextField griffText;
     static TextField arcText;
@@ -166,6 +169,14 @@ public class Preparation {
         toBattle.setX(800);
         toBattle.setY(600);
 
+        VillianChamp enemyChamp=new VillianChamp();
+        Soldier pike = new Soldier();
+        Griff griffin = new Griff();
+        Archer arc = new Archer();
+        Imp imp = new Imp();
+        Hound hound = new Hound();
+        ImpArcher impArcher = new ImpArcher();
+
         toBattle.setOnMouseClicked((event)->{
             root.getChildren().clear();
             if(champ.getArcherCount() == 0 && champ.getGriffCount() == 0 && champ.getSoldierCount() == 0){
@@ -179,9 +190,7 @@ public class Preparation {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
             Scene scene = null;
             try {
-
-
-
+                unitUpdate(champ, enemyChamp, pike, griffin, arc, imp, hound, impArcher);
                 scene = new Scene(fxmlLoader.load(),1500,1000);
             } catch (IOException ex) {
                 ex.printStackTrace();

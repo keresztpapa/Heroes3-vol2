@@ -51,7 +51,7 @@ public class Champions extends Generic implements Action{
         for(int i=0;i<units.size();i++){
             if(units.get(i).getPos_x() <= radX+150 && units.get(i).getPos_x() >= radX-150 &&
                     units.get(i).getPos_y() <= radY+150 && units.get(i).getPos_y() >= radY-150){
-                units.get(i).setHp(units.get(i).getHp()-magic*20);
+                units.get(i).setHp((int) (units.get(i).getHp()-magic*20));
             }
             if(units.get(i).getHp()<=0) units.get(i).setImg("dead", anchorPane);
         }
@@ -59,14 +59,14 @@ public class Champions extends Generic implements Action{
     }
 
     public void lightning(Generic unit){
-        unit.setHp(unit.getHp()-magic*30);
+        unit.setHp((int) (unit.getHp()-magic*30));
         mana-=5;
     }
 
     public void ressurrect(Generic unit, AnchorPane anchorPane){
         if(unit.getName().equals("Archer") || unit.getName().equals("Griff") || unit.getName().equals("Pike")){
            if(unit.getHp()<=0){
-               unit.setHp(unit.getHp()+magic*50);
+               unit.setHp((int) (unit.getHp()+magic*50));
                unit.setImg("stand",anchorPane);
            }
         }
