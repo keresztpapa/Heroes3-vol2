@@ -1,5 +1,6 @@
 package com.example.prog1demo.units.unit;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -32,9 +33,25 @@ public class Generic {
         this.anchorPane = ap;
     }
 
-    ImageView[] movement_sprite = {};
-
-    ImageView[] attack_sprite = {};
+    ImageView[] movement_sprite = {
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a1.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a2.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a3.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a4.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a5.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a6.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a7.png")),
+    };
+    ImageView[] attack_sprite = {
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m1.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m2.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m3.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m4.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m5.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m6.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m7.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m8.png"))
+    };
 
     public String toString(){
         return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+

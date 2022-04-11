@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -27,6 +28,7 @@ public class Tiles implements Action {
     int unitX;
     int unitY;
     static int index=0;
+    int roundCount=0;
 
 
     public Tiles(int x, int y, AnchorPane anchor){
@@ -54,7 +56,20 @@ public class Tiles implements Action {
 
     public void generate() {
         Champions chimp = new Champions();
+        chimp.setImg("stand",ap);
+        chimp.setImageMovX(100);
+        chimp.setImageMovY(100);
+        this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setGeneric(chimp);
+        this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setCrs(false);
+        this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setOccupied(true);
+
         VillianChamp evilChimp = new VillianChamp();
+        evilChimp.setImg("stand",ap);
+        evilChimp.setImageMovX(600);
+        evilChimp.setImageMovY(100);
+        this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setGeneric(evilChimp);
+        this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setCrs(false);
+        this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setOccupied(true);
 
         Soldier pike = new Soldier(0, 500, ap);
         pike.setImg("stand", ap);
@@ -104,24 +119,48 @@ public class Tiles implements Action {
 
         move(map, round.get(index), this.x_count, this.y_count, ap);
 
+        /*
         imp.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
         hound.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
         impArcher.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
-
+*/
         Button next_turn = new Button("next turn");
         next_turn.setPrefWidth(150);
         next_turn.setPrefHeight(50);
         next_turn.setLayoutX(1250);
         next_turn.setLayoutY(650);
 
-        imp.getActual().setOnMouseClicked((mouseEvent) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
-        hound.getActual().setOnMouseClicked((mouseEvent) -> attack(map, round.get(index), hound, ap, this.x_count, this.y_count));
-        impArcher.getActual().setOnMouseClicked((mouseEvent) -> attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count));
+        imp.getActual().setOnMouseClicked((mouseEvent) -> {
+            attack(map, round.get(index), imp, ap, this.x_count, this.y_count);
+            if(imp.getHp()<=0) round.remove(index);
+            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Menu menu = new Menu();
+            }
+        });
+        hound.getActual().setOnMouseClicked((mouseEvent) -> {
+            attack(map, round.get(index), hound, ap, this.x_count, this.y_count);
+            if(hound.getHp()<=0) round.remove(index);
+            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Menu menu = new Menu();
+            }
+        });
+        impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
+            attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count);
+            if(impArcher.getHp()<=0) round.remove(index);
+            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Menu menu = new Menu();
+            }
+        });
 
         next_turn.setOnMouseClicked((event) -> {
+            roundCount++;
             setActiveIndex(round);
-            System.out.println("ez biza next turn");
+            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Menu menu = new Menu();
+            }
         });
+
+
 
         ap.getChildren().add(next_turn);
     }
@@ -136,13 +175,12 @@ public class Tiles implements Action {
             case 4:
             case 5:
             case 6:
-            case 7:
                 index++;
                 System.out.println("csökkent "+index+" re");
                 round.get(index).setActive(true);
                 move(map, round.get(index), this.x_count, this.y_count, ap);
                 break;
-            case 8:
+            case 7:
                 index=0;
                 System.out.println("csökkent "+index+" re");
                 round.get(index).setActive(true);

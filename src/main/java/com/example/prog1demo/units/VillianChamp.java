@@ -2,7 +2,9 @@ package com.example.prog1demo.units;
 
 import com.example.prog1demo.Action;
 import com.example.prog1demo.units.unit.Generic;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 public class VillianChamp extends Generic implements Action {
         static double att=1;
@@ -25,7 +27,8 @@ public class VillianChamp extends Generic implements Action {
         static int archerCount=0;
 
         ImageView img;
-
+        ImageView actual = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
+        ImageView stand = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
         public VillianChamp(int attack, int deffense, int mgc, int wisd, int mor, int lucky){
             att = attack;
             deff = deffense;
@@ -39,6 +42,13 @@ public class VillianChamp extends Generic implements Action {
 
         public VillianChamp(int x){ gold = x; }
         public VillianChamp(){}
+
+        public void setImg(String z, AnchorPane anchorPane) {
+                this.actual = stand;
+                actual.setX(pos_x);
+                actual.setY(pos_y);
+                anchorPane.getChildren().add(actual);
+        }
 
         //getters + setters
         public double getAtt() { return att; }

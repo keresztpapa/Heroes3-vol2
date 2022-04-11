@@ -46,15 +46,14 @@ public interface Action {
     default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
                     if(isNeighbour(map,g1,g2, rowCount, colCount)) {
                         g2.setHp((int) (g2.getHp() - g1.getAttMax()));
-
                         System.out.println("Alany HP: " + g2.getHp());
-
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
                         if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
                             attack(map, g2, g1, anchorPane, rowCount, colCount);
                         }
                     }
+
     }
 
     //archer

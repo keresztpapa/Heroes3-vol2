@@ -3,6 +3,7 @@ package com.example.prog1demo.units;
 import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.units.unit.Generic;
 import com.example.prog1demo.Action;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -30,6 +31,9 @@ public class Champions extends Generic implements Action{
     static int archerCount=0;
 
     ImageView img;
+
+    ImageView actual = new ImageView(new Image("file:pngs/ChimpPokemon.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/ChimpPokemon.png"));
 
     public Champions(int attack, int deffense, int mgc, int wisd, int mor, int lucky, int px, int py){
         att = attack;
@@ -102,6 +106,14 @@ public class Champions extends Generic implements Action{
     public int getGriffCount(){ return griffCount; }
     public double getSkillPoint(){ return skillPoint; }
     public void setSkillPoint(double z){ skillPoint = z; }
+
+    public void setImg(String z, AnchorPane anchorPane) {
+            anchorPane.getChildren().remove(actual);
+            this.actual = stand;
+            actual.setX(pos_x);
+            actual.setY(pos_y);
+            anchorPane.getChildren().add(actual);
+    }
 
     public int getMana(){ return mana; }
     public void setMana(int asd){ mana = asd; }
