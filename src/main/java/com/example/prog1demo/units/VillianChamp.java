@@ -42,17 +42,17 @@ public class VillianChamp extends Generic implements Action {
 
         //getters + setters
         public double getAtt() { return att; }
-        public void setAtt(double att) { com.example.prog1demo.units.Champions.att = att; }
+        public void setAtt(double attack) { att = attack; }
         public double getDeff() { return deff; }
-        public void setDeff(double deff) { com.example.prog1demo.units.Champions.deff = deff; }
+        public void setDeff(double dff) { deff = dff; }
         public double getMagic() { return magic; }
-        public void setMagic(double magic_power) { com.example.prog1demo.units.Champions.magic = magic_power; }
+        public void setMagic(double mgc_pwr) { magic = mgc_pwr; }
         public double getWisdom() { return wisdom; }
-        public void setWisdom(double wisdom) { com.example.prog1demo.units.Champions.wisdom = wisdom; }
+        public void setWisdom(double wsdm) { wisdom = wsdm; }
         public double getMoral() { return moral; }
-        public void setMoral(double moral) { com.example.prog1demo.units.Champions.moral = moral; }
+        public void setMoral(double mrl) { moral = mrl; }
         public double getLuck() { return luck; }
-        public void setLuck(double luck) { com.example.prog1demo.units.Champions.luck = luck; }
+        public void setLuck(double lck) { luck = lck; }
         public void setPos_x(int x) { pos_x = x; }
         public void setPos_y(int y) { pos_y = y; }
         public int getPos_x(){ return pos_x; }

@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Random;
 
 public class ChimpBooster {
 
@@ -76,7 +77,7 @@ public class ChimpBooster {
         Button attackMax = new Button(" + ");
 
         attackMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint()-cost > 0) {
+            if(chimp.getSkillPoint()-cost > 0 && chimp.getAtt()<=10) {
                 chimp.setAtt(chimp.getAtt() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint() - cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -98,7 +99,7 @@ public class ChimpBooster {
         Button deffMax = new Button(" + ");
 
         deffMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint()-cost > 0) {
+            if(chimp.getSkillPoint()-cost > 0 && chimp.getDeff() <= 10) {
                 chimp.setDeff(chimp.getDeff() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -120,7 +121,7 @@ public class ChimpBooster {
         Button magicMax = new Button(" + ");
 
         magicMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint()-cost > 0) {
+            if(chimp.getSkillPoint()-cost > 0 && chimp.getMagic() <= 10) {
                 chimp.setMagic(chimp.getMagic() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -142,7 +143,7 @@ public class ChimpBooster {
         Button wisdomMax = new Button(" + ");
 
         wisdomMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint()-cost > 0) {
+            if(chimp.getSkillPoint()-cost > 0 && chimp.getWisdom() <=10) {
                 chimp.setWisdom(chimp.getWisdom() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint()- cost*1.1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -164,7 +165,7 @@ public class ChimpBooster {
         Button moralMax = new Button(" + ");
 
         moralMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint()-cost > 0) {
+            if(chimp.getSkillPoint()-cost > 0 && chimp.getMoral() <=10) {
                 chimp.setMoral(chimp.getMoral() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint() - 1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -186,7 +187,7 @@ public class ChimpBooster {
         Button luckyMax = new Button(" + ");
 
         luckyMax.setOnMouseClicked((event)->{
-            if(chimp.getSkillPoint()-cost > 0) {
+            if(chimp.getSkillPoint()-cost > 0 && chimp.getLuck() <= 10) {
                 chimp.setLuck(chimp.getLuck() + 1);
                 chimp.setSkillPoint(chimp.getSkillPoint() - 1);
                 skillText.setText("" + chimp.getSkillPoint());
@@ -194,7 +195,21 @@ public class ChimpBooster {
             }
         });
 
-        VillianChamp villianChamp = new VillianChamp(5,2,4,3,0,1);
+        VillianChamp villianChamp = new VillianChamp();
+
+        for(int i=0;i<10;i++){
+            Random rand = new Random();
+            int randSkill = rand.nextInt(6);
+            switch (randSkill) {
+                case 0 -> villianChamp.setAtt(villianChamp.getAtt() + 1);
+                case 1 -> villianChamp.setDeff(villianChamp.getDamage() + 1);
+                case 2 -> villianChamp.setMagic(villianChamp.getMagic() + 1);
+                case 3 -> villianChamp.setWisdom(villianChamp.getWisdom() + 1);
+                case 4 -> villianChamp.setMoral(villianChamp.getMoral() + 1);
+                case 5 -> villianChamp.setLuck(villianChamp.getLuck() + 1);
+            }
+        }
+
         TextField villian = new TextField("Villian: ");
         TextField villianAttack = new TextField("Attack: " + villianChamp.getAtt());
         TextField villianDeff = new TextField("Deff: " + villianChamp.getDeff());

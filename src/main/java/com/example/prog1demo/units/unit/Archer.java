@@ -6,8 +6,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Archer extends Generic{
     int cost;
-    double dmg;
-    double hp;
+    static double hp;
     int movement;
     int initiative=0;
     int pos_x;
@@ -15,6 +14,13 @@ public class Archer extends Generic{
     int imgX, imgY;
     static int count=0;
     static boolean active=false;
+    static double att=1;
+    static double deff=1;
+    static double magic =1;
+    static double wisdom=1;
+    static double moral=1;
+    static double luck=1;
+    static double crit=0;
 
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/player_units/archer/archer_stand.png"));
@@ -59,6 +65,22 @@ public class Archer extends Generic{
     }
 
 
+    public double getAtt() { return att; }
+    public void setAtt(double attack) { att = attack; }
+    public double getDeff() { return deff; }
+    public void setDeff(double deffense) { deff = deffense; }
+    public double getMagic() { return magic; }
+    public void setMagic(double magic_power) { magic = magic_power; }
+    public double getWisdom() { return wisdom; }
+    public void setWisdom(double wisdom) { wisdom = wisdom; }
+    public double getMoral() { return moral; }
+    public void setMoral(double moral) { moral = moral; }
+    public double getLuck() { return luck; }
+    public void setLuck(double luck) { luck = luck; }
+    public double getHp() { return hp; }
+    public void setHp(double  hp) { hp = hp; }
+    public double getCrit(){ return crit; }
+    public void setCrit(double asd){ crit = asd; }
 
     public int getImgX(){ return (int) this.actual.getX(); }
     public int getImgY(){ return (int) this.actual.getY(); }

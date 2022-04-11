@@ -23,6 +23,7 @@ public class Generic {
     double wisdom=1;
     double moral=1;
     double luck=1;
+    double crit=0;
     static boolean active=false;
 
     public Generic(){}
@@ -43,9 +44,9 @@ public class Generic {
 
     //getters + setters
     public double getAtt() { return att; }
-    public void setAtt(double att) { this.att = att; }
+    public void setAtt(double attack) { this.att = attack; }
     public double getDeff() { return deff; }
-    public void setDeff(double deff) { this.deff = deff; }
+    public void setDeff(double deffense) { this.deff = deffense; }
     public double getMagic() { return magic; }
     public void setMagic(double magic_power) { this.magic = magic_power; }
     public double getWisdom() { return wisdom; }
@@ -56,6 +57,9 @@ public class Generic {
     public void setLuck(double luck) { this.luck = luck; }
     public double getHp() { return hp; }
     public void setHp(double  hp) { this.hp = hp; }
+    public double getCrit(){ return this.crit; }
+    public void setCrit(double asd){ this.crit = asd; }
+
     public int getMovement() { return movement; }
     public void setMovement(int movement) { this.movement = movement; }
     public int getInitiative() { return initiative; }
@@ -76,6 +80,7 @@ public class Generic {
     public String getName(){ return ""; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }
+
 
     public void setImg(ImageView z, AnchorPane anchorPane){
             anchorPane.getChildren().remove(actual);

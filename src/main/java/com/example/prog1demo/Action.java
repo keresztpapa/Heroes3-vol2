@@ -3,6 +3,7 @@ package com.example.prog1demo;
 import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.units.Champions;
+import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.layout.AnchorPane;
 
@@ -160,27 +161,52 @@ public interface Action {
         }
     }
 
-    default void unitUpdate(Champions chimp, Generic g1, Generic g2, Generic g3){
+    default void unitUpdate(Champions chimp, VillianChamp evilChimp, Generic pike, Generic griff, Generic archer, Generic imp, Generic hound, Generic impArcher){
         int i;
         for(i=0;i<chimp.getAtt();i++) {
-            g1.setDamage(g1.getDamage() * 1.1);
-            g2.setDamage(g2.getDamage() * 1.1);
-            g3.setDamage(g3.getDamage() * 1.1);
-
+            pike.setDamage(pike.getDamage() * 1.1);
+            griff.setDamage(griff.getDamage() * 1.1);
+            archer.setDamage(archer.getDamage() * 1.1);
+        }
+        for(i=0;i<evilChimp.getAtt();i++){
+            imp.setDamage(imp.getDamage() * 1.1);
+            hound.setDamage(hound.getDamage() * 1.1);
+            impArcher.setDamage(impArcher.getDamage() * 1.1);
         }
         for(i=0;i<chimp.getDeff();i++) {
-            g1.setDeff(g1.getDamage() * 1.05);
-            g2.setDeff(g2.getDamage() * 1.05);
-            g3.setDeff(g3.getDamage() * 1.05);
+            pike.setDeff(pike.getDamage() * 1.05);
+            griff.setDeff(griff.getDamage() * 1.05);
+            archer.setDeff(archer.getDamage() * 1.05);
         }
+        for (i=0;i<evilChimp.getDeff();i++){
+            imp.setDeff(imp.getDamage() * 1.05);
+            hound.setDeff(hound.getDamage() * 1.05);
+            impArcher.setDeff(impArcher.getDamage() * 1.05);
+        }
+
         for(i=0;i<chimp.getWisdom();i++) chimp.setMana(chimp.getMana()+10);
+        for(i=0;i<evilChimp.getWisdom();i++) evilChimp.setMana(evilChimp.getMana()+10);
 
         for(i=0;i<chimp.getMoral();i++) {
-            g1.setInitiative(g1.getInitiative() + 1);
-            g2.setInitiative(g2.getInitiative() + 1);
-            g3.setInitiative(g3.getInitiative() + 1);
+            pike.setInitiative(pike.getInitiative() + 1);
+            griff.setInitiative(griff.getInitiative() + 1);
+            archer.setInitiative(archer.getInitiative() + 1);
         }
-
+        for(i=0;i<evilChimp.getMoral();i++) {
+            imp.setInitiative(imp.getInitiative() + 1);
+            hound.setInitiative(hound.getInitiative() + 1);
+            impArcher.setInitiative(impArcher.getInitiative() + 1);
+        }
+        for(i=0;i<chimp.getLuck();i++) {
+            pike.setCrit(pike.getCrit()+0.05);
+            griff.setCrit(griff.getCrit()+0.05);
+            archer.setCrit(archer.getCrit()+0.05);
+        }
+        for(i=0;i<evilChimp.getLuck();i++) {
+            imp.setCrit(imp.getCrit()+0.05);
+            hound.setCrit(hound.getCrit()+0.05);
+            impArcher.setCrit(hound.getCrit()+0.05);
+        }
     }
 
     default void action(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount, AnchorPane ap){

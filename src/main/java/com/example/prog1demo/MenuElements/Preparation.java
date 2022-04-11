@@ -179,6 +179,9 @@ public class Preparation {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
             Scene scene = null;
             try {
+
+
+
                 scene = new Scene(fxmlLoader.load(),1500,1000);
             } catch (IOException ex) {
                 ex.printStackTrace();
