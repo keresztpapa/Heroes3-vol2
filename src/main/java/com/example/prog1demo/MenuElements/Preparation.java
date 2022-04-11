@@ -176,7 +176,15 @@ public class Preparation implements Action {
         Imp imp = new Imp();
         Hound hound = new Hound();
         ImpArcher impArcher = new ImpArcher();
-
+////////////////////
+        System.out.println("Update előtt");
+        System.out.println(pike+"\n\n");
+        System.out.println(griffin+"\n\n");
+        System.out.println(arc+"\n\n");
+        System.out.println(imp+"\n\n");
+        System.out.println(hound+"\n\n");
+        System.out.println(impArcher+"\n\n");
+        //////////////////////////
         toBattle.setOnMouseClicked((event)->{
             root.getChildren().clear();
             if(champ.getArcherCount() == 0 && champ.getGriffCount() == 0 && champ.getSoldierCount() == 0){
@@ -190,7 +198,15 @@ public class Preparation implements Action {
             FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
             Scene scene = null;
             try {
+                System.out.println("update után");
                 unitUpdate(champ, enemyChamp, pike, griffin, arc, imp, hound, impArcher);
+                System.out.println(pike+"\n\n");
+                System.out.println(griffin+"\n\n");
+                System.out.println(arc+"\n\n");
+                System.out.println(imp+"\n\n");
+                System.out.println(hound+"\n\n");
+                System.out.println(impArcher+"\n\n");
+
                 scene = new Scene(fxmlLoader.load(),1500,1000);
             } catch (IOException ex) {
                 ex.printStackTrace();

@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Random;
+
 public class Hound extends Generic{
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
@@ -18,7 +20,8 @@ public class Hound extends Generic{
     static double moral=1;
     static double luck=1;
     static double crit=0;
-    static int count=0;
+    Random rand = new Random();
+    static int count;
     static int cost = 2;
     int movement = 4,
         initiative = 1,
@@ -47,7 +50,7 @@ public class Hound extends Generic{
             new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a7.png")),
     };
 
-    public Hound(){}
+    public Hound(){  count= rand.nextInt(100);  }
 
     public Hound(int px, int py, AnchorPane AP){
         this.pos_x = px;
@@ -60,7 +63,14 @@ public class Hound extends Generic{
         //AP.getChildren().add(actual);
         this.imgX = px;
         this.imgY = py;
+        count= rand.nextInt(100);
     }
+
+    public String toString(){
+        return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+    }
+
 
     public double getAttMin() { return attMin; }
     public void setAttMin(double attack) { attMin = attack; }

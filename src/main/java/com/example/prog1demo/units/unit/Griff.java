@@ -63,6 +63,12 @@ public class Griff extends Generic{
         this.imgY = py;
     }
 
+    public String toString(){
+        return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+    }
+
+
     public double getAttMin() { return attMin; }
     public void setAttMin(double attack) { attMin = attack; }
     public double getAttMax() { return attMax; }

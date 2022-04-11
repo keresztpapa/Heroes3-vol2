@@ -67,6 +67,10 @@ public class Archer extends Generic{
         this.imgY = py;
     }
 
+    public String toString(){
+        return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+    }
 
     public double getAttMin() { return attMin; }
     public void setAttMin(double attack) { attMin = attack; }
@@ -103,9 +107,6 @@ public class Archer extends Generic{
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
     public String getName(){ return "Archer"; }
-    public String toString(){
-        return "archer";
-    }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }
 

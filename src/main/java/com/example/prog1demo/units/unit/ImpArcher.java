@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Random;
+
 public class ImpArcher extends Generic{
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_stand.png"));
@@ -11,8 +13,8 @@ public class ImpArcher extends Generic{
     ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_death.png"));
     int imgX, imgY;
     static boolean active=false;
-
-    static int count=0;
+    Random rand = new Random();
+    static int count;
     static int cost = 2;
     int movement = 4,
         initiative = 3,
@@ -49,7 +51,7 @@ public class ImpArcher extends Generic{
             new ImageView(new Image("file:pngs/computer_units/imp_archer/attack/imp_archer_a6.png")),
     };
 
-    public ImpArcher(){}
+    public ImpArcher(){ count= rand.nextInt(100); }
 
     public ImpArcher(int px, int py, AnchorPane AP){
         this.pos_x = px;
@@ -62,7 +64,15 @@ public class ImpArcher extends Generic{
         //AP.getChildren().add(actual);
         this.imgX = px;
         this.imgY = py;
+        count= rand.nextInt(100);
     }
+
+
+    public String toString(){
+        return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+    }
+
 
     public double getAttMin() { return attMin; }
     public void setAttMin(double attack) { attMin = attack; }

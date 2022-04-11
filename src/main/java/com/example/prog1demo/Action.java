@@ -166,29 +166,29 @@ public interface Action {
     default void unitUpdate(Champions chimp, VillianChamp evilChimp, Generic pike, Generic griff, Generic archer, Generic imp, Generic hound, Generic impArcher){
         int i;
 
-        pike.setAttMin(pike.getAttMin()*pike.getCount());
-        pike.setAttMax(pike.getAttMax()*pike.getCount());
-        pike.setHp((int) (pike.getHp()*pike.getCount()));
+        pike.setAttMin(pike.getAttMin()*chimp.getSoldierCount());
+        pike.setAttMax(pike.getAttMax()*chimp.getSoldierCount());
+        pike.setHp((pike.getHp()*chimp.getSoldierCount()));
 
-        archer.setAttMin(archer.getAttMin()*archer.getCount());
-        archer.setAttMax(archer.getAttMax()*archer.getCount());
-        archer.setHp((int) (archer.getHp()*archer.getCount()));
+        archer.setAttMin(archer.getAttMin()*chimp.getArcherCount());
+        archer.setAttMax(archer.getAttMax()*chimp.getArcherCount());
+        archer.setHp((archer.getHp()*chimp.getArcherCount()));
 
-        griff.setAttMin(griff.getAttMin()*griff.getCount());
-        griff.setAttMax(griff.getAttMax()*griff.getCount());
-        griff.setHp((int) (griff.getHp()*griff.getCount()));
+        griff.setAttMin(griff.getAttMin()*chimp.getGriffCount());
+        griff.setAttMax(griff.getAttMax()*chimp.getGriffCount());
+        griff.setHp((griff.getHp()*chimp.getGriffCount()));
 
         imp.setAttMin(imp.getAttMin()*imp.getCount());
         imp.setAttMax(imp.getAttMax()*imp.getCount());
-        imp.setHp((int) (imp.getHp()*imp.getCount()));
+        imp.setHp((imp.getHp()*imp.getCount()));
 
         hound.setAttMin(hound.getAttMin()*hound.getCount());
         hound.setAttMax(hound.getAttMax()*hound.getCount());
-        hound.setHp((int) (hound.getHp()*hound.getCount()));
+        hound.setHp((hound.getHp()*hound.getCount()));
 
         impArcher.setAttMin(impArcher.getAttMin()*impArcher.getCount());
         impArcher.setAttMax(impArcher.getAttMax()*impArcher.getCount());
-        impArcher.setHp((int) (impArcher.getHp()*impArcher.getCount()));
+        impArcher.setHp((impArcher.getHp()*impArcher.getCount()));
 
 
         for(i=0;i<chimp.getAtt();i++) {

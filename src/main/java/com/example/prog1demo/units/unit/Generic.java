@@ -36,6 +36,11 @@ public class Generic {
 
     ImageView[] attack_sprite = {};
 
+    public String toString(){
+        return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+    }
+
 
     public int getCost() { return cost; }
     public void setCost(int cost) { this.cost = cost; }

@@ -4,6 +4,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.Random;
+
 public class Imp extends Generic{
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
@@ -11,8 +13,8 @@ public class Imp extends Generic{
     ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp/imp_death.png"));
     int imgX, imgY;
     static boolean active=false;
-
-    static int count=0;
+    Random rand = new Random();
+    static int count;
     static int cost = 2;
     int movement = 4,
         initiative = 2,
@@ -49,7 +51,7 @@ public class Imp extends Generic{
             new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a6.png")),
     };
 
-    public Imp(){}
+    public Imp(){ count= rand.nextInt(100); }
 
     public Imp(int px, int py, AnchorPane AP){
         this.pos_x = px;
@@ -61,6 +63,12 @@ public class Imp extends Generic{
         this.anchorPane = AP;
         this.imgX = px;
         this.imgY = py;
+        count= rand.nextInt(100);
+    }
+
+    public String toString(){
+        return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
     }
 
 
