@@ -6,7 +6,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class Griff extends Generic{
     int cost;
-    double hp;
+    static int hp = 30;
     int movement;
     int initiative=5;
     int pos_x;
@@ -14,7 +14,8 @@ public class Griff extends Generic{
     int imgX, imgY;
     static int count=0;
     static boolean active=false;
-    static double att=1;
+    static double attMin=5;
+    static double attMax=10;
     static double deff=1;
     static double magic =1;
     static double wisdom=1;
@@ -60,8 +61,10 @@ public class Griff extends Generic{
         this.imgY = py;
     }
 
-    public double getAtt() { return att; }
-    public void setAtt(double attack) { att = attack; }
+    public double getAttMin() { return attMin; }
+    public void setAttMin(double attack) { attMin = attack; }
+    public double getAttMax() { return attMax; }
+    public void setAttMax(double attack) { attMax = attack; }
     public double getDeff() { return deff; }
     public void setDeff(double deffense) { deff = deffense; }
     public double getMagic() { return magic; }

@@ -13,20 +13,20 @@ public class ImpArcher extends Generic{
     static boolean active=false;
 
     static int count=0;
-    int     cost = 2,
-            movement = 4,
-            initiative = 3,
-            pos_x,
-            pos_y;
-    static double att=1;
+    static int cost = 2;
+    int movement = 4,
+        initiative = 3,
+        pos_x,
+        pos_y;
+    static double attMin=2;
+    static double attMax=4;
     static double deff=1;
     static double magic =1;
     static double wisdom=1;
     static double moral=1;
     static double luck=1;
     static double crit=0;
-    double damage = 1;
-    double hp = 3;
+    static int hp = 7;
 
     ImageView[] movement_sprite = {
             new ImageView(new Image("file:pngs/computer_units/imp_archer/move/imp_archer_m1.png")),
@@ -62,8 +62,10 @@ public class ImpArcher extends Generic{
         this.imgY = py;
     }
 
-    public double getAtt() { return att; }
-    public void setAtt(double attack) { att = attack; }
+    public double getAttMin() { return attMin; }
+    public void setAttMin(double attack) { attMin = attack; }
+    public double getAttMax() { return attMax; }
+    public void setAttMax(double attack) { attMax = attack; }
     public double getDeff() { return deff; }
     public void setDeff(double deffense) { deff = deffense; }
     public double getMagic() { return magic; }

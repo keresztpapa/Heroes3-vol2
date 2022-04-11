@@ -12,13 +12,15 @@ public class Soldier extends Generic{
         int imgX, imgY;
 
         static int count=0;
-        int cost = 2,
-            movement = 4,
-                initiative = 8,
-                pos_x,
-                pos_y;
-    double damage = 1, hp = 3;
-    static double att=1;
+
+        int movement = 4,
+            initiative = 8,
+            pos_x,
+            pos_y;
+    static int cost = 2;
+    static int hp = 3;
+    static double attMin=1;
+    static double attMax=1;
     static double deff=1;
     static double magic =1;
     static double wisdom=1;
@@ -56,9 +58,11 @@ public class Soldier extends Generic{
             this.imgX = px;
             this.imgY = py;
         }
+        public double getAttMin() { return attMin; }
+        public void setAttMin(double attack) { attMin = attack; }
+        public double getAttMax() { return attMax; }
+        public void setAttMax(double attack) { attMax = attack; }
 
-        public double getAtt() { return att; }
-        public void setAtt(double attack) { att = attack; }
         public double getDeff() { return deff; }
         public void setDeff(double deffense) { deff = deffense; }
         public double getMagic() { return magic; }

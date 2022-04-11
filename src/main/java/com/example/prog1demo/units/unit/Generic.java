@@ -15,10 +15,12 @@ public class Generic {
     int initiative = 7;
     int pos_x;
     int pos_y;
+    int count=0;
     ImageView actual = new ImageView();
     ImageView stand = new ImageView();
     ImageView dead = new ImageView();
-    double att=1;
+    double attMin=1;
+    double attMax=1;
     double magic =1;
     double wisdom=1;
     double moral=1;
@@ -43,8 +45,10 @@ public class Generic {
     public void setDamage(double damage) { this.damage = damage; }
 
     //getters + setters
-    public double getAtt() { return att; }
-    public void setAtt(double attack) { this.att = attack; }
+    public double getAttMin() { return attMin; }
+    public void setAttMin(double attack) { this.attMin = attack; }
+    public double getAttMax() { return attMax; }
+    public void setAttMax(double attack) { this.attMax = attack; }
     public double getDeff() { return deff; }
     public void setDeff(double deffense) { this.deff = deffense; }
     public double getMagic() { return magic; }
@@ -59,6 +63,7 @@ public class Generic {
     public void setHp(double  hp) { this.hp = hp; }
     public double getCrit(){ return this.crit; }
     public void setCrit(double asd){ this.crit = asd; }
+    public int getCount(){ return this.count; }
 
     public int getMovement() { return movement; }
     public void setMovement(int movement) { this.movement = movement; }

@@ -10,7 +10,8 @@ public class Hound extends Generic{
     ImageView stand = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
     ImageView dead = new ImageView(new Image("file:pngs/computer_units/hound/hound_death.png"));
     int imgX, imgY;
-    static double att=1;
+    static double attMin=5;
+    static double attMax=10;
     static double deff=1;
     static double magic =1;
     static double wisdom=1;
@@ -18,13 +19,12 @@ public class Hound extends Generic{
     static double luck=1;
     static double crit=0;
     static int count=0;
-    int     cost = 2,
-            movement = 4,
-            initiative = 1,
-            pos_x,
-            pos_y;
-    double damage = 1;
-    double hp = 3;
+    static int cost = 2;
+    int movement = 4,
+        initiative = 1,
+        pos_x,
+        pos_y;
+    static int hp = 30;
     static boolean active=false;
 
     ImageView[] movement_sprite = {
@@ -60,8 +60,10 @@ public class Hound extends Generic{
         this.imgY = py;
     }
 
-    public double getAtt() { return att; }
-    public void setAtt(double attack) { att = attack; }
+    public double getAttMin() { return attMin; }
+    public void setAttMin(double attack) { attMin = attack; }
+    public double getAttMax() { return attMax; }
+    public void setAttMax(double attack) { attMax = attack; }
     public double getDeff() { return deff; }
     public void setDeff(double deffense) { deff = deffense; }
     public double getMagic() { return magic; }

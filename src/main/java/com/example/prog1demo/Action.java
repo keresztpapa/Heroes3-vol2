@@ -163,6 +163,32 @@ public interface Action {
 
     default void unitUpdate(Champions chimp, VillianChamp evilChimp, Generic pike, Generic griff, Generic archer, Generic imp, Generic hound, Generic impArcher){
         int i;
+
+        pike.setAttMin(pike.getAttMin()*pike.getCount());
+        pike.setAttMax(pike.getAttMax()*pike.getCount());
+        pike.setHp(pike.getHp()*pike.getCount());
+
+        archer.setAttMin(archer.getAttMin()*archer.getCount());
+        archer.setAttMax(archer.getAttMax()*archer.getCount());
+        archer.setHp(archer.getHp()*archer.getCount());
+
+        griff.setAttMin(griff.getAttMin()*griff.getCount());
+        griff.setAttMax(griff.getAttMax()*griff.getCount());
+        griff.setHp(griff.getHp()*griff.getCount());
+
+        imp.setAttMin(imp.getAttMin()*imp.getCount());
+        imp.setAttMax(imp.getAttMax()*imp.getCount());
+        imp.setHp(imp.getHp()*imp.getCount());
+
+        hound.setAttMin(hound.getAttMin()*hound.getCount());
+        hound.setAttMax(hound.getAttMax()*hound.getCount());
+        hound.setHp(hound.getHp()*hound.getCount());
+
+        impArcher.setAttMin(impArcher.getAttMin()*impArcher.getCount());
+        impArcher.setAttMax(impArcher.getAttMax()*impArcher.getCount());
+        impArcher.setHp(impArcher.getHp()*impArcher.getCount());
+
+
         for(i=0;i<chimp.getAtt();i++) {
             pike.setDamage(pike.getDamage() * 1.1);
             griff.setDamage(griff.getDamage() * 1.1);
@@ -198,14 +224,14 @@ public interface Action {
             impArcher.setInitiative(impArcher.getInitiative() + 1);
         }
         for(i=0;i<chimp.getLuck();i++) {
-            pike.setCrit(pike.getCrit()+0.05);
-            griff.setCrit(griff.getCrit()+0.05);
-            archer.setCrit(archer.getCrit()+0.05);
+            pike.setCrit(pike.getCrit()*1.05);
+            griff.setCrit(griff.getCrit()*1.05);
+            archer.setCrit(archer.getCrit()*1.05);
         }
         for(i=0;i<evilChimp.getLuck();i++) {
-            imp.setCrit(imp.getCrit()+0.05);
-            hound.setCrit(hound.getCrit()+0.05);
-            impArcher.setCrit(hound.getCrit()+0.05);
+            imp.setCrit(imp.getCrit()*1.05);
+            hound.setCrit(hound.getCrit()*1.05);
+            impArcher.setCrit(hound.getCrit()*1.05);
         }
     }
 

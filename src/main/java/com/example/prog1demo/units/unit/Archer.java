@@ -14,7 +14,8 @@ public class Archer extends Generic{
     int imgX, imgY;
     static int count=0;
     static boolean active=false;
-    static double att=1;
+    static double attMin=1;
+    static double attMax=1;
     static double deff=1;
     static double magic =1;
     static double wisdom=1;
@@ -65,8 +66,10 @@ public class Archer extends Generic{
     }
 
 
-    public double getAtt() { return att; }
-    public void setAtt(double attack) { att = attack; }
+    public double getAttMin() { return attMin; }
+    public void setAttMin(double attack) { attMin = attack; }
+    public double getAttMax() { return attMax; }
+    public void setAttMax(double attack) { attMax = attack; }
     public double getDeff() { return deff; }
     public void setDeff(double deffense) { deff = deffense; }
     public double getMagic() { return magic; }
