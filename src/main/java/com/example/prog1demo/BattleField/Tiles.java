@@ -2,6 +2,7 @@ package com.example.prog1demo.BattleField;
 
 import com.example.prog1demo.Action;
 import com.example.prog1demo.units.Champions;
+import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -52,8 +53,10 @@ public class Tiles implements Action {
     }
 
     public void generate() {
+        Champions chimp = new Champions();
+        VillianChamp evilChimp = new VillianChamp();
 
-        Soldier pike = new Soldier(0, 0, ap);
+        Soldier pike = new Soldier(0, 500, ap);
         pike.setImg("stand", ap);
         this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setGeneric(pike);
         this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setCrs(false);
@@ -65,26 +68,55 @@ public class Tiles implements Action {
         this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setCrs(false);
         this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setOccupied(true);
 
+        Archer archer = new Archer(0,200,ap);
+        this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setGeneric(archer);
+        this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setCrs(false);
+        this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setOccupied(true);
+        archer.setImg("stand",ap);
+
         Imp imp = new Imp(300, 300, ap);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setCrs(false);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setOccupied(true);
         imp.setImg("stand", ap);
 
+        Hound hound = new Hound(700, 600, ap);
+        this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setGeneric(hound);
+        this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setCrs(false);
+        this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setOccupied(true);
+        hound.setImg("stand", ap);
+
+        ImpArcher impArcher = new ImpArcher(500, 400, ap);
+        this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setGeneric(impArcher);
+        this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setCrs(false);
+        this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
+        impArcher.setImg("stand", ap);
+
         ArrayList<Generic> round = new ArrayList<Generic>();
         round.add(pike);
         round.add(griff);
+        round.add(archer);
         round.add(imp);
+        round.add(impArcher);
+        round.add(hound);
+        round.add(chimp);
+        round.add(evilChimp);
 
         move(map, round.get(index), this.x_count, this.y_count, ap);
 
         imp.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
+        hound.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
+        impArcher.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
 
         Button next_turn = new Button("next turn");
         next_turn.setPrefWidth(150);
         next_turn.setPrefHeight(50);
         next_turn.setLayoutX(1250);
         next_turn.setLayoutY(650);
+
+        imp.getActual().setOnMouseClicked((mouseEvent) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
+        hound.getActual().setOnMouseClicked((mouseEvent) -> attack(map, round.get(index), hound, ap, this.x_count, this.y_count));
+        impArcher.getActual().setOnMouseClicked((mouseEvent) -> attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count));
 
         next_turn.setOnMouseClicked((event) -> {
             setActiveIndex(round);
@@ -98,53 +130,26 @@ public class Tiles implements Action {
         round.get(index).setActive(false);
         switch (index){
             case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
                 index++;
-                System.out.println("nőtt "+index+" re");
+                System.out.println("csökkent "+index+" re");
                 round.get(index).setActive(true);
                 move(map, round.get(index), this.x_count, this.y_count, ap);
                 break;
-
-            case 1:
-                index--;
+            case 8:
+                index=0;
                 System.out.println("csökkent "+index+" re");
                 round.get(index).setActive(true);
                 move(map, round.get(index), this.x_count, this.y_count, ap);
                 break;
         }
     }
-
-        /*
-    public int giveActiveIndex(ArrayList<Generic> round){
-
-        int i=0;
-        while(i < round.size()) {
-            if(round.get(i).isActive()) {
-                System.out.println("Visszad: "+i);
-                if(i == 0) System.out.println("pike");
-                if(i == 1) System.out.println("Griff");
-                return i;
-            }
-            i++;
-        }
-        return 0;
-    }
-
-            public void setActiveIndex(ArrayList<Generic> round, int index){
-        switch (index){
-            case 0:
-                round.get(0).setActive(false);
-                round.get(1).setActive(true);
-                break;
-            case 1:
-                round.get(1).setActive(false);
-                round.get(0).setActive(true);
-                break;
-        }
-    }
-
-
-        */
-
 
     //getters & setters
     public void setX_count(int z){ this.x_count = z; }
