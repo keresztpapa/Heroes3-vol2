@@ -24,7 +24,7 @@ public class Champions extends Generic implements Action{
     static boolean fire=false;
     static boolean thunder=false;
     static boolean res=false;
-
+    static boolean active=false;
     static int soldierCount=0;
     static int griffCount=0;
     static int archerCount=0;

@@ -75,6 +75,9 @@ public interface Action {
                 Tile tl = map[i][j];
 
                 tl.getImageView().setOnMouseClicked((event) ->{
+                    map[generic.getPos_x()/100][generic.getPos_y()/100].setOccupied(false);
+                    map[generic.getPos_x()/100][generic.getPos_y()/100].setCrs(true);
+
                     int spriteCounter = 0;
                     System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
                     System.out.println("Crossable "+tl.getCrs());

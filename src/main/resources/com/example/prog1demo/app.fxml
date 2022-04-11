@@ -3,7 +3,6 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.prog1demo.Controller">
    <children>
       <SplitPane layoutX="800.0" layoutY="265.0" prefHeight="800.0" prefWidth="200.0" AnchorPane.topAnchor="0.0" />
