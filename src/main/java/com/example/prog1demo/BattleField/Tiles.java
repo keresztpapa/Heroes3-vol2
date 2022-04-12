@@ -20,13 +20,19 @@ import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.*;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -45,7 +51,7 @@ public class Tiles implements Action {
     int unitY;
     static int index=0;
     static int roundCount=0;
-
+    static String logs="";
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -123,6 +129,13 @@ public class Tiles implements Action {
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
         impArcher.setImg("stand", ap);
 
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        Label logField = new Label(logs);
+        logField.setLayoutX(1250);
+        logField.setLayoutY(100);
+        logField.setPrefHeight(600);
+        logField.setText("Logs: \n");
+
         Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         Generic[] finalArr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         setOrder(arr, finalArr);
@@ -143,12 +156,12 @@ public class Tiles implements Action {
 
         System.out.println("Pike\n"+pike);
 
-        move(map, round.get(index), this.x_count, this.y_count, ap);
+        move(map, round.get(index), this.x_count, this.y_count, ap, logField);
 
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
-        rounder.setPrefWidth(100);
-        rounder.setLayoutY(50);
+        rounder.setPrefWidth(50);
+        rounder.setLayoutY(0);
         rounder.setLayoutX(1200);
 
         Button next_turn = new Button("next turn");
@@ -198,57 +211,59 @@ public class Tiles implements Action {
             roundCount++;
             attack(map, round.get(index), imp, ap, this.x_count, this.y_count);
             if(imp.getHp()<=0) round.remove(index);
-            setActiveIndex(round, rounder);
+            setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
             attack(map, round.get(index), hound, ap, this.x_count, this.y_count);
             if(hound.getHp()<=0) round.remove(index);
-            setActiveIndex(round, rounder);
+            setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
             attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count);
             if(impArcher.getHp()<=0) round.remove(index);
-            setActiveIndex(round, rounder);
+            setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
 
         removeDeadUnit(round);
 
+
+
         next_turn.setOnMouseClicked((event) -> {
             roundCount++;
             rounder.setText(""+roundCount);
-            setActiveIndex(round, rounder);
+            setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
 
         pass.setOnMouseClicked((event) -> {
             roundCount++;
             rounder.setText(""+roundCount);
-            setActiveIndex(round, rounder);
+            setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
 
 
 
-        ap.getChildren().addAll(next_turn, pass, fire, light, res,rounder);
+        ap.getChildren().addAll(next_turn, pass, fire, light, res,rounder, logField);
     }
 
-    public void setActiveIndex(ArrayList<Generic> round, TextField rounder){
+    public void setActiveIndex(ArrayList<Generic> round, TextField rounder, Label logF){
         round.get(index).setActive(false);
         if(index < round.size()-1) {
             index++;
             System.out.println("csökkent " + index + " re");
             round.get(index).setActive(true);
-            move(map, round.get(index), this.x_count, this.y_count, ap);
+            move(map, round.get(index), this.x_count, this.y_count, ap, logF);
         }else {
             index = 0;
             System.out.println("csökkent " + index + " re");
             round.get(index).setActive(true);
-            move(map, round.get(index), this.x_count, this.y_count, ap);
+            move(map, round.get(index), this.x_count, this.y_count, ap, logF);
         }
         rounder.setText(""+roundCount);
     }
