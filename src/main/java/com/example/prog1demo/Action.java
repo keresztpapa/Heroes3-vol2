@@ -10,9 +10,45 @@
  *
  * @return              visszaadja azt, hogy 2 egység szomszédos e
  *
+ * attack()
+ * ha az isNeighbour igazzal tér vissza,
+ * akkor a hős megtámadja az adott egységet
+ *
+ * @param map           a 2D Tile object tömb, ami harctérként funkcionál
+ * @param g1            az első számú egység, ő az aktuális konfliktusban a támadó fél
+ * @param g2            a második számú egység, a konfliktusban, ő szenvedi el a sebzést
+ * @param rowCount      a 2D tömb sorának számai
+ * @param colCount      a 2D tömb oszlopainak számai
+ *
+ *
+ * attackWitoutLimit()
+ *  ha az isNeighbour hamissal tér vissza.
+ *  és a támadó egység távolsági harcos
+ *  akkor támadhat egyszer, nem figyelve a távolságra
+ *
+ * @param map           a 2D Tile object tömb, ami harctérként funkcionál
+ * @param g1            az első számú egység, ő az aktuális konfliktusban a támadó fél
+ * @param g2            a második számú egység, a konfliktusban, ő szenvedi el a sebzést
+ * @param rowCount      a 2D tömb sorának számai
+ * @param colCount      a 2D tömb oszlopainak számai
+ *
+ *
+ * move()
+ * Az aktuális egység mozgásáért felelős method.
+ * Az egység 1-essével lépked a megadott célfelé, amíg az el nem éri azt,
+ * vagy ki nem fogy a mozgásából
+ *
+ * @param map           a 2D Tile object tömb, ami harctérként funkcionál
+ * @param g1            az első számú egység, ő az aktuális konfliktusban a támadó fél
+ * @param g2            a második számú egység, a konfliktusban, ő szenvedi el a sebzést
+ * @param rowCount      a 2D tömb sorának számai
+ * @param colCount      a 2D tömb oszlopainak számai
+ *
+ *
  *
  *
  */
+
 
 package com.example.prog1demo;
 
