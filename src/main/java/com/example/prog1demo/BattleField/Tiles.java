@@ -14,28 +14,15 @@
 
 package com.example.prog1demo.BattleField;
 
-import com.example.prog1demo.Action;
+import com.example.prog1demo.Interfaces.Action;
 import com.example.prog1demo.units.Champions;
 import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.*;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
-import static com.example.prog1demo.BattleField.Tile.victory;
-import static java.lang.Thread.onSpinWait;
 import static java.lang.Thread.sleep;
 
 public class Tiles implements Action {
@@ -155,7 +142,7 @@ public class Tiles implements Action {
 
         System.out.println("Pike\n"+pike);
 
-        move(map, round.get(index), this.x_count, this.y_count, ap, logField);
+        move(map, round.get(index), this.x_count, this.y_count, ap, logField, round);
 
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
@@ -244,13 +231,13 @@ public class Tiles implements Action {
             index++;
             System.out.println("csökkent " + index + " re");
             round.get(index).setActive(true);
-            move(map, round.get(index), this.x_count, this.y_count, ap, logF);
+            move(map, round.get(index), this.x_count, this.y_count, ap, logF,round);
         }else {
             roundCount++;
             index = 0;
             System.out.println("csökkent " + index + " re");
             round.get(index).setActive(true);
-            move(map, round.get(index), this.x_count, this.y_count, ap, logF);
+            move(map, round.get(index), this.x_count, this.y_count, ap, logF, round);
         }
         rounder.setText(""+roundCount);
     }

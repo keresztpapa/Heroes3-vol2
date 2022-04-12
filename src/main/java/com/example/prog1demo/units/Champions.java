@@ -27,13 +27,12 @@ package com.example.prog1demo.units;
 
 import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.units.unit.Generic;
-import com.example.prog1demo.Action;
+import com.example.prog1demo.Interfaces.Action;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Champions extends Generic implements Action{
     static double att=1;

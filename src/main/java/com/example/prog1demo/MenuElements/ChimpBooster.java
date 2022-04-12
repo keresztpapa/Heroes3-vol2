@@ -61,7 +61,7 @@ public class ChimpBooster {
         TextField luck = new TextField();
 
         skillShowOff.setText("Skill points:: ");
-        skillText.setText(""+chimp.getSkillPoint());
+        skillText.setText(""+chimp.getGold());
         attText.setText(""+chimp.getAtt());
         deffText.setText(""+chimp.getDeff());
         magicText.setText(""+chimp.getMagic());
@@ -77,7 +77,7 @@ public class ChimpBooster {
             if(chimp.getAtt() > 0) {
                 chimp.setAtt(chimp.getAtt() - 1);
                 chimp.setGold((int) (chimp.getGold() + cost));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 attText.setText("" + chimp.getAtt());
             }
         });
@@ -88,7 +88,7 @@ public class ChimpBooster {
             if(chimp.getGold()-cost> 0 && chimp.getAtt()<=10) {
                 chimp.setAtt(chimp.getAtt() + 1);
                 chimp.setGold((int) (chimp.getGold() - cost*1.1));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 attText.setText("" + chimp.getAtt());
             }
         });
@@ -99,7 +99,7 @@ public class ChimpBooster {
             if(chimp.getDeff() > 0) {
                 chimp.setDeff(chimp.getDeff() - 1);
                 chimp.setGold((int) (chimp.getGold() + cost));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 deffText.setText("" + chimp.getDeff());
             }
         });
@@ -110,7 +110,7 @@ public class ChimpBooster {
             if(chimp.getGold()-cost > 0 && chimp.getDeff() <= 10) {
                 chimp.setDeff(chimp.getDeff() + 1);
                 chimp.setGold((int) (chimp.getGold() - cost*1.1));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 deffText.setText("" + chimp.getDeff());
             }
         });
@@ -121,7 +121,7 @@ public class ChimpBooster {
             if(chimp.getMagic() > 0) {
                 chimp.setMagic(chimp.getMagic() - 1);
                 chimp.setGold((int) (chimp.getGold() + cost));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 magicText.setText("" + chimp.getMagic());
             }
         });
@@ -132,7 +132,7 @@ public class ChimpBooster {
             if(chimp.getGold()-cost > 0 && chimp.getMagic() <= 10) {
                 chimp.setMagic(chimp.getMagic() + 1);
                 chimp.setGold((int) (chimp.getGold() - cost*1.1));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 magicText.setText("" + chimp.getMagic());
             }
         });
@@ -143,7 +143,7 @@ public class ChimpBooster {
             if(chimp.getWisdom() > 0) {
                 chimp.setWisdom(chimp.getWisdom() - 1);
                 chimp.setGold((int) (chimp.getGold() + cost));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 wisdomText.setText("" + chimp.getWisdom());
             }
         });
@@ -154,7 +154,7 @@ public class ChimpBooster {
             if(chimp.getGold()-cost > 0 && chimp.getWisdom() <=10) {
                 chimp.setWisdom(chimp.getWisdom() + 1);
                 chimp.setGold((int) (chimp.getGold() - cost*1.1));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 wisdomText.setText("" + chimp.getWisdom());
             }
         });
@@ -165,7 +165,7 @@ public class ChimpBooster {
             if(chimp.getMoral() > 0) {
                 chimp.setMoral(chimp.getMoral() - 1);
                 chimp.setGold((int) (chimp.getGold() + cost));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 moralText.setText("" + chimp.getMoral());
             }
         });
@@ -176,7 +176,7 @@ public class ChimpBooster {
             if(chimp.getGold()-cost > 0 && chimp.getMoral() <=10) {
                 chimp.setMoral(chimp.getMoral() + 1);
                 chimp.setGold((int) (chimp.getGold() - cost*1.1));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 moralText.setText("" + chimp.getMoral());
             }
         });
@@ -187,7 +187,7 @@ public class ChimpBooster {
             if(chimp.getLuck() > 0){
                 chimp.setLuck(chimp.getLuck() - 1);
                 chimp.setGold((int) (chimp.getGold() + cost));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 luckText.setText("" + chimp.getLuck());
             }
         });
@@ -198,7 +198,7 @@ public class ChimpBooster {
             if(chimp.getGold()-cost > 0 && chimp.getLuck() <= 10) {
                 chimp.setLuck(chimp.getLuck() + 1);
                 chimp.setGold((int) (chimp.getGold() - cost*1.1));
-                skillText.setText("" + chimp.getSkillPoint());
+                skillText.setText("" + chimp.getGold());
                 luckText.setText("" + chimp.getLuck());
             }
         });

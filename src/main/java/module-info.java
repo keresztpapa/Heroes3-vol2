@@ -10,4 +10,6 @@ module com.example.prog1demo {
     exports com.example.prog1demo.units;
     exports com.example.prog1demo.MenuElements;
     opens com.example.prog1demo.MenuElements to javafx.fxml;
+    exports com.example.prog1demo.Interfaces;
+    opens com.example.prog1demo.Interfaces to javafx.fxml;
 }

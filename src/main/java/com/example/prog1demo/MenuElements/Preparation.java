@@ -7,9 +7,8 @@
 
 package com.example.prog1demo.MenuElements;
 
-import com.example.prog1demo.Action;
+import com.example.prog1demo.Interfaces.Action;
 import com.example.prog1demo.Application;
-import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.units.Champions;
 import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.*;

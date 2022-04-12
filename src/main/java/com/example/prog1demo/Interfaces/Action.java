@@ -68,7 +68,7 @@
  */
 
 
-package com.example.prog1demo;
+package com.example.prog1demo.Interfaces;
 
 import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.BattleField.Tile;
@@ -159,7 +159,7 @@ public interface Action {
     }
 
 
-    default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF){
+    default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF, ArrayList<Generic> round){
         int i, j;
         int starterX = generic.getPos_x();
         int starterY = generic.getPos_y();
@@ -169,59 +169,50 @@ public interface Action {
                 Tile tl = map[i][j];
 
                 tl.getImageView().setOnMouseClicked((event) ->{
-                    map[generic.getPos_x()/100][generic.getPos_y()/100].setOccupied(false);
-                    map[generic.getPos_x()/100][generic.getPos_y()/100].setCrs(true);
-
+                    mapUpdate(map, round);
+                    int speed = generic.getMovement()*100;
                     int spriteCounter = 0;
                     System.out.println("\n\nstartX: "+starterX+" starterY: "+starterY);
                     System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
                     System.out.println("Crossable "+tl.getCrs());
 
-                    while(generic.getPos_x() <= tl.getMovTo_x() && tl.getCrs() ){
+                    while(generic.getPos_x() <= tl.getMovTo_x() && tl.getCrs() && speed >= 0){
                         if(spriteCounter > generic.getWalk().length-1) spriteCounter = 0;
                         generic.setImg(generic.getWalk(spriteCounter), anchorPane);
                         generic.setPos_x(generic.getPos_x()+1);
                         generic.setImageMovX(generic.getPos_x());
-                        if(generic.getPos_x() == tl.getMovTo_x() && !tl.getCrs())  generic.setPos_x(generic.getPos_x()+100);
-                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
-                        map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
+                        speed--;
                         spriteCounter++;
                     }
-                    map[0][0].setHandbreak(0);
-                    while(generic.getPos_x() >= tl.getMovTo_x() && tl.getCrs()){
+
+                    while(generic.getPos_x() >= tl.getMovTo_x() && tl.getCrs() && speed >= 0){
                         if(spriteCounter > generic.getWalk().length-1) spriteCounter = 0;
                         generic.setImg(generic.getWalk(spriteCounter), anchorPane);
                         generic.setPos_x(generic.getPos_x()-1);
                         generic.setImageMovX(generic.getPos_x());
-                        if(generic.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) generic.setPos_x(generic.getPos_x()-100);
-                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
-                        map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
+                        speed--;
                         spriteCounter++;
                     }
-                    map[0][0].setHandbreak(0);
-                    while(generic.getPos_y() <= tl.getMovTo_y() && tl.getCrs()){
+
+                    while(generic.getPos_y() <= tl.getMovTo_y() && tl.getCrs() && speed >= 0){
                         if(spriteCounter > generic.getWalk().length-1) spriteCounter = 0;
                         generic.setImg(generic.getWalk(spriteCounter), anchorPane);
                         generic.setPos_y(generic.getPos_y()+1);
                         generic.setImageMovY(generic.getPos_y());
-                        if(generic.getPos_y() == tl.getMovTo_y() && !tl.getCrs()) generic.setPos_y(generic.getPos_y()+100);
-                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
-                        map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
+                        speed--;
                         spriteCounter++;
                     }
-                    map[0][0].setHandbreak(0);
-                    while(generic.getPos_y() >= tl.getMovTo_y() && tl.getCrs()){
+
+                    while(generic.getPos_y() >= tl.getMovTo_y() && tl.getCrs() && speed >= 0){
                         if(spriteCounter > generic.getWalk().length-1) spriteCounter = 0;
                         generic.setImg(generic.getWalk(spriteCounter), anchorPane);
                         generic.setPos_y(generic.getPos_y()-1);
                         generic.setImageMovY(generic.getPos_y());
-                        if(generic.getPos_y() == tl.getPos_x() && !tl.getCrs()) generic.setPos_y(generic.getPos_y()-100);
-                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
-                        map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
+                        speed--;
                         spriteCounter++;
                     }
 
-                    map[0][0].setHandbreak(0);
+
                     generic.setImg("stand", anchorPane);
                     generic.setImageMovX(generic.getPos_x());
                     generic.setImageMovY(generic.getPos_y());
@@ -372,8 +363,16 @@ public interface Action {
     }
 
     default void mapUpdate(Tile[][] map, ArrayList<Generic> round){
+        for(int i=0;i< map.length;i++){
+            for(int j=0;j<map[i].length;j++){
+                map[i][j].setOccupied(false);
+                map[i][j].setCrs(true);
+            }
+        }
+
         for(int i=0;i<round.size();i++){
-            round.get(i).getPos_x();
+            map[round.get(i).getPos_x()/100][round.get(i).getPos_y()/100].setCrs(false);
+            map[round.get(i).getPos_x()/100][round.get(i).getPos_y()/100].setOccupied(true);
         }
     }
 

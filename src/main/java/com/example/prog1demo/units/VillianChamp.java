@@ -6,7 +6,7 @@
 
 package com.example.prog1demo.units;
 
-import com.example.prog1demo.Action;
+import com.example.prog1demo.Interfaces.Action;
 import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
