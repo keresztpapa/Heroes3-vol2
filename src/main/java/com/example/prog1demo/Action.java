@@ -45,8 +45,26 @@
  * @param colCount      a 2D tömb oszlopainak számai
  *
  *
+ * place()
+ * A csatát megelőző jatékos egységeinek elhelyezése.
+ *
+ * @param map           a 2D Tile object tömb, ami harctérként funkcionál
+ * @param generic       az egység amit le akarunk tenni
+ * @param rowCount      a 2D tömb sorának számai
+ * @param colCount      a 2D tömb oszlopainak számai
  *
  *
+ * unitUpdate()
+ * Frissíti a játékan lévő egységek pontjait a hős képességeit beszámítva.
+ *
+ * @param chimp         a játékos által irányított hős
+ * @param evilChimp     a számítógép által irányított hős
+ * @param pike          a gyalogos, közelharci egység (player)
+ * @param griff         a griff egysége (player)
+ * @param archer        a távolsági egység (player)
+ * @param imp           a gyalogos, közelharci egység, (computer)
+ * @param hound         a 'griff' megfelelője (computer)
+ * @param impArcher     az íjász megfelelője (computer)
  */
 
 
