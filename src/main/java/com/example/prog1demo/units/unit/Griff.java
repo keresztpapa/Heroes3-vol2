@@ -1,3 +1,22 @@
+/**
+ * Griff osztálya
+ *  Főként statikus változói vannak
+ *  És ImageView tömbjei
+ *
+ *  Rendelekzik egy toString() metódussal,
+ *  @return      az objektum értékeit adja visssza
+ *
+ *  setImg()
+ *  @param z     abban az esetben ha az ImageView értékét direkt szeretnénk megadni
+ *
+ *               beállítja az aktuális sprite -ját az object -nek állapottól függően
+ *
+ *  setImg()
+ *  @param z     Overload -olható az előző metódus,
+ *              ha String-ként adjuk a paramétert akkor annak fejében állítja be a sprite-ot
+ *
+ */
+
 package com.example.prog1demo.units.unit;
 
 import javafx.scene.image.Image;

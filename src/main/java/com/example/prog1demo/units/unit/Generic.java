@@ -1,3 +1,10 @@
+/**
+ * Egy általánosított osztály több ok miatt.
+ * Az alap dolgai az egységeknek többynire ugyanazok,
+ * illetve az ArrayListben és egyéb adatstruktúrában
+ * amit használok alkalmazni tudjam a poliformizmust.
+ */
+
 package com.example.prog1demo.units.unit;
 
 import javafx.scene.image.Image;
