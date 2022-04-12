@@ -22,10 +22,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -130,11 +127,13 @@ public class Tiles implements Action {
         impArcher.setImg("stand", ap);
 
         //////////////////////////////////////////////////////////////////////////////////////////////
-        Label logField = new Label(logs);
+        TextArea logField = new TextArea(logs);
         logField.setLayoutX(1250);
         logField.setLayoutY(100);
-        logField.setPrefHeight(600);
+        logField.setPrefHeight(500);
+        logField.setPrefWidth(200);
         logField.setText("Logs: \n");
+
 
         Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         Generic[] finalArr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
@@ -252,7 +251,7 @@ public class Tiles implements Action {
         ap.getChildren().addAll(next_turn, pass, fire, light, res,rounder, logField);
     }
 
-    public void setActiveIndex(ArrayList<Generic> round, TextField rounder, Label logF){
+    public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
         round.get(index).setActive(false);
         if(index < round.size()-1) {
             index++;

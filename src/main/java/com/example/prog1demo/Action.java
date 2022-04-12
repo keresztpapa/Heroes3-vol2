@@ -76,6 +76,8 @@ import com.example.prog1demo.units.Champions;
 import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
@@ -156,7 +158,7 @@ public interface Action {
     }
 
 
-    default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, Label logF){
+    default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF){
         int i, j;
         for (i = 0; i < rowCount; i++) {
             for (j = 0; j < colCount; j++) {
@@ -221,7 +223,7 @@ public interface Action {
 
                     tl.setCrs(false);
                     tl.setOccupied(true);
-                    logF.setText(logF.getText()+"\n Move:"+generic.getName()+" X: "+generic.getPos_x()+" Y: "+generic.getPos_y());
+                    logF.appendText("\n Move:"+generic.getName()+"\n X: "+generic.getPos_x()+"\n Y: "+generic.getPos_y());
                 });
             }
         }
