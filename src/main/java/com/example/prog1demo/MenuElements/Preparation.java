@@ -129,7 +129,7 @@ public class Preparation implements Action {
             System.out.println("Chimp gold: " + chimp.getGold());
         });
 
-        ImageView archer = new ImageView(new Image("file:pngs/player_units/archer/archer_stand"));
+        ImageView archer = new ImageView(new Image("file:pngs/player_units/archer/archer_stand.png"));
         archer.setX(700);
         archer.setY(200);
 

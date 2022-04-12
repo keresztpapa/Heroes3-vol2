@@ -124,8 +124,10 @@ public class Tiles implements Action {
         impArcher.setImg("stand", ap);
 
         Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
-        Generic[] finalArr = {};
+        Generic[] finalArr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         setOrder(arr, finalArr);
+
+        for (Generic generic : finalArr) System.out.println(generic.getName()+generic.getMoral());
 
         ArrayList<Generic> round = new ArrayList<>();
 
@@ -259,8 +261,16 @@ public class Tiles implements Action {
         }
     }
 
-    public void setOrder(Generic arr[], Generic[] orderedArr){
-        
+    public void setOrder(Generic[] arr, Generic[] orderedArr){
+        int n = arr.length;
+        for (int i = 0; i < n-1; i++)
+            for (int j = 0; j < n-i-1; j++)
+                if (arr[j].getMoral() > arr[j+1].getMoral()) {
+                    Generic temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+        System.arraycopy(arr, 0, orderedArr, 0, arr.length);
     }
 
     //getters & setters
