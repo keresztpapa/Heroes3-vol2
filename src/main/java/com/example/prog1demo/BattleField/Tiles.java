@@ -131,7 +131,7 @@ public class Tiles implements Action {
         logField.setLayoutX(1250);
         logField.setLayoutY(100);
         logField.setPrefHeight(500);
-        logField.setPrefWidth(200);
+        logField.setPrefWidth(300);
         logField.setText("Logs: \n");
 
 
@@ -208,21 +208,21 @@ public class Tiles implements Action {
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
-            attack(map, round.get(index), imp, ap, this.x_count, this.y_count);
+            attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField);
             if(imp.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
-            attack(map, round.get(index), hound, ap, this.x_count, this.y_count);
+            attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField);
             if(hound.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
-            attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count);
+            attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField);
             if(impArcher.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
@@ -253,6 +253,7 @@ public class Tiles implements Action {
 
     public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
         round.get(index).setActive(false);
+        System.out.println(round.size());
         if(index < round.size()-1) {
             index++;
             System.out.println("csökkent " + index + " re");

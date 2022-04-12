@@ -119,8 +119,8 @@ public interface Action {
         return false;
     }
 
-    default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
-
+    default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount, TextArea logF){
+                int oldHp = g2.getHp();
                 double minAtt = g1.getAttMin();
                 double maxAtt = g1.getAttMax();
                 double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
@@ -135,14 +135,15 @@ public interface Action {
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
                         if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
-                            attack(map, g2, g1, anchorPane, rowCount, colCount);
+                            attack(map, g2, g1, anchorPane, rowCount, colCount, logF);
                         }
+                    logF.appendText("Attack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
                     }
 
     }
 
     //archer
-    default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
+    default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount, TextArea logF){
         double minAtt = g1.getAttMin();
         double maxAtt = g1.getAttMax();
         double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
@@ -152,7 +153,7 @@ public interface Action {
             if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
             System.out.println("sebzett");
             if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
-                attack(map, g2, g1, anchorPane, rowCount, colCount);
+                attack(map, g2, g1, anchorPane, rowCount, colCount, logF);
             }
         }
     }
