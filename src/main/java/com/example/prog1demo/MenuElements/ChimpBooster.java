@@ -1,3 +1,11 @@
+/**
+ * Itt a hősök tulajdoságai állítódnak be.
+ * Minden skillpoint egyre drágább, egy skill-ből min 0 és max 10 lehet.
+ * Van 2 metódus a setTextBox és a serializeButton
+ * Ezekkel tudjuk felgyorsítani a gombok és szövegdobozok létrehozását.
+ * Jobb oldalt megjelenik az ellenfél skillpoint-jai, neki random osztott el egy algoritmus 10 pontot.
+ */
+
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.units.Champions;

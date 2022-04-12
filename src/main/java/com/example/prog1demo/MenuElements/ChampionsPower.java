@@ -1,3 +1,9 @@
+/**
+ * A hősünknek tudunk varázslatot venni.
+ * Itt a skills() megjeleníti a 3 varázslat képét, árát és mana költségét.
+ * A varázslatok nevére kattintva megvehető a spell.
+ * Ezután a Shop-ra kattintva a shop jelenik meg.
+ */
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.units.Champions;

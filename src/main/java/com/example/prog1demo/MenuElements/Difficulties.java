@@ -1,3 +1,8 @@
+/**
+ * A játék nehezéségét szabályozza az osztály.
+ * Könnyű, közepes, nehéz -től függően 1300/1000/700 arannyal indul a játékos amit be kell osztania később.
+ */
+
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.units.Champions;
