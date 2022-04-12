@@ -78,6 +78,7 @@ import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public interface Action {
 
@@ -116,8 +117,17 @@ public interface Action {
     }
 
     default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
+
+                double minAtt = g1.getAttMin();
+                double maxAtt = g1.getAttMax();
+                double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
+                double dmgCritChance = Math.random()*(100+1+1)+1;
                     if(isNeighbour(map,g1,g2, rowCount, colCount)) {
-                        g2.setHp((int) (g2.getHp() - g1.getAttMax()));
+                        if(dmgCritChance > 5){
+                            g2.setHp((int) (g2.getHp() - dmg)*2);
+                        }else{
+                            g2.setHp((int) (g2.getHp() - dmg));
+                        }
                         System.out.println("Alany HP: " + g2.getHp());
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
@@ -130,8 +140,11 @@ public interface Action {
 
     //archer
     default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount){
+        double minAtt = g1.getAttMin();
+        double maxAtt = g1.getAttMax();
+        double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
         if(!isNeighbour(map,g1,g2, rowCount, colCount)) {
-            g2.setHp((int) (g2.getHp() - g1.getDamage()));
+            g2.setHp((int) (g2.getHp() - dmg));
             System.out.println("Alany HP: " + g2.getHp());
             if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
             System.out.println("sebzett");

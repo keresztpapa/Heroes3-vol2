@@ -40,7 +40,7 @@ public class Griff extends Generic{
     static double wisdom=1;
     static double moral=1;
     static double luck=1;
-    static double crit=0;
+    static double crit=1;
 
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
@@ -84,7 +84,7 @@ public class Griff extends Generic{
 
     public String toString(){
         return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
-                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: "+luck;
     }
 
 
@@ -97,11 +97,11 @@ public class Griff extends Generic{
     public double getMagic() { return magic; }
     public void setMagic(double magic_power) { magic = magic_power; }
     public double getWisdom() { return wisdom; }
-    public void setWisdom(double wisdom) { wisdom = wisdom; }
+    public void setWisdom(double wsdm) { wisdom = wsdm; }
     public double getMoral() { return moral; }
-    public void setMoral(double moral) { moral = moral; }
+    public void setMoral(double mrl) { moral = mrl; }
     public double getLuck() { return luck; }
-    public void setLuck(double luck) { luck = luck; }
+    public void setLuck(double lck) { luck = lck; }
     public int getHp() { return hp; }
     public void setHp(int  health) { hp = health; }
     public double getCrit(){ return crit; }

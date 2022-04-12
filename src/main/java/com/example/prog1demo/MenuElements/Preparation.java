@@ -183,7 +183,7 @@ public class Preparation implements Action {
         Imp imp = new Imp();
         Hound hound = new Hound();
         ImpArcher impArcher = new ImpArcher();
-////////////////////
+
         System.out.println("Update előtt");
         System.out.println(pike+"\n\n");
         System.out.println(griffin+"\n\n");
@@ -191,36 +191,37 @@ public class Preparation implements Action {
         System.out.println(imp+"\n\n");
         System.out.println(hound+"\n\n");
         System.out.println(impArcher+"\n\n");
-        //////////////////////////
+
+
         toBattle.setOnMouseClicked((event)->{
-            root.getChildren().clear();
-            if(champ.getArcherCount() == 0 && champ.getGriffCount() == 0 && champ.getSoldierCount() == 0){
-                try {
-                    init(stg);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                root.getChildren().clear();
+                if(champ.getArcherCount() == 0 && champ.getGriffCount() == 0 && champ.getSoldierCount() == 0){
+                    try {
+                        init(stg);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
 
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
-            Scene scene = null;
-            try {
-                System.out.println("update után");
-                unitUpdate(champ, enemyChamp, pike, griffin, arc, imp, hound, impArcher);
-                System.out.println(pike+"\n\n");
-                System.out.println(griffin+"\n\n");
-                System.out.println(arc+"\n\n");
-                System.out.println(imp+"\n\n");
-                System.out.println(hound+"\n\n");
-                System.out.println(impArcher+"\n\n");
+                FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
+                Scene scene = null;
+                try {
+                    System.out.println("update után");
+                    unitUpdate(champ, enemyChamp, pike, griffin, arc, imp, hound, impArcher);
+                    System.out.println("Pike\n"+pike+"\n\n");
+                    System.out.println("Griffin\n"+griffin+"\n\n");
+                    System.out.println("Archer\n"+arc+"\n\n");
+                    System.out.println("Imp:\n"+imp+"\n\n");
+                    System.out.println("hound\n"+hound+"\n\n");
+                    System.out.println("ImpARcher\n"+impArcher+"\n\n");
 
-                scene = new Scene(fxmlLoader.load(),1500,1000);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            stg.setTitle("Heroes!");
-            stg.setScene(scene);
-            stg.show();
+                    scene = new Scene(fxmlLoader.load(),1500,1000);
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                stg.setTitle("Heroes!");
+                stg.setScene(scene);
+                stg.show();
         });
 
 

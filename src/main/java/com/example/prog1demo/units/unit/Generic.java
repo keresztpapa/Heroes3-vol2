@@ -31,7 +31,7 @@ public class Generic {
     double wisdom=1;
     double moral=1;
     double luck=1;
-    double crit=0;
+    double crit=1;
     static boolean active=false;
 
     public Generic(){}
@@ -62,7 +62,7 @@ public class Generic {
 
     public String toString(){
         return "AttackMin :"+attMin+"\nAttackMax: "+attMax+"\nDeff: "+deff+"\nMagic: "+magic+
-                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: ";
+                "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: "+luck;
     }
 
 
@@ -81,11 +81,11 @@ public class Generic {
     public double getMagic() { return magic; }
     public void setMagic(double magic_power) { this.magic = magic_power; }
     public double getWisdom() { return wisdom; }
-    public void setWisdom(double wisdom) { this.wisdom = wisdom; }
+    public void setWisdom(double wsdm) { wisdom = wsdm; }
     public double getMoral() { return moral; }
-    public void setMoral(double moral) { this.moral = moral; }
+    public void setMoral(double mrl) { moral = mrl; }
     public double getLuck() { return luck; }
-    public void setLuck(double luck) { this.luck = luck; }
+    public void setLuck(double lck) { luck = lck; }
     public int getHp() { return hp; }
     public void setHp(int  health) { this.hp = health; }
     public double getCrit(){ return this.crit; }

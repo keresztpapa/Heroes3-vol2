@@ -123,7 +123,13 @@ public class Tiles implements Action {
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
         impArcher.setImg("stand", ap);
 
-        ArrayList<Generic> round = new ArrayList<Generic>();
+        Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
+        Generic[] finalArr = {};
+        setOrder(arr, finalArr);
+
+        ArrayList<Generic> round = new ArrayList<>();
+
+        /*
         round.add(pike);
         round.add(griff);
         round.add(archer);
@@ -132,6 +138,8 @@ public class Tiles implements Action {
         round.add(hound);
         round.add(chimp);
         round.add(evilChimp);
+        */
+        System.out.println("Pike\n"+pike);
 
         move(map, round.get(index), this.x_count, this.y_count, ap);
 
@@ -176,8 +184,6 @@ public class Tiles implements Action {
             chimp.setFireActive(true);
         });
 
-        //doMagic(map, this.x_count, this.y_count, ap, round);
-
         light.setOnMouseClicked((event)->{
             chimp.setThunderActive(true);
         });
@@ -190,47 +196,38 @@ public class Tiles implements Action {
             roundCount++;
             attack(map, round.get(index), imp, ap, this.x_count, this.y_count);
             if(imp.getHp()<=0) round.remove(index);
-            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-                Menu menu = new Menu();
-            }
             setActiveIndex(round, rounder);
+            removeDeadUnit(round);
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
             attack(map, round.get(index), hound, ap, this.x_count, this.y_count);
             if(hound.getHp()<=0) round.remove(index);
-            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-                Menu menu = new Menu();
-            }
             setActiveIndex(round, rounder);
+            removeDeadUnit(round);
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
             roundCount++;
             attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count);
             if(impArcher.getHp()<=0) round.remove(index);
-            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-                Menu menu = new Menu();
-            }
             setActiveIndex(round, rounder);
+            removeDeadUnit(round);
         });
 
+        removeDeadUnit(round);
 
         next_turn.setOnMouseClicked((event) -> {
             roundCount++;
             rounder.setText(""+roundCount);
             setActiveIndex(round, rounder);
-            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-                Menu menu = new Menu();
-            }
+            removeDeadUnit(round);
         });
 
         pass.setOnMouseClicked((event) -> {
             roundCount++;
             rounder.setText(""+roundCount);
             setActiveIndex(round, rounder);
-            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-                Menu menu = new Menu();
-            }
+            removeDeadUnit(round);
         });
 
 
@@ -252,6 +249,18 @@ public class Tiles implements Action {
             move(map, round.get(index), this.x_count, this.y_count, ap);
         }
         rounder.setText(""+roundCount);
+    }
+
+    public void removeDeadUnit(ArrayList<Generic> round){
+        for(int i=0;i<round.size();i++){
+            if(round.get(i).getHp()==0) {
+                round.remove(i);
+            }
+        }
+    }
+
+    public void setOrder(Generic arr[], Generic[] orderedArr){
+        
     }
 
     //getters & setters
