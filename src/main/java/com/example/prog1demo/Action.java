@@ -161,6 +161,9 @@ public interface Action {
 
     default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF){
         int i, j;
+        int starterX = generic.getPos_x();
+        int starterY = generic.getPos_y();
+
         for (i = 0; i < rowCount; i++) {
             for (j = 0; j < colCount; j++) {
                 Tile tl = map[i][j];
@@ -170,16 +173,17 @@ public interface Action {
                     map[generic.getPos_x()/100][generic.getPos_y()/100].setCrs(true);
 
                     int spriteCounter = 0;
+                    System.out.println("\n\nstartX: "+starterX+" starterY: "+starterY);
                     System.out.println("\n\ngetMovToX:"+tl.getMovTo_x()+"\n\n getMovToY "+tl.getMovTo_y());
                     System.out.println("Crossable "+tl.getCrs());
 
-                    while(generic.getPos_x() <= tl.getMovTo_x() && tl.getCrs()){
+                    while(generic.getPos_x() <= tl.getMovTo_x() && tl.getCrs() ){
                         if(spriteCounter > generic.getWalk().length-1) spriteCounter = 0;
                         generic.setImg(generic.getWalk(spriteCounter), anchorPane);
                         generic.setPos_x(generic.getPos_x()+1);
                         generic.setImageMovX(generic.getPos_x());
                         if(generic.getPos_x() == tl.getMovTo_x() && !tl.getCrs())  generic.setPos_x(generic.getPos_x()+100);
-                        if(map[0][0].getHandbreak() == 400) break;
+                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
                         map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
                         spriteCounter++;
                     }
@@ -190,7 +194,7 @@ public interface Action {
                         generic.setPos_x(generic.getPos_x()-1);
                         generic.setImageMovX(generic.getPos_x());
                         if(generic.getPos_x() == tl.getMovTo_x() && !tl.getCrs()) generic.setPos_x(generic.getPos_x()-100);
-                        if(map[0][0].getHandbreak() == 400) break;
+                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
                         map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
                         spriteCounter++;
                     }
@@ -201,7 +205,7 @@ public interface Action {
                         generic.setPos_y(generic.getPos_y()+1);
                         generic.setImageMovY(generic.getPos_y());
                         if(generic.getPos_y() == tl.getMovTo_y() && !tl.getCrs()) generic.setPos_y(generic.getPos_y()+100);
-                        if(map[0][0].getHandbreak() == 400) break;
+                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
                         map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
                         spriteCounter++;
                     }
@@ -212,7 +216,7 @@ public interface Action {
                         generic.setPos_y(generic.getPos_y()-1);
                         generic.setImageMovY(generic.getPos_y());
                         if(generic.getPos_y() == tl.getPos_x() && !tl.getCrs()) generic.setPos_y(generic.getPos_y()-100);
-                        if(map[0][0].getHandbreak() == 400) break;
+                        if(map[0][0].getHandbreak() >= generic.getMovement()*100) break;
                         map[0][0].setHandbreak(map[0][0].getHandbreak()+1);
                         spriteCounter++;
                     }
@@ -228,7 +232,8 @@ public interface Action {
                 });
             }
         }
-
+        map[starterX/100][starterY/100].setOccupied(false);
+        map[starterX/100][starterY/100].setCrs(true);
     }
 
     default void place(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane ap){
@@ -366,7 +371,11 @@ public interface Action {
         }
     }
 
-
+    default void mapUpdate(Tile[][] map, ArrayList<Generic> round){
+        for(int i=0;i<round.size();i++){
+            round.get(i).getPos_x();
+        }
+    }
 
 }
 

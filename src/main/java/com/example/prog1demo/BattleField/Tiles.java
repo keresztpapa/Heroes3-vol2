@@ -128,7 +128,7 @@ public class Tiles implements Action {
 
         //////////////////////////////////////////////////////////////////////////////////////////////
         TextArea logField = new TextArea(logs);
-        logField.setLayoutX(1250);
+        logField.setLayoutX(1200);
         logField.setLayoutY(100);
         logField.setPrefHeight(500);
         logField.setPrefWidth(300);
@@ -160,19 +160,13 @@ public class Tiles implements Action {
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
         rounder.setPrefWidth(50);
-        rounder.setLayoutY(0);
-        rounder.setLayoutX(1200);
-
-        Button next_turn = new Button("next turn");
-        next_turn.setPrefWidth(150);
-        next_turn.setPrefHeight(50);
-        next_turn.setLayoutX(1250);
-        next_turn.setLayoutY(650);
+        rounder.setLayoutY(750);
+        rounder.setLayoutX(1400);
 
         Button pass = new Button("Pass");
         pass.setPrefWidth(150);
         pass.setPrefHeight(50);
-        pass.setLayoutX(1250);
+        pass.setLayoutX(1225);
         pass.setLayoutY(750);
 
         Button fire = new Button("Fireball");
@@ -207,21 +201,21 @@ public class Tiles implements Action {
         });
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
-            roundCount++;
+            //roundCount++;
             attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField);
             if(imp.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
-            roundCount++;
+            //roundCount++;
             attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField);
             if(hound.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
-            roundCount++;
+            //roundCount++;
             attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField);
             if(impArcher.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
@@ -231,16 +225,8 @@ public class Tiles implements Action {
         removeDeadUnit(round);
 
 
-
-        next_turn.setOnMouseClicked((event) -> {
-            roundCount++;
-            rounder.setText(""+roundCount);
-            setActiveIndex(round, rounder, logField);
-            removeDeadUnit(round);
-        });
-
         pass.setOnMouseClicked((event) -> {
-            roundCount++;
+            //roundCount++;
             rounder.setText(""+roundCount);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
@@ -248,7 +234,7 @@ public class Tiles implements Action {
 
 
 
-        ap.getChildren().addAll(next_turn, pass, fire, light, res,rounder, logField);
+        ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
     public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
@@ -260,6 +246,7 @@ public class Tiles implements Action {
             round.get(index).setActive(true);
             move(map, round.get(index), this.x_count, this.y_count, ap, logF);
         }else {
+            roundCount++;
             index = 0;
             System.out.println("csökkent " + index + " re");
             round.get(index).setActive(true);
