@@ -7,6 +7,8 @@ import com.example.prog1demo.units.VillianChamp;
 import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.layout.AnchorPane;
 
+import java.util.ArrayList;
+
 public interface Action {
 
     default boolean isNeighbour(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount){
@@ -260,7 +262,20 @@ public interface Action {
         } */
     }
 
-
+    default void doMagic(Tile[][] map, int rowCount, int colCount, AnchorPane anchorPane, ArrayList<Generic> round){
+        int i, j;
+        Champions chimp = new Champions();
+        for (i = 0; i < rowCount; i++) {
+            for (j = 0; j < colCount; j++) {
+                Tile tl = map[i][j];
+                if(chimp.getFire()) {
+                    tl.getImageView().setOnMouseClicked((event) -> {
+                        chimp.fireBall(map, tl.getMovTo_x(), tl.getMovTo_y(), round,anchorPane);
+                    });
+                }
+            }
+        }
+    }
 
 
 

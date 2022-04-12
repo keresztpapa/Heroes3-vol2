@@ -25,6 +25,11 @@ public class Champions extends Generic implements Action{
     static boolean fire=false;
     static boolean thunder=false;
     static boolean res=false;
+
+    static boolean fireActive=false;
+    static boolean thunderActive=false;
+    static boolean resActive=false;
+
     static boolean active=false;
     static int soldierCount=0;
     static int griffCount=0;
@@ -59,6 +64,7 @@ public class Champions extends Generic implements Action{
             }
             if(units.get(i).getHp()<=0) units.get(i).setImg("dead", anchorPane);
         }
+        System.out.println("FIRE FIRE FIRE");
         mana-=9;
     }
 
@@ -106,6 +112,13 @@ public class Champions extends Generic implements Action{
     public int getGriffCount(){ return griffCount; }
     public double getSkillPoint(){ return skillPoint; }
     public void setSkillPoint(double z){ skillPoint = z; }
+
+    public boolean isFireActive(){ return fireActive; }
+    public void setFireActive(boolean asd){ fireActive = asd; }
+    public boolean isThunderActive() { return thunderActive; }
+    public void setThunderActive(boolean asd) { thunderActive = asd; }
+    public boolean isResActive() { return resActive; }
+    public void setResActive(boolean asd){ resActive = asd; }
 
     public void setImg(String z, AnchorPane anchorPane) {
             anchorPane.getChildren().remove(actual);

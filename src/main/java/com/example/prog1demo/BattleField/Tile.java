@@ -1,3 +1,11 @@
+/**
+ * Ez az osztály a harcmező alapja.
+ * Maga a mező egy 2D tömb ami ebből az objektumokból áll elő.
+ * Itt a getterek és setterek után, még van egy setImg fv.
+ * Ezzel be lehet állítani egy egy mezőnek a képét.
+ * A fv egy Stringet vár. és a String alapján választja ki a képet.
+ */
+
 package com.example.prog1demo.BattleField;
 
 import com.example.prog1demo.units.unit.Generic;

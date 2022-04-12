@@ -27,7 +27,7 @@ public class VillianChamp extends Generic implements Action {
         static int archerCount=0;
 
         ImageView img;
-        ImageView actual = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
+        ImageView actual2 = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
         ImageView stand = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
         public VillianChamp(int attack, int deffense, int mgc, int wisd, int mor, int lucky){
             att = attack;
@@ -44,10 +44,10 @@ public class VillianChamp extends Generic implements Action {
         public VillianChamp(){}
 
         public void setImg(String z, AnchorPane anchorPane) {
-                this.actual = stand;
-                actual.setX(pos_x);
-                actual.setY(pos_y);
-                anchorPane.getChildren().add(actual);
+                this.actual2 = stand;
+                actual2.setX(pos_x);
+                actual2.setY(pos_y);
+                //anchorPane.getChildren().add(actual2);
         }
 
         //getters + setters

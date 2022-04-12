@@ -1,3 +1,10 @@
+/**
+ * Az osztály szolgál 'engine'-ként. A konstruktorban automatikusan van generáltatva a pálya, és fel van töltve elérhetetlen mezőkkel is.
+ * A Generate() intézi az interakciót a pályával, itt jönnek be az egységek és azoknak a cselekvései.
+ * A setActiveIndex() egy segítő fv, ennek az egyetlen feladata, hogy a körökre osztott egységeknél
+ * lép egyet a sorrendben, ha az egység megtámadott valamit vagy a játékos passzolni szeretne.
+ */
+
 package com.example.prog1demo.BattleField;
 
 import com.example.prog1demo.Action;
@@ -9,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -17,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static com.example.prog1demo.BattleField.Tile.victory;
+import static java.lang.Thread.onSpinWait;
 import static java.lang.Thread.sleep;
 
 public class Tiles implements Action {
@@ -28,7 +37,7 @@ public class Tiles implements Action {
     int unitX;
     int unitY;
     static int index=0;
-    int roundCount=0;
+    static int roundCount=0;
 
 
     public Tiles(int x, int y, AnchorPane anchor){
@@ -119,42 +128,99 @@ public class Tiles implements Action {
 
         move(map, round.get(index), this.x_count, this.y_count, ap);
 
-        /*
-        imp.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
-        hound.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
-        impArcher.getActual().setOnMouseClicked((event) -> attack(map, round.get(index), imp, ap, this.x_count, this.y_count));
-*/
+        TextField rounder = new TextField(""+roundCount);
+        rounder.setPrefHeight(50);
+        rounder.setPrefWidth(100);
+        rounder.setLayoutY(50);
+        rounder.setLayoutX(1200);
+
         Button next_turn = new Button("next turn");
         next_turn.setPrefWidth(150);
         next_turn.setPrefHeight(50);
         next_turn.setLayoutX(1250);
         next_turn.setLayoutY(650);
 
+        Button pass = new Button("Pass");
+        pass.setPrefWidth(150);
+        pass.setPrefHeight(50);
+        pass.setLayoutX(1250);
+        pass.setLayoutY(750);
+
+        Button fire = new Button("Fireball");
+        fire.setPrefWidth(75);
+        fire.setPrefHeight(50);
+        fire.setLayoutX(1225);
+        fire.setLayoutY(850);
+
+        Button light = new Button("Thunder");
+        light.setPrefWidth(75);
+        light.setPrefHeight(50);
+        light.setLayoutX(1325);
+        light.setLayoutY(850);
+
+        Button res = new Button("Res");
+        res.setPrefWidth(50);
+        res.setPrefHeight(50);
+        res.setLayoutX(1425);
+        res.setLayoutY(850);
+
+        fire.setOnMouseClicked((event)->{
+            System.out.println("fire");
+            chimp.setFireActive(true);
+        });
+
+        //doMagic(map, this.x_count, this.y_count, ap, round);
+
+        light.setOnMouseClicked((event)->{
+            chimp.setThunderActive(true);
+        });
+
+        res.setOnMouseClicked((event)->{
+            chimp.setResActive(true);
+        });
+
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
+            roundCount++;
             attack(map, round.get(index), imp, ap, this.x_count, this.y_count);
             if(imp.getHp()<=0) round.remove(index);
             if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
                 Menu menu = new Menu();
             }
+            setActiveIndex(round, rounder);
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
+            roundCount++;
             attack(map, round.get(index), hound, ap, this.x_count, this.y_count);
             if(hound.getHp()<=0) round.remove(index);
             if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
                 Menu menu = new Menu();
             }
+            setActiveIndex(round, rounder);
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
+            roundCount++;
             attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count);
             if(impArcher.getHp()<=0) round.remove(index);
             if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
                 Menu menu = new Menu();
             }
+            setActiveIndex(round, rounder);
         });
+
 
         next_turn.setOnMouseClicked((event) -> {
             roundCount++;
-            setActiveIndex(round);
+            rounder.setText(""+roundCount);
+            setActiveIndex(round, rounder);
+            if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Menu menu = new Menu();
+            }
+        });
+
+        pass.setOnMouseClicked((event) -> {
+            roundCount++;
+            rounder.setText(""+roundCount);
+            setActiveIndex(round, rounder);
             if(imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
                 Menu menu = new Menu();
             }
@@ -162,31 +228,23 @@ public class Tiles implements Action {
 
 
 
-        ap.getChildren().add(next_turn);
+        ap.getChildren().addAll(next_turn, pass, fire, light, res,rounder);
     }
 
-    public void setActiveIndex(ArrayList<Generic> round){
+    public void setActiveIndex(ArrayList<Generic> round, TextField rounder){
         round.get(index).setActive(false);
-        switch (index){
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
-            case 6:
-                index++;
-                System.out.println("csökkent "+index+" re");
-                round.get(index).setActive(true);
-                move(map, round.get(index), this.x_count, this.y_count, ap);
-                break;
-            case 7:
-                index=0;
-                System.out.println("csökkent "+index+" re");
-                round.get(index).setActive(true);
-                move(map, round.get(index), this.x_count, this.y_count, ap);
-                break;
+        if(index < round.size()-1) {
+            index++;
+            System.out.println("csökkent " + index + " re");
+            round.get(index).setActive(true);
+            move(map, round.get(index), this.x_count, this.y_count, ap);
+        }else {
+            index = 0;
+            System.out.println("csökkent " + index + " re");
+            round.get(index).setActive(true);
+            move(map, round.get(index), this.x_count, this.y_count, ap);
         }
+        rounder.setText(""+roundCount);
     }
 
     //getters & setters
