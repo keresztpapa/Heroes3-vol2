@@ -1,3 +1,28 @@
+/**
+ * A hős osztálya
+ * FireBall()
+ * A hősnek az első varázslata.
+ * Kattintás következtében egy 3*3-as sugarú körben robbanást szenvednek el az egységek.
+ *
+ * @param map           a harctér átadása, 2D Tile object tömb
+ * @param centerX       a mezőben lévő X kordináta, a robbanás központjának
+ * @param centerY       a mezőben lévő Y kordináta, a robbanás központjának
+ * @param units         ArrayList a játékban lévő, mezőn elhelyezett karakterekről
+ * @param anchorPane    a felület ami módosul amin lefut a method
+ *
+ * Lightning()
+ * A hős második varázslata.
+ * A kiválasztott egységet villámcsapást szenved el.
+ *
+ * @param unit          a kiválasztott egység, ami elszenvedi a támadást
+ *
+ * Ressurection()
+ * A hős utolsó varázslata, képes feltámasztani vele egy adott karakterét.
+ *
+ * @param unit          az egység amit feltámaszt,
+ *
+ */
+
 package com.example.prog1demo.units;
 
 import com.example.prog1demo.BattleField.Tile;
