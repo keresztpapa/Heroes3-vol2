@@ -1,3 +1,9 @@
+/**
+ * Ellenfél hőse.
+ * Kezdetleges formai másolata a játékos irányította hősnek.
+ * A főbb cselekményei máshol vannak implementálva.
+ */
+
 package com.example.prog1demo.units;
 
 import com.example.prog1demo.Action;

@@ -12,17 +12,6 @@ public class Controller implements Initializable {
 
     @FXML
     AnchorPane ap;
-
-
-    @FXML
-    Button fireball = new Button();
-
-    @FXML
-    Button lightning = new Button();
-
-    @FXML
-    Button ressurr = new Button();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         gameEngine();
@@ -34,19 +23,6 @@ public class Controller implements Initializable {
         System.out.println("GameEngine");
     }
 
-
-
-    public void fireball(){
-        System.out.println("fire");
-    }
-
-    public void lightning(){
-        System.out.println("electro");
-    }
-
-    public void ressurr(){
-        System.out.println("alive");
-    }
 
 
 }

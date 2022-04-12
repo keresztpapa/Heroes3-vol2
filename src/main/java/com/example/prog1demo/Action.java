@@ -1,3 +1,19 @@
+/**
+ * Interface amiben implementálva vannak a harctéren történt események.
+ *
+ * isNeighbour()
+ * @param map           a 2D Tile object tömb, ami harctérként funkcionál
+ * @param g1            az első számú egység, ő az aktuális konfliktusban a támadó fél
+ * @param g2            a második számú egység, a konfliktusban, ő szenvedi el a sebzést
+ * @param rowCount      a 2D tömb sorának számai
+ * @param colCount      a 2D tömb oszlopainak számai
+ *
+ * @return              visszaadja azt, hogy 2 egység szomszédos e
+ *
+ *
+ *
+ */
+
 package com.example.prog1demo;
 
 import com.example.prog1demo.BattleField.Tiles;
