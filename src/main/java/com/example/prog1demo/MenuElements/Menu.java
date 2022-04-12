@@ -1,3 +1,8 @@
+/**
+ * A főmenü class-ja.
+ * Betölti a menünek szánt hátteret.
+ * Van 2 gomb, az egyik instant a harctért indítja, a másik a felkészülést a játékos által.
+ */
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.Application;
