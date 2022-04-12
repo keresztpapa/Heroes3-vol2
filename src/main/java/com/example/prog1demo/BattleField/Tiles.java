@@ -129,7 +129,7 @@ public class Tiles implements Action {
 
         ArrayList<Generic> round = new ArrayList<>();
 
-        /*
+
         round.add(pike);
         round.add(griff);
         round.add(archer);
@@ -138,7 +138,7 @@ public class Tiles implements Action {
         round.add(hound);
         round.add(chimp);
         round.add(evilChimp);
-        */
+
         System.out.println("Pike\n"+pike);
 
         move(map, round.get(index), this.x_count, this.y_count, ap);
