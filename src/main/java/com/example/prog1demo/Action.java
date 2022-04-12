@@ -218,7 +218,8 @@ public interface Action {
                     generic.setImageMovX(generic.getPos_x());
                     generic.setImageMovY(generic.getPos_y());
 
-                    tl.setVictory(true);
+                    tl.setCrs(false);
+                    tl.setOccupied(true);
                 });
             }
         }
