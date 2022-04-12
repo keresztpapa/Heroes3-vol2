@@ -3,7 +3,13 @@
  * Maga a mező egy 2D tömb ami ebből az objektumokból áll elő.
  * Itt a getterek és setterek után, még van egy setImg fv.
  * Ezzel be lehet állítani egy egy mezőnek a képét.
- * A fv egy Stringet vár. és a String alapján választja ki a képet.
+ * SetImage()
+ * @param str    a stringből amit kap paraméterben beállítja az adott mezőnek a képét
+ *
+ * giveImageFeed()
+ * @param  str  a paraméterben kapott stringet átadja a setImage()-nek
+ *
+ * Ez a fv módosítja a képet annak fejében, hogy az egér a mező fölött van e (hover effect)
  */
 
 package com.example.prog1demo.BattleField;

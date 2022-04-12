@@ -1,3 +1,10 @@
+/**
+ * Harctéri egységek boltja
+ * Itt lehet venni és meglévőket eladni.
+ * Egység nélkül nem enged a harcmezőre a játék
+ * A ToBattle gombra kattintva, a harcmezőre dob és frissíti az egységek értékeit a hős bónuszaival
+ */
+
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.Action;

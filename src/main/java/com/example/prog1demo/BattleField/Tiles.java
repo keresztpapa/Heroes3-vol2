@@ -1,9 +1,16 @@
 /**
  * Az osztály szolgál 'engine'-ként. A konstruktorban automatikusan van generáltatva a pálya, és fel van töltve elérhetetlen mezőkkel is.
+ *
  * A Generate() intézi az interakciót a pályával, itt jönnek be az egységek és azoknak a cselekvései.
+ *
  * A setActiveIndex() egy segítő fv, ennek az egyetlen feladata, hogy a körökre osztott egységeknél
  * lép egyet a sorrendben, ha az egység megtámadott valamit vagy a játékos passzolni szeretne.
+ *
+ * @param round     ArrayList a hősök sorrendjéről
+ * @param rounder   A kört kijelző TextBox, ami frissül, ha egy karakter befejezte a körét
+ *
  */
+
 
 package com.example.prog1demo.BattleField;
 
