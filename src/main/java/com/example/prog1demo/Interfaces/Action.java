@@ -375,40 +375,43 @@ public interface Action {
     default void AImove(Tile[][] map,ArrayList<Generic> round, Generic gen){
 
 
-        if(isNeighbour(map, ))
-                for(int i=0;i< round.size();i++){
+        if(!isNeighbour(map, round, gen)) {
+                for (int i = 0; i < round.size(); i++) {
                     switch (round.get(i).getName()) {
-                            case "Archer", "Pike", "Griff" -> {
-                                        if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
-                                            gen.setPos_x(gen.getPos_x() + 100);
-                                            gen.setImageMovX(gen.getPos_x());
-                                            gen.setImageMovY(gen.getPos_y());
-                                        }
-                                        if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
-                                            gen.setPos_x(gen.getPos_x() - 100);
-                                            gen.setImageMovX(gen.getPos_x());
-                                            gen.setImageMovY(gen.getPos_y());
-                                        }
-                                        if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
-                                            gen.setPos_y(gen.getPos_y() + 100);
-                                            gen.setImageMovX(gen.getPos_x());
-                                            gen.setImageMovY(gen.getPos_y());
-                                        }
-                                        if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
-                                            gen.setPos_y(gen.getPos_y() - 100);
-                                            gen.setImageMovX(gen.getPos_x());
-                                            gen.setImageMovY(gen.getPos_y());
-                                        }
+                        case "Archer", "Pike", "Griff" -> {
+                            if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
+                                gen.setPos_x(gen.getPos_x() + 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
                             }
+                            if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
+                                gen.setPos_x(gen.getPos_x() - 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
+                            if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
+                                gen.setPos_y(gen.getPos_y() + 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
+                            if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
+                                gen.setPos_y(gen.getPos_y() - 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
+                        }
                     }
-                mapUpdate(map, round);
+                    mapUpdate(map, round);
                 }
+        }else{
+            System.out.println("attacked nothing yet");
+        }
 
 
 
     }
     default boolean isNeighbour(Tile[][] map, ArrayList<Generic> round, Generic gen){
-        
+
         for(int i=0;i<round.size();i++){
 
                 int x1 = gen.getPos_x() / 100,
