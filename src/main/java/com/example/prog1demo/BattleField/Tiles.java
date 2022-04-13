@@ -22,10 +22,11 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Thread.sleep;
 
-public class Tiles implements Action {
+public class Tiles implements Action{
     int x_count;
     int y_count;
     Tile[][] map;
@@ -188,21 +189,18 @@ public class Tiles implements Action {
         });
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
-            //roundCount++;
             attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField);
             if(imp.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
-            //roundCount++;
             attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField);
             if(hound.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
-            //roundCount++;
             attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField);
             if(impArcher.getHp()<=0) round.remove(index);
             setActiveIndex(round, rounder, logField);
@@ -211,16 +209,11 @@ public class Tiles implements Action {
 
         removeDeadUnit(round);
 
-
         pass.setOnMouseClicked((event) -> {
-            //roundCount++;
             rounder.setText(""+roundCount);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
-
-
-
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
@@ -239,6 +232,15 @@ public class Tiles implements Action {
             round.get(index).setActive(true);
             move(map, round.get(index), this.x_count, this.y_count, ap, logF, round);
         }
+
+        if(Objects.equals(round.get(index).getName(), "Imp") ||
+           Objects.equals(round.get(index).getName(), "Hound") ||
+           Objects.equals(round.get(index).getName(), "ImpArcher")){
+
+            AImove(round, round.get(index));
+           setActiveIndex(round, rounder, logF);
+        }
+
         rounder.setText(""+roundCount);
     }
 

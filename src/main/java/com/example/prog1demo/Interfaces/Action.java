@@ -376,6 +376,37 @@ public interface Action {
         }
     }
 
+    default void AImove(ArrayList<Generic> round, Generic gen){
+
+        for(int i=0;i< round.size();i++){
+            switch (round.get(i).getName()) {
+                case "Archer", "Pike", "Griff" -> {
+                    if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
+                        gen.setPos_x(gen.getPos_x() + 100);
+                        gen.setImageMovX(gen.getPos_x());
+                        gen.setImageMovY(gen.getPos_y());
+                    }
+                    if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
+                        gen.setPos_x(gen.getPos_x() - 100);
+                        gen.setImageMovX(gen.getPos_x());
+                        gen.setImageMovY(gen.getPos_y());
+                    }
+                    if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
+                        gen.setPos_y(gen.getPos_y() + 100);
+                        gen.setImageMovX(gen.getPos_x());
+                        gen.setImageMovY(gen.getPos_y());
+                    }
+                    if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
+                        gen.setPos_y(gen.getPos_y() - 100);
+                        gen.setImageMovX(gen.getPos_x());
+                        gen.setImageMovY(gen.getPos_y());
+                    }
+                }
+            }
+        }
+
+    }
+
 }
 
 
