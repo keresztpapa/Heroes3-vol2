@@ -16,13 +16,14 @@
  *              ha String-ként adjuk a paramétert akkor annak fejében állítja be a sprite-ot
  */
 
-package com.example.prog1demo.units.unit;
+package com.example.prog1demo.units.unit.Humans;
 
+import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Soldier extends Generic{
+public class Soldier extends Generic {
         AnchorPane anchorPane;
         ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));

@@ -1,38 +1,35 @@
 /**
- * Griff osztálya
- *  Főként statikus változói vannak
- *  És ImageView tömbjei
- *
- *  Rendelekzik egy toString() metódussal,
- *  @return      az objektum értékeit adja visssza
- *
- *  setImg()
- *  @param z     abban az esetben ha az ImageView értékét direkt szeretnénk megadni
- *
- *               beállítja az aktuális sprite -ját az object -nek állapottól függően
- *
- *  setImg()
- *  @param z     Overload -olható az előző metódus,
- *              ha String-ként adjuk a paramétert akkor annak fejében állítja be a sprite-ot
- *
- */
+ * A számítógép egységeiből a Griffnek a megfelelője
+*  Főként statikus változói vannak
+*  És ImageView tömbjei
+*
+*  Rendelekzik egy toString() metódussal,
+*  @return      az objektum értékeit adja visssza
+*
+*  setImg()
+*  @param z     abban az esetben ha az ImageView értékét direkt szeretnénk megadni
+*
+*               beállítja az aktuális sprite -ját az object -nek állapottól függően
+*
+*  setImg()
+*  @param z     Overload -olható az előző metódus,
+*              ha String-ként adjuk a paramétert akkor annak fejében állítja be a sprite-ot
+*/
+package com.example.prog1demo.units.unit.EvilUnits;
 
-package com.example.prog1demo.units.unit;
-
+import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-public class Griff extends Generic{
-    int cost;
-    static int hp = 30;
-    int movement;
-    int initiative=5;
-    int pos_x;
-    int pos_y;
+import java.util.Random;
+
+public class Hound extends Generic {
+    AnchorPane anchorPane;
+    ImageView actual = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/computer_units/hound/hound_stand.png"));
+    ImageView dead = new ImageView(new Image("file:pngs/computer_units/hound/hound_death.png"));
     int imgX, imgY;
-    static int count=0;
-    static boolean active=false;
     static double attMin=5;
     static double attMax=10;
     static double deff=1;
@@ -41,45 +38,50 @@ public class Griff extends Generic{
     static double moral=1;
     static double luck=1;
     static double crit=1;
+    Random rand = new Random();
+    static int count;
+    static int cost = 2;
+    int movement = 4,
+        initiative = 1,
+        pos_x,
+        pos_y;
+    static int hp = 30;
+    static boolean active=false;
 
-    AnchorPane anchorPane;
-    ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
-    ImageView stand = new ImageView(new Image("file:pngs/player_units/griff/griff_stand.png"));
-    ImageView dead = new ImageView(new Image("file:pngs/player_units/griff/griff_dead.png"));
     ImageView[] movement_sprite = {
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a1.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a2.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a3.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a4.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a5.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a6.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a7.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m1.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m2.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m3.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m4.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m5.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m6.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/move/hound_m7.png")),
     };
+
     ImageView[] attack_sprite = {
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m1.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m2.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m3.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m4.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m5.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m6.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m7.png")),
-            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m8.png"))
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a1.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a2.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a3.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a4.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a5.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a6.png")),
+            new ImageView(new Image("file:pngs/computer_units/hound/attack/hound_a7.png")),
     };
 
-    public Griff(){}
+    public Hound(){  count= rand.nextInt(100);  }
 
-    public Griff(int px, int py, AnchorPane AP){
+    public Hound(int px, int py, AnchorPane AP){
         this.pos_x = px;
         this.pos_y = py;
-
         actual.setX(px);
         actual.setY(py);
         actual.setFitWidth(100);
         actual.setFitHeight(100);
-
         this.anchorPane = AP;
+        //AP.getChildren().add(actual);
         this.imgX = px;
         this.imgY = py;
+        count= rand.nextInt(100);
     }
 
     public String toString(){
@@ -122,7 +124,7 @@ public class Griff extends Generic{
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
-    public String getName(){ return "Griff"; }
+    public String getName(){ return "Hound"; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }
 
@@ -136,13 +138,13 @@ public class Griff extends Generic{
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;
-            actual.setX(this.pos_x-20);
+            actual.setX(this.pos_x);
             actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         } else {
             anchorPane.getChildren().remove(actual);
             this.actual = stand;
-            actual.setX(this.pos_x-20);
+            actual.setX(this.pos_x);
             actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         }

@@ -8,9 +8,8 @@
 
 package com.example.prog1demo.MenuElements;
 
-import com.example.prog1demo.units.Champions;
-import com.example.prog1demo.units.VillianChamp;
-import com.example.prog1demo.units.unit.Generic;
+import com.example.prog1demo.units.unit.Heroes.Champions;
+import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

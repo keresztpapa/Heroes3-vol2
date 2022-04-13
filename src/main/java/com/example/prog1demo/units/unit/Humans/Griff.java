@@ -1,5 +1,5 @@
 /**
- * A számítógép egységeiből a Parasztnak a megfelelője
+ * Griff osztálya
  *  Főként statikus változói vannak
  *  És ImageView tömbjei
  *
@@ -14,74 +14,73 @@
  *  setImg()
  *  @param z     Overload -olható az előző metódus,
  *              ha String-ként adjuk a paramétert akkor annak fejében állítja be a sprite-ot
+ *
  */
 
-package com.example.prog1demo.units.unit;
+package com.example.prog1demo.units.unit.Humans;
 
+import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
-import java.util.Random;
-
-public class Imp extends Generic{
-    AnchorPane anchorPane;
-    ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
-    ImageView stand = new ImageView(new Image("file:pngs/computer_units/imp/imp_stand.png"));
-    ImageView dead = new ImageView(new Image("file:pngs/computer_units/imp/imp_death.png"));
+public class Griff extends Generic {
+    int cost;
+    static int hp = 30;
+    int movement;
+    int initiative=5;
+    int pos_x;
+    int pos_y;
     int imgX, imgY;
+    static int count=0;
     static boolean active=false;
-    Random rand = new Random();
-    static int count;
-    static int cost = 2;
-    int movement = 4,
-        initiative = 2,
-        pos_x,
-        pos_y;
-    static double attMin=1;
-    static double attMax=1;
+    static double attMin=5;
+    static double attMax=10;
     static double deff=1;
     static double magic =1;
     static double wisdom=1;
     static double moral=1;
     static double luck=1;
     static double crit=1;
-    static int hp = 3;
 
+    AnchorPane anchorPane;
+    ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/player_units/griff/griff_stand.png"));
+    ImageView dead = new ImageView(new Image("file:pngs/player_units/griff/griff_dead.png"));
     ImageView[] movement_sprite = {
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m1.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m2.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m3.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m4.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m5.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m6.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m7.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m8.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/move/imp_m9.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a1.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a2.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a3.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a4.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a5.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a6.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/movement/griff_a7.png")),
     };
-
     ImageView[] attack_sprite = {
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a1.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a2.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a3.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a4.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a5.png")),
-            new ImageView(new Image("file:pngs/computer_units/imp/attack/imp_a6.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m1.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m2.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m3.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m4.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m5.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m6.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m7.png")),
+            new ImageView(new Image("file:pngs/player_units/griff/attack/griff_m8.png"))
     };
 
-    public Imp(){ count= rand.nextInt(100); }
+    public Griff(){}
 
-    public Imp(int px, int py, AnchorPane AP){
+    public Griff(int px, int py, AnchorPane AP){
         this.pos_x = px;
         this.pos_y = py;
+
         actual.setX(px);
         actual.setY(py);
         actual.setFitWidth(100);
         actual.setFitHeight(100);
+
         this.anchorPane = AP;
         this.imgX = px;
         this.imgY = py;
-        count= rand.nextInt(100);
     }
 
     public String toString(){
@@ -124,11 +123,11 @@ public class Imp extends Generic{
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
-    public String getName(){ return "Imp"; }
+    public String getName(){ return "Griff"; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }
 
-    public void setImg(ImageView z, AnchorPane anchorPane){
+    public void setImg(ImageView z,AnchorPane anchorPane){
         anchorPane.getChildren().remove(actual);
         this.actual = z;
         anchorPane.getChildren().add(actual);
@@ -138,13 +137,13 @@ public class Imp extends Generic{
         if ("dead".equals(z)) {
             anchorPane.getChildren().remove(actual);
             this.actual = dead;
-            actual.setX(this.pos_x);
+            actual.setX(this.pos_x-20);
             actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         } else {
             anchorPane.getChildren().remove(actual);
             this.actual = stand;
-            actual.setX(this.pos_x);
+            actual.setX(this.pos_x-20);
             actual.setY(this.pos_y);
             anchorPane.getChildren().add(actual);
         }

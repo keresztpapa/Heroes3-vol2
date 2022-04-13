@@ -4,7 +4,7 @@
  * A főbb cselekményei máshol vannak implementálva.
  */
 
-package com.example.prog1demo.units;
+package com.example.prog1demo.units.unit.Heroes;
 
 import com.example.prog1demo.Interfaces.Action;
 import com.example.prog1demo.units.unit.Generic;

@@ -1,25 +1,21 @@
 package com.example.prog1demo.Interfaces;
 
 import com.example.prog1demo.BattleField.Tile;
-import com.example.prog1demo.units.Champions;
-import com.example.prog1demo.units.VillianChamp;
+import com.example.prog1demo.units.unit.Heroes.Champions;
+import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import com.example.prog1demo.units.unit.*;
+import com.example.prog1demo.units.unit.EvilUnits.Hound;
+import com.example.prog1demo.units.unit.EvilUnits.Imp;
+import com.example.prog1demo.units.unit.EvilUnits.ImpArcher;
+import com.example.prog1demo.units.unit.Humans.Archer;
+import com.example.prog1demo.units.unit.Humans.Griff;
+import com.example.prog1demo.units.unit.Humans.Soldier;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
-import java.util.Objects;
-import com.example.prog1demo.Interfaces.Action;
-import com.example.prog1demo.units.Champions;
-import com.example.prog1demo.units.VillianChamp;
-import com.example.prog1demo.units.unit.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 import static java.lang.Thread.sleep;
 

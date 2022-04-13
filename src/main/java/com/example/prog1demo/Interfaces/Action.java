@@ -70,18 +70,14 @@
 
 package com.example.prog1demo.Interfaces;
 
-import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.BattleField.Tile;
-import com.example.prog1demo.units.Champions;
-import com.example.prog1demo.units.VillianChamp;
+import com.example.prog1demo.units.unit.Heroes.Champions;
+import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import com.example.prog1demo.units.unit.Generic;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public interface Action {
 

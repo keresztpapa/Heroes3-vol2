@@ -15,15 +15,16 @@
  *  @param z     Overload -olható az előző metódus,
  *              ha String-ként adjuk a paramétert akkor annak fejében állítja be a sprite-ot
  */
-package com.example.prog1demo.units.unit;
+package com.example.prog1demo.units.unit.EvilUnits;
 
+import com.example.prog1demo.units.unit.Generic;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.util.Random;
 
-public class ImpArcher extends Generic{
+public class ImpArcher extends Generic {
     AnchorPane anchorPane;
     ImageView actual = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_stand.png"));
     ImageView stand = new ImageView(new Image("file:pngs/computer_units/imp_archer/imp_archer_stand.png"));

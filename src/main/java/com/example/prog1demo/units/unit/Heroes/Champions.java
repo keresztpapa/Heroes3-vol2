@@ -23,7 +23,7 @@
  *
  */
 
-package com.example.prog1demo.units;
+package com.example.prog1demo.units.unit.Heroes;
 
 import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.units.unit.Generic;

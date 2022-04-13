@@ -5,7 +5,7 @@
 
 package com.example.prog1demo.MenuElements;
 
-import com.example.prog1demo.units.Champions;
+import com.example.prog1demo.units.unit.Heroes.Champions;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
