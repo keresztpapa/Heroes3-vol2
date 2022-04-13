@@ -85,22 +85,10 @@ public class Tiles implements Action{
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setOccupied(true);
 
         Soldier pike = new Soldier(0, 500, ap);
-        pike.setImg("stand", ap);
-        this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setGeneric(pike);
-        this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setCrs(false);
-        this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setOccupied(true);
 
         Griff griff = new Griff(100, 0, ap);
-        griff.setImg("stand", ap);
-        this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setGeneric(griff);
-        this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setCrs(false);
-        this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setOccupied(true);
 
         Archer archer = new Archer(0,200,ap);
-        this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setGeneric(archer);
-        this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setCrs(false);
-        this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setOccupied(true);
-        archer.setImg("stand",ap);
 
         Imp imp = new Imp(300, 300, ap);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
@@ -128,24 +116,46 @@ public class Tiles implements Action{
         logField.setPrefWidth(300);
         logField.setText("Logs: \n");
 
-
+/*
         Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         Generic[] finalArr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         setOrder(arr, finalArr);
 
         for (Generic generic : finalArr) System.out.println(generic.getName()+generic.getMoral());
+*/
 
         ArrayList<Generic> round = new ArrayList<>();
 
+        if(chimp.getSoldierCount() > 0) {
+            round.add(pike);
+            pike.setImg("stand", ap);
+            this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setGeneric(pike);
+            this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setCrs(false);
+            this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setOccupied(true);
 
-        round.add(pike);
-        round.add(griff);
-        round.add(archer);
+        }
+        if(chimp.getGriffCount() > 0) {
+            round.add(griff);
+            griff.setImg("stand", ap);
+            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setGeneric(griff);
+            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setCrs(false);
+            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setOccupied(true);
+        }
+        if(chimp.getArcherCount() > 0) {
+            round.add(archer);
+            archer.setImg("stand",ap);
+            this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setGeneric(archer);
+            this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setCrs(false);
+            this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setOccupied(true);
+        }
+
         round.add(imp);
         round.add(impArcher);
         round.add(hound);
-        round.add(chimp);
-        round.add(evilChimp);
+        //round.add(chimp);
+        //round.add(evilChimp);
+
+        if(index==2) System.out.println("Most van az Archer");
 
         System.out.println("Pike\n"+pike);
 
@@ -195,22 +205,28 @@ public class Tiles implements Action{
         });
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
-            attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField);
-            if(imp.getHp()<=0) round.remove(index);
-            setActiveIndex(round, rounder, logField);
-            removeDeadUnit(round);
+            if(imp.getHp()>0){
+                attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField, round);
+                if (imp.getHp() <= 0) round.remove(index);
+                setActiveIndex(round, rounder, logField);
+                removeDeadUnit(round);
+            }
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
-            attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField);
-            if(hound.getHp()<=0) round.remove(index);
-            setActiveIndex(round, rounder, logField);
-            removeDeadUnit(round);
+            if(hound.getHp()>0){
+                attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField, round);
+                if (hound.getHp() <= 0) round.remove(index);
+                setActiveIndex(round, rounder, logField);
+                removeDeadUnit(round);
+            }
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
-            attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField);
-            if(impArcher.getHp()<=0) round.remove(index);
-            setActiveIndex(round, rounder, logField);
-            removeDeadUnit(round);
+            if(impArcher.getHp()>0) {
+                attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField, round);
+                if (impArcher.getHp() <= 0) round.remove(index);
+                setActiveIndex(round, rounder, logField);
+                removeDeadUnit(round);
+            }
         });
 
         removeDeadUnit(round);
@@ -224,27 +240,26 @@ public class Tiles implements Action{
     }
 
     public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
-        round.get(index).setActive(false);
-        System.out.println(round.size());
+        //round.get(index).setActive(false);
+
         if(index < round.size()-1) {
             index++;
             System.out.println("csökkent " + index + " re");
-            round.get(index).setActive(true);
-            move(map, round.get(index), this.x_count, this.y_count, ap, logF,round);
+            //round.get(index).setActive(true);
+            //move(map, round.get(index), this.x_count, this.y_count, ap, logF,round);
         }else {
             roundCount++;
             index = 0;
             System.out.println("csökkent " + index + " re");
-            round.get(index).setActive(true);
-            move(map, round.get(index), this.x_count, this.y_count, ap, logF, round);
+            //round.get(index).setActive(true);
+            //move(map, round.get(index), this.x_count, this.y_count, ap, logF, round);
         }
-
         if(Objects.equals(round.get(index).getName(), "Imp") ||
            Objects.equals(round.get(index).getName(), "Hound") ||
            Objects.equals(round.get(index).getName(), "ImpArcher")){
 
             AImove(map, round, round.get(index));
-           setActiveIndex(round, rounder, logF);
+            //setActiveIndex(round, rounder, logF);
         }
 
         rounder.setText(""+roundCount);

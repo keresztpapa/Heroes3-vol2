@@ -182,38 +182,38 @@ public class Multiplayer implements Action{
             });
 
             imp.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField);
+                attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField, round);
                 if(imp.getHp()<=0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             });
             hound.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField);
+                attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField, round);
                 if(hound.getHp()<=0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             });
             impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField);
+                attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField, round);
                 if(impArcher.getHp()<=0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             });
 
             pike.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), pike, ap, this.x_count, this.y_count, logField);
+                attack(map, round.get(index), pike, ap, this.x_count, this.y_count, logField, round);
                 if(pike.getHp()<=0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             });
             griff.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), griff, ap, this.x_count, this.y_count, logField);
+                attack(map, round.get(index), griff, ap, this.x_count, this.y_count, logField, round);
                 if(griff.getHp()<=0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             });
             archer.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), archer, ap, this.x_count, this.y_count, logField);
+                attack(map, round.get(index), archer, ap, this.x_count, this.y_count, logField, round);
                 if(archer.getHp()<=0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
