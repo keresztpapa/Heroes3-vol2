@@ -372,57 +372,58 @@ public interface Action {
         }
     }
 
-    default void AImove(ArrayList<Generic> round, Generic gen){
+    default void AImove(Tile[][] map,ArrayList<Generic> round, Generic gen){
 
-        for(int i=0;i< round.size();i++){
-            switch (round.get(i).getName()) {
-                case "Archer", "Pike", "Griff" -> {
-                    if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
-                        gen.setPos_x(gen.getPos_x() + 100);
-                        gen.setImageMovX(gen.getPos_x());
-                        gen.setImageMovY(gen.getPos_y());
+
+        if(isNeighbour(map, ))
+                for(int i=0;i< round.size();i++){
+                    switch (round.get(i).getName()) {
+                            case "Archer", "Pike", "Griff" -> {
+                                        if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
+                                            gen.setPos_x(gen.getPos_x() + 100);
+                                            gen.setImageMovX(gen.getPos_x());
+                                            gen.setImageMovY(gen.getPos_y());
+                                        }
+                                        if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
+                                            gen.setPos_x(gen.getPos_x() - 100);
+                                            gen.setImageMovX(gen.getPos_x());
+                                            gen.setImageMovY(gen.getPos_y());
+                                        }
+                                        if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
+                                            gen.setPos_y(gen.getPos_y() + 100);
+                                            gen.setImageMovX(gen.getPos_x());
+                                            gen.setImageMovY(gen.getPos_y());
+                                        }
+                                        if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
+                                            gen.setPos_y(gen.getPos_y() - 100);
+                                            gen.setImageMovX(gen.getPos_x());
+                                            gen.setImageMovY(gen.getPos_y());
+                                        }
+                            }
                     }
-                    if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
-                        gen.setPos_x(gen.getPos_x() - 100);
-                        gen.setImageMovX(gen.getPos_x());
-                        gen.setImageMovY(gen.getPos_y());
-                    }
-                    if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
-                        gen.setPos_y(gen.getPos_y() + 100);
-                        gen.setImageMovX(gen.getPos_x());
-                        gen.setImageMovY(gen.getPos_y());
-                    }
-                    if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
-                        gen.setPos_y(gen.getPos_y() - 100);
-                        gen.setImageMovX(gen.getPos_x());
-                        gen.setImageMovY(gen.getPos_y());
-                    }
+                mapUpdate(map, round);
                 }
-            }
-        }
 
+
+
+    }
+    default boolean isNeighbour(Tile[][] map, ArrayList<Generic> round, Generic gen){
+        
+        for(int i=0;i<round.size();i++){
+
+                int x1 = gen.getPos_x() / 100,
+                    y1 = gen.getPos_y() / 100;
+
+                int x2 = round.get(i).getPos_x() / 100,
+                    y2 = round.get(i).getPos_y() / 100;
+
+            if (x1 < 12 && map[x1][y1].getPos_x() + 100 == map[x2][y2].getPos_x()) return true;
+            if (x1 < 12 && map[x1][y1].getPos_x() - 100 == map[x2][y2].getPos_x()) return true;
+            if (y1 < 10 && map[x1][y1].getPos_y() + 100 == map[x2][y2].getPos_y()) return true;
+            if (y1 < 10 && map[x1][y1].getPos_y() - 100 == map[x2][y2].getPos_y()) return true;
+        }
+        System.out.println("messze vagy");
+        return false;
     }
 
 }
-
-
-/*
-
-
-    default void action(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount, AnchorPane ap){
-        for(int i=0;i<rowCount;i++){
-            for (int j=0;j<colCount;j++){
-                Tile tl = map[i][j];
-
-                tl.getImageView().setOnMouseClicked((event)->{
-                    if(!tl.getCrs() && tl.isOccupied()){
-                        attack(g1, g2,ap);
-                    }else{
-                        move(map,g1,rowCount,colCount,ap);
-                    }
-                });
-
-            }
-        }
-    }
- */

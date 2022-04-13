@@ -243,7 +243,7 @@ public class Tiles implements Action{
            Objects.equals(round.get(index).getName(), "Hound") ||
            Objects.equals(round.get(index).getName(), "ImpArcher")){
 
-            AImove(round, round.get(index));
+            AImove(map, round, round.get(index));
            setActiveIndex(round, rounder, logF);
         }
 
