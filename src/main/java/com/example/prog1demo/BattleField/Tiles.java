@@ -25,10 +25,12 @@ import com.example.prog1demo.units.unit.EvilUnits.ImpArcher;
 import com.example.prog1demo.units.unit.Humans.Archer;
 import com.example.prog1demo.units.unit.Humans.Griff;
 import com.example.prog1demo.units.unit.Humans.Soldier;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,13 +45,24 @@ public class Tiles implements Action{
     int x_count;
     int y_count;
     Tile[][] map;
-    AnchorPane ap;
     int i, j;
     int unitX;
     int unitY;
     static int index=0;
     static int roundCount=0;
     static String logs="";
+    AnchorPane ap;
+    Soldier pike;
+    Griff griff;
+    Archer archer;
+    Imp imp;
+    Hound hound;
+    ImpArcher impArcher;
+    VillianChamp evilChimp;
+    Champions chimp;
+    TextArea logField;
+    Scene sc;
+    Stage stg;
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -58,31 +71,25 @@ public class Tiles implements Action{
         this.ap=anchor;
         this.map = new Tile[x][y];
 
-             for (i=0;i<this.x_count;i++) {
-                for (j = 0; j < this.y_count; j++) {
-                    this.map[i][j] = new Tile(100 * i, j * 100, ap, true);
-                    if ((int) (Math.random() * (100 + 1)) % 10 == 0) {
-                        str = "water";
-                        map[i][j].setPic("water");
-                        this.map[i][j].setCrs(false);
-                    } else {
-                        str = "def";
-                        map[i][j].setPic("def");
-                    }
-                    this.map[i][j].giveImageFeed(str);
+
+        for (i=0;i<this.x_count;i++) {
+            for (j = 0; j < this.y_count; j++) {
+                this.map[i][j] = new Tile(100 * i, j * 100, ap, true);
+                if ((int) (Math.random() * (100 + 1)) % 10 == 0) {
+                    str = "water";
+                    map[i][j].setPic("water");
+                    this.map[i][j].setCrs(false);
+                } else {
+                    str = "def";
+                    map[i][j].setPic("def");
                 }
+                this.map[i][j].giveImageFeed(str);
             }
+        }
     }
 
-    public void generate() throws IOException {
-        InputStream is = Files.newInputStream(Paths.get("pngs/menu.png"));
-        Image bckgr = new Image(is);
-        is.close();
-        ImageView img = new ImageView(bckgr);
-        img.setFitWidth(1500);
-        img.setFitHeight(1000);
-
-        Champions chimp = new Champions();
+    public void generate(){
+        chimp = new Champions();
         chimp.setImg("stand",ap);
         chimp.setPos_x(100);
         chimp.setPos_y(0);
@@ -92,7 +99,7 @@ public class Tiles implements Action{
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setCrs(false);
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setOccupied(true);
 
-        VillianChamp evilChimp = new VillianChamp();
+        evilChimp = new VillianChamp();
         evilChimp.setImg("stand",ap);
         evilChimp.setPos_x(1100);
         evilChimp.setPos_y(0);
@@ -102,32 +109,29 @@ public class Tiles implements Action{
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setCrs(false);
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setOccupied(true);
 
-        Soldier pike = new Soldier(0, 500, ap);
+        pike = new Soldier(0, 500, ap);
+        griff = new Griff(100, 0, ap);
+        archer = new Archer(0,200,ap);
 
-        Griff griff = new Griff(100, 0, ap);
-
-        Archer archer = new Archer(0,200,ap);
-
-        Imp imp = new Imp(300, 300, ap);
+        imp = new Imp(300, 300, ap);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setCrs(false);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setOccupied(true);
         imp.setImg("stand", ap);
 
-        Hound hound = new Hound(700, 600, ap);
+        hound = new Hound(700, 600, ap);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setGeneric(hound);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setCrs(false);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setOccupied(true);
         hound.setImg("stand", ap);
 
-        ImpArcher impArcher = new ImpArcher(500, 400, ap);
+        impArcher = new ImpArcher(500, 400, ap);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setGeneric(impArcher);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setCrs(false);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
         impArcher.setImg("stand", ap);
 
-        //////////////////////////////////////////////////////////////////////////////////////////////
-        TextArea logField = new TextArea(logs);
+        logField = new TextArea(logs);
         logField.setLayoutX(1200);
         logField.setLayoutY(100);
         logField.setPrefHeight(500);
@@ -257,41 +261,28 @@ public class Tiles implements Action{
             rounder.setText(""+roundCount);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
-
-            if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
-                Victory vc = new Victory();
-                vc.endGame("bukta");
-            }
-
-            if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-                Victory vc = new Victory();
-                vc.endGame("");
-            }
         });
-
-
-
-        if(Objects.equals(round.get(index).getName(), "Pike") ||
-                Objects.equals(round.get(index).getName(), "Archer") ||
-                Objects.equals(round.get(index).getName(), "Griff")){
-
-                System.out.println(round.get(i).getName());
-                move(map, round.get(index), this.x_count, this.y_count, ap, logField, round);
-        }
 
 
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
     public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
-        //round.get(index).setActive(false);
-
         if(index < round.size()-1) {
-            if(round.get(i).getHp() <= 0) setActiveIndex(round, rounder, logF);
             index++;
         }else {
             roundCount++;
             index = 0;
+        }
+
+        if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
+            Victory vc = new Victory();
+            vc.endGame("bukta");
+        }
+
+        if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+            Victory vc = new Victory();
+            vc.endGame("");
         }
 
         if(Objects.equals(round.get(index).getName(), "Imp") ||

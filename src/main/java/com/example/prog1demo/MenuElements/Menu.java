@@ -29,7 +29,7 @@ public class Menu {
         img.setFitWidth(1500);
         img.setFitHeight(1000);
 
-        Button next_scene = new Button("New Game");
+        Button next_scene = new Button("Multiplayer");
         next_scene.setPrefWidth(100);
         next_scene.setPrefHeight(100);
         next_scene.setLayoutX(1000);
@@ -42,18 +42,6 @@ public class Menu {
             root.setPrefWidth(1500);
             Multiplayer mp = new Multiplayer(12,10,root);
             mp.generate();
-
-
-            /*FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
-            Scene scene = null;
-            try {
-                scene = new Scene(fxmlLoader.load(),1500,1000);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-            stg.setTitle("Heroes!");
-            stg.setScene(scene);
-            stg.show();*/
         });
 
         Button diff = new Button("Difficulty");

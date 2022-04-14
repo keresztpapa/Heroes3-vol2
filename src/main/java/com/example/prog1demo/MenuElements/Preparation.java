@@ -7,6 +7,7 @@
 
 package com.example.prog1demo.MenuElements;
 
+import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.Interfaces.Action;
 import com.example.prog1demo.Application;
 import com.example.prog1demo.units.unit.Heroes.Champions;
@@ -206,26 +207,27 @@ public class Preparation implements Action {
                         e.printStackTrace();
                     }
                 }
+            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
+            Scene scene;
 
-                FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
-                Scene scene = null;
-                try {
-                    System.out.println("update után");
-                    unitUpdate(champ, enemyChamp, pike, griffin, arc, imp, hound, impArcher);
-                    System.out.println("Pike\n"+pike+"\n\n");
-                    System.out.println("Griffin\n"+griffin+"\n\n");
-                    System.out.println("Archer\n"+arc+"\n\n");
-                    System.out.println("Imp:\n"+imp+"\n\n");
-                    System.out.println("hound\n"+hound+"\n\n");
-                    System.out.println("ImpARcher\n"+impArcher+"\n\n");
+            System.out.println("update után");
+            unitUpdate(champ, enemyChamp, pike, griffin, arc, imp, hound, impArcher);
+            System.out.println("Pike\n"+pike+"\n\n");
+            System.out.println("Griffin\n"+griffin+"\n\n");
+            System.out.println("Archer\n"+arc+"\n\n");
+            System.out.println("Imp:\n"+imp+"\n\n");
+            System.out.println("hound\n"+hound+"\n\n");
+            System.out.println("ImpARcher\n"+impArcher+"\n\n");
 
-                    scene = new Scene(fxmlLoader.load(),1500,1000);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
+            try {
+                scene = new Scene(fxmlLoader.load(),1500,1000);
                 stg.setTitle("Heroes!");
                 stg.setScene(scene);
                 stg.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
         });
 
 

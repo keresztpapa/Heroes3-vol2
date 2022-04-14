@@ -24,7 +24,7 @@ public class Controller implements Initializable {
     }
 
     public void gameEngine() throws IOException {
-        Tiles tile = new Tiles(12,10,ap);
+        Tiles tile = new Tiles(12,10, ap);
         tile.generate();
         System.out.println("GameEngine");
     }
