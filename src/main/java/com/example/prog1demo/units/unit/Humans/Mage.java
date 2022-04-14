@@ -7,9 +7,9 @@ import javafx.scene.layout.AnchorPane;
 
 public class Mage extends MagicalStandard {
     AnchorPane anchorPane;
-    ImageView actual = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
-    ImageView stand = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
-    ImageView dead = new ImageView(new Image("file:pngs/player_units/pike/pike_dead.png"));
+    ImageView actual = new ImageView(new Image("file:pngs/player_units/monk/monk_def.png"));
+    ImageView stand = new ImageView(new Image("file:pngs/player_units/monk/monk_def.png"));
+    ImageView dead = new ImageView(new Image("file:pngs/player_units/monk/monk_dead.png"));
     int imgX, imgY;
 
     static int count=0;
@@ -31,20 +31,21 @@ public class Mage extends MagicalStandard {
     static boolean active=false;
 
     ImageView[] movement_sprite = {
-            new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m1.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m2.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m3.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m4.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m5.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/movement/pike_m6.png"))
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m1.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m2.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m3.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m4.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m5.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m6.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/move/monk_m7.png"))
     };
 
     ImageView[] attack_sprite = {
-            new ImageView(new Image("file:pngs/player_units/pike/attack/pike_a1.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/attack/pike_a2.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/attack/pike_a3.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/attack/pike_a4.png")),
-            new ImageView(new Image("file:pngs/player_units/pike/attack/pike_a5.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/attack/monk_a1.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/attack/monk_a2.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/attack/monk_a3.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/attack/monk_a4.png")),
+            new ImageView(new Image("file:pngs/player_units/monk/attack/monk_a5.png")),
     };
 
     public Mage(){}
@@ -102,7 +103,7 @@ public class Mage extends MagicalStandard {
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
     public void setCount(int z){ count = z; }
-    public String getName(){ return "Pike"; }
+    public String getName(){ return "Mage"; }
 
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }
