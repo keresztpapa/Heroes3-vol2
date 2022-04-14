@@ -32,7 +32,7 @@ public class Tile {
     boolean crossable;
     static int handbreak=0;
     boolean occupied=false;
-    Generic gen = new Generic();
+    Generic gen;
     static boolean victory = false;
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
@@ -40,7 +40,7 @@ public class Tile {
         this.pos_y = y;
         this.ap=anchor;
         this.crossable = crs;
-        Generic gen = new Generic(ap);
+        this.gen = new Generic(ap);
     }
 
     public void setImg(String str){

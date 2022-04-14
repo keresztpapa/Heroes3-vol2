@@ -168,12 +168,6 @@ public class Tiles implements Action{
         //round.add(chimp);
         //round.add(evilChimp);
 
-        if(index==2) System.out.println("Most van az Archer");
-
-        System.out.println("Pike\n"+pike);
-
-        move(map, round.get(index), this.x_count, this.y_count, ap, logField, round);
-
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
         rounder.setPrefWidth(50);
@@ -249,6 +243,16 @@ public class Tiles implements Action{
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
         });
+
+        if(Objects.equals(round.get(index).getName(), "Pike") ||
+                Objects.equals(round.get(index).getName(), "Archer") ||
+                Objects.equals(round.get(index).getName(), "Griff")){
+
+                System.out.println(round.get(i).getName());
+                move(map, round.get(index), this.x_count, this.y_count, ap, logField, round);
+        }
+
+
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
@@ -257,22 +261,16 @@ public class Tiles implements Action{
 
         if(index < round.size()-1) {
             index++;
-            System.out.println("csökkent " + index + " re");
-            //round.get(index).setActive(true);
-            //move(map, round.get(index), this.x_count, this.y_count, ap, logF,round);
         }else {
             roundCount++;
             index = 0;
-            System.out.println("csökkent " + index + " re");
-            //round.get(index).setActive(true);
-            //move(map, round.get(index), this.x_count, this.y_count, ap, logF, round);
         }
         if(Objects.equals(round.get(index).getName(), "Imp") ||
            Objects.equals(round.get(index).getName(), "Hound") ||
            Objects.equals(round.get(index).getName(), "ImpArcher")){
 
             AImove(map, round, round.get(index));
-            //setActiveIndex(round, rounder, logF);
+
         }
 
         rounder.setText(""+roundCount);
