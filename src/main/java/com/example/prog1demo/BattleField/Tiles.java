@@ -15,6 +15,7 @@
 package com.example.prog1demo.BattleField;
 
 import com.example.prog1demo.Interfaces.Action;
+import com.example.prog1demo.MenuElements.Victory;
 import com.example.prog1demo.units.unit.Heroes.Champions;
 import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import com.example.prog1demo.units.unit.*;
@@ -83,6 +84,8 @@ public class Tiles implements Action{
 
         Champions chimp = new Champions();
         chimp.setImg("stand",ap);
+        chimp.setPos_x(100);
+        chimp.setPos_y(0);
         chimp.setImageMovX(100);
         chimp.setImageMovY(100);
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setGeneric(chimp);
@@ -91,6 +94,8 @@ public class Tiles implements Action{
 
         VillianChamp evilChimp = new VillianChamp();
         evilChimp.setImg("stand",ap);
+        evilChimp.setPos_x(1100);
+        evilChimp.setPos_y(0);
         evilChimp.setImageMovX(600);
         evilChimp.setImageMovY(100);
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setGeneric(evilChimp);
@@ -168,6 +173,16 @@ public class Tiles implements Action{
         //round.add(chimp);
         //round.add(evilChimp);
 
+        if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
+            Victory vc = new Victory();
+            vc.endGame("bukta");
+        }
+
+        if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+            Victory vc = new Victory();
+            vc.endGame("");
+        }
+
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
         rounder.setPrefWidth(50);
@@ -242,7 +257,19 @@ public class Tiles implements Action{
             rounder.setText(""+roundCount);
             setActiveIndex(round, rounder, logField);
             removeDeadUnit(round);
+
+            if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
+                Victory vc = new Victory();
+                vc.endGame("bukta");
+            }
+
+            if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Victory vc = new Victory();
+                vc.endGame("");
+            }
         });
+
+
 
         if(Objects.equals(round.get(index).getName(), "Pike") ||
                 Objects.equals(round.get(index).getName(), "Archer") ||
@@ -260,17 +287,18 @@ public class Tiles implements Action{
         //round.get(index).setActive(false);
 
         if(index < round.size()-1) {
+            if(round.get(i).getHp() <= 0) setActiveIndex(round, rounder, logF);
             index++;
         }else {
             roundCount++;
             index = 0;
         }
+
         if(Objects.equals(round.get(index).getName(), "Imp") ||
            Objects.equals(round.get(index).getName(), "Hound") ||
            Objects.equals(round.get(index).getName(), "ImpArcher")){
 
             AImove(map, round, round.get(index));
-
         }
 
         rounder.setText(""+roundCount);
