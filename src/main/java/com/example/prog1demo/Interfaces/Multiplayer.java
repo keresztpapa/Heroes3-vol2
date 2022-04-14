@@ -189,28 +189,29 @@ public class Multiplayer implements Action{
             });
 
             imp.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), imp, ap,logField, round);
             });
             hound.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), hound, ap, logField, round);
             });
             impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), impArcher, ap,  logField, round);
             });
 
             pike.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), pike, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), pike, ap, logField, round);
             });
             griff.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), griff, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), griff, ap,  logField, round);
             });
             archer.getActual().setOnMouseClicked((mouseEvent) -> {
-                attack(map, round.get(index), archer, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), archer, ap,  logField, round);
             });
+
+            fuckoff(index);
 
             pass.setOnMouseClicked((event) -> {
                 rounder.setText(""+roundCount);
-                fuckoff(index);
                 index++;
                 logField.appendText("Index:: " +index);
             });

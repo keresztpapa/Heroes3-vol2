@@ -230,7 +230,7 @@ public class Tiles implements Action{
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
             if(imp.getHp()>0){
-                attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), imp, ap, logField, round);
                 if (imp.getHp() <= 0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
@@ -238,7 +238,7 @@ public class Tiles implements Action{
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
             if(hound.getHp()>0){
-                attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), hound, ap, logField, round);
                 if (hound.getHp() <= 0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
@@ -246,7 +246,7 @@ public class Tiles implements Action{
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
             if(impArcher.getHp()>0) {
-                attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField, round);
+                attack(map, round.get(index), impArcher, ap,logField, round);
                 if (impArcher.getHp() <= 0) round.remove(index);
                 setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
@@ -290,7 +290,7 @@ public class Tiles implements Action{
            Objects.equals(round.get(index).getName(), "Hound") ||
            Objects.equals(round.get(index).getName(), "ImpArcher")){
 
-            AImove(map, round, round.get(index));
+            AImove(map, round, round.get(index), ap, logF);
         }
 
         rounder.setText(""+roundCount);

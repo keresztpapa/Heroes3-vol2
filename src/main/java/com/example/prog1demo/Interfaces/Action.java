@@ -81,7 +81,7 @@ import java.util.ArrayList;
 
 public interface Action {
 
-    default boolean isNeighbour(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount){
+    default boolean isNeighbour(Tile[][] map, Generic g1, Generic g2){
         int x1 = g1.getPos_x()/100,
             y1 = g1.getPos_y()/100,
 
@@ -115,14 +115,14 @@ public interface Action {
         return false;
     }
 
-    default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount, TextArea logF, ArrayList<Generic> round){
+    default void attack(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, TextArea logF, ArrayList<Generic> round){
                 int oldHp = g2.getHp();
                 double minAtt = g1.getAttMin();
                 double maxAtt = g1.getAttMax();
                 double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
 
                 double dmgCritChance = Math.random()*(100+1+1)+1;
-                    if(isNeighbour(map,g1,g2, rowCount, colCount)) {
+                    if(isNeighbour(map,g1,g2)) {
                         logF.appendText("Dmg dealt: "+dmg);
                         if(dmgCritChance > 5){
                             g2.setHp((int) (g2.getHp() - (dmg*2)));
@@ -133,7 +133,7 @@ public interface Action {
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
                         if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
-                            attack(map, g2, g1, anchorPane, rowCount, colCount, logF, round);
+                            attack(map, g2, g1, anchorPane, logF, round);
                         }
                     logF.appendText("Attack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
                     }
@@ -145,13 +145,13 @@ public interface Action {
         double minAtt = g1.getAttMin();
         double maxAtt = g1.getAttMax();
         double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
-        if(!isNeighbour(map,g1,g2, rowCount, colCount)) {
+        if(!isNeighbour(map,g1,g2)) {
             g2.setHp((int) (g2.getHp() - dmg));
             System.out.println("Alany HP: " + g2.getHp());
             if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
             System.out.println("sebzett");
             if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
-                attack(map, g2, g1, anchorPane, rowCount, colCount, logF, round);
+                attack(map, g2, g1, anchorPane, logF, round);
             }
         }
     }
@@ -376,33 +376,36 @@ public interface Action {
         }
     }
 
-    default void AImove(Tile[][] map,ArrayList<Generic> round, Generic gen){
+    default void AImove(Tile[][] map,ArrayList<Generic> round, Generic gen, AnchorPane ap, TextArea logF){
 
             for (int i = 0; i < round.size(); i++) {
-                //if(!yourFriendlyNeighbour(map, round, gen)){
-                switch (round.get(i).getName()) {
-                    case "Archer", "Pike", "Griff" -> {
-                        if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
-                            gen.setPos_x(gen.getPos_x() + 100);
-                            gen.setImageMovX(gen.getPos_x());
-                            gen.setImageMovY(gen.getPos_y());
-                        }
-                        if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
-                            gen.setPos_x(gen.getPos_x() - 100);
-                            gen.setImageMovX(gen.getPos_x());
-                            gen.setImageMovY(gen.getPos_y());
-                        }
-                        if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
-                            gen.setPos_y(gen.getPos_y() + 100);
-                            gen.setImageMovX(gen.getPos_x());
-                            gen.setImageMovY(gen.getPos_y());
-                        }
-                        if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
-                            gen.setPos_y(gen.getPos_y() - 100);
-                            gen.setImageMovX(gen.getPos_x());
-                            gen.setImageMovY(gen.getPos_y());
+                if(!isNeighbour(map, gen, round.get(i))){
+                    switch (round.get(i).getName()) {
+                        case "Archer", "Pike", "Griff" -> {
+                            if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
+                                gen.setPos_x(gen.getPos_x() + 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
+                            if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
+                                gen.setPos_x(gen.getPos_x() - 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
+                            if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
+                                gen.setPos_y(gen.getPos_y() + 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
+                            if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
+                                gen.setPos_y(gen.getPos_y() - 100);
+                                gen.setImageMovX(gen.getPos_x());
+                                gen.setImageMovY(gen.getPos_y());
+                            }
                         }
                     }
+                }else{
+                    attack(map, gen, round.get(i), ap, logF, round);
                 }
 
                 mapUpdate(map, round);
