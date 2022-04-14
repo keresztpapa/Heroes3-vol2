@@ -23,11 +23,19 @@ public class Multiplayer implements Action{
         Tile[][] map;
         AnchorPane ap;
         int i, j;
-        int unitX;
-        int unitY;
         static int index=0;
         static int roundCount=0;
         static String logs="";
+        Soldier pike;
+        Griff griff;
+        Archer archer;
+        Imp imp;
+        Hound hound;
+        ImpArcher impArcher;
+        VillianChamp evilChimp;
+        Champions chimp;
+        TextArea logField;
+        ArrayList<Generic> round;
 
         public Multiplayer(int x, int y, AnchorPane anchor){
             String str=null;
@@ -50,17 +58,18 @@ public class Multiplayer implements Action{
                     this.map[i][j].giveImageFeed(str);
                 }
             }
-        }
 
-        public void generate() {
+            //setup test///////////////////////*********************************************
+
             ap.setMaxHeight(1000);
             ap.setPrefHeight(1000);
             ap.setMaxWidth(1500);
             ap.setPrefWidth(1500);
-            Champions chimp = new Champions();
+            chimp = new Champions();
             chimp.setImg("stand",ap);
             chimp.setImageMovX(100);
             chimp.setImageMovY(100);
+
 
             chimp.setSoldierCount((int) ((Math.random()*20)+1));
             chimp.setGriffCount((int) ((Math.random()*20)+1));
@@ -70,7 +79,7 @@ public class Multiplayer implements Action{
             this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setCrs(false);
             this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setOccupied(true);
 
-            VillianChamp evilChimp = new VillianChamp();
+            evilChimp = new VillianChamp();
             evilChimp.setImg("stand",ap);
             evilChimp.setImageMovX(600);
             evilChimp.setImageMovY(100);
@@ -82,51 +91,50 @@ public class Multiplayer implements Action{
             evilChimp.setImpArcherCount((int) ((Math.random()*20)+1));
             evilChimp.setHoundCount((int) ((Math.random()*20)+1));
 
-            Soldier pike = new Soldier(0, 500, ap);
+            pike = new Soldier(0, 500, ap);
             pike.setImg("stand", ap);
             this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setGeneric(pike);
             this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setCrs(false);
             this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setOccupied(true);
 
-            Griff griff = new Griff(100, 0, ap);
+            griff = new Griff(100, 0, ap);
             griff.setImg("stand", ap);
             this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setGeneric(griff);
             this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setCrs(false);
             this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setOccupied(true);
 
-            Archer archer = new Archer(0,200,ap);
+            archer = new Archer(0,200,ap);
             this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setGeneric(archer);
             this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setCrs(false);
             this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setOccupied(true);
             archer.setImg("stand",ap);
 
-            Imp imp = new Imp(300, 300, ap);
+            imp = new Imp(300, 300, ap);
             this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
             this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setCrs(false);
             this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setOccupied(true);
             imp.setImg("stand", ap);
 
-            Hound hound = new Hound(700, 600, ap);
+            hound = new Hound(700, 600, ap);
             this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setGeneric(hound);
             this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setCrs(false);
             this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setOccupied(true);
             hound.setImg("stand", ap);
 
-            ImpArcher impArcher = new ImpArcher(500, 400, ap);
+            impArcher = new ImpArcher(500, 400, ap);
             this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setGeneric(impArcher);
             this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setCrs(false);
             this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
             impArcher.setImg("stand", ap);
 
-
-            TextArea logField = new TextArea(logs);
+            logField = new TextArea(logs);
             logField.setLayoutX(1200);
             logField.setLayoutY(100);
             logField.setPrefHeight(500);
             logField.setPrefWidth(300);
             logField.setText("Logs: \n");
 
-            ArrayList<Generic> round = new ArrayList<>();
+            round = new ArrayList<>();
 
             round.add(pike);
             round.add(griff);
@@ -136,10 +144,6 @@ public class Multiplayer implements Action{
             round.add(hound);
             round.add(chimp);
             round.add(evilChimp);
-
-            System.out.println("Pike\n"+pike);
-
-            move(map, round.get(index), this.x_count, this.y_count, ap, logField, round);
 
             TextField rounder = new TextField(""+roundCount);
             rounder.setPrefHeight(50);
@@ -186,65 +190,45 @@ public class Multiplayer implements Action{
 
             imp.getActual().setOnMouseClicked((mouseEvent) -> {
                 attack(map, round.get(index), imp, ap, this.x_count, this.y_count, logField, round);
-                if(imp.getHp()<=0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
             });
             hound.getActual().setOnMouseClicked((mouseEvent) -> {
                 attack(map, round.get(index), hound, ap, this.x_count, this.y_count, logField, round);
-                if(hound.getHp()<=0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
             });
             impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
                 attack(map, round.get(index), impArcher, ap, this.x_count, this.y_count, logField, round);
-                if(impArcher.getHp()<=0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
             });
 
             pike.getActual().setOnMouseClicked((mouseEvent) -> {
                 attack(map, round.get(index), pike, ap, this.x_count, this.y_count, logField, round);
-                if(pike.getHp()<=0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
             });
             griff.getActual().setOnMouseClicked((mouseEvent) -> {
                 attack(map, round.get(index), griff, ap, this.x_count, this.y_count, logField, round);
-                if(griff.getHp()<=0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
             });
             archer.getActual().setOnMouseClicked((mouseEvent) -> {
                 attack(map, round.get(index), archer, ap, this.x_count, this.y_count, logField, round);
-                if(archer.getHp()<=0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
             });
-
-
-            removeDeadUnit(round);
 
             pass.setOnMouseClicked((event) -> {
                 rounder.setText(""+roundCount);
-                setActiveIndex(round, rounder, logField);
-                removeDeadUnit(round);
+                fuckoff(index);
+                index++;
+                logField.appendText("Index:: " +index);
             });
             ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
         }
 
-        public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
-            round.get(index).setActive(false);
-            System.out.println(round.size());
-            if(index < round.size()-1) {
-                index++;
-                System.out.println("csökkent " + index + " re");
-            }else {
-                roundCount++;
-                index = 0;
-                System.out.println("csökkent " + index + " re");
+        public void generate() {}
+
+        public void fuckoff(int asd){
+            if(asd == 0) {
+                move(map, pike, this.x_count, this.y_count, ap, logField, round);
             }
-            rounder.setText(""+roundCount);
+            if(asd == 1) {
+                move(map, griff, this.x_count, this.y_count, ap, logField, round);
+            }
+            if(asd == 2) {
+                move(map, archer, this.x_count, this.y_count, ap, logField, round);
+            }
         }
 
         public void removeDeadUnit(ArrayList<Generic> round){
@@ -268,6 +252,8 @@ public class Multiplayer implements Action{
         }
 
         //getters & setters
+        public void setIndex(int asd){ index = asd; }
+        public int getIndex(){ return index; }
         public void setX_count(int z){ this.x_count = z; }
         public void setY_count(int z){ this.y_count = z; }
         public int getX_count(){ return this.x_count; }

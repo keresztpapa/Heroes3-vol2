@@ -61,8 +61,7 @@ public class Tiles implements Action{
     VillianChamp evilChimp;
     Champions chimp;
     TextArea logField;
-    Scene sc;
-    Stage stg;
+
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -154,14 +153,6 @@ public class Tiles implements Action{
             this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setGeneric(pike);
             this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setCrs(false);
             this.map[pike.getPos_x() / 100][pike.getPos_y() / 100].setOccupied(true);
-
-        }
-        if(chimp.getGriffCount() > 0) {
-            round.add(griff);
-            griff.setImg("stand", ap);
-            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setGeneric(griff);
-            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setCrs(false);
-            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setOccupied(true);
         }
         if(chimp.getArcherCount() > 0) {
             round.add(archer);
@@ -169,6 +160,13 @@ public class Tiles implements Action{
             this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setGeneric(archer);
             this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setCrs(false);
             this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setOccupied(true);
+        }
+        if(chimp.getGriffCount() > 0) {
+            round.add(griff);
+            griff.setImg("stand", ap);
+            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setGeneric(griff);
+            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setCrs(false);
+            this.map[griff.getPos_x() / 100][griff.getPos_y() / 100].setOccupied(true);
         }
 
         round.add(imp);
@@ -264,6 +262,9 @@ public class Tiles implements Action{
         });
 
 
+        move(map, round.get(index),this.x_count, this.y_count,ap,logField, round);
+
+
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
@@ -316,6 +317,8 @@ public class Tiles implements Action{
     }
 
     //getters & setters
+    public void setIndex(int asd){ index = asd; }
+    public int getIndex(){ return index; }
     public void setX_count(int z){ this.x_count = z; }
     public void setY_count(int z){ this.y_count = z; }
     public int getX_count(){ return this.x_count; }

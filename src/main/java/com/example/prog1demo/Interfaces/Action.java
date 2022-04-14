@@ -210,7 +210,6 @@ public interface Action {
                         spriteCounter++;
                     }
 
-
                     generic.setImg("stand", anchorPane);
                     generic.setImageMovX(generic.getPos_x());
                     generic.setImageMovY(generic.getPos_y());
@@ -223,6 +222,7 @@ public interface Action {
         }
         map[starterX/100][starterY/100].setOccupied(false);
         map[starterX/100][starterY/100].setCrs(true);
+
     }
 
     default void place(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane ap){
@@ -379,35 +379,32 @@ public interface Action {
     default void AImove(Tile[][] map,ArrayList<Generic> round, Generic gen){
 
             for (int i = 0; i < round.size(); i++) {
-
-                if(!yourFriendlyNeighbour(map, round, gen)){
-                    switch (round.get(i).getName()) {
-                        case "Archer", "Pike", "Griff" -> {
-                            if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
-                                gen.setPos_x(gen.getPos_x() + 100);
-                                gen.setImageMovX(gen.getPos_x());
-                                gen.setImageMovY(gen.getPos_y());
-                            }
-                            if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
-                                gen.setPos_x(gen.getPos_x() - 100);
-                                gen.setImageMovX(gen.getPos_x());
-                                gen.setImageMovY(gen.getPos_y());
-                            }
-                            if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
-                                gen.setPos_y(gen.getPos_y() + 100);
-                                gen.setImageMovX(gen.getPos_x());
-                                gen.setImageMovY(gen.getPos_y());
-                            }
-                            if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
-                                gen.setPos_y(gen.getPos_y() - 100);
-                                gen.setImageMovX(gen.getPos_x());
-                                gen.setImageMovY(gen.getPos_y());
-                            }
+                //if(!yourFriendlyNeighbour(map, round, gen)){
+                switch (round.get(i).getName()) {
+                    case "Archer", "Pike", "Griff" -> {
+                        if (gen.getPos_x() + gen.getMovement() < round.get(i).getPos_x()) {
+                            gen.setPos_x(gen.getPos_x() + 100);
+                            gen.setImageMovX(gen.getPos_x());
+                            gen.setImageMovY(gen.getPos_y());
+                        }
+                        if (gen.getPos_x() - gen.getMovement() > round.get(i).getPos_x()) {
+                            gen.setPos_x(gen.getPos_x() - 100);
+                            gen.setImageMovX(gen.getPos_x());
+                            gen.setImageMovY(gen.getPos_y());
+                        }
+                        if (gen.getPos_y() + gen.getMovement() < round.get(i).getPos_y()) {
+                            gen.setPos_y(gen.getPos_y() + 100);
+                            gen.setImageMovX(gen.getPos_x());
+                            gen.setImageMovY(gen.getPos_y());
+                        }
+                        if (gen.getPos_y() - gen.getMovement() > round.get(i).getPos_y()) {
+                            gen.setPos_y(gen.getPos_y() - 100);
+                            gen.setImageMovX(gen.getPos_x());
+                            gen.setImageMovY(gen.getPos_y());
                         }
                     }
-                }else{
-
                 }
+
                 mapUpdate(map, round);
             }
     }
