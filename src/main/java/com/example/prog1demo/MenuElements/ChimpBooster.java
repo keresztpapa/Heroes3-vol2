@@ -32,13 +32,13 @@ public class ChimpBooster {
 
     public void boost(Stage stg) throws IOException {
         AnchorPane root = new AnchorPane();
-        root.setPrefSize(1000, 800);
+        root.setPrefSize(1500, 1000);
         InputStream is = Files.newInputStream(Paths.get("pngs/Shop.png"));
         Image bckgr = new Image(is);
         is.close();
         ImageView img = new ImageView(bckgr);
-        img.setFitWidth(1000);
-        img.setFitHeight(800);
+        img.setFitWidth(1500);
+        img.setFitHeight(1000);
 
         Champions chimp = new Champions();
 
@@ -225,19 +225,19 @@ public class ChimpBooster {
         TextField villianMoral = new TextField("Moral: " + villianChamp.getMoral());
         TextField villianLuck = new TextField("Luck: " + villianChamp.getLuck());
 
-        setTextBox(villian,700,50);
-        setTextBox(villianAttack, 700, 150);
-        setTextBox(villianDeff, 700, 200);
-        setTextBox(villianMagic, 700, 250);
-        setTextBox(villianWisdom, 700, 300);
-        setTextBox(villianMoral, 700, 350);
-        setTextBox(villianLuck, 700, 400);
+        setTextBox(villian,1000,350);
+        setTextBox(villianAttack, 1000, 400);
+        setTextBox(villianDeff, 1000, 450);
+        setTextBox(villianMagic, 1000, 500);
+        setTextBox(villianWisdom, 1000, 550);
+        setTextBox(villianMoral, 1000, 600);
+        setTextBox(villianLuck, 1000, 650);
 
         Button toSkills = new Button(" To the skills ");
         toSkills.setPrefHeight(60);
         toSkills.setPrefWidth(120);
-        toSkills.setLayoutX(700);
-        toSkills.setLayoutY(700);
+        toSkills.setLayoutX(1000);
+        toSkills.setLayoutY(800);
 
         toSkills.setOnMouseClicked((event)->{
             ChampionsPower chimpsPower = new ChampionsPower();
@@ -250,45 +250,46 @@ public class ChimpBooster {
 
 
 
-        serializeButton(attackMinus, 300, 150);
-        serializeButton(attackMax, 500, 150);
-        serializeButton(deffMinus, 300,250);
-        serializeButton(deffMax, 500,250);
-        serializeButton(magicMin, 300,350);
-        serializeButton(magicMax, 500,350);
-        serializeButton(wisdomMin,300,450);
-        serializeButton(wisdomMax, 500,450);
-        serializeButton(moralMin,300,550);
-        serializeButton(moralMax,500,550);
-        serializeButton(luckMin, 300, 650);
-        serializeButton(luckyMax, 500, 650);
+        serializeButton(attackMinus, 530, 300);
+        serializeButton(attackMax,730 , 300);
+        serializeButton(deffMinus, 530,400);
+        serializeButton(deffMax, 730,400);
+        serializeButton(magicMin, 530,500);
+        serializeButton(magicMax, 730,500);
+        serializeButton(wisdomMin,530,600);
+        serializeButton(wisdomMax, 730,600);
+        serializeButton(moralMin,530,700);
+        serializeButton(moralMax,730,700);
+        serializeButton(luckMin, 530, 800);
+        serializeButton(luckyMax, 730, 800);
 
-        setTextBox(attText,375,150);
-        setTextBox(deffText,375,250);
-        setTextBox(magicText,375,350);
-        setTextBox(wisdomText,375,450);
-        setTextBox(moralText,375,550);
-        setTextBox(luckText,375,650);
-        setTextBox(skillText,375,50);
-        setTextBox(skillShowOff,150,50);
+        setTextBox(attText,600,300);
+        setTextBox(deffText,600,400);
+        setTextBox(magicText,600,500);
+        setTextBox(wisdomText,600,600);
+        setTextBox(moralText,600,700);
+        setTextBox(luckText,600,800);
+
+        setTextBox(skillText,600,200);
+        setTextBox(skillShowOff,400,200);
 
         attack.setText("Attack:: ");
-        setTextBox(attack, 150 ,150);
+        setTextBox(attack, 400 ,300);
 
         defense.setText("Defense:: ");
-        setTextBox(defense,150,250);
+        setTextBox(defense,400,400);
 
         magic.setText("Magic:: ");
-        setTextBox(magic,150,350);
+        setTextBox(magic,400,500);
 
         wisdom.setText("Wisdom:: ");
-        setTextBox(wisdom,150,450);
+        setTextBox(wisdom,400,600);
 
         moral.setText("Moral:: ");
-        setTextBox(moral,150,550);
+        setTextBox(moral,400,700);
 
         luck.setText("Luck:: ");
-        setTextBox(luck,150,650);
+        setTextBox(luck,400,800);
 
         root.getChildren().addAll(img, attackMinus, attackMax, deffMinus, deffMax,magicMin
                 , magicMax, wisdomMin, wisdomMax, moralMin, moralMax, luckMin, luckyMax, attText,

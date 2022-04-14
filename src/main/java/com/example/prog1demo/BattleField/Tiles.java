@@ -25,8 +25,14 @@ import com.example.prog1demo.units.unit.Humans.Archer;
 import com.example.prog1demo.units.unit.Humans.Griff;
 import com.example.prog1demo.units.unit.Humans.Soldier;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -67,7 +73,14 @@ public class Tiles implements Action{
             }
     }
 
-    public void generate() {
+    public void generate() throws IOException {
+        InputStream is = Files.newInputStream(Paths.get("pngs/menu.png"));
+        Image bckgr = new Image(is);
+        is.close();
+        ImageView img = new ImageView(bckgr);
+        img.setFitWidth(1500);
+        img.setFitHeight(1000);
+
         Champions chimp = new Champions();
         chimp.setImg("stand",ap);
         chimp.setImageMovX(100);

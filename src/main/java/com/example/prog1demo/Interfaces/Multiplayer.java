@@ -17,8 +17,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.util.ArrayList;
 
-import static java.lang.Thread.sleep;
-
 public class Multiplayer implements Action{
         int x_count;
         int y_count;
@@ -55,10 +53,19 @@ public class Multiplayer implements Action{
         }
 
         public void generate() {
+            ap.setMaxHeight(1000);
+            ap.setPrefHeight(1000);
+            ap.setMaxWidth(1500);
+            ap.setPrefWidth(1500);
             Champions chimp = new Champions();
             chimp.setImg("stand",ap);
             chimp.setImageMovX(100);
             chimp.setImageMovY(100);
+
+            chimp.setSoldierCount((int) ((Math.random()*20)+1));
+            chimp.setGriffCount((int) ((Math.random()*20)+1));
+            chimp.setArcherCount((int) ((Math.random()*20)+1));
+
             this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setGeneric(chimp);
             this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setCrs(false);
             this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setOccupied(true);
@@ -70,6 +77,10 @@ public class Multiplayer implements Action{
             this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setGeneric(evilChimp);
             this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setCrs(false);
             this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setOccupied(true);
+
+            evilChimp.setImpCount((int) ((Math.random()*20)+1));
+            evilChimp.setImpArcherCount((int) ((Math.random()*20)+1));
+            evilChimp.setHoundCount((int) ((Math.random()*20)+1));
 
             Soldier pike = new Soldier(0, 500, ap);
             pike.setImg("stand", ap);
@@ -107,7 +118,7 @@ public class Multiplayer implements Action{
             this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
             impArcher.setImg("stand", ap);
 
-            //////////////////////////////////////////////////////////////////////////////////////////////
+
             TextArea logField = new TextArea(logs);
             logField.setLayoutX(1200);
             logField.setLayoutY(100);
@@ -115,15 +126,7 @@ public class Multiplayer implements Action{
             logField.setPrefWidth(300);
             logField.setText("Logs: \n");
 
-
-            Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
-            Generic[] finalArr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
-            setOrder(arr, finalArr);
-
-            for (Generic generic : finalArr) System.out.println(generic.getName()+generic.getMoral());
-
             ArrayList<Generic> round = new ArrayList<>();
-
 
             round.add(pike);
             round.add(griff);
@@ -236,14 +239,10 @@ public class Multiplayer implements Action{
             if(index < round.size()-1) {
                 index++;
                 System.out.println("csökkent " + index + " re");
-                round.get(index).setActive(true);
-                move(map, round.get(index), this.x_count, this.y_count, ap, logF,round);
             }else {
                 roundCount++;
                 index = 0;
                 System.out.println("csökkent " + index + " re");
-                round.get(index).setActive(true);
-                move(map, round.get(index), this.x_count, this.y_count, ap, logF, round);
             }
             rounder.setText(""+roundCount);
         }

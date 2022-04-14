@@ -6,6 +6,7 @@
 package com.example.prog1demo.MenuElements;
 
 import com.example.prog1demo.Application;
+import com.example.prog1demo.Interfaces.Multiplayer;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,17 +26,25 @@ public class Menu {
         Image bckgr = new Image(is);
         is.close();
         ImageView img = new ImageView(bckgr);
-        img.setFitWidth(1000);
-        img.setFitHeight(800);
+        img.setFitWidth(1500);
+        img.setFitHeight(1000);
 
         Button next_scene = new Button("New Game");
         next_scene.setPrefWidth(100);
         next_scene.setPrefHeight(100);
-        next_scene.setLayoutX(750);
-        next_scene.setLayoutY(200);
+        next_scene.setLayoutX(1000);
+        next_scene.setLayoutY(400);
 
         next_scene.setOnAction(e -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
+            root.setMaxHeight(1000);
+            root.setPrefHeight(1000);
+            root.setMaxWidth(1500);
+            root.setPrefWidth(1500);
+            Multiplayer mp = new Multiplayer(12,10,root);
+            mp.generate();
+
+
+            /*FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("app.fxml"));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load(),1500,1000);
@@ -44,14 +53,14 @@ public class Menu {
             }
             stg.setTitle("Heroes!");
             stg.setScene(scene);
-            stg.show();
+            stg.show();*/
         });
 
         Button diff = new Button("Difficulty");
         diff.setPrefWidth(100);
         diff.setPrefHeight(100);
-        diff.setLayoutX(750);
-        diff.setLayoutY(400);
+        diff.setLayoutX(1000);
+        diff.setLayoutY(600);
 
         diff.setOnAction(e -> {
             Difficulties dff = new Difficulties();

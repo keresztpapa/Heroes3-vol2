@@ -24,13 +24,13 @@ public class ChampionsPower {
 
     public void skills(Stage stg) throws IOException{
         AnchorPane root = new AnchorPane();
-        root.setPrefSize(1000, 800);
+        root.setPrefSize(1500, 1000);
         InputStream is = Files.newInputStream(Paths.get("pngs/Shop.png"));
         Image bckgr = new Image(is);
         is.close();
         ImageView img = new ImageView(bckgr);
-        img.setFitWidth(1000);
-        img.setFitHeight(800);
+        img.setFitWidth(1500);
+        img.setFitHeight(1000);
 
         Champions chimp = new Champions();
 

@@ -28,9 +28,9 @@ public class VillianChamp extends Generic implements Action {
         static boolean thunder=true;
         static boolean res=false;
 
-        static int soldierCount=0;
-        static int griffCount=0;
-        static int archerCount=0;
+        static int impCount=0;
+        static int houndCount=0;
+        static int impArcherCount=0;
 
         ImageView img;
         ImageView actual2 = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
@@ -76,12 +76,12 @@ public class VillianChamp extends Generic implements Action {
         public ImageView getImg(){ return this.img; }
         public void setGold(int z){ gold = z; }
         public int getGold(){ return gold; }
-        public void setSoldierCount(int z){ soldierCount = z; }
-        public int getSoldierCount(){ return soldierCount; }
-        public void setArcherCount(int z){ archerCount = z; }
-        public int getArcherCount(){ return archerCount; }
-        public void setGriffCount(int z){ griffCount = z; }
-        public int getGriffCount(){ return griffCount; }
+        public void setImpCount(int z){ impCount = z; }
+        public int getImpCount(){ return impCount; }
+        public void setImpArcherCount(int z){ impArcherCount = z; }
+        public int getImpArcherCount(){ return impArcherCount; }
+        public void setHoundCount(int z){ houndCount = z; }
+        public int getHoundCount(){ return houndCount; }
         public double getSkillPoint(){ return skillPoint; }
         public void setSkillPoint(double z){ skillPoint = z; }
 

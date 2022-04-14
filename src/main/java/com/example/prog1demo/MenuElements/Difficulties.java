@@ -25,14 +25,14 @@ public class Difficulties {
         Image bckgr = new Image(is);
         is.close();
         ImageView img = new ImageView(bckgr);
-        img.setFitWidth(1000);
-        img.setFitHeight(800);
+        img.setFitWidth(1500);
+        img.setFitHeight(1000);
 
         Button easy = new Button("Easy");
         easy.setPrefWidth(100);
         easy.setPrefHeight(100);
-        easy.setLayoutX(750);
-        easy.setLayoutY(100);
+        easy.setLayoutX(1000);
+        easy.setLayoutY(200);
 
         easy.setOnMouseClicked((event)->{
             Champions chimps = new Champions(1300);
@@ -48,8 +48,8 @@ public class Difficulties {
         Button medium = new Button("Medium");
         medium.setPrefWidth(100);
         medium.setPrefHeight(100);
-        medium.setLayoutX(750);
-        medium.setLayoutY(250);
+        medium.setLayoutX(1000);
+        medium.setLayoutY(400);
 
         medium.setOnMouseClicked((event)->{
             Champions chimps = new Champions(1000);
@@ -65,8 +65,8 @@ public class Difficulties {
         Button hard = new Button("Hard");
         hard.setPrefWidth(100);
         hard.setPrefHeight(100);
-        hard.setLayoutX(750);
-        hard.setLayoutY(400);
+        hard.setLayoutX(1000);
+        hard.setLayoutY(600);
 
         hard.setOnMouseClicked((event)->{
             Champions chimps = new Champions(700);
@@ -82,8 +82,8 @@ public class Difficulties {
         Button prepare_for_battle = new Button("Prepare");
         prepare_for_battle.setPrefWidth(100);
         prepare_for_battle.setPrefHeight(100);
-        prepare_for_battle.setLayoutX(750);
-        prepare_for_battle.setLayoutY(600);
+        prepare_for_battle.setLayoutX(1000);
+        prepare_for_battle.setLayoutY(800);
 
         prepare_for_battle.setOnMouseClicked((event) -> {
             ChimpBooster chimpBooster = new ChimpBooster();
