@@ -61,7 +61,7 @@ public class Tiles implements Action{
     VillianChamp evilChimp;
     Champions chimp;
     TextArea logField;
-
+    ArrayList<Generic> round;
 
     public Tiles(int x, int y, AnchorPane anchor){
         String str=null;
@@ -145,7 +145,7 @@ public class Tiles implements Action{
         for (Generic generic : finalArr) System.out.println(generic.getName()+generic.getMoral());
 */
 
-        ArrayList<Generic> round = new ArrayList<>();
+        round = new ArrayList<>();
 
         if(chimp.getSoldierCount() > 0) {
             round.add(pike);
@@ -174,16 +174,6 @@ public class Tiles implements Action{
         round.add(hound);
         //round.add(chimp);
         //round.add(evilChimp);
-
-        if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
-            Victory vc = new Victory();
-            vc.endGame("bukta");
-        }
-
-        if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-            Victory vc = new Victory();
-            vc.endGame("");
-        }
 
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
@@ -231,69 +221,63 @@ public class Tiles implements Action{
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
             if(imp.getHp()>0){
                 attack(map, round.get(index), imp, ap, logField, round);
-                if (imp.getHp() <= 0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             }
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
             if(hound.getHp()>0){
                 attack(map, round.get(index), hound, ap, logField, round);
-                if (hound.getHp() <= 0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             }
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
             if(impArcher.getHp()>0) {
                 attack(map, round.get(index), impArcher, ap,logField, round);
-                if (impArcher.getHp() <= 0) round.remove(index);
-                setActiveIndex(round, rounder, logField);
                 removeDeadUnit(round);
             }
         });
 
-        removeDeadUnit(round);
+        act(index);
 
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
-            setActiveIndex(round, rounder, logField);
-            removeDeadUnit(round);
+            act(index);
+            logField.appendText("Index:: " +index);
+            index++;
+            if(index == 6) index = 0;
+
+            if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
+                Victory vc = new Victory();
+                vc.endGame("bukta");
+            }
+
+            if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Victory vc = new Victory();
+                vc.endGame("");
+            }
         });
-
-
-        move(map, round.get(index),this.x_count, this.y_count,ap,logField, round);
-
-
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
-    public void setActiveIndex(ArrayList<Generic> round, TextField rounder, TextArea logF){
-        if(index < round.size()-1) {
-            index++;
-        }else {
-            roundCount++;
-            index = 0;
+    public void act(int asd){
+        if(asd == 0) {
+            move(map, pike, this.x_count, this.y_count, ap, logField, round);
         }
-
-        if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
-            Victory vc = new Victory();
-            vc.endGame("bukta");
+        if(asd == 1) {
+            move(map, griff, this.x_count, this.y_count, ap, logField, round);
         }
-
-        if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
-            Victory vc = new Victory();
-            vc.endGame("");
+        if(asd == 2) {
+            move(map, archer, this.x_count, this.y_count, ap, logField, round);
         }
-
-        if(Objects.equals(round.get(index).getName(), "Imp") ||
-           Objects.equals(round.get(index).getName(), "Hound") ||
-           Objects.equals(round.get(index).getName(), "ImpArcher")){
-
-            AImove(map, round, round.get(index), ap, logF);
+        if(asd == 3){
+            AImove(map ,round, imp,  ap, logField);
         }
-
-        rounder.setText(""+roundCount);
+        if(asd == 4){
+            AImove(map, round ,hound, ap, logField);
+        }
+        if(asd == 5){
+            AImove(map, round ,impArcher, ap, logField);
+        }
     }
 
     public void removeDeadUnit(ArrayList<Generic> round){
