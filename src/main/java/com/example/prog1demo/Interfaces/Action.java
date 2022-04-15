@@ -223,6 +223,12 @@ public interface Action {
         map[starterX/100][starterY/100].setOccupied(false);
         map[starterX/100][starterY/100].setCrs(true);
 
+        CheckerIndex index = new CheckerIndex();
+        if(index.getIndex() <= 4) {
+            index.setIndex(index.getIndex() + 1);
+        }else {
+            index.setIndex(0);
+        }
     }
 
     default void place(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane ap){
@@ -408,6 +414,12 @@ public interface Action {
                     attack(map, gen, round.get(i), ap, logF, round);
                 }
 
+                CheckerIndex index = new CheckerIndex();
+                if(index.getIndex() <= 4) {
+                    index.setIndex(index.getIndex() + 1);
+                }else {
+                    index.setIndex(0);
+                }
                 mapUpdate(map, round);
             }
     }
