@@ -237,7 +237,7 @@ public class Tiles implements Action{
             }
         });
 
-        act(index);
+
 
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);

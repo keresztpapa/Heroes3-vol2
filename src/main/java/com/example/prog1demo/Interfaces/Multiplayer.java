@@ -1,6 +1,7 @@
 package com.example.prog1demo.Interfaces;
 
 import com.example.prog1demo.BattleField.Tile;
+import com.example.prog1demo.MenuElements.Victory;
 import com.example.prog1demo.units.unit.Heroes.Champions;
 import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import com.example.prog1demo.units.unit.*;
@@ -208,20 +209,30 @@ public class Multiplayer implements Action{
             attack(map, round.get(index), archer, ap,  logField, round);
         });
 
-        fuckoff(index);
 
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
-            fuckoff(index);
+            act(index);
             logField.appendText("Index:: " +index);
             index++;
+            if(index == 6) index = 0;
+
+            if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
+                Victory vc = new Victory();
+                vc.endGame("bukta");
+            }
+
+            if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
+                Victory vc = new Victory();
+                vc.endGame("");
+            }
         });
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
     public void generate() {}
 
-    public void fuckoff(int asd){
+    public void act(int asd){
         if(asd == 0) {
             move(map, pike, this.x_count, this.y_count, ap, logField, round);
         }

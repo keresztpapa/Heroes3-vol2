@@ -38,17 +38,17 @@ public class ChampionsPower {
         ImageView thunderStrike = new ImageView(new Image("file:pngs/powers/lightning-strike.png"));
         ImageView ressurection = new ImageView(new Image("file:pngs/powers/cross.png"));
 
-        fireBall.setX(150);
+        fireBall.setX(425);
         fireBall.setY(150);
         fireBall.setFitHeight(200);
         fireBall.setFitWidth(200);
 
-        thunderStrike.setX(400);
+        thunderStrike.setX(725);
         thunderStrike.setY(150);
         thunderStrike.setFitHeight(200);
         thunderStrike.setFitWidth(200);
 
-        ressurection.setX(650);
+        ressurection.setX(975);
         ressurection.setY(150);
         ressurection.setFitHeight(200);
         ressurection.setFitWidth(200);
@@ -56,16 +56,16 @@ public class ChampionsPower {
         Button buyFireBall = new Button(" Fireball ");
         buyFireBall.setPrefWidth(100);
         buyFireBall.setPrefHeight(50);
-        buyFireBall.setLayoutX(200);
+        buyFireBall.setLayoutX(475);
         buyFireBall.setLayoutY(400);
 
         TextField fireBallMana = new TextField("Mana: 5");
-        fireBallMana.setLayoutX(200);
+        fireBallMana.setLayoutX(475);
         fireBallMana.setLayoutY(500);
         fireBallMana.setPrefWidth(100);
 
         TextField fireBallCost = new TextField("Cost: 60");
-        fireBallCost.setLayoutX(200);
+        fireBallCost.setLayoutX(475);
         fireBallCost.setLayoutY(600);
         fireBallCost.setPrefWidth(100);
 
@@ -78,16 +78,16 @@ public class ChampionsPower {
         Button buyThunderStrike = new Button(" Thunderbolt ");
         buyThunderStrike.setPrefWidth(150);
         buyThunderStrike.setPrefHeight(50);
-        buyThunderStrike.setLayoutX(425);
+        buyThunderStrike.setLayoutX(750);
         buyThunderStrike.setLayoutY(400);
 
         TextField thunderStrikeMana = new TextField("Mana: 9");
-        thunderStrikeMana.setLayoutX(425);
+        thunderStrikeMana.setLayoutX(750);
         thunderStrikeMana.setLayoutY(500);
         thunderStrikeMana.setPrefWidth(100);
 
         TextField thunderStrikeCost = new TextField("Cost: 120");
-        thunderStrikeCost.setLayoutX(425);
+        thunderStrikeCost.setLayoutX(750);
         thunderStrikeCost.setLayoutY(600);
         thunderStrikeCost.setPrefWidth(100);
 
@@ -99,16 +99,16 @@ public class ChampionsPower {
         Button buyResurection = new Button(" Resurrection ");
         buyResurection.setPrefWidth(150);
         buyResurection.setPrefHeight(50);
-        buyResurection.setLayoutX(650);
+        buyResurection.setLayoutX(1000);
         buyResurection.setLayoutY(400);
 
         TextField resurrectMana = new TextField("Mana: 6");
-        resurrectMana.setLayoutX(650);
+        resurrectMana.setLayoutX(1000);
         resurrectMana.setLayoutY(500);
         resurrectMana.setPrefWidth(100);
 
         TextField resurrectCost = new TextField("Cost: 120");
-        resurrectCost.setLayoutX(650);
+        resurrectCost.setLayoutX(1000);
         resurrectCost.setLayoutY(600);
         resurrectCost.setPrefWidth(100);
 

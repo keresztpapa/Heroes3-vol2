@@ -44,7 +44,7 @@ public class Menu {
             mp.generate();
         });
 
-        Button diff = new Button("Difficulty");
+        Button diff = new Button("Single");
         diff.setPrefWidth(100);
         diff.setPrefHeight(100);
         diff.setLayoutX(1000);
