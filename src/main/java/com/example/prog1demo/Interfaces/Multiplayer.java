@@ -84,6 +84,7 @@ public class Multiplayer implements Action{
         chimp.setGriffCount((int) ((Math.random()*20)+1));
         chimp.setArcherCount((int) ((Math.random()*20)+1));
         chimp.setMageCount((int) ((Math.random()*20)+1));
+        chimp.setMana(30);
 
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setGeneric(chimp);
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setCrs(false);
@@ -101,7 +102,7 @@ public class Multiplayer implements Action{
         evilChimp.setImpArcherCount((int) ((Math.random()*20)+1));
         evilChimp.setHoundCount((int) ((Math.random()*20)+1));
         evilChimp.setGenieCount((int) ((Math.random()*20)+1));
-
+        evilChimp.setMana(30);
 
         pike = new Soldier(0, 500, ap);
         pike.setImg("stand", ap);
@@ -309,34 +310,52 @@ public class Multiplayer implements Action{
     }
 
     public void fireBall(Tile tl){
-        int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
-        int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
-
-        for (int g = 0; g < round.size(); g++) {
-            if (round.get(g).getPos_x() <= radX + 150 && round.get(g).getPos_x() >= radX - 150 &&
-                    round.get(g).getPos_y() <= radY + 150 && round.get(g).getPos_y() >= radY - 150) {
-                round.get(g).setHp((int) (round.get(g).getHp() - chimp.getMagic() * 20));
+        if(chimp.getMana()>=9) {
+            int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
+            int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
+            logField.appendText("Fireball happened at X: " + radX + "\nY: " + radY + "\n killed");
+            for (Generic generic : round) {
+                if (generic.getPos_x() <= radX + 150 && generic.getPos_x() >= radX - 150 &&
+                        generic.getPos_y() <= radY + 150 && generic.getPos_y() >= radY - 150) {
+                    generic.setHp((int) (generic.getHp() - chimp.getMagic() * 20));
+                }
+                if (generic.getHp() <= 0) {
+                    generic.setImg("dead", ap);
+                    logField.appendText("\n"+generic.getName());
+                }
             }
-            if (round.get(g).getHp() <= 0) round.get(g).setImg("dead", ap);
-        }
-        chimp.setMana(chimp.getMana() - 9);
 
+            chimp.setMana(chimp.getMana() - 9);
+        }else{
+            logField.appendText("\n not enough mana\n");
+        }
         act(index);
     }
 
     public void resurrection(Generic asd){
-        if (asd.getHp() <= 0) {
-            asd.setHp((int) (asd.getHp() + chimp.getMagic() * 50));
-            asd.setImg("stand", ap);
-            chimp.setMana(chimp.getMana() - 6);
+        logField.appendText("Resurrected :");
+        if(chimp.getMana() >= 6){
+            if (asd.getHp() <= 0) {
+                asd.setHp((int) (asd.getHp() + chimp.getMagic() * 50));
+                asd.setImg("stand", ap);
+                chimp.setMana(chimp.getMana() - 6);
+                logField.appendText(" "+asd.getName());
+            }
+        }else{
+            logField.appendText("\n not enough mana\n");
         }
         act(index);
     }
 
     public void thunderStrike(Generic asd){
-        asd.setHp((int) (asd.getHp() - chimp.getMagic() * 30));
-        chimp.setMana(chimp.getMana() - 5);
-        System.out.println("megrázta a csúnya "+asd.getName());
+        if(chimp.getMana() >= 5){
+            logField.appendText("Thunderstriked "+asd.getName());
+            asd.setHp((int) (asd.getHp() - chimp.getMagic() * 30));
+            chimp.setMana(chimp.getMana() - 5);
+            System.out.println("megrázta a csúnya " + asd.getName());
+        }else{
+            logField.appendText("\n not enough mana\n");
+        }
         act(index);
     }
 

@@ -1,10 +1,20 @@
 /**
- * Az osztály szolgál 'engine'-ként. A konstruktorban automatikusan van generáltatva a pálya, és fel van töltve elérhetetlen mezőkkel is.
+ * Az osztály szolgál 'engine'-ként. A konstruktorban automatikusan
+ * van generáltatva a pálya, és fel van töltve elérhetetlen mezőkkel is.
  *
  * A Generate() intézi az interakciót a pályával, itt jönnek be az egységek és azoknak a cselekvései.
+ * Nem vár a fvg paramétert, mert a többi osztályból ollózza össze a statikus változókat.
  *
- * A setActiveIndex() egy segítő fv, ennek az egyetlen feladata, hogy a körökre osztott egységeknél
- * lép egyet a sorrendben, ha az egység megtámadott valamit vagy a játékos passzolni szeretne.
+ * act()
+ * @param unitRoundACtiveIndex
+ *                  egy int változót vár paraméterül, a paraméter amit kap mondja meg
+ *                  hogy az arraylist-ben melyik indexű elem, hogy reagáljon
+ *                  ha a listában az adott indexű elem szüvetséges
+ *                  akkor mozoghat illetve támadhat,
+ *                  de ha az adott elem ellenséges akkor az algoritmus szabályozza a lépését
+ *
+ *                  ha pedig a játékos hőse, akkor varázsolni tud, majd attól függően,
+ *                  hogy ellenfére kattint e, vagy egy mezőre vagy egy szövetséges egységre
  *
  * @param round     ArrayList a hősök sorrendjéről
  * @param rounder   A kört kijelző TextBox, ami frissül, ha egy karakter befejezte a körét
@@ -267,14 +277,16 @@ public class Tiles implements Action{
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
-    public void act(int asd){
-        if(round.get(asd).getName().equals("Pike") || round.get(asd).getName().equals("Griff") || round.get(asd).getName().equals("Archer") || round.get(asd).getName().equals("Mage") ){
-            move(map, round.get(asd), this.x_count, this.y_count, ap, logField, round);
+    public void act(int unitRoundIndex){
+        if(round.get(unitRoundIndex).getName().equals("Pike") || round.get(unitRoundIndex).getName().equals("Griff") ||
+                round.get(unitRoundIndex).getName().equals("Archer") || round.get(unitRoundIndex).getName().equals("Mage") ){
+            move(map, round.get(unitRoundIndex), this.x_count, this.y_count, ap, logField, round);
         }
-        if (round.get(asd).getName().equals("Imp") || round.get(asd).getName().equals("Hound") || round.get(asd).getName().equals("ImpArcher") || round.get(asd).getName().equals("Genie")){
-            AImove(map, round ,round.get(asd), ap, logField);
+        if (round.get(unitRoundIndex).getName().equals("Imp") || round.get(unitRoundIndex).getName().equals("Hound") ||
+                round.get(unitRoundIndex).getName().equals("ImpArcher") || round.get(unitRoundIndex).getName().equals("Genie")){
+            AImove(map, round ,round.get(unitRoundIndex), ap, logField);
         }
-        if(round.get(asd).getName().equals("Chimp")){
+        if(round.get(unitRoundIndex).getName().equals("Chimp")){
             spell();
         }
     }
