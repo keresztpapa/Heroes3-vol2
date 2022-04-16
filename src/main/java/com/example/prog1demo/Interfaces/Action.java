@@ -156,20 +156,6 @@ public interface Action {
         }
     }
 
-    default void fireBall(Tile[][] map, ArrayList<Generic> round,AnchorPane anchorPane){
-        for(int i=0;i<map.length;i++){
-            for(int j=0;j<map[j].length;j++){
-
-                Tile tl = map[i][j];
-
-                tl.getImageView().setOnMouseClicked((event)->{
-                    System.out.println("bumm AT: X: "+tl.getPos_x() +"\n Y:: "+tl.getPos_y());
-                });
-
-            }
-        }
-    }
-
     default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF, ArrayList<Generic> round){
         int i, j;
         int starterX = generic.getPos_x();
@@ -229,7 +215,8 @@ public interface Action {
 
                     tl.setCrs(false);
                     tl.setOccupied(true);
-                    logF.appendText("\n Move:"+generic.getName()+"\n X: "+generic.getPos_x()+"\n Y: "+generic.getPos_y());
+                    logF.appendText("---------");
+                    logF.appendText("\n Move:"+generic.getName()+"\nX: "+generic.getPos_x()+"\nY: "+generic.getPos_y());
                 });
             }
         }
@@ -333,30 +320,6 @@ public interface Action {
         }
     }
 
-    default void action(Tile[][] map, Generic g1, Generic g2, int rowCount, int colCount, AnchorPane ap){
-
-
-
-        /*for(int i=0;i<rowCount;i++){
-            for (int j=0;j<colCount;j++){
-                Tile tl = map[i][j];
-                tl.getImageView().setOnMouseClicked((event)->{
-                    if(tl.isOccupied()){
-                        attack(g1, g2,ap);
-                        if(g2.getHp()<=0) {
-                            map[g1.getPos_x()/100][g1.getPos_y()/100].setOccupied(false);
-                            map[g1.getPos_x()/100][g1.getPos_y()/100].setCrs(true);
-                        }
-                    }else{
-                        map[g1.getPos_x()/100][g1.getPos_y()/100].setOccupied(false);
-                        map[g1.getPos_x()/100][g1.getPos_y()/100].setCrs(true);
-                        move(map,g1,rowCount,colCount,ap);
-                    }
-                });
-            }
-        } */
-    }
-
     default void mapUpdate(Tile[][] map, ArrayList<Generic> round){
         for(int i=0;i< map.length;i++){
             for(int j=0;j<map[i].length;j++){
@@ -401,14 +364,17 @@ public interface Action {
                             }
                         }
                     }
+                    logF.appendText("---------");
+                    logF.appendText(gen.getName()+" move to X: "+gen.getPos_x()+"\nY: "+gen.getPos_y());
                 }else{
                     attack(map, gen, round.get(i), ap, logF, round);
+                    logF.appendText("---------");
+                    logF.appendText(gen.getName()+" attacks,\n try to aim at "+round.get(i).getName());
                 }
 
                 mapUpdate(map, round);
             }
     }
-
 
     default boolean yourFriendlyNeighbour(Tile[][] map, ArrayList<Generic> round, Generic gen){
 

@@ -7,7 +7,6 @@
 
 package com.example.prog1demo.MenuElements;
 
-import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.Interfaces.Action;
 import com.example.prog1demo.Application;
 import com.example.prog1demo.units.unit.Heroes.Champions;
@@ -52,6 +51,13 @@ public class Preparation implements Action {
 
         Champions champ = new Champions();
 
+        TextField goldCounter = new TextField("Gold: "+champ.getGold());
+        goldCounter.setPrefHeight(75);
+        goldCounter.setPrefWidth(100);
+        goldCounter.setLayoutX(400);
+        goldCounter.setLayoutY(600);
+
+
         ImageView soldier = new ImageView(new Image("file:pngs/player_units/pike/pike_stand.png"));
         soldier.setX(200);
         soldier.setY(200);
@@ -72,11 +78,13 @@ public class Preparation implements Action {
         solMin.setLayoutY(350);
 
         solMin.setOnMouseClicked((event) -> {
-            Champions chimp = new Champions();
-            chimp.setGold(chimp.getGold() + 50);
-            chimp.setSoldierCount(chimp.getSoldierCount() - 1);
-            solText.setText(":: "+champ.getSoldierCount());
-            System.out.println("Chimp gold: " + chimp.getGold());
+            if(champ.getSoldierCount() > 0){
+                Champions chimp = new Champions();
+                chimp.setGold(chimp.getGold() + 50);
+                chimp.setSoldierCount(chimp.getSoldierCount() - 1);
+                solText.setText(":: " + champ.getSoldierCount());
+                goldCounter.setText(champ.getGold()+"");
+            }
         });
 
         Button solMax = new Button(" + ");
@@ -86,11 +94,13 @@ public class Preparation implements Action {
         solMax.setLayoutY(350);
 
         solMax.setOnMouseClicked((event) -> {
-            Champions chimp = new Champions();
-            chimp.setGold(chimp.getGold() - 50);
-            chimp.setSoldierCount(chimp.getSoldierCount() + 1);
-            solText.setText(":: "+champ.getSoldierCount());
-            System.out.println("Chimp gold: " + chimp.getGold());
+            if(champ.getGold() >= 50){
+                Champions chimp = new Champions();
+                chimp.setGold(chimp.getGold() - 50);
+                chimp.setSoldierCount(chimp.getSoldierCount() + 1);
+                solText.setText(":: " + champ.getSoldierCount());
+                goldCounter.setText(champ.getGold()+"");
+            }
         });
 
         ImageView griff = new ImageView(new Image("file:pngs/player_units/griff/griff_stand.png"));
@@ -113,11 +123,13 @@ public class Preparation implements Action {
         griffText.setLayoutY(350);
 
         griffMin.setOnMouseClicked((event) -> {
-            Champions chimp = new Champions();
-            chimp.setGold(chimp.getGold() + 50);
-            chimp.setGriffCount(chimp.getGriffCount() - 1);
-            griffText.setText(":: "+champ.getGriffCount());
-            System.out.println("Chimp gold: " + chimp.getGold());
+            if(champ.getGriffCount() > 0){
+                Champions chimp = new Champions();
+                chimp.setGold(chimp.getGold() + 50);
+                chimp.setGriffCount(chimp.getGriffCount() - 1);
+                griffText.setText(":: " + champ.getGriffCount());
+                goldCounter.setText(champ.getGold()+"");
+            }
         });
 
         Button griffMax = new Button(" + ");
@@ -127,11 +139,13 @@ public class Preparation implements Action {
         griffMax.setLayoutY(350);
 
         griffMax.setOnMouseClicked((event) -> {
-            Champions chimp = new Champions();
-            chimp.setGold(chimp.getGold() - 50);
-            chimp.setGriffCount(chimp.getGriffCount() + 1);
-            griffText.setText(":: "+champ.getGriffCount());
-            System.out.println("Chimp gold: " + chimp.getGold());
+            if(champ.getGold() >= 50){
+                Champions chimp = new Champions();
+                chimp.setGold(chimp.getGold() - 50);
+                chimp.setGriffCount(chimp.getGriffCount() + 1);
+                griffText.setText(":: " + champ.getGriffCount());
+                goldCounter.setText(champ.getGold()+"");
+            }
         });
 
         ImageView archer = new ImageView(new Image("file:pngs/player_units/archer/archer_stand.png"));
@@ -154,11 +168,13 @@ public class Preparation implements Action {
         arcText.setLayoutY(350);
 
         archerMin.setOnMouseClicked((event) -> {
-            Champions chimp = new Champions();
-            chimp.setGold(chimp.getGold() + 50);
-            chimp.setArcherCount(chimp.getArcherCount() - 1);
-            arcText.setText(":: "+champ.getArcherCount());
-            System.out.println("Chimp gold: " + chimp.getGold());
+            if(champ.getArcherCount() > 0){
+                Champions chimp = new Champions();
+                chimp.setGold(chimp.getGold() + 50);
+                chimp.setArcherCount(chimp.getArcherCount() - 1);
+                arcText.setText(":: " + champ.getArcherCount());
+                goldCounter.setText(champ.getGold()+"");
+            }
         });
 
         Button archerMax = new Button(" + ");
@@ -168,11 +184,13 @@ public class Preparation implements Action {
         archerMax.setLayoutY(350);
 
         archerMax.setOnMouseClicked((event) -> {
-            Champions chimp = new Champions();
-            chimp.setGold(chimp.getGold() - 50);
-            chimp.setArcherCount(chimp.getArcherCount() + 1);
-            arcText.setText(":: "+champ.getArcherCount());
-            System.out.println("Chimp gold: " + chimp.getGold());
+            if(champ.getGold() >= 50){
+                Champions chimp = new Champions();
+                chimp.setGold(chimp.getGold() - 50);
+                chimp.setArcherCount(chimp.getArcherCount() + 1);
+                arcText.setText(":: " + champ.getArcherCount());
+                goldCounter.setText(champ.getGold()+"");
+            }
         });
 
         ImageView toBattle = new ImageView(new Image("file:pngs/toBattleIcon.png"));
@@ -246,6 +264,7 @@ public class Preparation implements Action {
         root.getChildren().add(griffText);
         root.getChildren().add(arcText);
         root.getChildren().add(toBattle);
+        root.getChildren().add(goldCounter);
 
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: Shop");

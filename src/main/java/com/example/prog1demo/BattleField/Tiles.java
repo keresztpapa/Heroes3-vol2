@@ -250,8 +250,6 @@ public class Tiles implements Action{
             }
         });
 
-
-
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
             act(index);
@@ -303,7 +301,6 @@ public class Tiles implements Action{
                             }
                             if (round.get(g).getHp() <= 0) round.get(g).setImg("dead", ap);
                         }
-                        System.out.println("FIRE FIRE FIRE");
                         chimp.setMana(chimp.getMana() - 9);
 
                         act(index);

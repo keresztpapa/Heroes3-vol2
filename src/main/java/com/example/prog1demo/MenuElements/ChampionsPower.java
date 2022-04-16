@@ -34,6 +34,12 @@ public class ChampionsPower {
 
         Champions chimp = new Champions();
 
+        TextField gold = new TextField("Gold: "+chimp.getGold());
+        gold.setPrefHeight(60);
+        gold.setPrefWidth(100);
+        gold.setLayoutX(1000);
+        gold.setLayoutY(900);
+
         ImageView fireBall = new ImageView(new Image("file:pngs/powers/fireball.png"));
         ImageView thunderStrike = new ImageView(new Image("file:pngs/powers/lightning-strike.png"));
         ImageView ressurection = new ImageView(new Image("file:pngs/powers/cross.png"));
@@ -72,7 +78,8 @@ public class ChampionsPower {
         buyFireBall.setOnMouseClicked((event)->{
             if(chimp.getGold() > 60) chimp.setGold(chimp.getGold()-60);
             chimp.setFire(true);
-            System.out.println(chimp.getGold());
+            buyFireBall.setDisable(true);
+            gold.setText(chimp.getGold()+"");
         });
 
         Button buyThunderStrike = new Button(" Thunderbolt ");
@@ -94,6 +101,8 @@ public class ChampionsPower {
         buyThunderStrike.setOnMouseClicked((event)->{
             if(chimp.getGold() > 120) chimp.setGold(chimp.getGold()-120);
             chimp.setThunder(true);
+            buyThunderStrike.setDisable(true);
+            gold.setText(chimp.getGold()+"");
         });
 
         Button buyResurection = new Button(" Resurrection ");
@@ -115,13 +124,16 @@ public class ChampionsPower {
         buyResurection.setOnMouseClicked((event)->{
             if(chimp.getGold() > 120) chimp.setGold(chimp.getGold()-120);
             chimp.setRes(true);
+            buyResurection.setDisable(true);
+            gold.setText(chimp.getGold()+"");
         });
 
         Button toShop = new Button(" SHOP ");
         toShop.setPrefHeight(60);
         toShop.setPrefWidth(75);
-        toShop.setLayoutX(700);
-        toShop.setLayoutY(700);
+        toShop.setLayoutX(1000);
+        toShop.setLayoutY(800);
+
 
         toShop.setOnMouseClicked((event)->{
             Preparation prep = new Preparation();
@@ -133,7 +145,7 @@ public class ChampionsPower {
         });
 
         root.getChildren().addAll(img, fireBall, thunderStrike, ressurection, toShop, buyFireBall, buyResurection, buyThunderStrike,
-                                fireBallMana,fireBallCost, thunderStrikeMana, thunderStrikeCost, resurrectCost,resurrectMana);
+                                fireBallMana,fireBallCost, thunderStrikeMana, thunderStrikeCost, resurrectCost,resurrectMana, gold);
         Scene sc = new Scene(root);
         stg.setTitle("Heroes -- Might and Magic 3: Low budget edition :: I have the POWERRRR");
         stg.setScene(sc);
