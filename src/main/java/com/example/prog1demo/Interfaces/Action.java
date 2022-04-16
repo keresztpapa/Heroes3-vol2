@@ -123,7 +123,7 @@ public interface Action {
 
                 double dmgCritChance = Math.random()*(100+1+1)+1;
                     if(isNeighbour(map,g1,g2)) {
-                        logF.appendText("Dmg dealt: "+dmg);
+                        logF.appendText("\nDmg dealt: "+dmg);
                         if(dmgCritChance > 5){
                             g2.setHp((int) (g2.getHp() - (dmg*2)));
                         }else{
@@ -135,24 +135,33 @@ public interface Action {
                         if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
                             attack(map, g2, g1, anchorPane, logF, round);
                         }
-                    logF.appendText("Attack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
+                        logF.appendText("\nAttack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
                     }
                 mapUpdate(map, round);
     }
 
     //archer
     default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount, TextArea logF, ArrayList<Generic> round){
+        int oldHp = g2.getHp();
         double minAtt = g1.getAttMin();
         double maxAtt = g1.getAttMax();
         double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
+        double dmgCritChance = Math.random()*(100+1+1)+1;
         if(!isNeighbour(map,g1,g2)) {
-            g2.setHp((int) (g2.getHp() - dmg));
+
+            logF.appendText("\nDmg dealt: "+dmg);
+            if(dmgCritChance > 5){
+                g2.setHp((int) (g2.getHp() - (dmg*2)));
+            }else{
+                g2.setHp((int) (g2.getHp() - dmg));
+            }
             System.out.println("Alany HP: " + g2.getHp());
             if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
             System.out.println("sebzett");
             if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
                 attack(map, g2, g1, anchorPane, logF, round);
             }
+            logF.appendText("\nAttack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
         }
     }
 

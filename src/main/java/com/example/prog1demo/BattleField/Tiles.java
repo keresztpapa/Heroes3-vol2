@@ -195,8 +195,8 @@ public class Tiles implements Action{
         round.add(imp);
         round.add(impArcher);
         round.add(hound);
-        //round.add(chimp);
-        //round.add(evilChimp);
+        round.add(chimp);
+        round.add(evilChimp);
 
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
@@ -253,7 +253,7 @@ public class Tiles implements Action{
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
             act(index);
-            logField.appendText("Index:: " +index);
+            logField.appendText("\nIndex:: " +index);
             index++;
             if(index == round.size()) index = 0;
 
@@ -290,89 +290,60 @@ public class Tiles implements Action{
                 for (int j = 0; j < map[j].length; j++) {
                     Tile tl = map[i][j];
 
-                    tl.getImageView().setOnMouseClicked((event) -> {
-                        int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
-                        int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
+                    tl.getImageView().setOnMouseClicked((event) -> fireBall(tl));
 
-                        for (int g = 0; g < round.size(); g++) {
-                            if (round.get(g).getPos_x() <= radX + 150 && round.get(g).getPos_x() >= radX - 150 &&
-                                    round.get(g).getPos_y() <= radY + 150 && round.get(g).getPos_y() >= radY - 150) {
-                                round.get(g).setHp((int) (round.get(g).getHp() - chimp.getMagic() * 20));
-                            }
-                            if (round.get(g).getHp() <= 0) round.get(g).setImg("dead", ap);
-                        }
-                        chimp.setMana(chimp.getMana() - 9);
+                    pike.getActual().setOnMouseClicked((event) -> resurrection(pike));
 
-                        act(index);
-                    });
+                    griff.getActual().setOnMouseClicked((event) -> resurrection(griff));
 
-                    pike.getActual().setOnMouseClicked((event) -> {
-                        if (pike.getHp() <= 0) {
-                            pike.setHp((int) (pike.getHp() + chimp.getMagic() * 50));
-                            pike.setImg("stand", ap);
-                            chimp.setMana(chimp.getMana() - 6);
-                        }
-                        act(index);
-                    });
+                    archer.getActual().setOnMouseClicked((event) -> resurrection(archer));
 
-                    griff.getActual().setOnMouseClicked((event) -> {
-                        if (griff.getHp() <= 0) {
-                            griff.setHp((int) (griff.getHp() + chimp.getMagic() * 50));
-                            griff.setImg("stand", ap);
-                            chimp.setMana(chimp.getMana() - 6);
-                        }
-                        act(index);
-                    });
+                    mage.getActual().setOnMouseClicked((event) -> resurrection(mage));
 
-                    archer.getActual().setOnMouseClicked((event) -> {
-                        if (archer.getHp() <= 0) {
-                            archer.setHp((int) (archer.getHp() + chimp.getMagic() * 50));
-                            archer.setImg("stand", ap);
-                            chimp.setMana(chimp.getMana() - 6);
-                        }
-                        act(index);
-                    });
+                    imp.getActual().setOnMouseClicked((event) -> thunderStrike(imp));
 
-                    mage.getActual().setOnMouseClicked((event) -> {
-                        if (mage.getHp() <= 0) {
-                            mage.setHp((int) (mage.getHp() + chimp.getMagic() * 50));
-                            mage.setImg("stand", ap);
-                            chimp.setMana(chimp.getMana() - 6);
-                        }
-                        act(index);
-                    });
+                    hound.getActual().setOnMouseClicked((event) -> thunderStrike(hound));
 
-                    imp.getActual().setOnMouseClicked((event) -> {
-                        imp.setHp((int) (imp.getHp() - chimp.getMagic() * 30));
-                        chimp.setMana(chimp.getMana() - 5);
-                        System.out.println("megrázta a csúnya impet");
-                        act(index);
-                    });
+                    impArcher.getActual().setOnMouseClicked((event) -> thunderStrike(impArcher));
 
-                    hound.getActual().setOnMouseClicked((event) -> {
-                        hound.setHp((int) (hound.getHp() - chimp.getMagic() * 30));
-                        chimp.setMana(chimp.getMana() - 5);
-                        System.out.println("megrázta a csúnya hounde ot");
-                        act(index);
-                    });
-
-                    impArcher.getActual().setOnMouseClicked((event) -> {
-                        impArcher.setHp((int) (impArcher.getHp() - chimp.getMagic() * 30));
-                        chimp.setMana(chimp.getMana() - 5);
-                        System.out.println("megrázta a csúnya impArchert");
-                        act(index);
-                    });
-
-                    genie.getActual().setOnMouseClicked((event) -> {
-                        genie.setHp((int) (genie.getHp() - chimp.getMagic() * 30));
-                        chimp.setMana(chimp.getMana() - 5);
-                        System.out.println("megrázta a csúnya Dzsint");
-                        act(index);
-                    });
+                    genie.getActual().setOnMouseClicked((event) -> thunderStrike(genie));
                 }
             }
         }
     }
+
+    public void fireBall(Tile tl){
+        int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
+        int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
+
+        for (int g = 0; g < round.size(); g++) {
+            if (round.get(g).getPos_x() <= radX + 150 && round.get(g).getPos_x() >= radX - 150 &&
+                    round.get(g).getPos_y() <= radY + 150 && round.get(g).getPos_y() >= radY - 150) {
+                round.get(g).setHp((int) (round.get(g).getHp() - chimp.getMagic() * 20));
+            }
+            if (round.get(g).getHp() <= 0) round.get(g).setImg("dead", ap);
+        }
+        chimp.setMana(chimp.getMana() - 9);
+
+        act(index);
+    }
+
+    public void resurrection(Generic asd){
+        if (asd.getHp() <= 0) {
+            asd.setHp((int) (asd.getHp() + chimp.getMagic() * 50));
+            asd.setImg("stand", ap);
+            chimp.setMana(chimp.getMana() - 6);
+        }
+        act(index);
+    }
+
+    public void thunderStrike(Generic asd){
+        asd.setHp((int) (asd.getHp() - chimp.getMagic() * 30));
+        chimp.setMana(chimp.getMana() - 5);
+        System.out.println("megrázta a csúnya "+asd.getName());
+        act(index);
+    }
+
 
     public void removeDeadUnit(ArrayList<Generic> round){
         for(int i=0;i<round.size();i++){
