@@ -5,9 +5,7 @@
  */
 package com.example.prog1demo.MenuElements;
 
-import com.example.prog1demo.Application;
 import com.example.prog1demo.Interfaces.Multiplayer;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;

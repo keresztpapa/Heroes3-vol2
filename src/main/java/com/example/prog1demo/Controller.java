@@ -3,7 +3,6 @@ package com.example.prog1demo;
 import com.example.prog1demo.BattleField.Tiles;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;

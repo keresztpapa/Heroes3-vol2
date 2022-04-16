@@ -40,10 +40,7 @@ public class Hound extends Generic {
     static double crit=1;
     Random rand = new Random();
     static int count;
-    static int cost = 2;
-    int movement = 4,
-        initiative = 1,
-        pos_x,
+    int pos_x,
         pos_y;
     static int hp = 30;
     static boolean active=false;
@@ -123,7 +120,6 @@ public class Hound extends Generic {
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
-    public void setCount(int z){ count = z; }
     public String getName(){ return "Hound"; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }

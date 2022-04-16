@@ -77,7 +77,7 @@ public class ChampionsPower {
 
         buyFireBall.setOnMouseClicked((event)->{
             if(chimp.getGold() > 60) chimp.setGold(chimp.getGold()-60);
-            chimp.setFire(true);
+            chimp.setFireActive(true);
             buyFireBall.setDisable(true);
             gold.setText(chimp.getGold()+"");
         });
@@ -100,7 +100,7 @@ public class ChampionsPower {
 
         buyThunderStrike.setOnMouseClicked((event)->{
             if(chimp.getGold() > 120) chimp.setGold(chimp.getGold()-120);
-            chimp.setThunder(true);
+            chimp.setThunderActive(true);
             buyThunderStrike.setDisable(true);
             gold.setText(chimp.getGold()+"");
         });
@@ -123,7 +123,7 @@ public class ChampionsPower {
 
         buyResurection.setOnMouseClicked((event)->{
             if(chimp.getGold() > 120) chimp.setGold(chimp.getGold()-120);
-            chimp.setRes(true);
+            chimp.setResActive(true);
             buyResurection.setDisable(true);
             gold.setText(chimp.getGold()+"");
         });

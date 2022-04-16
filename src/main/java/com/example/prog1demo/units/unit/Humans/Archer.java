@@ -25,10 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class Archer extends Generic {
-    int cost;
     static int hp;
-    int movement;
-    int initiative=0;
     int pos_x;
     int pos_y;
     int imgX, imgY;
@@ -82,7 +79,6 @@ public class Archer extends Generic {
         actual.setFitWidth(100);
         actual.setFitHeight(100);
         this.anchorPane = AP;
-        //AP.getChildren().add(actual);
         this.imgX = px;
         this.imgY = py;
     }
@@ -125,7 +121,6 @@ public class Archer extends Generic {
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
-    public void setCount(int z){ count = z; }
     public String getName(){ return "Archer"; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }

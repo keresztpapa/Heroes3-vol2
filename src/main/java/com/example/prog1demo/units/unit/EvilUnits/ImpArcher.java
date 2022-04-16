@@ -33,10 +33,7 @@ public class ImpArcher extends Generic {
     static boolean active=false;
     Random rand = new Random();
     static int count;
-    static int cost = 2;
-    int movement = 4,
-        initiative = 3,
-        pos_x,
+    int pos_x,
         pos_y;
     static double attMin=2;
     static double attMax=4;
@@ -125,7 +122,6 @@ public class ImpArcher extends Generic {
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
-    public void setCount(int z){ count = z; }
     public String getName(){ return "ImpArcher"; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }

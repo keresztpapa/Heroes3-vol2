@@ -33,10 +33,8 @@ public class Soldier extends Generic {
         static int count=0;
 
         int movement = 4,
-            initiative = 8,
             pos_x,
             pos_y;
-    static int cost = 2;
     static int hp = 3;
     static double attMin=1;
     static double attMax=1;
@@ -75,7 +73,6 @@ public class Soldier extends Generic {
             actual.setFitWidth(100);
             actual.setFitHeight(100);
             this.anchorPane = AP;
-            //AP.getChildren().add(actual);
             this.imgX = px;
             this.imgY = py;
         }
@@ -103,10 +100,7 @@ public class Soldier extends Generic {
         public void setHp(int  health) { hp = health; }
         public double getCrit(){ return crit; }
         public void setCrit(double asd){ crit = asd; }
-
         public int getMovement(){ return this.movement; }
-        public int getImgX(){ return (int) this.actual.getX(); }
-        public int getImgY(){ return (int) this.actual.getY(); }
         public ImageView getActual(){ return this.actual; }
         public void setImageMovX(int asd){ actual.setX(asd); }
         public void setImageMovY(int asd){ actual.setY(asd); }
@@ -119,7 +113,6 @@ public class Soldier extends Generic {
         public ImageView getAttack(int z) { return this.attack_sprite[z]; }
         public ImageView[] getAttack(){ return this.movement_sprite; }
         public int getCount(){ return count; }
-        public void setCount(int z){ count = z; }
         public String getName(){ return "Pike"; }
 
         public void setActive(boolean asd){ active = asd; }

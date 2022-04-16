@@ -25,10 +25,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class Griff extends Generic {
-    int cost;
     static int hp = 30;
-    int movement;
-    int initiative=5;
     int pos_x;
     int pos_y;
     int imgX, imgY;
@@ -107,9 +104,6 @@ public class Griff extends Generic {
     public void setHp(int  health) { hp = health; }
     public double getCrit(){ return crit; }
     public void setCrit(double asd){ crit = asd; }
-
-    public int getImgX(){ return (int) this.actual.getX(); }
-    public int getImgY(){ return (int) this.actual.getY(); }
     public ImageView getActual(){ return this.actual; }
     public void setImageMovX(int asd){ actual.setX(asd); }
     public void setImageMovY(int asd){ actual.setY(asd); }
@@ -122,7 +116,6 @@ public class Griff extends Generic {
     public ImageView getAttack(int z) { return this.attack_sprite[z]; }
     public ImageView[] getAttack(){ return this.movement_sprite; }
     public int getCount(){ return count; }
-    public void setCount(int z){ count = z; }
     public String getName(){ return "Griff"; }
     public void setActive(boolean asd){ active = asd; }
     public boolean isActive(){ return active; }

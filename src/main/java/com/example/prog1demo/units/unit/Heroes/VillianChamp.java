@@ -21,12 +21,7 @@ public class VillianChamp extends Generic implements Action {
         static double luck=1;
         static int pos_x;
         static int pos_y;
-        static int gold;
         static int mana=0;
-        static boolean fire=true;
-        static boolean thunder=true;
-        static boolean res=false;
-
         static int impCount=0;
         static int houndCount=0;
         static int impArcherCount=0;
@@ -35,25 +30,13 @@ public class VillianChamp extends Generic implements Action {
         ImageView img;
         ImageView actual2 = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
         ImageView stand = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
-        public VillianChamp(int attack, int deffense, int mgc, int wisd, int mor, int lucky){
-            att = attack;
-            deff = deffense;
-            magic = mgc;
-            wisdom = wisd;
-            moral = mor;
-            luck = lucky;
-            pos_x = 700;
-            pos_y = 700;
-        }
 
-        public VillianChamp(int x){ gold = x; }
         public VillianChamp(){}
 
         public void setImg(String z, AnchorPane anchorPane) {
                 this.actual2 = stand;
                 actual2.setX(pos_x);
                 actual2.setY(pos_y);
-                //anchorPane.getChildren().add(actual2);
         }
 
         //getters + setters
@@ -73,9 +56,6 @@ public class VillianChamp extends Generic implements Action {
         public void setPos_y(int y) { pos_y = y; }
         public int getPos_x(){ return pos_x; }
         public int getPos_y(){ return pos_y; }
-        public ImageView getImg(){ return this.img; }
-        public void setGold(int z){ gold = z; }
-        public int getGold(){ return gold; }
         public void setImpCount(int z){ impCount = z; }
         public int getImpCount(){ return impCount; }
         public void setImpArcherCount(int z){ impArcherCount = z; }
@@ -88,14 +68,4 @@ public class VillianChamp extends Generic implements Action {
         public String getName(){ return "evilChimp"; }
         public int getMana(){ return mana; }
         public void setMana(int asd){ mana = asd; }
-
-        public void setFire(boolean asd){ fire = asd; }
-        public void setThunder(boolean asd){ thunder = asd; }
-        public void setRes(boolean asd){ res = asd; }
-
-        public boolean getFire(){ return fire; }
-        public boolean getThunder(){ return thunder; }
-        public boolean getRes(){ return res; }
-
-
 }

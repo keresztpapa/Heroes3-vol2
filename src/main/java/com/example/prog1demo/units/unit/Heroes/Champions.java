@@ -63,24 +63,8 @@ public class Champions extends Generic implements Action{
     ImageView actual = new ImageView(new Image("file:pngs/ChimpPokemon.png"));
     ImageView stand = new ImageView(new Image("file:pngs/ChimpPokemon.png"));
 
-    public Champions(int attack, int deffense, int mgc, int wisd, int mor, int lucky, int px, int py){
-        att = attack;
-        deff = deffense;
-        magic = mgc;
-        wisdom = wisd;
-        moral = mor;
-        luck = lucky;
-        pos_x = px;
-        pos_y = py;
-    }
-
     public Champions(int x){ gold = x; }
     public Champions(){}
-
-    public void fireBall(Tile[][] map, int centerX, int centerY, ArrayList<Generic> units, AnchorPane anchorPane){
-
-    }
-
 
     //getters + setters
     public double getAtt() { return att; }
@@ -99,7 +83,6 @@ public class Champions extends Generic implements Action{
     public void setPos_y(int y) { pos_y = y; }
     public int getPos_x(){ return pos_x; }
     public int getPos_y(){ return pos_y; }
-    public ImageView getImg(){ return this.img; }
     public void setGold(int z){ gold = z; }
     public int getGold(){ return gold; }
     public void setSoldierCount(int z){ soldierCount = z; }
@@ -129,23 +112,4 @@ public class Champions extends Generic implements Action{
 
     public int getMana(){ return mana; }
     public void setMana(int asd){ mana = asd; }
-
-    public void setFire(boolean asd){ fire = asd; }
-    public void setThunder(boolean asd){ thunder = asd; }
-    public void setRes(boolean asd){ res = asd; }
-
-    public boolean getFire(){ return fire; }
-    public boolean getThunder(){ return thunder; }
-    public boolean getRes(){ return res; }
 }
-
-/*
-        if((centerX < 12 && map[centerX-1][centerY].isOccupied()) &&
-        (centerX < 12 && map[centerX+1][centerY].isOccupied()) &&
-        (centerY < 10 && map[centerX][centerY-1].isOccupied()) &&
-        (centerY < 10 && map[centerX][centerY-1].isOccupied()) &&
-        (centerY < 10 && centerX < 12 && map[centerX-1][centerY-1].isOccupied()) &&
-        (centerY < 10 && centerX < 12 && map[centerX-1][centerY+1].isOccupied()) &&
-        (centerY < 10 && centerX < 12 && map[centerX+1][centerY-1].isOccupied()) &&
-        (centerY < 10 && centerX < 12 && map[centerX+1][centerY+1].isOccupied())){
-        */

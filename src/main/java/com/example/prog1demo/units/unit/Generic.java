@@ -65,9 +65,6 @@ public class Generic {
                 "\nWisdom: "+wisdom+"\nMoral: "+moral+"\nLuck: "+luck;
     }
 
-
-    public int getCost() { return cost; }
-    public void setCost(int cost) { this.cost = cost; }
     public double getDamage() { return damage; }
     public void setDamage(double damage) { this.damage = damage; }
 
@@ -93,11 +90,8 @@ public class Generic {
     public int getCount(){ return this.count; }
 
     public int getMovement() { return movement; }
-    public void setMovement(int movement) { this.movement = movement; }
     public int getInitiative() { return initiative; }
     public void setInitiative(int initiative) { this.initiative = initiative; }
-    public int getImgX(){ return (int) this.actual.getX(); }
-    public int getImgY(){ return (int) this.actual.getY(); }
     public ImageView getActual(){ return this.actual; }
     public void setImageMovX(int asd){ actual.setX(asd); }
     public void setImageMovY(int asd){ actual.setY(asd); }
