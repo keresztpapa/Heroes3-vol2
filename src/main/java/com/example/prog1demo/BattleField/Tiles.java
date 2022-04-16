@@ -236,11 +236,17 @@ public class Tiles implements Action{
                 attack(map, round.get(index), imp, ap, logField, round);
                 removeDeadUnit(round);
             }
+            if(round.get(index).getName().equals("Archer")){
+                attackWitoutLimit(map, archer, imp, ap, logField, round);
+            }
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
             if(hound.getHp()>0){
                 attack(map, round.get(index), hound, ap, logField, round);
                 removeDeadUnit(round);
+            }
+            if(round.get(index).getName().equals("Archer")){
+                attackWitoutLimit(map, archer, hound, ap, logField, round);
             }
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
@@ -248,25 +254,28 @@ public class Tiles implements Action{
                 attack(map, round.get(index), impArcher, ap,logField, round);
                 removeDeadUnit(round);
             }
+            if(round.get(index).getName().equals("Archer")){
+                attackWitoutLimit(map, archer, impArcher, ap, logField, round);
+            }
         });
 
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
             act(index);
-            logField.appendText("\nIndex:: " +index);
+            logField.appendText("\n\nIndex:: " +index);
             index++;
             if(index == round.size()) index = 0;
 
             if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
                 Victory vc = new Victory();
                 vc.endGame("bukta");
-                logField.appendText("Vesztettek az emberek");
+                logField.appendText("\n\nVesztettek az emberek");
             }
 
             if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
                 Victory vc = new Victory();
                 vc.endGame("");
-                logField.appendText("Győztek az emberek.");
+                logField.appendText("\n\nGyőztek az emberek.");
             }
         });
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);

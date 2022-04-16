@@ -141,7 +141,7 @@ public interface Action {
     }
 
     //archer
-    default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, int rowCount, int colCount, TextArea logF, ArrayList<Generic> round){
+    default void attackWitoutLimit(Tile[][] map, Generic g1, Generic g2, AnchorPane anchorPane, TextArea logF, ArrayList<Generic> round){
         int oldHp = g2.getHp();
         double minAtt = g1.getAttMin();
         double maxAtt = g1.getAttMax();

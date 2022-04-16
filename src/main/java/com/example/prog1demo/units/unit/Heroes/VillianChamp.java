@@ -85,6 +85,7 @@ public class VillianChamp extends Generic implements Action {
         public double getGenieCount(){ return genie; }
         public void setGenieCount(int z){ genie = z; }
 
+        public String getName(){ return "evilChimp"; }
         public int getMana(){ return mana; }
         public void setMana(int asd){ mana = asd; }
 
