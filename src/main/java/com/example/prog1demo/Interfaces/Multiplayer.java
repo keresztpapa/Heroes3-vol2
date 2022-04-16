@@ -1,3 +1,54 @@
+/**
+ * Az osztály szolgál 'engine'-ként. A konstruktorban automatikusan
+ * van generáltatva a pálya, és fel van töltve elérhetetlen mezőkkel is.
+ *
+ * A Generate()
+ *                  intézi az interakciót a pályával,
+ *                  itt jönnek be az egységek és azoknak a cselekvései.
+ *                  Nem vár a fvg paramétert, mert a többi osztályból ollózza össze a statikus változókat.
+ *
+ * act()
+ * @param unitRoundACtiveIndex
+ *                  egy int változót vár paraméterül, a paraméter amit kap mondja meg
+ *                  hogy az arraylist-ben melyik indexű elem, hogy reagáljon
+ *                  ha a listában az adott indexű elem szüvetséges
+ *                  akkor mozoghat illetve támadhat,
+ *
+ *                  ha hős, akkor varázsolni tud, majd attól függően,
+ *                  hogy ellenfére kattint e, vagy egy mezőre vagy egy szövetséges egységre
+ *
+ * spell()
+ *                  fvg híváskor leelnőrzi, hogy a soron lévő karakter e a hős
+ *                  ha igen, akkor az adott varázslatokból cast-ol egyet kattintástól függően
+ *                  Tud feltámasztani, egy darab ellenfelet támadni, és területi sebzést okozni.
+ *
+ * fireBall()
+ * @param tl        egy mező tipusú objectet vár paraméterben
+ *
+ *                  az az object lesz a robbanásnak a középpontja
+ *                  mivel 3*3 mezőben sebződnek a karakterek
+ *                  ezért x és y kordinátán is +/- 150 egységben sebez
+ *                  ha van elég manája a hősnek
+ *                  ha nincs akkor azonnal újra meghívja az act() fv-t
+ *                  ha van akkor a varázslat után hívja csak meg
+ *                  az act() -el lépünk ki a varázslásból
+ *
+ * resurrection()
+ * @param  gen      Egy generic ősosztályú változót vár.  Amit kattintással kap meg.
+ *
+ *                  Ha a hősnek van elég manája, akkor egy halott egységét feltámaszthatja.
+ *
+ * thunderStrike()
+ * @param  gen      Egy generic ősosztályú változót vár.  Amit kattintással kap meg.
+ *                  Ha, ellenséges egységre kattint a játékos, akkor azt villámcsapás éri.
+ *                  De csak ha van elég manája
+ *
+ * removeDeadUnit()
+ * @param  round    Egy arraylist -et kap a fvg.
+ *                  Ebből kiválogatja az elesett egységeket a metódus, majd törli azokat.
+ *
+ *
+ */
 package com.example.prog1demo.Interfaces;
 
 import com.example.prog1demo.BattleField.Tile;
