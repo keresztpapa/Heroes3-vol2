@@ -43,7 +43,6 @@ public class Champions extends Generic implements Action{
     static double luck=1;
     static int pos_x;
     static int pos_y;
-    static double skillPoint=10.0;
     static int gold;
     static int mana=0;
     static boolean fire=false;
@@ -54,10 +53,10 @@ public class Champions extends Generic implements Action{
     static boolean thunderActive=false;
     static boolean resActive=false;
 
-    static boolean active=false;
     static int soldierCount=0;
     static int griffCount=0;
     static int archerCount=0;
+    static int mageCount=0;
 
     ImageView img;
 
@@ -79,33 +78,8 @@ public class Champions extends Generic implements Action{
     public Champions(){}
 
     public void fireBall(Tile[][] map, int centerX, int centerY, ArrayList<Generic> units, AnchorPane anchorPane){
-        int radX = map[centerX][centerY].getPos_x();
-        int radY = map[centerX][centerY].getPos_y();
-        for(int i=0;i<units.size();i++){
-            if(units.get(i).getPos_x() <= radX+150 && units.get(i).getPos_x() >= radX-150 &&
-                    units.get(i).getPos_y() <= radY+150 && units.get(i).getPos_y() >= radY-150){
-                units.get(i).setHp((int) (units.get(i).getHp()-magic*20));
-            }
-            if(units.get(i).getHp()<=0) units.get(i).setImg("dead", anchorPane);
-        }
-        System.out.println("FIRE FIRE FIRE");
-        mana-=9;
-    }
 
-    public void lightning(Generic unit){
-        unit.setHp((int) (unit.getHp()-magic*30));
-        mana-=5;
     }
-
-    public void ressurrect(Generic unit, AnchorPane anchorPane){
-        if(unit.getName().equals("Archer") || unit.getName().equals("Griff") || unit.getName().equals("Pike")){
-           if(unit.getHp()<=0){
-               unit.setHp((int) (unit.getHp()+magic*50));
-               unit.setImg("stand",anchorPane);
-           }
-        }
-    }
-
 
 
     //getters + setters
@@ -134,8 +108,9 @@ public class Champions extends Generic implements Action{
     public int getArcherCount(){ return archerCount; }
     public void setGriffCount(int z){ griffCount = z; }
     public int getGriffCount(){ return griffCount; }
-    public double getSkillPoint(){ return skillPoint; }
-    public void setSkillPoint(double z){ skillPoint = z; }
+    public int getMageCount(){ return mageCount; }
+    public void setMageCount(int z){ mageCount = z; }
+    public String getName(){ return "Chimp"; }
 
     public boolean isFireActive(){ return fireActive; }
     public void setFireActive(boolean asd){ fireActive = asd; }

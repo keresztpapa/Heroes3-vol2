@@ -2,6 +2,7 @@ package com.example.prog1demo.Interfaces;
 
 import com.example.prog1demo.BattleField.Tile;
 import com.example.prog1demo.MenuElements.Victory;
+import com.example.prog1demo.units.unit.EvilUnits.Genie;
 import com.example.prog1demo.units.unit.Heroes.Champions;
 import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import com.example.prog1demo.units.unit.*;
@@ -10,6 +11,7 @@ import com.example.prog1demo.units.unit.EvilUnits.Imp;
 import com.example.prog1demo.units.unit.EvilUnits.ImpArcher;
 import com.example.prog1demo.units.unit.Humans.Archer;
 import com.example.prog1demo.units.unit.Humans.Griff;
+import com.example.prog1demo.units.unit.Humans.Mage;
 import com.example.prog1demo.units.unit.Humans.Soldier;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -37,6 +39,8 @@ public class Multiplayer implements Action{
     Champions chimp;
     TextArea logField;
     ArrayList<Generic> round;
+    Mage mage;
+    Genie genie;
 
     public Multiplayer(int x, int y, AnchorPane anchor){
         String str=null;
@@ -70,11 +74,12 @@ public class Multiplayer implements Action{
         chimp.setImg("stand",ap);
         chimp.setImageMovX(100);
         chimp.setImageMovY(100);
-
+        chimp.setFireActive(true);
 
         chimp.setSoldierCount((int) ((Math.random()*20)+1));
         chimp.setGriffCount((int) ((Math.random()*20)+1));
         chimp.setArcherCount((int) ((Math.random()*20)+1));
+        chimp.setMageCount((int) ((Math.random()*20)+1));
 
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setGeneric(chimp);
         this.map[chimp.getPos_x() / 100][chimp.getPos_y() / 100].setCrs(false);
@@ -91,6 +96,8 @@ public class Multiplayer implements Action{
         evilChimp.setImpCount((int) ((Math.random()*20)+1));
         evilChimp.setImpArcherCount((int) ((Math.random()*20)+1));
         evilChimp.setHoundCount((int) ((Math.random()*20)+1));
+        evilChimp.setGenieCount((int) ((Math.random()*20)+1));
+
 
         pike = new Soldier(0, 500, ap);
         pike.setImg("stand", ap);
@@ -110,6 +117,13 @@ public class Multiplayer implements Action{
         this.map[archer.getPos_x() / 100][archer.getPos_y() / 100].setOccupied(true);
         archer.setImg("stand",ap);
 
+        mage = new Mage(0 ,400, ap);
+        this.map[mage.getPos_x()/100][mage.getPos_y()/100].setGeneric(mage);
+        this.map[mage.getPos_x()/100][mage.getPos_y()/100].setCrs(false);
+        this.map[mage.getPos_x()/100][mage.getPos_y()/100].setOccupied(true);
+        mage.setImg("stand",ap);
+
+
         imp = new Imp(300, 300, ap);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setCrs(false);
@@ -128,6 +142,12 @@ public class Multiplayer implements Action{
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
         impArcher.setImg("stand", ap);
 
+        genie = new Genie(500, 800, ap);
+        this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setGeneric(genie);
+        this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setCrs(false);
+        this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setOccupied(true);
+        genie.setImg("stand", ap);
+
         logField = new TextArea(logs);
         logField.setLayoutX(1200);
         logField.setLayoutY(100);
@@ -138,12 +158,14 @@ public class Multiplayer implements Action{
         round = new ArrayList<>();
 
         round.add(pike);
+        round.add(chimp);
         round.add(griff);
         round.add(archer);
+        round.add(mage);
         round.add(imp);
         round.add(impArcher);
         round.add(hound);
-        round.add(chimp);
+        round.add(genie);
         round.add(evilChimp);
 
         TextField rounder = new TextField(""+roundCount);
@@ -159,35 +181,25 @@ public class Multiplayer implements Action{
         pass.setLayoutY(750);
 
         Button fire = new Button("Fireball");
+        if(!chimp.isFireActive()) fire.setDisable(true);
         fire.setPrefWidth(75);
         fire.setPrefHeight(50);
         fire.setLayoutX(1225);
         fire.setLayoutY(850);
 
         Button light = new Button("Thunder");
+        if(!chimp.isThunderActive()) light.setDisable(true);
         light.setPrefWidth(75);
         light.setPrefHeight(50);
         light.setLayoutX(1325);
         light.setLayoutY(850);
 
         Button res = new Button("Res");
+        if(!chimp.isResActive()) res.setDisable(true);
         res.setPrefWidth(50);
         res.setPrefHeight(50);
         res.setLayoutX(1425);
         res.setLayoutY(850);
-
-        fire.setOnMouseClicked((event)->{
-            System.out.println("fire");
-            chimp.setFireActive(true);
-        });
-
-        light.setOnMouseClicked((event)->{
-            chimp.setThunderActive(true);
-        });
-
-        res.setOnMouseClicked((event)->{
-            chimp.setResActive(true);
-        });
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
             attack(map, round.get(index), imp, ap,logField, round);
@@ -213,7 +225,7 @@ public class Multiplayer implements Action{
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
             act(index);
-            logField.appendText("Index:: " +index);
+            logField.appendText("Index:: " +index+"\nRound:: "+ round.get(index).getName());
             index++;
             if(index == 6) index = 0;
 
@@ -233,24 +245,100 @@ public class Multiplayer implements Action{
     public void generate() {}
 
     public void act(int asd){
-        if(asd == 0) {
-            move(map, pike, this.x_count, this.y_count, ap, logField, round);
+        if(round.get(asd).getName().equals("Chimp") ){
+                spell();
+        }else{
+            move(map, round.get(asd), this.x_count, this.y_count, ap, logField, round);
         }
-        if(asd == 1) {
-            move(map, griff, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 2) {
-            move(map, archer, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 3){
-            move(map, imp, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 4){
-            move(map, hound, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 5){
-            move(map, impArcher, this.x_count, this.y_count, ap, logField, round);
-        }
+    }
+
+    public void spell(){
+            for (int i = 0; i < map.length; i++) {
+                for (int j = 0; j < map[j].length; j++) {
+                    Tile tl = map[i][j];
+
+                    tl.getImageView().setOnMouseClicked((event) -> {
+                        int radX = map[tl.getPos_x()/100][tl.getPos_y()/100].getPos_x();
+                        int radY = map[tl.getPos_x()/100][tl.getPos_y()/100].getPos_y();
+
+                        for(int g=0;g<round.size();g++){
+                            if(round.get(g).getPos_x() <= radX+150 && round.get(g).getPos_x() >= radX-150 &&
+                                    round.get(g).getPos_y() <= radY+150 && round.get(g).getPos_y() >= radY-150){
+                                round.get(g).setHp((int) (round.get(g).getHp()-chimp.getMagic()*20));
+                            }
+                            if(round.get(g).getHp()<=0) round.get(g).setImg("dead", ap);
+                        }
+                        System.out.println("FIRE FIRE FIRE");
+                        chimp.setMana(chimp.getMana()-9);
+
+                        act(index);
+                    });
+
+                    pike.getActual().setOnMouseClicked((event) -> {
+                        if(pike.getHp()<=0){
+                            pike.setHp((int) (pike.getHp()+chimp.getMagic()*50));
+                            pike.setImg("stand",ap);
+                            chimp.setMana(chimp.getMana()-6);
+                        }
+                        act(index);
+                    });
+
+                    griff.getActual().setOnMouseClicked((event) -> {
+                        if(griff.getHp()<=0){
+                            griff.setHp((int) (griff.getHp()+chimp.getMagic()*50));
+                            griff.setImg("stand",ap);
+                            chimp.setMana(chimp.getMana()-6);
+                        }
+                        act(index);
+                    });
+
+                    archer.getActual().setOnMouseClicked((event) -> {
+                        if(archer.getHp()<=0){
+                            archer.setHp((int) (archer.getHp()+chimp.getMagic()*50));
+                            archer.setImg("stand",ap);
+                            chimp.setMana(chimp.getMana()-6);
+                        }
+                        act(index);
+                    });
+
+                    mage.getActual().setOnMouseClicked((event) -> {
+                        if(mage.getHp()<=0){
+                            mage.setHp((int) (mage.getHp()+chimp.getMagic()*50));
+                            mage.setImg("stand",ap);
+                            chimp.setMana(chimp.getMana()-6);
+                        }
+                        act(index);
+                    });
+
+                    imp.getActual().setOnMouseClicked((event)->{
+                        imp.setHp((int) (imp.getHp()-chimp.getMagic()*30));
+                        chimp.setMana(chimp.getMana()-5);
+                        System.out.println("megrázta a csúnya impet");
+                        act(index);
+                    });
+
+                    hound.getActual().setOnMouseClicked((event)->{
+                        hound.setHp((int) (hound.getHp()-chimp.getMagic()*30));
+                        chimp.setMana(chimp.getMana()-5);
+                        System.out.println("megrázta a csúnya hounde ot");
+                        act(index);
+                    });
+
+                    impArcher.getActual().setOnMouseClicked((event)->{
+                        impArcher.setHp((int) (impArcher.getHp()-chimp.getMagic()*30));
+                        chimp.setMana(chimp.getMana()-5);
+                        System.out.println("megrázta a csúnya impArchert");
+                        act(index);
+                    });
+
+                    genie.getActual().setOnMouseClicked((event)->{
+                        genie.setHp((int) (genie.getHp()-chimp.getMagic()*30));
+                        chimp.setMana(chimp.getMana()-5);
+                        System.out.println("megrázta a csúnya Dzsint");
+                        act(index);
+                    });
+                }
+            }
     }
 
     public void removeDeadUnit(ArrayList<Generic> round){

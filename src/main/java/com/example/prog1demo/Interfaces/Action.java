@@ -156,6 +156,19 @@ public interface Action {
         }
     }
 
+    default void fireBall(Tile[][] map, ArrayList<Generic> round,AnchorPane anchorPane){
+        for(int i=0;i<map.length;i++){
+            for(int j=0;j<map[j].length;j++){
+
+                Tile tl = map[i][j];
+
+                tl.getImageView().setOnMouseClicked((event)->{
+                    System.out.println("bumm AT: X: "+tl.getPos_x() +"\n Y:: "+tl.getPos_y());
+                });
+
+            }
+        }
+    }
 
     default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF, ArrayList<Generic> round){
         int i, j;
@@ -349,21 +362,6 @@ public interface Action {
                 });
             }
         } */
-    }
-
-    default void doMagic(Tile[][] map, int rowCount, int colCount, AnchorPane anchorPane, ArrayList<Generic> round){
-        int i, j;
-        Champions chimp = new Champions();
-        for (i = 0; i < rowCount; i++) {
-            for (j = 0; j < colCount; j++) {
-                Tile tl = map[i][j];
-                if(chimp.getFire()) {
-                    tl.getImageView().setOnMouseClicked((event) -> {
-                        chimp.fireBall(map, tl.getMovTo_x(), tl.getMovTo_y(), round,anchorPane);
-                    });
-                }
-            }
-        }
     }
 
     default void mapUpdate(Tile[][] map, ArrayList<Generic> round){

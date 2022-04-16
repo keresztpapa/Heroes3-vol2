@@ -21,7 +21,6 @@ public class VillianChamp extends Generic implements Action {
         static double luck=1;
         static int pos_x;
         static int pos_y;
-        static double skillPoint=10.0;
         static int gold;
         static int mana=0;
         static boolean fire=true;
@@ -31,6 +30,7 @@ public class VillianChamp extends Generic implements Action {
         static int impCount=0;
         static int houndCount=0;
         static int impArcherCount=0;
+        static int genie = 0;
 
         ImageView img;
         ImageView actual2 = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
@@ -82,8 +82,8 @@ public class VillianChamp extends Generic implements Action {
         public int getImpArcherCount(){ return impArcherCount; }
         public void setHoundCount(int z){ houndCount = z; }
         public int getHoundCount(){ return houndCount; }
-        public double getSkillPoint(){ return skillPoint; }
-        public void setSkillPoint(double z){ skillPoint = z; }
+        public double getGenieCount(){ return genie; }
+        public void setGenieCount(int z){ genie = z; }
 
         public int getMana(){ return mana; }
         public void setMana(int asd){ mana = asd; }
