@@ -248,7 +248,7 @@ public class Tiles implements Action{
         pass.setOnMouseClicked((event) -> {
             rounder.setText(""+roundCount);
             act(index);
-            logField.appendText("\n\nIndex:: " +index);
+            logField.appendText("\n\nIndex:: " +index+"\n"+round.get(index).getName());
             index++;
             if(index == round.size()) index = 0;
 
@@ -274,7 +274,7 @@ public class Tiles implements Action{
         if (round.get(asd).getName().equals("Imp") || round.get(asd).getName().equals("Hound") || round.get(asd).getName().equals("ImpArcher") || round.get(asd).getName().equals("Genie")){
             AImove(map, round ,round.get(asd), ap, logField);
         }
-        if(round.get(asd).getName().equals("chimp")){
+        if(round.get(asd).getName().equals("Chimp")){
             spell();
         }
     }
