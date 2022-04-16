@@ -92,25 +92,6 @@ public interface Action {
         if(x1<12 && map[x1][y1].getPos_x()-100 == map[x2][y2].getPos_x()) return true;
         if(y1<10 && map[x1][y1].getPos_y()+100 == map[x2][y2].getPos_y()) return true;
         if(y1<10 && map[x1][y1].getPos_y()-100 == map[x2][y2].getPos_y()) return true;
-
-/*
-        if(y1<10 && map[x1][y1].getPos_y()+101 == map[x2][y2].getPos_y() &&
-                x1<12 && map[x1][y1].getPos_x()+101 == map[x2][y2].getPos_x()) return true;
-
-        if(y1<10 && map[x1][y1].getPos_y()+101 == map[x2][y2].getPos_y() &&
-                x1<12 && map[x1][y1].getPos_x()-99 == map[x2][y2].getPos_x()) return true;
-
-        if(y1<10 && map[x1][y1].getPos_y()-99 == map[x2][y2].getPos_y() &&
-                x1<12 && map[x1][y1].getPos_x()+99 == map[x2][y2].getPos_x()) return true;
-
-        if(y1<10 && map[x1][y1].getPos_y()-99 == map[x2][y2].getPos_y() &&
-                x1<12 && map[x1][y1].getPos_x()+101 == map[x2][y2].getPos_x()) return true;
-
-        System.out.println("Pike X: "+g1.getPos_x());
-        System.out.println("Pike Y: "+g1.getPos_y());
-        System.out.println("imp X: "+g2.getPos_x());
-        System.out.println("IMP Y: "+g2.getPos_y());
-*/
         System.out.println("messze vagy");
         return false;
     }
@@ -337,10 +318,10 @@ public interface Action {
             }
         }
 
-        for(int i=0;i<round.size();i++){
-            if(round.get(i).getHp() > 0) {
-                map[round.get(i).getPos_x() / 100][round.get(i).getPos_y() / 100].setCrs(false);
-                map[round.get(i).getPos_x() / 100][round.get(i).getPos_y() / 100].setOccupied(true);
+        for (Generic generic : round) {
+            if (generic.getHp() > 0) {
+                map[generic.getPos_x() / 100][generic.getPos_y() / 100].setCrs(false);
+                map[generic.getPos_x() / 100][generic.getPos_y() / 100].setOccupied(true);
             }
         }
     }

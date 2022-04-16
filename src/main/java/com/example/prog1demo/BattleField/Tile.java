@@ -30,10 +30,8 @@ public class Tile {
     ImageView img;
     String pic;
     boolean crossable;
-    static int handbreak=0;
     boolean occupied=false;
     Generic gen;
-    static boolean victory = false;
 
     public Tile(int x, int y, AnchorPane anchor, boolean crs){
         this.pos_x = x;
@@ -79,30 +77,17 @@ public class Tile {
 
     //getters & setters
     public void setGeneric(Generic asd){ this.gen = asd; }
-    public Generic getGen() { return this.gen; }
-
     public boolean isOccupied() { return this.occupied; }
     public void setOccupied(boolean asd){ this.occupied = asd; }
-
-    public int getHandbreak(){ return handbreak; }
-    public void setHandbreak(int z){ handbreak = z; }
     public int getPos_x(){ return this.pos_x; }
     public int getPos_y(){ return this.pos_y; }
-    public void setMovTo_x(int z){ this.movTo_x = z; }
-    public void setMovTo_y(int z){ this.movTo_y = z; }
-    public int getImgX(){ return (int) this.img.getX(); }
-    public int getImgY(){ return (int) this.img.getY(); }
     public int getMovTo_x(){ return this.movTo_x; }
     public int getMovTo_y(){ return  this.movTo_y; }
-    public String getPic() { return this.pic; }
     public void setPic(String z){ this.pic = z; }
     public void setCrs(boolean z){ this.crossable = z; }
     public boolean getCrs(){ return this.crossable; }
-    public Tile getTile(){ return this; }
     public ImageView getImageView(){ return this.img; }
     public String toString(){
         return "tile";
     }
-    public boolean isVictory(){ return victory; }
-    public void setVictory(boolean asd){ victory = asd; }
 }

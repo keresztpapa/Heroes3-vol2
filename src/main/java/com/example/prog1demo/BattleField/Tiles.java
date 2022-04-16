@@ -27,29 +27,15 @@ import com.example.prog1demo.units.unit.Humans.Archer;
 import com.example.prog1demo.units.unit.Humans.Griff;
 import com.example.prog1demo.units.unit.Humans.Mage;
 import com.example.prog1demo.units.unit.Humans.Soldier;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static java.lang.Thread.sleep;
 
 public class Tiles implements Action{
     int x_count;
     int y_count;
     Tile[][] map;
     int i, j;
-    int unitX;
-    int unitY;
     static int index=0;
     static int roundCount=0;
     static String logs="";
@@ -68,7 +54,7 @@ public class Tiles implements Action{
     Genie genie;
 
     public Tiles(int x, int y, AnchorPane anchor){
-        String str=null;
+        String str;
         this.x_count = x;
         this.y_count = y;
         this.ap=anchor;
@@ -295,9 +281,9 @@ public class Tiles implements Action{
 
     public void spell(){
         if(round.get(index).getName().equals("Chimp")){
-            for (int i = 0; i < map.length; i++) {
+            for (Tile[] tiles : map) {
                 for (int j = 0; j < map[j].length; j++) {
-                    Tile tl = map[i][j];
+                    Tile tl = tiles[j];
 
                     tl.getImageView().setOnMouseClicked((event) -> fireBall(tl));
 
@@ -325,12 +311,12 @@ public class Tiles implements Action{
         int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
         int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
 
-        for (int g = 0; g < round.size(); g++) {
-            if (round.get(g).getPos_x() <= radX + 150 && round.get(g).getPos_x() >= radX - 150 &&
-                    round.get(g).getPos_y() <= radY + 150 && round.get(g).getPos_y() >= radY - 150) {
-                round.get(g).setHp((int) (round.get(g).getHp() - chimp.getMagic() * 20));
+        for (Generic generic : round) {
+            if (generic.getPos_x() <= radX + 150 && generic.getPos_x() >= radX - 150 &&
+                    generic.getPos_y() <= radY + 150 && generic.getPos_y() >= radY - 150) {
+                generic.setHp((int) (generic.getHp() - chimp.getMagic() * 20));
             }
-            if (round.get(g).getHp() <= 0) round.get(g).setImg("dead", ap);
+            if (generic.getHp() <= 0) generic.setImg("dead", ap);
         }
         chimp.setMana(chimp.getMana() - 9);
 
@@ -373,13 +359,5 @@ public class Tiles implements Action{
                 }
         System.arraycopy(arr, 0, orderedArr, 0, arr.length);
     }
-
-    //getters & setters
-    public void setIndex(int asd){ index = asd; }
-    public int getIndex(){ return index; }
-    public void setX_count(int z){ this.x_count = z; }
-    public void setY_count(int z){ this.y_count = z; }
-    public int getX_count(){ return this.x_count; }
-    public int getY_count(){ return this.y_count; }
 
 }
