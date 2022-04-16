@@ -17,14 +17,23 @@
  * @param map           a 2D Tile object tömb, ami harctérként funkcionál
  * @param g1            az első számú egység, ő az aktuális konfliktusban a támadó fél
  * @param g2            a második számú egység, a konfliktusban, ő szenvedi el a sebzést
- * @param rowCount      a 2D tömb sorának számai
- * @param colCount      a 2D tömb oszlopainak számai
+ * @param logF          egy TextArea amiben a játék soráni logolás történik
+ * @param round         egy arraylist amiből az egységeket kapja meg
+ *
+ *                      A fvg() a g1 sebzését vonja ki a g2 életéből.
+ *                      Sebzés a karakter sebzésének az értékkészletéből random választ.
+ *                      Csak akkor tudja az egyik karakter megtámadni a másikat, ha az szomszédos vele.
+ *                      Ha az elszenvedő karakter griff vagy a támadó nem ImpArcher
+ *                      Akkor rekurzívan is meghívódik a fvg, visszatámadás jeligével.
+ *
+ *                      Ezután meghívódik a mapUpdate() - ez megkapja paraméterül a játékteret,
+ *                      és a karakterek listáját és frissíti a játéktér elfoglalt mezőit.
  *
  *
  * attackWitoutLimit()
- *  ha az isNeighbour hamissal tér vissza.
- *  és a támadó egység távolsági harcos
- *  akkor támadhat egyszer, nem figyelve a távolságra
+ *                      Az attack() implementálása annyi külömbséggel, hogy nem figyel arra,
+ *                      hogy a 2 karakter szomszédos e.
+ *                      A távolsági egységeknek lett létrehozva.
  *
  * @param map           a 2D Tile object tömb, ami harctérként funkcionál
  * @param g1            az első számú egység, ő az aktuális konfliktusban a támadó fél
@@ -113,7 +122,7 @@ public interface Action {
                         System.out.println("Alany HP: " + g2.getHp());
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
-                        if (g2.getName() == "Griff" && g1.getName() != "ImpArcher") {
+                        if (g2.getName() == "Griff" || g1.getName() != "ImpArcher") {
                             attack(map, g2, g1, anchorPane, logF, round);
                         }
                         logF.appendText("\nAttack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());

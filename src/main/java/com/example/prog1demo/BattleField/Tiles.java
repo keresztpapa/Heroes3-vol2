@@ -2,8 +2,10 @@
  * Az osztály szolgál 'engine'-ként. A konstruktorban automatikusan
  * van generáltatva a pálya, és fel van töltve elérhetetlen mezőkkel is.
  *
- * A Generate() intézi az interakciót a pályával, itt jönnek be az egységek és azoknak a cselekvései.
- * Nem vár a fvg paramétert, mert a többi osztályból ollózza össze a statikus változókat.
+ * A Generate()
+ *                  intézi az interakciót a pályával,
+ *                  itt jönnek be az egységek és azoknak a cselekvései.
+ *                  Nem vár a fvg paramétert, mert a többi osztályból ollózza össze a statikus változókat.
  *
  * act()
  * @param unitRoundACtiveIndex
@@ -16,8 +18,36 @@
  *                  ha pedig a játékos hőse, akkor varázsolni tud, majd attól függően,
  *                  hogy ellenfére kattint e, vagy egy mezőre vagy egy szövetséges egységre
  *
- * @param round     ArrayList a hősök sorrendjéről
- * @param rounder   A kört kijelző TextBox, ami frissül, ha egy karakter befejezte a körét
+ * spell()
+ *                  fvg híváskor leelnőrzi, hogy a soron lévő karakter e a hős
+ *                  ha igen, akkor az adott varázslatokból cast-ol egyet kattintástól függően
+ *                  Tud feltámasztani, egy darab ellenfelet támadni, és területi sebzést okozni.
+ *
+ * fireBall()
+ * @param tl        egy mező tipusú objectet vár paraméterben
+ *
+ *                  az az object lesz a robbanásnak a középpontja
+ *                  mivel 3*3 mezőben sebződnek a karakterek
+ *                  ezért x és y kordinátán is +/- 150 egységben sebez
+ *                  ha van elég manája a hősnek
+ *                  ha nincs akkor azonnal újra meghívja az act() fv-t
+ *                  ha van akkor a varázslat után hívja csak meg
+ *                  az act() -el lépünk ki a varázslásból
+ *
+ * resurrection()
+ * @param  gen      Egy generic ősosztályú változót vár.  Amit kattintással kap meg.
+ *
+ *                  Ha a hősnek van elég manája, akkor egy halott egységét feltámaszthatja.
+ *
+ * thunderStrike()
+ * @param  gen      Egy generic ősosztályú változót vár.  Amit kattintással kap meg.
+ *                  Ha, ellenséges egységre kattint a játékos, akkor azt villámcsapás éri.
+ *                  De csak ha van elég manája
+ *
+ * removeDeadUnit()
+ * @param  round    Egy arraylist -et kap a fvg.
+ *                  Ebből kiválogatja az elesett egységeket a metódus, majd törli azokat.
+ *
  *
  */
 
@@ -342,14 +372,14 @@ public class Tiles implements Action{
         act(index);
     }
 
-    public void resurrection(Generic asd){
+    public void resurrection(Generic gen){
         logField.appendText("Resurrected :");
         if(chimp.getMana() >= 6){
-            if (asd.getHp() <= 0) {
-                asd.setHp((int) (asd.getHp() + chimp.getMagic() * 50));
-                asd.setImg("stand", ap);
+            if (gen.getHp() <= 0) {
+                gen.setHp((int) (gen.getHp() + chimp.getMagic() * 50));
+                gen.setImg("stand", ap);
                 chimp.setMana(chimp.getMana() - 6);
-                logField.appendText(" "+asd.getName());
+                logField.appendText(" "+gen.getName());
             }
         }else{
             logField.appendText("\n not enough mana\n");
@@ -357,12 +387,12 @@ public class Tiles implements Action{
         act(index);
     }
 
-    public void thunderStrike(Generic asd){
+    public void thunderStrike(Generic gen){
         if(chimp.getMana() >= 5){
-            logField.appendText("Thunderstriked "+asd.getName());
-            asd.setHp((int) (asd.getHp() - chimp.getMagic() * 30));
+            logField.appendText("Thunderstriked "+gen.getName());
+            gen.setHp((int) (gen.getHp() - chimp.getMagic() * 30));
             chimp.setMana(chimp.getMana() - 5);
-            System.out.println("megrázta a csúnya " + asd.getName());
+            System.out.println("megrázta a csúnya " + gen.getName());
         }else{
             logField.appendText("\n not enough mana\n");
         }
@@ -371,7 +401,7 @@ public class Tiles implements Action{
 
     public void removeDeadUnit(ArrayList<Generic> round){
         for(int i=0;i<round.size();i++){
-            if(round.get(i).getHp()==0) {
+            if(round.get(i).getHp()<=0) {
                 round.remove(i);
             }
         }
