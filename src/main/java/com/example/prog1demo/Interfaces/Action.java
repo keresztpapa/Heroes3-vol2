@@ -53,18 +53,8 @@
  * @param rowCount      a 2D tömb sorának számai
  * @param colCount      a 2D tömb oszlopainak számai
  *
- *
- * place()
- * A csatát megelőző jatékos egységeinek elhelyezése.
- *
- * @param map           a 2D Tile object tömb, ami harctérként funkcionál
- * @param generic       az egység amit le akarunk tenni
- * @param rowCount      a 2D tömb sorának számai
- * @param colCount      a 2D tömb oszlopainak számai
- *
- *
  * unitUpdate()
- * Frissíti a játékan lévő egységek pontjait a hős képességeit beszámítva.
+ *                      Frissíti a játékan lévő egységek pontjait a hős képességeit beszámítva.
  *
  * @param chimp         a játékos által irányított hős
  * @param evilChimp     a számítógép által irányított hős
@@ -74,7 +64,33 @@
  * @param imp           a gyalogos, közelharci egység, (computer)
  * @param hound         a 'griff' megfelelője (computer)
  * @param impArcher     az íjász megfelelője (computer)
- */
+ *
+ *
+ * mapUpdate()
+ *
+ * @param map           A játéktér mezője
+ * @param round         Az egységeket tartalmazó arraylist
+ *
+ *                      Az algoritmus első részében tisztára mossa a pályát, és
+ *                      minden mezőnek a keresztezhetőségét igazra és az elfoglaltságát hamisra
+ *                      állítja.
+ *                      Majd az adott listának az egységet végigpörgeti és
+ *                      beállítja mezők elérhetőségét.
+ *
+ * AImove()
+ *
+ * @param map           A hacteret tartalmazó Tile boject array
+ * @param round         Az arraylist ami a karaktereket tárolja
+ * @param gen           Az a generic ősosztály ami az AI vezérelte karakter lesz /\
+ *                      minden karakterre külön kell majd meghívni a metódust
+ * @param ap            Az attack()-nek paraméterben adott anchorpane
+ * @param logF          Az a TextArea amiben az AI akciójának a logja látszik
+ *
+ *                      A fvg() először végig megy a listán szereplő karaktereken, majd
+ *                      elkezd a számára ellenséges karakterek felé közeledni.
+ *                      Ha már elég közel van akkor megtámadja őket.
+ *
+ **/
 
 
 package com.example.prog1demo.Interfaces;
@@ -220,28 +236,6 @@ public interface Action {
         map[starterX/100][starterY/100].setCrs(true);
     }
 
-    default void place(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane ap){
-        for(int i=0;i<rowCount;i++){
-            for (int j=0;j<colCount;j++){
-                Tile tl = map[i][j];
-                tl.getImageView().setOnMouseEntered((event)->{
-                    generic.setImageMovX(tl.getPos_x());
-                    generic.setImageMovY(tl.getPos_y());
-                });
-                tl.getImageView().setOnMouseExited((event)->{
-                    ap.getChildren().remove(generic);
-                });
-                tl.getImageView().setOnMouseClicked((event)->{
-                    generic.setImageMovY(tl.getMovTo_y());
-                    generic.setImageMovX(tl.getMovTo_x());
-                    generic.setPos_x(tl.getMovTo_x());
-                    generic.setPos_y(tl.getMovTo_y());
-
-                });
-            }
-        }
-    }
-
     default void unitUpdate(Champions chimp, VillianChamp evilChimp, Generic pike, Generic griff, Generic archer, Generic imp, Generic hound, Generic impArcher){
         int i;
 
@@ -370,26 +364,6 @@ public interface Action {
 
                 mapUpdate(map, round);
             }
-    }
-
-    default boolean yourFriendlyNeighbour(Tile[][] map, ArrayList<Generic> round, Generic gen){
-
-        for(int i=0;i<round.size();i++){
-            if(round.get(i).getName().equals("Archer") || round.get(i).getName().equals("Pike") || round.get(i).getName().equals("Griff")) {
-                    int x1 = gen.getPos_x() / 100,
-                        y1 = gen.getPos_y() / 100;
-
-                    int x2 = round.get(i).getPos_x() / 100,
-                        y2 = round.get(i).getPos_y() / 100;
-
-                if (x1 < 12 && map[x1][y1].getPos_x() + 100 == map[x2][y2].getPos_x()) return true;
-                if (x1 < 12 && map[x1][y1].getPos_x() - 100 == map[x2][y2].getPos_x()) return true;
-                if (y1 < 10 && map[x1][y1].getPos_y() + 100 == map[x2][y2].getPos_y()) return true;
-                if (y1 < 10 && map[x1][y1].getPos_y() - 100 == map[x2][y2].getPos_y()) return true;
-            }
-        }
-        System.out.println("messze vagy");
-        return false;
     }
 
 }
