@@ -224,6 +224,7 @@ public class Tiles implements Action{
             }
             if(round.get(index).getName().equals("Archer")){
                 attackWitoutLimit(map, archer, imp, ap, logField, round);
+                removeDeadUnit(round);
             }
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
@@ -233,6 +234,7 @@ public class Tiles implements Action{
             }
             if(round.get(index).getName().equals("Archer")){
                 attackWitoutLimit(map, archer, hound, ap, logField, round);
+                removeDeadUnit(round);
             }
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
@@ -242,6 +244,7 @@ public class Tiles implements Action{
             }
             if(round.get(index).getName().equals("Archer")){
                 attackWitoutLimit(map, archer, impArcher, ap, logField, round);
+                removeDeadUnit(round);
             }
         });
 
@@ -308,37 +311,54 @@ public class Tiles implements Action{
     }
 
     public void fireBall(Tile tl){
-        int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
-        int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
-
-        for (Generic generic : round) {
-            if (generic.getPos_x() <= radX + 150 && generic.getPos_x() >= radX - 150 &&
-                    generic.getPos_y() <= radY + 150 && generic.getPos_y() >= radY - 150) {
-                generic.setHp((int) (generic.getHp() - chimp.getMagic() * 20));
+        if(chimp.getMana()>=9) {
+            int radX = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_x();
+            int radY = map[tl.getPos_x() / 100][tl.getPos_y() / 100].getPos_y();
+            logField.appendText("Fireball happened at X: " + radX + "\nY: " + radY + "\n killed");
+            for (Generic generic : round) {
+                if (generic.getPos_x() <= radX + 150 && generic.getPos_x() >= radX - 150 &&
+                        generic.getPos_y() <= radY + 150 && generic.getPos_y() >= radY - 150) {
+                    generic.setHp((int) (generic.getHp() - chimp.getMagic() * 20));
+                }
+                if (generic.getHp() <= 0) {
+                    generic.setImg("dead", ap);
+                    logField.appendText("\n"+generic.getName());
+                }
             }
-            if (generic.getHp() <= 0) generic.setImg("dead", ap);
-        }
-        chimp.setMana(chimp.getMana() - 9);
 
+            chimp.setMana(chimp.getMana() - 9);
+        }else{
+            logField.appendText("\n not enough mana\n");
+        }
         act(index);
     }
 
     public void resurrection(Generic asd){
-        if (asd.getHp() <= 0) {
-            asd.setHp((int) (asd.getHp() + chimp.getMagic() * 50));
-            asd.setImg("stand", ap);
-            chimp.setMana(chimp.getMana() - 6);
+        logField.appendText("Resurrected :");
+        if(chimp.getMana() >= 6){
+            if (asd.getHp() <= 0) {
+                asd.setHp((int) (asd.getHp() + chimp.getMagic() * 50));
+                asd.setImg("stand", ap);
+                chimp.setMana(chimp.getMana() - 6);
+                logField.appendText(" "+asd.getName());
+            }
+        }else{
+            logField.appendText("\n not enough mana\n");
         }
         act(index);
     }
 
     public void thunderStrike(Generic asd){
-        asd.setHp((int) (asd.getHp() - chimp.getMagic() * 30));
-        chimp.setMana(chimp.getMana() - 5);
-        System.out.println("megrázta a csúnya "+asd.getName());
+        if(chimp.getMana() >= 5){
+            logField.appendText("Thunderstriked "+asd.getName());
+            asd.setHp((int) (asd.getHp() - chimp.getMagic() * 30));
+            chimp.setMana(chimp.getMana() - 5);
+            System.out.println("megrázta a csúnya " + asd.getName());
+        }else{
+            logField.appendText("\n not enough mana\n");
+        }
         act(index);
     }
-
 
     public void removeDeadUnit(ArrayList<Generic> round){
         for(int i=0;i<round.size();i++){
@@ -346,18 +366,6 @@ public class Tiles implements Action{
                 round.remove(i);
             }
         }
-    }
-
-    public void setOrder(Generic[] arr, Generic[] orderedArr){
-        int n = arr.length;
-        for (int i = 0; i < n-1; i++)
-            for (int j = 0; j < n-i-1; j++)
-                if (arr[j].getMoral() > arr[j+1].getMoral()) {
-                    Generic temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
-                }
-        System.arraycopy(arr, 0, orderedArr, 0, arr.length);
     }
 
 }

@@ -128,8 +128,6 @@ public interface Action {
         double maxAtt = g1.getAttMax();
         double dmg = Math.random() * (maxAtt - minAtt + 1) + minAtt;
         double dmgCritChance = Math.random()*(100+1+1)+1;
-        if(!isNeighbour(map,g1,g2)) {
-
             logF.appendText("\nDmg dealt: "+dmg);
             if(dmgCritChance > 5){
                 g2.setHp((int) (g2.getHp() - (dmg*2)));
@@ -143,7 +141,6 @@ public interface Action {
                 attack(map, g2, g1, anchorPane, logF, round);
             }
             logF.appendText("\nAttack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
-        }
     }
 
     default void move(Tile[][] map, Generic generic, int rowCount, int colCount, AnchorPane anchorPane, TextArea logF, ArrayList<Generic> round){
