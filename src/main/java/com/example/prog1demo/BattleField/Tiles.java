@@ -244,39 +244,28 @@ public class Tiles implements Action{
             act(index);
             logField.appendText("Index:: " +index);
             index++;
-            if(index == 6) index = 0;
+            if(index == round.size()) index = 0;
 
             if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
                 Victory vc = new Victory();
                 vc.endGame("bukta");
+                logField.appendText("Vesztettek az emberek");
             }
 
             if (imp.getHp() <= 0 && hound.getHp() <= 0 && impArcher.getHp() <= 0) {
                 Victory vc = new Victory();
                 vc.endGame("");
+                logField.appendText("Győztek az emberek.");
             }
         });
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
     }
 
     public void act(int asd){
-        if(asd == 0) {
-            move(map, pike, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 1) {
-            move(map, griff, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 2) {
-            move(map, archer, this.x_count, this.y_count, ap, logField, round);
-        }
-        if(asd == 3){
-            AImove(map ,round, imp,  ap, logField);
-        }
-        if(asd == 4){
-            AImove(map, round ,hound, ap, logField);
-        }
-        if(asd == 5){
-            AImove(map, round ,impArcher, ap, logField);
+        if(round.get(asd).getName().equals("Pike") || round.get(asd).getName().equals("Griff") || round.get(asd).getName() == "Archer"){
+            move(map, round.get(asd), this.x_count, this.y_count, ap, logField, round);
+        }else{
+            AImove(map, round ,round.get(asd), ap, logField);
         }
     }
 
@@ -309,3 +298,25 @@ public class Tiles implements Action{
     public int getY_count(){ return this.y_count; }
 
 }
+
+/**
+ *        if(asd == 0) {
+ *             if(round.get(0).getName() == )
+ *             move(map, round.get(0), this.x_count, this.y_count, ap, logField, round);
+ *         }
+ *         if(asd == 1) {
+ *             move(map, round.get(1), this.x_count, this.y_count, ap, logField, round);
+ *         }
+ *         if(asd == 2) {
+ *             move(map, round.get(2), this.x_count, this.y_count, ap, logField, round);
+ *         }
+ *         if(asd == 3){
+ *             move(map, round.get(3), this.x_count, this.y_count, ap, logField, round);
+ *         }
+ *         if(asd == 4){
+ *             move(map, round.get(4), this.x_count, this.y_count, ap, logField, round);
+ *         }
+ *         if(asd == 5){
+ *             move(map, round.get(5), this.x_count, this.y_count, ap, logField, round);
+ *         }
+ */
