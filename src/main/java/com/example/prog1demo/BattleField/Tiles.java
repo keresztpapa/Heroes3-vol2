@@ -218,32 +218,29 @@ public class Tiles implements Action{
         res.setLayoutY(850);
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(imp.getHp()>0){
-                attack(map, round.get(index), imp, ap, logField, round);
-                removeDeadUnit(round);
-            }
-            if(round.get(index).getName().equals("Archer")){
+            if(round.get(index).getName().equals("Archer") && imp.getHp()>0){
                 attackWitoutLimit(map, archer, imp, ap, logField, round);
+                removeDeadUnit(round);
+            } else if(imp.getHp()>0){
+                attack(map, round.get(index), imp, ap, logField, round);
                 removeDeadUnit(round);
             }
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(hound.getHp()>0){
-                attack(map, round.get(index), hound, ap, logField, round);
-                removeDeadUnit(round);
-            }
-            if(round.get(index).getName().equals("Archer")){
+            if(round.get(index).getName().equals("Archer") && hound.getHp()>0){
                 attackWitoutLimit(map, archer, hound, ap, logField, round);
+                removeDeadUnit(round);
+            } else if(hound.getHp()>0){
+                attack(map, round.get(index), hound, ap, logField, round);
                 removeDeadUnit(round);
             }
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(impArcher.getHp()>0) {
-                attack(map, round.get(index), impArcher, ap,logField, round);
-                removeDeadUnit(round);
-            }
-            if(round.get(index).getName().equals("Archer")){
+            if(round.get(index).getName().equals("Archer") && impArcher.getHp() > 0){
                 attackWitoutLimit(map, archer, impArcher, ap, logField, round);
+                removeDeadUnit(round);
+            } else if(impArcher.getHp()>0) {
+                attack(map, round.get(index), impArcher, ap,logField, round);
                 removeDeadUnit(round);
             }
         });

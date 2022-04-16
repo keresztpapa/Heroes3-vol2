@@ -77,7 +77,6 @@ public class Tile {
 
     //getters & setters
     public void setGeneric(Generic asd){ this.gen = asd; }
-    public boolean isOccupied() { return this.occupied; }
     public void setOccupied(boolean asd){ this.occupied = asd; }
     public int getPos_x(){ return this.pos_x; }
     public int getPos_y(){ return this.pos_y; }
@@ -87,7 +86,5 @@ public class Tile {
     public void setCrs(boolean z){ this.crossable = z; }
     public boolean getCrs(){ return this.crossable; }
     public ImageView getImageView(){ return this.img; }
-    public String toString(){
-        return "tile";
-    }
+    public String toString(){ return "tile"; }
 }

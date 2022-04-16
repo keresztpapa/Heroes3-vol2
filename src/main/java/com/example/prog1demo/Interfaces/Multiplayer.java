@@ -206,53 +206,46 @@ public class Multiplayer implements Action{
         res.setLayoutY(850);
 
         imp.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(imp.getHp() > 0){
-                attack(map, round.get(index), imp, ap, logField, round);
-            }
-            if(round.get(index).getName().equals("Archer")){
+            if(round.get(index).getName().equals("Archer") && imp.getHp() > 0){
                 attackWitoutLimit(map, archer, imp, ap, logField, round);
+            }else if(imp.getHp() > 0){
+                attack(map, round.get(index), imp, ap, logField, round);
             }
         });
         hound.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(hound.getHp() > 0){
-                attack(map, round.get(index), hound, ap, logField, round);
-            }
-            if(round.get(index).getName().equals("Archer")){
+            if(round.get(index).getName().equals("Archer") && hound.getHp() > 0){
                 attackWitoutLimit(map, archer, hound, ap, logField, round);
+            }else  if(hound.getHp() > 0){
+                attack(map, round.get(index), hound, ap, logField, round);
             }
         });
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
+            if(round.get(index).getName().equals("Archer") && impArcher.getHp() > 0){
+                attackWitoutLimit(map, archer, impArcher, ap, logField, round);
+            }
             if(impArcher.getHp() > 0){
                 attack(map, round.get(index), impArcher, ap, logField, round);
             }
-            if(round.get(index).getName().equals("Archer")){
-                attackWitoutLimit(map, archer, impArcher, ap, logField, round);
-            }
         });
-
-
         pike.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(pike.getHp() > 0){
-                attack(map, round.get(index), pike, ap, logField, round);
-            }
-            if(round.get(index).getName().equals("ImpArcher")){
+            if(round.get(index).getName().equals("ImpArcher") && griff.getHp() > 0){
                 attackWitoutLimit(map, impArcher, pike, ap, logField, round);
+            } else if(pike.getHp() > 0){
+                attack(map, round.get(index), pike, ap, logField, round);
             }
         });
         griff.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(griff.getHp() > 0){
-                attack(map, round.get(index), griff, ap, logField, round);
-            }
-            if(round.get(index).getName().equals("ImpArcher")){
+            if(round.get(index).getName().equals("ImpArcher") && griff.getHp() > 0){
                 attackWitoutLimit(map, impArcher, griff, ap, logField, round);
+            } else if(griff.getHp() > 0){
+                attack(map, round.get(index), griff, ap, logField, round);
             }
         });
         archer.getActual().setOnMouseClicked((mouseEvent) -> {
-            if(archer.getHp() > 0){
-                attack(map, round.get(index), archer, ap, logField, round);
-            }
-            if(round.get(index).getName().equals("ImpArcher")){
+            if(round.get(index).getName().equals("ImpArcher") && archer.getHp() > 0){
                 attackWitoutLimit(map, impArcher, archer, ap, logField, round);
+            } else if(archer.getHp() > 0){
+                attack(map, round.get(index), archer, ap, logField, round);
             }
         });
 
@@ -354,25 +347,4 @@ public class Multiplayer implements Action{
             }
         }
     }
-
-    public void setOrder(Generic[] arr, Generic[] orderedArr){
-        int n = arr.length;
-        for (int i = 0; i < n-1; i++)
-            for (int j = 0; j < n-i-1; j++)
-                if (arr[j].getMoral() > arr[j+1].getMoral()) {
-                    Generic temp = arr[j];
-                    arr[j] = arr[j+1];
-                    arr[j+1] = temp;
-                }
-        System.arraycopy(arr, 0, orderedArr, 0, arr.length);
-    }
-
-    //getters & setters
-    public void setIndex(int asd){ index = asd; }
-    public int getIndex(){ return index; }
-    public void setX_count(int z){ this.x_count = z; }
-    public void setY_count(int z){ this.y_count = z; }
-    public int getX_count(){ return this.x_count; }
-    public int getY_count(){ return this.y_count; }
-
 }
