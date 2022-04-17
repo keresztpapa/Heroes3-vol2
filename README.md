@@ -2,7 +2,8 @@
 
 [ Beüzemelés ] 
 
-
+ - Java 17 kell 
+ 
 
 
 [ Használat ]
@@ -51,3 +52,11 @@ Itt kiválasztható, hogy single vagy multiplayer legyen a game mode.
  	
 	
 [ Good to know ]
+
+	A csata azzal indul, hogy rá kell nyomni a pass gombra.
+	Ebben az esetben most a legleső indexűre fog ugrani a kör.
+	
+	Nagyon fontos, hogy az egységet amit meg akarunk támadni, akor az egységre kattintsunk 
+	és ne az egység alatti mezőre.
+	
+
