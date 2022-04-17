@@ -96,6 +96,7 @@
 package com.example.prog1demo.Interfaces;
 
 import com.example.prog1demo.BattleField.Tile;
+import com.example.prog1demo.BattleField.Tiles;
 import com.example.prog1demo.units.unit.Heroes.Champions;
 import com.example.prog1demo.units.unit.Heroes.VillianChamp;
 import com.example.prog1demo.units.unit.Generic;
@@ -169,6 +170,8 @@ public interface Action {
         int i, j;
         int starterX = generic.getPos_x();
         int starterY = generic.getPos_y();
+        Tiles tls = new Tiles();
+        Multiplayer mp = new Multiplayer();
 
         for (i = 0; i < rowCount; i++) {
             for (j = 0; j < colCount; j++) {
@@ -222,6 +225,7 @@ public interface Action {
                     generic.setImageMovX(generic.getPos_x());
                     generic.setImageMovY(generic.getPos_y());
 
+
                     tl.setCrs(false);
                     tl.setOccupied(true);
                     logF.appendText("---------");
@@ -229,6 +233,8 @@ public interface Action {
                 });
             }
         }
+        tls.setIndex(tls.getIndex()+1);
+        mp.setIndex(mp.getIndex()+1);
         map[starterX/100][starterY/100].setOccupied(false);
         map[starterX/100][starterY/100].setCrs(true);
     }

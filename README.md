@@ -32,6 +32,22 @@ Itt kiválasztható, hogy single vagy multiplayer legyen a game mode.
 		+ egy skill-en 0nál kevesebb pont nem lehet.
 	Oldalt látható az elenfél skill lapja. 10 pontott kapott véletlenszerűen elosztva.
 	 
+	Következő oldalon lehet megvenni a varázslatokat.
+	Mindegyiket maximum egyszer.
+	Látható az ára és a mana költsége.
 	
+	Utolsó lap az egységek vásárlása.
+	-/+ jelekkel tudunk venni és eladni unit-ot.
+	Látható, hogy mennyi darab van már eddig és, hogy mennyi aranyunk van még.
+	
+ - Csata:
+ 
+ 	A csata körökre van osztva.
+ 	A játékos minden megvásárolt egysége látható, az ellenfélnek minding lesz minden egység tipusból.
+ 	Az adott egység tud mozogni, támadni és passzolni.
+ 	Ha támad akkor elég közel kell, hogy legyen az adott ádozathoz.
+ 	Ha passzol akkor a sorban jövő következő egységre ugrik a kör.
+ 	Ha mozog akkor van egy maximális hatótávja. 
+ 	
 	
 [ Good to know ]

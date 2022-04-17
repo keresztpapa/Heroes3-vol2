@@ -93,6 +93,7 @@ public class Multiplayer implements Action{
     Mage mage;
     Genie genie;
 
+    public Multiplayer(){}
     public Multiplayer(int x, int y, AnchorPane anchor){
         String str=null;
         this.x_count = x;
@@ -423,4 +424,7 @@ public class Multiplayer implements Action{
             }
         }
     }
+
+    public void setIndex(int ndx){ index = ndx; }
+    public int getIndex(){ return index; }
 }

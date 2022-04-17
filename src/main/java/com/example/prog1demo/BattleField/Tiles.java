@@ -93,6 +93,7 @@ public class Tiles implements Action{
     Mage mage;
     Genie genie;
 
+    public Tiles(){}
     public Tiles(int x, int y, AnchorPane anchor){
         String str;
         this.x_count = x;
@@ -408,4 +409,6 @@ public class Tiles implements Action{
         }
     }
 
+    public void setIndex(int ndx){ index = ndx; }
+    public int getIndex(){ return index; }
 }
