@@ -138,9 +138,6 @@ public interface Action {
                         System.out.println("Alany HP: " + g2.getHp());
                         if (g2.getHp() <= 0) g2.setImg("dead", anchorPane);
                         System.out.println("sebzett");
-                        if (g2.getName() == "Griff" || g1.getName() != "ImpArcher") {
-                            attack(map, g2, g1, anchorPane, logF, round);
-                        }
                         logF.appendText("\nAttack: "+g1.getName()+" -> "+g2.getName()+"\nHP: "+oldHp+" -> "+g2.getHp());
                     }
                 mapUpdate(map, round);

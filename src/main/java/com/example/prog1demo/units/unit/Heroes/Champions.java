@@ -45,9 +45,6 @@ public class Champions extends Generic implements Action{
     static int pos_y;
     static int gold;
     static int mana=0;
-    static boolean fire=false;
-    static boolean thunder=false;
-    static boolean res=false;
 
     static boolean fireActive=false;
     static boolean thunderActive=false;

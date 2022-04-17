@@ -26,7 +26,9 @@ public class VillianChamp extends Generic implements Action {
         static int houndCount=0;
         static int impArcherCount=0;
         static int genie = 0;
-
+        static boolean fireActive=false;
+        static boolean thunderActive=false;
+        static boolean resActive=false;
         ImageView img;
         ImageView actual2 = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
         ImageView stand = new ImageView(new Image("file:pngs/EvilChimpPokemon.png"));
@@ -64,6 +66,14 @@ public class VillianChamp extends Generic implements Action {
         public int getHoundCount(){ return houndCount; }
         public double getGenieCount(){ return genie; }
         public void setGenieCount(int z){ genie = z; }
+
+        public boolean isFireActive(){ return fireActive; }
+        public void setFireActive(boolean asd){ fireActive = asd; }
+        public boolean isThunderActive() { return thunderActive; }
+        public void setThunderActive(boolean asd) { thunderActive = asd; }
+        public boolean isResActive() { return resActive; }
+        public void setResActive(boolean asd){ resActive = asd; }
+
 
         public String getName(){ return "evilChimp"; }
         public int getMana(){ return mana; }

@@ -218,10 +218,11 @@ public class Tiles implements Action{
             this.map[mage.getPos_x()/100][mage.getPos_y()/100].setOccupied(true);
         }
 
+        round.add(chimp);
         round.add(imp);
         round.add(impArcher);
         round.add(hound);
-        round.add(chimp);
+        round.add(genie);
         round.add(evilChimp);
 
         TextField rounder = new TextField(""+roundCount);

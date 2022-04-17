@@ -130,6 +130,8 @@ public class Multiplayer implements Action{
         chimp.setImageMovX(100);
         chimp.setImageMovY(100);
         chimp.setFireActive(true);
+        chimp.setThunderActive(true);
+        chimp.setResActive(true);
 
         chimp.setSoldierCount((int) ((Math.random()*20)+1));
         chimp.setGriffCount((int) ((Math.random()*20)+1));
@@ -148,6 +150,10 @@ public class Multiplayer implements Action{
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setGeneric(evilChimp);
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setCrs(false);
         this.map[evilChimp.getPos_x() / 100][evilChimp.getPos_y() / 100].setOccupied(true);
+
+        evilChimp.setFireActive(true);
+        evilChimp.setThunderActive(true);
+        evilChimp.setResActive(true);
 
         evilChimp.setImpCount((int) ((Math.random()*20)+1));
         evilChimp.setImpArcherCount((int) ((Math.random()*20)+1));
