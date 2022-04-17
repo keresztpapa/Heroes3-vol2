@@ -233,8 +233,8 @@ public interface Action {
                 });
             }
         }
-        tls.setIndex(tls.getIndex()+1);
-        mp.setIndex(mp.getIndex()+1);
+        //tls.setIndex(tls.getIndex()+1);
+        //mp.setIndex(mp.getIndex()+1);
         map[starterX/100][starterY/100].setOccupied(false);
         map[starterX/100][starterY/100].setCrs(true);
     }

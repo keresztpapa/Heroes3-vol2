@@ -151,25 +151,25 @@ public class Tiles implements Action{
         evilChimp.setHoundCount((int) ((Math.random()*20)+1));
         evilChimp.setGenieCount((int) ((Math.random()*20)+1));
 
-        imp = new Imp(300, 300, ap);
+        imp = new Imp(900, 300, ap);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setCrs(false);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setOccupied(true);
         imp.setImg("stand", ap);
 
-        hound = new Hound(700, 600, ap);
+        hound = new Hound(1000, 600, ap);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setGeneric(hound);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setCrs(false);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setOccupied(true);
         hound.setImg("stand", ap);
 
-        impArcher = new ImpArcher(500, 400, ap);
+        impArcher = new ImpArcher(1000, 400, ap);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setGeneric(impArcher);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setCrs(false);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
         impArcher.setImg("stand", ap);
 
-        genie = new Genie(500, 500, ap);
+        genie = new Genie(1100, 500, ap);
         this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setGeneric(genie);
         this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setCrs(false);
         this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setOccupied(true);

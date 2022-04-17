@@ -189,25 +189,25 @@ public class Multiplayer implements Action{
         mage.setImg("stand",ap);
 
 
-        imp = new Imp(300, 300, ap);
+        imp = new Imp(900, 300, ap);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setGeneric(imp);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setCrs(false);
         this.map[imp.getPos_x() / 100][imp.getPos_y() / 100].setOccupied(true);
         imp.setImg("stand", ap);
 
-        hound = new Hound(700, 600, ap);
+        hound = new Hound(1000, 600, ap);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setGeneric(hound);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setCrs(false);
         this.map[hound.getPos_x() / 100][hound.getPos_y() / 100].setOccupied(true);
         hound.setImg("stand", ap);
 
-        impArcher = new ImpArcher(500, 400, ap);
+        impArcher = new ImpArcher(1000, 400, ap);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setGeneric(impArcher);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setCrs(false);
         this.map[impArcher.getPos_x() / 100][impArcher.getPos_y() / 100].setOccupied(true);
         impArcher.setImg("stand", ap);
 
-        genie = new Genie(500, 500, ap);
+        genie = new Genie(1100, 500, ap);
         this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setGeneric(genie);
         this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setCrs(false);
         this.map[genie.getPos_x() / 100][genie.getPos_y() / 100].setOccupied(true);
@@ -291,8 +291,7 @@ public class Multiplayer implements Action{
         impArcher.getActual().setOnMouseClicked((mouseEvent) -> {
             if(round.get(index).getName().equals("Archer") && impArcher.getHp() > 0){
                 attackWitoutLimit(map, archer, impArcher, ap, logField, round);
-            }
-            if(impArcher.getHp() > 0){
+            }else if(impArcher.getHp() > 0){
                 attack(map, round.get(index), impArcher, ap, logField, round);
             }
         });
@@ -323,8 +322,8 @@ public class Multiplayer implements Action{
             rounder.setText(""+roundCount);
             act(index);
             logField.appendText("\n\nIndex:: " +index+"\nRound:: "+ round.get(index).getName());
+            if(index == round.size()-1) index = 0;
             index++;
-            if(index == 6) index = 0;
 
             if (archer.getHp() <= 0 && pike.getHp() <= 0 && griff.getHp() <= 0) {
                 Victory vc = new Victory();
