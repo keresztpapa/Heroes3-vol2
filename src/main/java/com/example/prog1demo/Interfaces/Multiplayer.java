@@ -341,7 +341,10 @@ public class Multiplayer implements Action{
         ap.getChildren().addAll(pass, fire, light, res,rounder, logField, roundContent);}
 
     public void act(int asd){
-        if(round.get(asd).getName().equals("Pike") || round.get(asd).getName().equals("Griff") || round.get(asd).getName().equals("Archer") || round.get(asd).getName().equals("Mage") || round.get(asd).getName().equals("Hound") || round.get(asd).getName().equals("ImpArcher") || round.get(asd).getName().equals("Genie")){
+        if(round.get(asd).getName().equals("Pike") || round.get(asd).getName().equals("Griff") ||
+                round.get(asd).getName().equals("Archer") || round.get(asd).getName().equals("Mage") ||
+                round.get(asd).getName().equals("Hound") || round.get(asd).getName().equals("ImpArcher")
+                || round.get(asd).getName().equals("Genie")){
             move(map, round.get(asd), this.x_count, this.y_count, ap, logField, round);
         }
         if(round.get(asd).getName().equals("Chimp") || round.get(asd).getName().equals("evilChimp")){
