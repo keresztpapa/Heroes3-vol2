@@ -92,6 +92,8 @@ public class Tiles implements Action{
     ArrayList<Generic> round;
     Mage mage;
     Genie genie;
+    TextArea roundContent;
+    String roundContnentLogs="";
 
     public Tiles(){}
     public Tiles(int x, int y, AnchorPane anchor){
@@ -180,6 +182,12 @@ public class Tiles implements Action{
         logField.setPrefWidth(300);
         logField.setText("Logs: \n");
 
+        roundContent = new TextArea(roundContnentLogs);
+        roundContent.setLayoutX(1380);
+        roundContent.setLayoutY(600);
+        roundContent.setPrefWidth(120);
+        roundContent.setPrefHeight(200);
+
 /*
         Generic[] arr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
         Generic[] finalArr = {pike, griff, archer, imp, impArcher, hound, chimp, evilChimp};
@@ -226,17 +234,19 @@ public class Tiles implements Action{
         round.add(genie);
         round.add(evilChimp);
 
+        for(int i=0;i<round.size();i++)  roundContent.appendText(i+" : "+round.get(i).getName()+"\n");
+
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
         rounder.setPrefWidth(50);
-        rounder.setLayoutY(750);
-        rounder.setLayoutX(1400);
+        rounder.setLayoutY(780);
+        rounder.setLayoutX(1300);
 
         Button pass = new Button("Pass");
-        pass.setPrefWidth(150);
+        pass.setPrefWidth(70);
         pass.setPrefHeight(50);
         pass.setLayoutX(1225);
-        pass.setLayoutY(750);
+        pass.setLayoutY(780);
 
         Button fire = new Button("Fireball");
         if(!chimp.isFireActive()) fire.setDisable(true);
@@ -306,7 +316,7 @@ public class Tiles implements Action{
                 logField.appendText("\n\nGyőztek az emberek.");
             }
         });
-        ap.getChildren().addAll(pass, fire, light, res,rounder, logField);
+        ap.getChildren().addAll(pass, fire, light, res,rounder, logField , roundContent);
     }
 
     public void act(int unitRoundIndex){

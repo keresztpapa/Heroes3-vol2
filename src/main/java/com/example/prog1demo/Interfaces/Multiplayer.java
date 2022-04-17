@@ -92,6 +92,8 @@ public class Multiplayer implements Action{
     ArrayList<Generic> round;
     Mage mage;
     Genie genie;
+    TextArea roundContent;
+    String roundContnentLogs="";
 
     public Multiplayer(){}
     public Multiplayer(int x, int y, AnchorPane anchor){
@@ -218,6 +220,12 @@ public class Multiplayer implements Action{
         logField.setPrefWidth(300);
         logField.setText("Logs: \n");
 
+        roundContent = new TextArea(roundContnentLogs);
+        roundContent.setLayoutX(1380);
+        roundContent.setLayoutY(600);
+        roundContent.setPrefWidth(120);
+        roundContent.setPrefHeight(200);
+
         round = new ArrayList<>();
 
         round.add(pike);
@@ -231,17 +239,19 @@ public class Multiplayer implements Action{
         round.add(genie);
         round.add(evilChimp);
 
+        for(int i=0;i<round.size();i++)  roundContent.appendText(i+" : "+round.get(i).getName()+"\n");
+
         TextField rounder = new TextField(""+roundCount);
         rounder.setPrefHeight(50);
         rounder.setPrefWidth(50);
-        rounder.setLayoutY(750);
-        rounder.setLayoutX(1400);
+        rounder.setLayoutY(780);
+        rounder.setLayoutX(1300);
 
         Button pass = new Button("Pass");
-        pass.setPrefWidth(150);
+        pass.setPrefWidth(70);
         pass.setPrefHeight(50);
         pass.setLayoutX(1225);
-        pass.setLayoutY(750);
+        pass.setLayoutY(780);
 
         Button fire = new Button("Fireball");
         if(!chimp.isFireActive()) fire.setDisable(true);
@@ -328,7 +338,7 @@ public class Multiplayer implements Action{
                 logField.appendText("\n\nGyőztek az emberek.");
             }
         });
-        ap.getChildren().addAll(pass, fire, light, res,rounder, logField);}
+        ap.getChildren().addAll(pass, fire, light, res,rounder, logField, roundContent);}
 
     public void act(int asd){
         if(round.get(asd).getName().equals("Pike") || round.get(asd).getName().equals("Griff") || round.get(asd).getName().equals("Archer") || round.get(asd).getName().equals("Mage") || round.get(asd).getName().equals("Hound") || round.get(asd).getName().equals("ImpArcher") || round.get(asd).getName().equals("Genie")){
